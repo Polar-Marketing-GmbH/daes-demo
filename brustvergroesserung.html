@@ -38,12 +38,12 @@ p{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.92rem 1.4rem;border-radius:4px;font:600 .95rem var(--text);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease,transform .2s ease,box-shadow .2s ease,filter .2s ease}
 .btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--violett);outline-offset:3px}
 .dark :focus-visible,.calc :focus-visible,.cta :focus-visible,footer.site :focus-visible{outline-color:var(--violett-hell)}
-.btn-primary{background:var(--violett);background:var(--verlauf);color:var(--weiss);box-shadow:var(--schatten-violett)}
+.btn-primary{background:var(--violett);background:var(--verlauf);background-origin:border-box;border-color:transparent;color:var(--weiss);box-shadow:var(--schatten-violett)}
 .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 14px 28px -8px rgba(129,38,133,.55)}
 .btn-primary:active{transform:translateY(0) scale(.98)}
-.btn-ghost{background:transparent;color:var(--schwarz);border-color:var(--schwarz)}
-.btn-ghost:hover{background:var(--schwarz);color:var(--weiss)}
-.dark .btn-ghost{color:var(--weiss);border-color:rgba(255,255,255,.55)}
+.btn-ghost{background:var(--weiss);color:var(--schwarz);border-color:var(--stahl-200)}
+.btn-ghost:hover{background:var(--violett-tint);border-color:var(--violett);color:var(--violett)}
+.dark .btn-ghost{background:transparent;color:var(--weiss);border-color:rgba(255,255,255,.55)}
 .dark .btn-ghost:hover{background:var(--weiss);color:var(--schwarz);border-color:var(--weiss)}
 .ico{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .dark{background:var(--schwarz);color:#C9CDD2}
@@ -304,20 +304,19 @@ section{padding-block:clamp(3.4rem,7vw,6rem)}
 .faq .a{padding:0 0 1.2rem;color:var(--stahl-600);font-size:.95rem;max-width:68ch}
 
 /* Standorte */
-/* Bildband mit Originalfoto der bisherigen Webseite */
-.lebens{padding-block:0;background:var(--lebens-bg,#EFCADD);overflow:hidden}
-.lebens .wrap{position:relative;display:grid;align-items:center;min-height:clamp(380px,36vw,470px)}
-.lebens-text{position:relative;z-index:1;display:grid;gap:1rem;max-width:min(500px,46%);padding-block:3rem}
+/* Bildband: freigestelltes Foto der bisherigen Webseite auf modernem Grau, Kopf ragt über den Balken */
+.lebens{position:relative;z-index:1;padding-block:0;background:linear-gradient(120deg,var(--violett-tint) 0%,#F1D6E8 55%,#EFCADD 100%)}
+.lebens .wrap{position:relative;display:grid;align-items:center;min-height:clamp(360px,33vw,430px)}
+.lebens-text{position:relative;z-index:1;display:grid;gap:1rem;max-width:min(520px,50%);padding-block:3rem}
 .lebens-text h2{font-size:clamp(1.7rem,3vw,2.4rem)}
 .lebens-text .lead{color:var(--stahl-800);font-size:1.02rem}
 .lebens-text .btn{justify-self:start}
-.lebens-bild{position:absolute;right:-70px;bottom:0;height:100%;width:auto;max-width:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%)}
+.lebens-bild{position:absolute;right:clamp(1rem,11%,9.5rem);bottom:0;height:calc(100% + 64px);width:auto;max-width:none}
 @media (max-width:1000px){
   .lebens .wrap{min-height:0;display:block;padding-top:2.6rem}
-  .lebens-text{max-width:none;padding-block:0 1.4rem}
-  .lebens-bild{position:static;display:block;width:calc(100% + var(--gutter-l) + var(--gutter-r));max-width:none;height:auto;aspect-ratio:1170/500;object-fit:cover;margin-inline:calc(-1 * var(--gutter-l)) calc(-1 * var(--gutter-r));-webkit-mask-image:none;mask-image:none}
+  .lebens-text{max-width:none;padding-block:0 1.2rem}
+  .lebens-bild{position:static;display:block;height:min(330px,78vw);margin:0 auto}
 }
-@media (max-width:520px){.lebens-bild{aspect-ratio:4/3;object-position:center top}}
 .chips{display:flex;flex-wrap:wrap;gap:.1rem 1.5rem}
 .chip{padding:.3rem 0;font-size:.92rem;font-weight:500;color:var(--schwarz)}
 
@@ -492,7 +491,7 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
   </div>
 </section>
 
-<section class="lebens" style="--lebens-bg:#F1D0E1" aria-labelledby="h-lebens">
+<section class="lebens" aria-labelledby="h-lebens">
   <div class="wrap">
     <div class="lebens-text">
       <span class="label">Brustvergrößerung</span>
@@ -500,7 +499,7 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
       <p class="lead">Form, Größe und Lage der Implantate besprechen Sie persönlich mit Ihrem Facharzt. Erst danach entscheiden Sie.</p>
       <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch für 40 € buchen</a>
     </div>
-    <img class="lebens-bild" src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/10/Bild-Brustvergroesserung.jpg" onerror="this.onerror=null;this.src='bilder/lebensfreude-2.webp'" alt="Lächelnde Frau im Bikini, Symbolbild" width="1170" height="500" loading="lazy">
+    <img class="lebens-bild" src="bilder/lebensfreude-2-frei.png" alt="Lächelnde Frau im Bikini, Symbolbild" width="269" height="471" loading="lazy">
   </div>
 </section>
 
