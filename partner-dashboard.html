@@ -241,13 +241,20 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .verlauf li.k span b{color:var(--violett)}
 .verlauf span b{color:var(--violett)}
 /* Patientenakte: Reiter, Unterlagen, Protokoll */
-.ak-tabs{display:flex;gap:.2rem;border-bottom:1px solid var(--stahl-200);overflow-x:auto;scrollbar-width:none}
-.ak-tabs::-webkit-scrollbar{display:none}
-.ak-tabs button{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem .9rem;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;font:600 .9rem var(--text);color:var(--stahl-600);cursor:pointer;white-space:nowrap;border-radius:8px 8px 0 0;flex:none}
-.ak-tabs button:hover{color:var(--schwarz);background:var(--stahl-50)}
-.ak-tabs button[aria-selected="true"]{color:var(--violett);border-bottom-color:var(--violett)}
-.ak-tabs i{font-style:normal;font-size:.72rem;font-weight:700;background:var(--stahl-100);color:var(--stahl-600);border-radius:999px;padding:.05rem .45rem;font-variant-numeric:tabular-nums}
-.ak-tabs button[aria-selected="true"] i{background:var(--violett-tint);color:var(--violett)}
+.ak-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.ak-tabs button{display:flex;align-items:center;justify-content:center;gap:.55rem;min-width:0;padding:.8rem .7rem;border:1px solid var(--stahl-200);border-radius:10px;background:var(--stahl-50);font:600 .95rem var(--text);color:var(--stahl-800);cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
+.ak-tabs button .ico{width:19px;height:19px}
+.ak-tabs button:hover{border-color:var(--violett);color:var(--violett);background:var(--weiss)}
+.ak-tabs button[aria-selected="true"]{background:var(--verlauf);border-color:transparent;color:var(--weiss);box-shadow:0 10px 22px -12px rgba(129,38,133,.8)}
+.ak-tabs i{font-style:normal;font-size:.74rem;font-weight:700;background:var(--stahl-200);color:var(--stahl-800);border-radius:999px;padding:.05rem .5rem;font-variant-numeric:tabular-nums}
+.ak-tabs button[aria-selected="true"] i{background:rgba(255,255,255,.24);color:var(--weiss)}
+@media (max-width:520px){.ak-tabs{gap:.35rem}.ak-tabs button{flex-direction:column;gap:.25rem;padding:.6rem .3rem;font-size:.82rem}}
+.akte-akt{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:flex-end;align-items:center;margin-left:auto}
+.akte-kopf > div:first-child{flex:1 1 220px;min-width:0}
+.ak-drop{position:sticky;top:.5rem;z-index:5;display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.9rem 1rem;border-radius:12px;background:var(--violett);color:var(--weiss);font-weight:600;box-shadow:0 16px 30px -14px rgba(129,38,133,.9);pointer-events:none}
+#dlg-akte.zieh{outline:3px solid var(--violett);outline-offset:-3px}
+.ak-notiz{display:grid;gap:.8rem;border:1px solid var(--stahl-200);background:var(--stahl-50);border-radius:12px;padding:.9rem}
+.ak-notiz .dlg-foot{padding-top:0}
 .ak-panel{display:grid;gap:1.1rem;min-width:0}
 .ak-panel:focus{outline:none}
 .ak-mehr{border:0;background:none;padding:0;font:600 .82rem var(--text);color:var(--violett);cursor:pointer;justify-self:start}
@@ -612,12 +619,17 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   <div class="dlg">
     <div class="akte-kopf">
       <div><p class="klein">Patientenakte</p><h2 id="ak-name"></h2><p class="sub" id="ak-sub"></p></div>
-      <button class="btn btn-line btn-sm" type="button" data-zu>Schließen</button>
+      <div class="akte-akt">
+        <button class="btn btn-primary btn-sm" type="button" id="ak-hoch-btn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5M7.500 9.500L12 5l4.500 4.500M5 19h14"/></svg>Unterlage hochladen</button>
+        <button class="btn btn-line btn-sm" type="button" id="ak-notiz-btn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Protokoll-Eintrag</button>
+        <button class="btn btn-line btn-sm" type="button" data-zu>Schließen</button>
+      </div>
     </div>
+    <div class="ak-drop" id="ak-drop" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5M7.500 9.500L12 5l4.500 4.500M5 19h14"/></svg><span>Datei loslassen, sie wird in der Akte abgelegt</span></div>
     <div class="ak-tabs" role="tablist" aria-label="Bereiche der Patientenakte">
-      <button type="button" role="tab" id="akt-uebersicht" data-ak-tab="uebersicht" aria-controls="akp-uebersicht">Übersicht</button>
-      <button type="button" role="tab" id="akt-unterlagen" data-ak-tab="unterlagen" aria-controls="akp-unterlagen">Unterlagen<i id="ak-zahl-u"></i></button>
-      <button type="button" role="tab" id="akt-protokoll" data-ak-tab="protokoll" aria-controls="akp-protokoll">Protokoll<i id="ak-zahl-p"></i></button>
+      <button type="button" role="tab" id="akt-uebersicht" data-ak-tab="uebersicht" aria-controls="akp-uebersicht"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.200"/><path d="M5.500 16.500c.600-1.700 1.900-2.500 3.500-2.500s2.900.800 3.500 2.500M15 10h3.500M15 13.500h3.500"/></svg><span>Übersicht</span></button>
+      <button type="button" role="tab" id="akt-unterlagen" data-ak-tab="unterlagen" aria-controls="akp-unterlagen"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.500h8a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Unterlagen</span><i id="ak-zahl-u"></i></button>
+      <button type="button" role="tab" id="akt-protokoll" data-ak-tab="protokoll" aria-controls="akp-protokoll"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.500" cy="6" r="1"/><circle cx="4.500" cy="12" r="1"/><circle cx="4.500" cy="18" r="1"/></svg><span>Protokoll</span><i id="ak-zahl-p"></i></button>
     </div>
     <div class="ak-panel" id="akp-uebersicht" role="tabpanel" aria-labelledby="akt-uebersicht" tabindex="-1">
       <dl class="fakten" id="ak-fakten"></dl>
@@ -641,6 +653,15 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       <p class="sp-demo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Demo: Hochgeladene Dateien bleiben in Ihrem Browser. Die vorhandenen Unterlagen sind Beispieldokumente.</span></p>
     </div>
     <div class="ak-panel" id="akp-protokoll" role="tabpanel" aria-labelledby="akt-protokoll" tabindex="-1" hidden>
+      <form class="ak-notiz" id="ak-notiz" novalidate hidden>
+        <div class="zwei">
+          <div class="feld"><label for="an-art">Art des Eintrags</label><select id="an-art"><option>Notiz</option><option>Telefonat</option><option>E-Mail</option><option>Gespräch vor Ort</option><option>Sonstiges</option></select></div>
+          <div class="feld"><label for="an-wann">Datum und Uhrzeit</label><input type="datetime-local" id="an-wann"></div>
+        </div>
+        <div class="feld"><label for="an-text">Eintrag</label><textarea id="an-text" placeholder="Was soll im Protokoll stehen?"></textarea></div>
+        <div class="fehler" id="an-fehler" role="alert" hidden></div>
+        <div class="dlg-foot"><button class="btn btn-line btn-sm" type="button" id="an-abbrechen">Abbrechen</button><button class="btn btn-primary btn-sm" type="submit">Eintrag speichern</button></div>
+      </form>
       <ol class="verlauf" id="ak-verlauf"></ol>
     </div>
     <div class="dlg-foot"><button class="btn btn-line" type="button" id="ak-kontakt" data-vorwahl="kontakt">Kontakt eintragen</button><button class="btn btn-primary" type="button" id="ak-update">Update eintragen</button></div>
@@ -1075,7 +1096,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     });
     if(fokus)byId('akt-'+akteTab).focus();
   }
-  function oeffneAkte(pid){var p=finde(pid);if(!p)return;if(!dlgA.open||aktePid!==pid){if(!dlgA.open&&akteZurueckTab){akteTab=akteZurueckTab;}else akteTab='uebersicht';}akteZurueckTab='';aktePid=pid;byId('ak-fehler').hidden=true;zeichneAkte(p);if(!dlgA.open)dlgA.showModal();}
+  function oeffneAkte(pid){var p=finde(pid);if(!p)return;if(!dlgA.open||aktePid!==pid){if(!dlgA.open&&akteZurueckTab){akteTab=akteZurueckTab;}else akteTab='uebersicht';}akteZurueckTab='';if(aktePid!==pid||!dlgA.open)byId('ak-notiz').hidden=true;aktePid=pid;byId('ak-fehler').hidden=true;zeichneAkte(p);if(!dlgA.open)dlgA.showModal();}
   var akteZurueckTab='';
   // Unterlagen: Beispiel-PDF für den Download erzeugen, echte Dateien direkt ausgeben
   function ascii(s){return s.replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/Ä/g,'Ae').replace(/Ö/g,'Oe').replace(/Ü/g,'Ue').replace(/ß/g,'ss').replace(/[^\x20-\x7E]/g,'?');}
@@ -1104,7 +1125,38 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   }
   byId('ak-datei').addEventListener('change',function(){akteHoch(this.files);this.value='';});
   ['dragenter','dragover'].forEach(function(n){byId('ak-zone').addEventListener(n,function(ev){ev.preventDefault();this.classList.add('drueber');});});
-  ['dragleave','drop'].forEach(function(n){byId('ak-zone').addEventListener(n,function(ev){this.classList.remove('drueber');if(n==='drop'){ev.preventDefault();if(ev.dataTransfer&&ev.dataTransfer.files.length)akteHoch(ev.dataTransfer.files);}});});
+  ['dragleave','drop'].forEach(function(n){byId('ak-zone').addEventListener(n,function(){this.classList.remove('drueber');});});
+  // Dateien lassen sich überall in die geöffnete Akte ziehen
+  var akteZiehT;
+  function akteZieh(an){dlgA.classList.toggle('zieh',an);byId('ak-drop').hidden=!an;}
+  dlgA.addEventListener('dragover',function(ev){
+    var dt=ev.dataTransfer;if(!dt||[].indexOf.call(dt.types||[],'Files')<0)return;
+    ev.preventDefault();dt.dropEffect='copy';akteZieh(true);clearTimeout(akteZiehT);akteZiehT=setTimeout(function(){akteZieh(false);},180);
+  });
+  dlgA.addEventListener('drop',function(ev){
+    var dt=ev.dataTransfer;if(!dt||!dt.files||!dt.files.length)return;
+    ev.preventDefault();clearTimeout(akteZiehT);akteZieh(false);
+    akteTab='unterlagen';akteHoch(dt.files);dlgA.scrollTop=0;
+  });
+  // Knöpfe oben rechts: Unterlage hochladen, Protokoll-Eintrag
+  byId('ak-hoch-btn').addEventListener('click',function(){akteTab='unterlagen';akteTabZeige(false);byId('ak-datei').click();});
+  function akteNotiz(auf){
+    byId('ak-notiz').hidden=!auf;byId('an-fehler').hidden=true;
+    if(auf){byId('ak-notiz').reset();byId('an-wann').value=jetztLokal();byId('an-wann').max=jetztLokal();byId('an-text').focus();}
+  }
+  byId('ak-notiz-btn').addEventListener('click',function(){akteTab='protokoll';akteTabZeige(false);akteNotiz(true);});
+  byId('an-abbrechen').addEventListener('click',function(){akteNotiz(false);byId('ak-notiz-btn').focus();});
+  byId('ak-notiz').addEventListener('input',function(){byId('an-fehler').hidden=true;});
+  byId('ak-notiz').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var p=finde(aktePid),f=byId('an-fehler'),text=byId('an-text').value.trim(),w=byId('an-wann').value,d=new Date(w);if(!p)return;
+    function fehler(txt,id){f.textContent=txt;f.hidden=false;byId(id).focus();}
+    if(!w||isNaN(d.getTime()))return fehler('Bitte Datum und Uhrzeit angeben.','an-wann');
+    if(d.getTime()>Date.now()+60000)return fehler('Der Eintrag kann nicht in der Zukunft liegen.','an-wann');
+    if(!text)return fehler('Bitte den Eintrag ausfüllen.','an-text');
+    p.verlauf.push({d:d,kopf:byId('an-art').value,t:'durch '+byId('wer').textContent+': '+text});
+    akteNotiz(false);zeichneAkte(p);toast('Protokoll-Eintrag gespeichert');byId('akt-protokoll').focus();
+  });
   var akteBsp=0;
   byId('ak-beispiel').addEventListener('click',function(){
     var p=finde(aktePid);if(!p)return;var typ=byId('ak-typ').value,name=typ.replace(/[^A-Za-zÄÖÜäöüß-]/g,'')+'_Beispiel_'+(++akteBsp)+'.pdf';
@@ -1420,7 +1472,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   ['dragenter','dragover'].forEach(function(n){dlgS.addEventListener(n,function(ev){var z=ev.target.closest('.up-zone');if(z){ev.preventDefault();z.classList.add('drueber');}});});
   ['dragleave','drop'].forEach(function(n){dlgS.addEventListener(n,function(ev){var z=ev.target.closest('.up-zone');if(!z)return;z.classList.remove('drueber');
     if(n==='drop'){ev.preventDefault();if(ev.dataTransfer&&ev.dataTransfer.files.length)fuegeDateien(z.getAttribute('data-zone'),ev.dataTransfer.files);}});});
-  ['dragover','drop'].forEach(function(n){window.addEventListener(n,function(ev){var dt=ev.dataTransfer;if(!dt||[].indexOf.call(dt.types||[],'Files')<0||(ev.target.closest&&ev.target.closest('.up-zone')))return;ev.preventDefault();dt.dropEffect='none';});});
+  ['dragover','drop'].forEach(function(n){window.addEventListener(n,function(ev){var dt=ev.dataTransfer;if(!dt||[].indexOf.call(dt.types||[],'Files')<0||(ev.target.closest&&ev.target.closest('.up-zone,#dlg-akte')))return;ev.preventDefault();dt.dropEffect='none';});});
   dlgS.addEventListener('click',function(ev){
     var pt=ev.target.closest('[data-pat]');if(pt){spUebernimm(pt.getAttribute('data-pat'));byId('ds-pat-plus').focus();return;}
     var b=ev.target.closest('[data-beispiel]');if(b){fuegeBeispiel(b.getAttribute('data-beispiel'));return;}
