@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DÄS Connect · Partner-Login</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap">
+<style>
+/* Layout: geteilter Bildschirm. Links die Marke auf violettem Verlauf, rechts ruhig das Formular. */
+:root{
+  --schwarz:#010101;--violett:#812685;--violett-dunkel:#661D69;--violett-hell:#C98ACC;--violett-tint:#F4EAF4;
+  --stahl-50:#F4F5F6;--stahl-100:#EBEDEF;--stahl-200:#D9DCE0;--stahl-400:#9BA1A9;--stahl-600:#5F656D;--stahl-800:#2B2E33;--weiss:#FFFFFF;
+  --fehler:#B3261E;--fehler-tint:#FCEEED;
+  --text:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --gutter-l:max(20px, env(safe-area-inset-left, 0px));--gutter-r:max(20px, env(safe-area-inset-right, 0px));color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--stahl-50);color:var(--stahl-800);font-family:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+a{color:inherit}
+h1,h2{margin:0;font-weight:600;letter-spacing:-.03em;line-height:1.04;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--violett);outline-offset:3px}
+.ico{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+.split{min-height:100%;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+
+/* Linke Seite */
+.brand{position:relative;overflow:hidden;color:var(--weiss);padding:clamp(1.6rem,4vw,3rem) var(--gutter-r) clamp(1.6rem,4vw,3rem) var(--gutter-l);
+  background:radial-gradient(120% 90% at 0% 0%,#B22FC9 0%,rgba(178,47,201,0) 55%),linear-gradient(140deg,#8F2AA3 0%,#812685 38%,#5B2079 72%,#3F1A5C 100%);
+  display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem}
+.brand :focus-visible{outline-color:var(--weiss)}
+.brand::after{content:"";position:absolute;right:-18%;bottom:-30%;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.12),rgba(255,255,255,0));pointer-events:none}
+.brand-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.4rem 1rem;position:relative;z-index:1}
+.logo{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--weiss)}
+.logo .mark{width:42px;height:42px;flex:none}
+.logo b{font-weight:700;font-size:1.05rem;letter-spacing:-.015em}
+.logo b span{font-weight:400}
+.back{margin-left:auto;font-size:.86rem;font-weight:500;text-decoration:none;color:rgba(255,255,255,.82);white-space:nowrap}
+.back:hover{color:var(--weiss)}
+.brand-main{position:relative;z-index:1;display:grid;gap:1.5rem;max-width:520px;padding-inline:clamp(0rem,3vw,2.2rem)}
+.pill{justify-self:start;display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.08);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.pill .ico{width:15px;height:15px}
+.brand h1{font-size:clamp(2.3rem,4.6vw,3.9rem);font-weight:700}
+.brand h1 em{font-style:italic;font-weight:600;color:#EBCDF0}
+.brand-main > p{font-size:1.05rem;color:rgba(255,255,255,.78);max-width:46ch}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:.6rem}
+.facts div{display:grid;gap:.15rem;align-content:start}
+.facts .ico{margin-bottom:.35rem;color:rgba(255,255,255,.9)}
+.facts b{font-weight:600;font-size:.98rem}
+.facts span{font-size:.84rem;color:rgba(255,255,255,.7)}
+.brand-foot{position:relative;z-index:1;font-size:.78rem;color:rgba(255,255,255,.78);padding-inline:clamp(0rem,3vw,2.2rem)}
+
+/* Rechte Seite */
+.panel{display:grid;place-items:center;padding:clamp(2rem,5vw,3.5rem) var(--gutter-r) clamp(2rem,5vw,3.5rem) var(--gutter-l)}
+.box{width:100%;max-width:400px;display:grid;gap:1.6rem}
+.box h2{font-size:clamp(1.9rem,3vw,2.5rem);color:var(--schwarz)}
+.box .sub{color:var(--stahl-600);font-size:.98rem;margin-top:.5rem}
+form{display:grid;gap:1.1rem}
+.field{display:grid;gap:.4rem}
+.field label{font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stahl-600)}
+.field input,.field select{font:500 1rem var(--text);padding:.85rem 1rem;border:1px solid var(--stahl-200);border-radius:12px;background:var(--weiss);color:var(--schwarz);width:100%;box-shadow:0 1px 2px rgba(1,1,1,.05),0 8px 20px -14px rgba(1,1,1,.25);transition:border-color .15s ease,box-shadow .15s ease}
+.field input:focus,.field select:focus{outline:0;border-color:var(--violett);box-shadow:0 0 0 4px rgba(129,38,133,.16)}
+.pw{position:relative}
+.pw input{padding-right:6.2rem}
+.pw button{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);border:0;background:none;font:600 .8rem var(--text);color:var(--violett);cursor:pointer;padding:.4rem .5rem;border-radius:8px}
+.submit{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;width:100%;padding:.95rem 1.2rem;border:0;border-radius:12px;background:var(--schwarz);color:var(--weiss);font:600 1rem var(--text);cursor:pointer;box-shadow:0 14px 28px -16px rgba(1,1,1,.7);transition:transform .15s ease,background .15s ease}
+.submit:hover{background:#1F1F24;transform:translateY(-1px)}
+.submit:active{transform:translateY(0) scale(.99)}
+.submit .ico{width:18px;height:18px}
+.hint{display:flex;gap:.6rem;align-items:flex-start;font-size:.86rem;color:var(--stahl-600);background:var(--violett-tint);border-radius:12px;padding:.8rem 1rem}
+.hint .ico{width:18px;height:18px;color:var(--violett);margin-top:.15rem}
+.error{font-size:.88rem;color:var(--fehler);background:var(--fehler-tint);border-radius:12px;padding:.75rem 1rem}
+.error button{border:0;background:none;font:600 .88rem var(--text);color:var(--fehler);text-decoration:underline;cursor:pointer;padding:0}
+.switch{font-size:.92rem;color:var(--stahl-600);text-align:center}
+.switch button{border:0;background:none;font:600 .92rem var(--text);color:var(--violett);cursor:pointer;padding:.2rem .1rem;text-decoration:underline;text-underline-offset:3px}
+.success{font-size:.92rem;color:var(--schwarz);background:var(--violett-tint);border-left:3px solid var(--violett);border-radius:0 12px 12px 0;padding:.9rem 1.1rem}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.legal{font-size:.78rem;color:var(--stahl-600);text-align:center}
+
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;min-height:0}
+  html,body{height:auto}
+  .brand{gap:1.6rem;padding-block:1.4rem 2rem}
+  .brand h1{font-size:clamp(2rem,8vw,2.7rem)}
+  .facts,.brand-foot{display:none}
+  .brand-main{gap:1rem}
+}
+@media (max-width:440px){.row2{grid-template-columns:1fr}.logo b{font-size:.95rem}}
+</style>
+</head>
+<body>
+<div class="split">
+
+  <section class="brand" aria-label="DÄS Connect, das Partnerportal des Deutschen Ärzte Service">
+    <div class="brand-top">
+      <a class="logo" href="index.html" aria-label="Deutscher Ärzte Service, zur Webseite">
+        <svg class="mark" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="23" fill="#fff"/><text x="23" y="28" text-anchor="middle" font-family="Instrument Sans, Arial, sans-serif" font-weight="700" font-size="14.5" fill="#010101">DÄS</text></svg>
+        <b>Deutscher<span>Ärzte</span>Service</b>
+      </a>
+      <a class="back" href="index.html">← Zur Webseite</a>
+    </div>
+    <div class="brand-main">
+      <span class="pill"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.3L12 15l-1.8-4.7L5.5 9l4.7-1.3z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>DÄS Connect</span>
+      <h1>Patientenwege, <em>präzise</em> orchestriert.</h1>
+      <p>Der Deutsche Ärzte Service vereint Akquise, Beratung und Vermittlung in einer DSGVO-konformen Oberfläche für Partnerärzte und Kliniken: klar, schnell, auditierbar.</p>
+      <div class="facts">
+        <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><b>DSGVO-konform</b><span>Rollenbasierter Zugriff &amp; Audit-Trail</span></div>
+        <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v3a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="12" r="2"/></svg><b>Klinik-Workflow</b><span>Zuweisung, Status, Nachkontakt</span></div>
+      </div>
+    </div>
+    <p class="brand-foot">Zugang nur für Partnerärzte und Partnerkliniken des Deutschen Ärzte Service.</p>
+  </section>
+
+  <main class="panel">
+    <div class="box">
+
+      <div id="ansicht-login">
+        <div style="margin-bottom:1.6rem">
+          <h2>Willkommen zurück.</h2>
+          <p class="sub">Melden Sie sich bei DÄS Connect mit Ihrem Partnerzugang an oder fordern Sie einen Zugang an.</p>
+        </div>
+        <form id="login" novalidate>
+          <div class="field"><label for="email">E-Mail</label><input id="email" name="email" type="email" autocomplete="username" required></div>
+          <div class="field"><label for="passwort">Passwort</label>
+            <div class="pw"><input id="passwort" name="passwort" type="password" autocomplete="current-password" required><button type="button" id="zeigen" aria-pressed="false">Anzeigen</button></div>
+          </div>
+          <div class="error" id="fehler" role="alert" hidden></div>
+          <button class="submit" type="submit">Anmelden <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="hint"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Demo: Der Testzugang ist bereits eingetragen. Ein Klick auf „Anmelden“ genügt.</span></p>
+        </form>
+        <p class="switch" style="margin-top:1.4rem">Noch kein Zugang? <button type="button" id="zu-anfrage">Partnerzugang anfordern</button></p>
+      </div>
+
+      <div id="ansicht-anfrage" hidden>
+        <div style="margin-bottom:1.6rem">
+          <h2>Partner werden.</h2>
+          <p class="sub">Fordern Sie Ihren Zugang zu DÄS Connect an. Wir prüfen Ihre Angaben und melden uns bei Ihnen.</p>
+        </div>
+        <form id="anfrage" novalidate>
+          <div class="row2">
+            <div class="field"><label for="a-vorname">Vorname</label><input id="a-vorname" type="text" autocomplete="given-name" required></div>
+            <div class="field"><label for="a-nachname">Nachname</label><input id="a-nachname" type="text" autocomplete="family-name" required></div>
+          </div>
+          <div class="field"><label for="a-klinik">Praxis oder Klinik</label><input id="a-klinik" type="text" autocomplete="organization" required></div>
+          <div class="field"><label for="a-rolle">Ich bin</label>
+            <select id="a-rolle"><option>Facharzt für Plastische und Ästhetische Chirurgie</option><option>Klinikleitung / Verwaltung</option><option>Praxismanagement</option></select></div>
+          <div class="field"><label for="a-email">E-Mail</label><input id="a-email" type="email" autocomplete="email" required></div>
+          <button class="submit" type="submit">Zugang anfordern <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <div class="success" id="a-erfolg" role="status" aria-live="polite" hidden></div>
+        </form>
+        <p class="switch" style="margin-top:1.4rem">Schon Partner? <button type="button" id="zu-login">Zur Anmeldung</button></p>
+      </div>
+
+      <p class="legal">Demo-Seite. Es werden keine Daten übertragen oder gespeichert.</p>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  // Demo-Testzugang: steht in TESTZUGANG.md im Projektordner und wird hier vorausgefüllt.
+  var TEST={email:'test@deutscher-aerzte-service.de',passwort:'Test123456'};
+  var email=document.getElementById('email'),pw=document.getElementById('passwort'),fehler=document.getElementById('fehler');
+  function fuellen(){email.value=TEST.email;pw.value=TEST.passwort;fehler.hidden=true;}
+  fuellen();
+
+  var zeigen=document.getElementById('zeigen');
+  zeigen.addEventListener('click',function(){
+    var an=pw.type==='password';pw.type=an?'text':'password';zeigen.textContent=an?'Verbergen':'Anzeigen';zeigen.setAttribute('aria-pressed',an?'true':'false');
+  });
+
+  document.getElementById('login').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(email.value.trim().toLowerCase()===TEST.email&&pw.value===TEST.passwort){
+      try{sessionStorage.setItem('daes-partner','Arzt-Testzugang');}catch(err){}
+      window.location.href='partner-dashboard.html';
+      return;
+    }
+    fehler.innerHTML='Diese Zugangsdaten kennen wir nicht. In der Demo funktioniert nur der Testzugang. <button type="button" id="testdaten">Testzugang einsetzen</button>';
+    fehler.hidden=false;
+    document.getElementById('testdaten').addEventListener('click',function(){fuellen();email.focus();});
+  });
+
+  // Wechsel zwischen Anmeldung und Zugangsanfrage
+  var vLogin=document.getElementById('ansicht-login'),vAnfrage=document.getElementById('ansicht-anfrage'),byId_erfolg=document.getElementById('a-erfolg');
+  function zeigeAnfrage(an){vLogin.hidden=an;vAnfrage.hidden=!an;byId_erfolg.hidden=true;(an?document.getElementById('a-vorname'):email).focus();}
+  document.getElementById('zu-anfrage').addEventListener('click',function(){zeigeAnfrage(true);});
+  document.getElementById('zu-login').addEventListener('click',function(){zeigeAnfrage(false);});
+
+  var anfrage=document.getElementById('anfrage'),erfolg=document.getElementById('a-erfolg');
+  anfrage.addEventListener('submit',function(e){
+    e.preventDefault();
+    var vn=document.getElementById('a-vorname');vn.value=vn.value.trim();
+    if(!anfrage.checkValidity()){erfolg.hidden=true;anfrage.reportValidity();return;}
+    erfolg.textContent='Vielen Dank, '+vn.value+'. Ihre Anfrage ist eingegangen. Wir melden uns nach der Prüfung per E-Mail. (Demo: Es wurde nichts übertragen.)';
+    erfolg.hidden=false;anfrage.reset();
+  });
+})();
+</script>
+</body>
+</html>

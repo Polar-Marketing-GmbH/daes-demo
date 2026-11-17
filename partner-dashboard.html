@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DÄS Connect</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* DÄS Connect, Partnerportal (Demo mit Beispieldaten). Aufbau angelehnt an das Klinik-Portal im Lovable-Projekt:
+   dunkle Seitenleiste, Begrüßung, Kennzahl-Kacheln, Patiententabellen mit Status, Update-Dialog. */
+:root{
+  --schwarz:#010101;--violett:#812685;--violett-dunkel:#661D69;--violett-hell:#C98ACC;--violett-tint:#F4EAF4;
+  --stahl-50:#F4F5F6;--stahl-100:#EBEDEF;--stahl-200:#D9DCE0;--stahl-400:#9BA1A9;--stahl-600:#5F656D;--stahl-800:#2B2E33;--weiss:#FFFFFF;
+  --leiste:#120C18;--leiste-linie:#2A2033;--leiste-aktiv:#2B1C36;--leiste-text:#D6CFDC;
+  --verlauf:linear-gradient(135deg,#4B1D6E 0%,#812685 55%,#A6349A 100%);
+  /* Statusfarben: Fläche, Text, Rand */
+  --sky-b:#E6F3FB;--sky-t:#0B5C8A;--sky-r:#A9D5EE;
+  --indigo-b:#EAECFB;--indigo-t:#3A3FA8;--indigo-r:#BDC2F0;
+  --violet-b:#F1EAFB;--violet-t:#5E2CA5;--violet-r:#D0BDF0;
+  --teal-b:#E2F5F2;--teal-t:#0F6B60;--teal-r:#A5DBD3;
+  --amber-b:#FDF1D9;--amber-t:#8A5300;--amber-r:#F0CD85;
+  --green-b:#E3F5EA;--green-t:#1B6B3C;--green-r:#A6DCBB;
+  --red-b:#FCEBEA;--red-t:#A3261E;--red-r:#F0B7B2;
+  --text:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --r:10px;color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--stahl-50);color:var(--stahl-800);font-family:var(--text);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:var(--schwarz);text-wrap:balance}
+p{margin:0}
+button{font-family:var(--text)}
+:focus-visible{outline:3px solid var(--violett);outline-offset:2px}
+.ico{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+[hidden]{display:none!important}
+
+/* Grundgerüst */
+.app{display:grid;grid-template-columns:264px minmax(0,1fr);min-height:100vh}
+.side{background:var(--leiste);color:var(--leiste-text);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;min-width:0}
+.side :focus-visible{outline-color:var(--violett-hell)}
+.brand{display:flex;align-items:center;gap:.75rem;padding:1.2rem 1.1rem;border-bottom:1px solid var(--leiste-linie);text-decoration:none;color:var(--weiss)}
+.brand .mark{width:42px;height:42px;flex:none}
+.brand b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.brand small{display:block;font-size:.74rem;color:#A99FB3;margin-top:.15rem}
+.nav{padding:1rem .7rem;display:grid;gap:.2rem;align-content:start;flex:1;overflow-y:auto}
+.nav-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8F8499;padding:.2rem .6rem .5rem}
+.nav a{display:flex;align-items:center;gap:.7rem;padding:.62rem .7rem;border-radius:8px;text-decoration:none;font-weight:500;font-size:.93rem;color:var(--leiste-text);transition:background .15s ease,color .15s ease}
+.nav a:hover{background:var(--leiste-aktiv);color:var(--weiss)}
+.nav a[aria-current="page"]{background:var(--verlauf);color:var(--weiss);box-shadow:0 10px 22px -12px rgba(166,52,154,.9)}
+.nav .kurz{display:none}
+.nav .sub{display:grid;gap:.1rem;margin:.1rem 0 .35rem 1.35rem;padding-left:.55rem;border-left:1px solid var(--leiste-linie)}
+.nav .sub[hidden]{display:none}
+.nav .sub a{padding:.42rem .6rem;font-size:.86rem;gap:.5rem}
+.nav .sub a[aria-current="page"]{background:var(--leiste-aktiv);color:var(--weiss);box-shadow:none}
+.nav .zahl{margin-left:auto;font-size:.72rem;font-weight:700;background:rgba(255,255,255,.14);border-radius:999px;padding:.05rem .5rem;font-variant-numeric:tabular-nums}
+.side-foot{border-top:1px solid var(--leiste-linie);padding:.9rem 1rem 1.1rem;display:grid;gap:.7rem}
+.wer b{display:block;color:var(--weiss);font-weight:600;font-size:.9rem}
+.wer span{font-size:.78rem;color:#A99FB3}
+.out{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .7rem;border-radius:8px;text-decoration:none;font-weight:500;font-size:.88rem;color:var(--leiste-text)}
+.out:hover{background:var(--leiste-aktiv);color:var(--weiss)}
+
+.main{min-width:0;padding:clamp(1.2rem,3vw,2.4rem) clamp(1rem,3vw,2.6rem) 4rem}
+.inner{max-width:1180px;margin:0 auto;display:grid;gap:1.6rem}
+.demo{display:flex;align-items:center;gap:.6rem;font-size:.84rem;color:var(--violett-dunkel);background:var(--violett-tint);border:1px solid #E3CDE4;border-radius:8px;padding:.55rem .9rem}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap}
+.head .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--violett);margin-bottom:.45rem}
+.head h1{font-size:clamp(1.6rem,3vw,2.2rem)}
+.head p{color:var(--stahl-600);max-width:68ch;margin-top:.45rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.62rem 1rem;border-radius:8px;border:1px solid transparent;font-weight:600;font-size:.9rem;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .15s ease,background .15s ease,border-color .15s ease,color .15s ease}
+.btn-primary{background:var(--verlauf);color:var(--weiss);box-shadow:0 10px 22px -12px rgba(129,38,133,.8)}
+.btn-primary:hover{transform:translateY(-1px);filter:brightness(1.07)}
+.btn-line{background:var(--weiss);border-color:var(--stahl-200);color:var(--stahl-800)}
+.btn-line:hover{border-color:var(--violett);color:var(--violett)}
+.btn-sm{padding:.4rem .7rem;font-size:.82rem}
+.btn-sm .ico{width:15px;height:15px}
+
+/* Kennzahlen */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.kpi{position:relative;overflow:hidden;background:var(--weiss);border:1px solid var(--stahl-200);border-radius:var(--r);padding:1.4rem 1rem 1.2rem;display:grid;justify-items:center;gap:.7rem;text-align:center;transition:transform .15s ease,box-shadow .15s ease}
+.kpi::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--verlauf);opacity:0;transition:opacity .15s ease}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 18px 30px -22px rgba(1,1,1,.4)}
+.kpi:hover::before{opacity:1}
+.kpi b{font-size:2.7rem;font-weight:700;line-height:1;color:var(--violett);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.kpi span{font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--stahl-600);line-height:1.35}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Untermenü in "Meine Patienten" */
+.subnav{display:flex;gap:.2rem;border-bottom:1px solid var(--stahl-200);overflow-x:auto;scrollbar-width:none;margin-top:-.4rem}
+.subnav::-webkit-scrollbar{display:none}
+.subnav a{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem .95rem;font-weight:600;font-size:.93rem;color:var(--stahl-600);text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;flex:none;border-radius:8px 8px 0 0;transition:color .15s ease,background .15s ease}
+.subnav a:hover{color:var(--schwarz);background:var(--stahl-50)}
+.subnav a[aria-current="page"]{color:var(--violett);border-bottom-color:var(--violett)}
+.subnav i{font-style:normal;font-size:.72rem;font-weight:700;background:var(--stahl-100);color:var(--stahl-600);border-radius:999px;padding:.08rem .5rem;font-variant-numeric:tabular-nums}
+.subnav a[aria-current="page"] i{background:var(--violett-tint);color:var(--violett)}
+
+/* Karten und Tabellen */
+.card{background:var(--weiss);border:1px solid var(--stahl-200);border-radius:var(--r);min-width:0}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem 1rem;flex-wrap:wrap;padding:.9rem 1.1rem;border-bottom:1px solid var(--stahl-200)}
+.card-head h2{font-size:1rem;display:flex;align-items:center;gap:.55rem}
+.card-head a.mehr{font-size:.82rem;font-weight:600;color:var(--violett);text-decoration:none}
+.card-head a.mehr:hover{text-decoration:underline}
+.card.gruen{border-color:var(--green-r);background:#F4FBF7}
+.card.gruen .card-head{border-color:var(--green-r)}
+.card.gruen h2 .ico{color:var(--green-t)}
+.card.gelb{border-color:var(--amber-r);background:#FFFAF0}
+.card.gelb .card-head{border-color:var(--amber-r)}
+.card.gelb h2 .ico{color:var(--amber-t)}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--stahl-600);padding:.7rem .7rem;border-bottom:1px solid var(--stahl-200);white-space:nowrap}
+td{padding:.7rem .7rem;border-bottom:1px solid var(--stahl-100);vertical-align:middle}
+th:first-child,td:first-child{padding-left:1.1rem}
+th:last-child,td:last-child{padding-right:1.1rem}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:rgba(129,38,133,.035)}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+td.akt{text-align:right;white-space:nowrap}
+td.akt .btn+.btn{margin-left:.35rem}
+.pname{display:block;font-weight:600;color:var(--schwarz);white-space:nowrap}
+.pid{display:block;font-size:.76rem;color:var(--stahl-600);font-variant-numeric:tabular-nums;white-space:nowrap;margin-top:.15rem}
+.pnote{display:block;font-size:.78rem;color:var(--stahl-600);max-width:34ch;margin-top:.15rem}
+.muted{color:var(--stahl-600)}
+.pill{display:inline-flex;align-items:center;gap:.4rem;padding:.2rem .6rem;border-radius:6px;border:1px solid;font-size:.78rem;font-weight:600;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.t-sky{background:var(--sky-b);color:var(--sky-t);border-color:var(--sky-r)}
+.t-indigo{background:var(--indigo-b);color:var(--indigo-t);border-color:var(--indigo-r)}
+.t-violet{background:var(--violet-b);color:var(--violet-t);border-color:var(--violet-r)}
+.t-teal{background:var(--teal-b);color:var(--teal-t);border-color:var(--teal-r)}
+.t-amber{background:var(--amber-b);color:var(--amber-t);border-color:var(--amber-r)}
+.t-green{background:var(--green-b);color:var(--green-t);border-color:var(--green-r)}
+.t-red{background:var(--red-b);color:var(--red-t);border-color:var(--red-r)}
+.t-grau{background:var(--stahl-50);color:var(--stahl-600);border-color:var(--stahl-200)}
+.op-ja{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--green-t);font-variant-numeric:tabular-nums;white-space:nowrap}
+.op-ja .ico{width:15px;height:15px}
+.leer{padding:2.2rem 1.2rem;text-align:center;color:var(--stahl-600)}
+.leer b{display:block;color:var(--schwarz);margin-bottom:.2rem}
+
+/* Filter */
+.filter{display:grid;gap:.9rem;padding:1rem 1.1rem;border-bottom:1px solid var(--stahl-200)}
+.pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.fp{display:inline-flex;align-items:center;gap:.45rem;padding:.38rem .75rem;border-radius:999px;border:1px solid var(--stahl-200);background:var(--weiss);font-weight:600;font-size:.84rem;color:var(--stahl-800);cursor:pointer;transition:background .15s ease,color .15s ease,border-color .15s ease}
+.fp:hover{border-color:var(--violett);color:var(--violett)}
+.fp[aria-pressed="true"]{background:var(--schwarz);border-color:var(--schwarz);color:var(--weiss)}
+.fp i{font-style:normal;font-size:.72rem;font-weight:700;background:var(--stahl-100);color:var(--stahl-600);border-radius:999px;padding:0 .42rem;font-variant-numeric:tabular-nums}
+.fp[aria-pressed="true"] i{background:rgba(255,255,255,.2);color:var(--weiss)}
+.frow{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+.such{display:flex;align-items:center;gap:.5rem;flex:1;min-width:220px;border:1px solid var(--stahl-200);border-radius:8px;padding:.5rem .8rem;background:var(--weiss)}
+.such:focus-within{outline:3px solid var(--violett);outline-offset:2px}
+.such input{border:0;outline:0;font:500 .92rem var(--text);flex:1;min-width:0;background:transparent;color:var(--schwarz)}
+select,.feld input,.feld textarea{font:500 .92rem var(--text);padding:.55rem .75rem;border:1px solid var(--stahl-200);border-radius:8px;background:var(--weiss);color:var(--schwarz)}
+.treffer{font-size:.84rem;color:var(--stahl-600);margin-left:auto;white-space:nowrap}
+
+/* Name öffnet die Patientenakte */
+button.pname{background:none;border:0;padding:0;font:600 .9rem var(--text);cursor:pointer;text-align:left}
+button.pname:hover{color:var(--violett);text-decoration:underline;text-underline-offset:3px}
+/* Patientenakte */
+#dlg-akte{width:min(780px,calc(100vw - 24px))}
+.akte-kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.akte-kopf .klein{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--violett);margin-bottom:.3rem}
+.akte-kopf h2{font-size:1.45rem}
+.akte-kopf .sub{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.fakten{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem;border:1px solid var(--stahl-200);border-radius:10px;padding:1rem;background:var(--stahl-50);margin:0}
+.fakten div{min-width:0}
+.fakten dt{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--stahl-600)}
+.fakten dd{margin:.15rem 0 0;font-weight:600;color:var(--schwarz);overflow-wrap:anywhere;font-size:.9rem}
+@media (max-width:640px){.fakten{grid-template-columns:1fr 1fr}.fakten dt{letter-spacing:.03em}}
+.akte-teil h3{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--stahl-600);margin-bottom:.55rem}
+.verlauf{list-style:none;margin:0;padding:0 0 0 1.2rem;border-left:2px solid var(--stahl-200);display:grid;gap:.9rem}
+.verlauf li{position:relative}
+.verlauf li::before{content:"";position:absolute;left:calc(-1.2rem - 7px);top:.3rem;width:12px;height:12px;border-radius:50%;background:var(--violett);border:2px solid var(--weiss)}
+.verlauf time{display:block;font-size:.76rem;color:var(--stahl-600);font-variant-numeric:tabular-nums}
+.verlauf span{color:var(--schwarz)}
+/* Kalender */
+.kal-kopf{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.kal-kopf h2{font-size:1.05rem;min-width:10.5ch;justify-content:center}
+.legende{display:flex;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:var(--stahl-600)}
+.legende i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:.4rem}
+.kal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.kal .wt{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--stahl-600);padding:.6rem .3rem;border-bottom:1px solid var(--stahl-200);text-align:center}
+.kal .tg{min-height:108px;border-right:1px solid var(--stahl-100);border-bottom:1px solid var(--stahl-100);padding:.35rem;display:grid;gap:.25rem;align-content:start;min-width:0}
+.kal .tg:nth-child(7n){border-right:0}
+.kal .tg.aus{background:var(--stahl-50)}
+.kal .nr{font-size:.78rem;font-weight:600;color:var(--stahl-600);justify-self:end;width:1.6rem;height:1.6rem;display:grid;place-items:center;border-radius:50%}
+.kal .tg.heute .nr{background:var(--violett);color:var(--weiss)}
+.ev{display:block;width:100%;text-align:left;border:0;border-left:3px solid;border-radius:5px;padding:.22rem .4rem;font:600 .72rem var(--text);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev.b{background:var(--violet-b);color:var(--violet-t);border-color:var(--violet-t)}
+.ev.o{background:var(--amber-b);color:var(--amber-t);border-color:var(--amber-t)}
+.ev.alt{opacity:.55}
+@media (max-width:760px){.kal .tg{min-height:62px;padding:.25rem}.ev{font-size:0;padding:0;height:9px;border-left-width:0;border-radius:4px}.ev.b{background:var(--violet-t)}.ev.o{background:var(--amber-t)}}
+.agenda .zeile{display:grid;grid-template-columns:118px minmax(0,1fr) auto;gap:.3rem 1rem;align-items:center;padding:.7rem 1.1rem;border-bottom:1px solid var(--stahl-100)}
+.agenda .zeile:last-child{border-bottom:0}
+.agenda .wann{font-variant-numeric:tabular-nums;font-weight:600;color:var(--schwarz);white-space:nowrap}
+.agenda .wann small{display:block;font-weight:500;color:var(--stahl-600);font-size:.76rem}
+@media (max-width:520px){.agenda .zeile{grid-template-columns:96px minmax(0,1fr)}.agenda .zeile .pill{grid-column:2;justify-self:start}}
+
+/* Dialoge */
+dialog{border:0;border-radius:14px;padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);color:var(--stahl-800);box-shadow:0 40px 80px -30px rgba(1,1,1,.6)}
+dialog::backdrop{background:rgba(18,12,24,.55)}
+.dlg{display:grid;gap:1.1rem;padding:1.4rem 1.5rem}
+.dlg h2{font-size:1.2rem}
+.dlg .sub{color:var(--stahl-600);font-size:.92rem;margin-top:.25rem}
+.feld{display:grid;gap:.35rem;min-width:0}
+.feld label{font-size:.8rem;font-weight:600;color:var(--schwarz)}
+.feld input,.feld select,.feld textarea{width:100%}
+.feld textarea{min-height:84px;resize:vertical}
+.feld small{font-size:.78rem;color:var(--stahl-600)}
+.kasten{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;border:1px solid var(--stahl-200);background:var(--stahl-50);border-radius:10px;padding:.9rem}
+.kasten .breit{grid-column:1/-1}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.fehler{font-size:.86rem;color:var(--red-t);background:var(--red-b);border-radius:8px;padding:.55rem .8rem}
+.dlg-foot{display:flex;justify-content:flex-end;gap:.6rem;flex-wrap:wrap;padding-top:.3rem}
+/* Patient im Schadensprotokoll: eintippen oder aus der eigenen Liste übernehmen */
+.sp-pat{border:1px solid var(--stahl-200);border-radius:12px;padding:1rem;margin:0;display:grid;gap:.8rem;min-width:0}
+.sp-pat legend{font-size:.8rem;font-weight:600;color:var(--schwarz);padding:0 .35rem}
+.sp-pat-kopf{display:flex;justify-content:space-between;align-items:center;gap:.5rem .8rem;flex-wrap:wrap}
+.sp-pat-kopf span{font-size:.84rem;color:var(--stahl-600)}
+.drei{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem}
+@media (max-width:640px){.drei{grid-template-columns:1fr}}
+.sp-pat-suche{display:grid;gap:.5rem;border:1px solid var(--stahl-200);border-radius:10px;padding:.7rem;background:var(--stahl-50)}
+.sp-pat-suche .such{min-width:0}
+.sp-pat-liste{list-style:none;margin:0;padding:0;display:grid;gap:.1rem;max-height:210px;overflow-y:auto}
+.sp-pat-liste button{width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:.2rem .8rem;flex-wrap:wrap;padding:.5rem .65rem;border:0;border-radius:8px;background:none;font:inherit;text-align:left;cursor:pointer}
+.sp-pat-liste button:hover,.sp-pat-liste button:focus-visible{background:var(--violett-tint)}
+.sp-pat-liste b{font-weight:600;color:var(--schwarz)}
+.sp-pat-liste span{font-size:.8rem;color:var(--stahl-600)}
+.sp-pat-liste .kein{padding:.6rem .65rem;font-size:.86rem;color:var(--stahl-600)}
+.sp-pat-info{font-size:.82rem;color:var(--green-t);background:var(--green-b);border-radius:8px;padding:.45rem .7rem}
+/* Kontakt-Erfassung */
+.sp-weg{border:0;background:none;padding:0;font:600 .78rem var(--text);color:var(--red-t);cursor:pointer}
+.sp-weg:hover{text-decoration:underline;text-underline-offset:3px}
+.unter{display:block;margin-top:.3rem}
+.akt{white-space:nowrap}
+.akt .btn + .btn{margin-left:.4rem}
+.verlauf li.k span b{color:var(--violett)}
+/* Schadensprotokoll in sechs Schritten */
+#dlg-sp{width:min(760px,calc(100vw - 24px))}
+#f-sp{grid-template-columns:minmax(0,1fr)}
+#f-sp > *{min-width:0}
+.sp-kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.sp-stufen{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.45rem}
+.sp-stufen li{min-width:0}
+.sp-stufen button{width:100%;display:grid;gap:.45rem;padding:0;border:0;background:none;font:500 .76rem var(--text);text-align:left;color:var(--stahl-600);cursor:pointer;border-radius:4px}
+.sp-stufen button:disabled{cursor:default}
+.sp-stufen button::before{content:"";display:block;height:5px;border-radius:999px;background:var(--stahl-200);transition:background .2s ease}
+.sp-stufen .fertig button::before{background:var(--violett)}
+.sp-stufen .aktiv button::before{background:var(--verlauf)}
+.sp-stufen .tx{display:flex;align-items:center;gap:.35rem;min-width:0}
+.sp-stufen .tx i{font-style:normal;font-weight:700;font-variant-numeric:tabular-nums;flex:none}
+.sp-stufen .tx span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sp-stufen .tx .ico{width:13px;height:13px;stroke-width:2.6}
+.sp-stufen .fertig button{color:var(--violett)}
+.sp-stufen .aktiv button{color:var(--schwarz);font-weight:600}
+.sp-seite{display:grid;gap:1rem;min-width:0}
+.sp-titel h3{font-size:1.08rem}
+.sp-titel h3:focus{outline:none}
+.sp-titel p{color:var(--stahl-600);font-size:.9rem;margin-top:.25rem}
+.up{display:grid;gap:.55rem;min-width:0;position:relative}
+.up-kopf{display:flex;justify-content:space-between;align-items:center;gap:.5rem .8rem;flex-wrap:wrap}
+.up-kopf b{font-size:.8rem;font-weight:600;color:var(--schwarz)}
+.up-kopf b small{font-weight:500;color:var(--stahl-600)}
+.up-in{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip-path:inset(50%)}
+.up-zone{display:grid;justify-items:center;gap:.25rem;text-align:center;padding:1.25rem 1rem;border:1.5px solid var(--stahl-200);border-radius:12px;background:var(--stahl-50);cursor:pointer;color:var(--stahl-600);font-size:.84rem;transition:border-color .15s ease,background .15s ease}
+.up-zone:hover,.up-zone.drueber,.up-in:focus-visible + .up-zone{border-color:var(--violett);background:var(--violett-tint)}
+.up-in:focus-visible + .up-zone{outline:3px solid var(--violett);outline-offset:2px}
+.up-zone .ico{width:26px;height:26px;color:var(--violett);stroke-width:1.5}
+.up-zone b{color:var(--schwarz);font-weight:600;font-size:.9rem}
+.up-liste{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
+.up-liste:empty{display:none}
+.up-liste li{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:.6rem;padding:.5rem .6rem .5rem .75rem;border:1px solid var(--stahl-200);border-radius:8px;background:var(--weiss);font-size:.86rem}
+.up-liste li > .ico{color:var(--violett)}
+.up-liste .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;color:var(--schwarz)}
+.up-liste .g{color:var(--stahl-600);font-size:.78rem;white-space:nowrap}
+.up-weg{border:0;background:none;cursor:pointer;color:var(--stahl-600);padding:.25rem;border-radius:6px;display:grid}
+.up-weg:hover{color:var(--red-t);background:var(--red-b)}
+.up-liste.fotos{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.6rem}
+.up-liste.fotos li{grid-template-columns:minmax(0,1fr) auto;gap:.3rem .4rem;padding:.4rem}
+.up-liste.fotos img{grid-column:1/-1;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;background:var(--stahl-100);display:block}
+.up-liste.fotos .n{font-size:.78rem}
+.sp-sum{margin:0;border:1px solid var(--stahl-200);border-radius:10px;overflow:hidden}
+.sp-sum > div{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:.3rem .9rem;align-items:start;padding:.7rem .9rem;border-bottom:1px solid var(--stahl-100)}
+.sp-sum > div:last-child{border-bottom:0}
+.sp-sum dt{font-size:.8rem;font-weight:600;color:var(--schwarz);padding-top:.1rem}
+.sp-sum dd{margin:0;font-size:.88rem;overflow-wrap:anywhere}
+.sp-sum dd span{display:block;color:var(--stahl-600);font-size:.82rem}
+.sp-aendern{border:0;background:none;padding:0;font:600 .8rem var(--text);color:var(--violett);cursor:pointer}
+.sp-aendern:hover{text-decoration:underline;text-underline-offset:3px}
+.sp-ok{display:flex;gap:.65rem;align-items:flex-start;font-size:.88rem;cursor:pointer}
+.sp-ok input{width:18px;height:18px;margin:.15rem 0 0;accent-color:var(--violett);flex:none}
+.sp-demo{font-size:.78rem;color:var(--stahl-600);display:flex;gap:.5rem;align-items:flex-start}
+.sp-demo .ico{width:15px;height:15px;margin-top:.15rem;color:var(--violett)}
+.sp-foot{justify-content:space-between}
+.sp-foot .btn-primary{margin-left:auto}
+@media (max-width:640px){
+  .sp-stufen .tx span{display:none}
+  .sp-stufen .aktiv .tx span{display:block}
+  .sp-stufen{display:flex;gap:.35rem}
+  .sp-stufen li{flex:1 1 0}
+  .sp-stufen .aktiv{flex:3.2 1 0}
+  .sp-kopf{flex-wrap:wrap}
+  .sp-sum > div{grid-template-columns:minmax(0,1fr) auto}
+  .sp-sum dd{grid-column:1/-1;grid-row:2}
+}
+@media (max-width:520px){.kasten,.zwei{grid-template-columns:1fr}}
+
+.toast{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));background:var(--schwarz);color:var(--weiss);border-radius:10px;padding:.75rem 1rem;font-weight:600;font-size:.9rem;display:flex;align-items:center;gap:.6rem;box-shadow:0 20px 40px -20px rgba(1,1,1,.7);z-index:50}
+.toast .ico{color:#7BE0A4}
+
+/* Schmal: Seitenleiste wird Kopfzeile */
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .side{position:sticky;top:0;height:auto;z-index:20}
+  .brand{padding:.7rem 1rem calc(.7rem - 6px);border-bottom:0}
+  .brand .mark{width:34px;height:34px}
+  .brand small{display:none}
+  .nav{display:flex;gap:.3rem;padding:6px .7rem .7rem;overflow-x:auto;flex:none}
+  .nav-label{display:none}
+  .nav{scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{padding:.5rem .6rem;gap:.45rem;font-size:.86rem;white-space:nowrap;flex:none}
+  .nav .zahl{display:none}
+  .nav .lang{display:none}
+  .nav .kurz{display:inline}
+  .nav .sub,.nav .sub[hidden]{display:none}
+  .side-foot{position:absolute;right:.6rem;top:.55rem;border:0;padding:0}
+  .side-foot .wer{display:none}
+  .out span{display:none}
+  .out{padding:.5rem}
+}
+@media (max-width:520px){.kpis{grid-template-columns:1fr 1fr}.kpi b{font-size:2.1rem}.head .btn{width:100%}}
+@media (max-width:480px){.nav{gap:.15rem;padding-left:.5rem;padding-right:.5rem}.nav > a{flex:1 1 auto;justify-content:center;padding:.5rem .35rem;font-size:.82rem}.nav > a .ico{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <a class="brand" href="#dashboard">
+      <svg class="mark" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="23" fill="#fff"/><text x="23" y="28" text-anchor="middle" font-family="Instrument Sans, Arial, sans-serif" font-weight="700" font-size="14.5" fill="#010101">DÄS</text></svg>
+      <span><b>DÄS Connect</b><small>Deutscher Ärzte Service</small></span>
+    </a>
+    <nav class="nav" aria-label="Portal-Navigation">
+      <div class="nav-label">Navigation</div>
+      <a href="#dashboard" data-view="dashboard"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg><span>Dashboard</span></a>
+      <a href="#kalender" data-view="kalender"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Kalender</span></a>
+      <a href="#patienten" data-view="patienten"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c.8-3.4 3-5.2 6-5.2s5.2 1.8 6 5.2"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.9c1.6.7 2.6 2.4 3 5.1"/></svg><span class="lang">Meine Patienten</span><span class="kurz">Patienten</span><span class="zahl" id="nav-zahl-pat"></span></a>
+      <div class="sub" id="side-sub" hidden>
+        <a href="#patienten" data-sub="">Übersicht</a>
+        <a href="#patienten/neu" data-sub="neu">Neu übermittelt<span class="zahl" data-subzahl="neu"></span></a>
+        <a href="#patienten/wiedervorlage" data-sub="wiedervorlage">Wiedervorlage<span class="zahl" data-subzahl="wiedervorlage"></span></a>
+        <a href="#patienten/op" data-sub="op">OP-Termin festgelegt<span class="zahl" data-subzahl="op"></span></a>
+      </div>
+      <a href="#schadensprotokolle" data-view="schadensprotokolle"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M12 12v4M12 18.5h.01"/></svg><span class="lang">Schadensprotokolle</span><span class="kurz">Protokolle</span><span class="zahl" id="nav-zahl-sp"></span></a>
+    </nav>
+    <div class="side-foot">
+      <div class="wer"><b id="wer">Arzt-Testzugang</b><span>Beispielklinik München · Arzt-Zugang</span></div>
+      <a class="out" href="partner-login.html" id="abmelden" aria-label="Abmelden"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg><span>Abmelden</span></a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="inner">
+      <p class="demo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Demo mit Beispieldaten. Alle Patientinnen und Vorgänge sind erfunden, Änderungen werden nicht gespeichert.</span></p>
+
+      <!-- Dashboard -->
+      <section id="view-dashboard" aria-labelledby="h-dashboard">
+        <div class="inner">
+          <div class="head">
+            <div>
+              <div class="eyebrow">Klinik-Portal</div>
+              <h1 id="h-dashboard">Herzlich willkommen, <span id="gruss">Arzt-Testzugang</span>!</h1>
+              <p>Übersicht aller vom Deutschen Ärzte Service übermittelten Patientinnen und Patienten. Über „Update“ halten Sie den Bearbeitungsstatus aktuell.</p>
+            </div>
+          </div>
+          <div class="kpis" id="kpis"></div>
+          <div class="card">
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="8" r="3.5"/><path d="M3 20c1-3.6 3.6-5.5 7-5.5 1.5 0 2.800.4 3.900 1.100M18 14v6M15 17h6"/></svg>Neu übermittelte Patienten &amp; anstehende Beratungen</h2><a class="mehr" href="#patienten">Alle Patienten →</a></div>
+            <div class="scroll" id="tab-neu"></div>
+          </div>
+          <div class="card gelb" id="karte-wv" hidden>
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.500 7 2.500 7h-17S6 15 6 9zM10 20a2 2 0 0 0 4 0"/></svg>Wiedervorlage fällig</h2><a class="mehr" href="#patienten/wiedervorlage">Alle Wiedervorlagen →</a></div>
+            <div class="scroll" id="tab-wv"></div>
+          </div>
+          <div class="card gruen">
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg>OP-Termin festgelegt</h2><a class="mehr" href="#patienten/op">Alle OP-Termine →</a></div>
+            <div class="scroll" id="tab-op"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Meine Patienten -->
+      <section id="view-patienten" aria-labelledby="h-patienten" hidden>
+        <div class="inner">
+          <div class="head">
+            <div>
+              <div class="eyebrow">Meine Patienten</div>
+              <h1 id="h-patienten">Übermittelte Patientinnen und Patienten</h1>
+              <p>Alle Patienten, die Ihnen übermittelt wurden und die Sie betreuen, mit Eingriff, Bearbeitungsstatus und OP-Termin.</p>
+            </div>
+          </div>
+          <nav class="subnav" id="subnav" aria-label="Bereiche in Meine Patienten">
+            <a href="#patienten" data-sub="">Übersicht<i data-subzahl=""></i></a>
+            <a href="#patienten/neu" data-sub="neu">Neu übermittelt<i data-subzahl="neu"></i></a>
+            <a href="#patienten/wiedervorlage" data-sub="wiedervorlage">Wiedervorlage<i data-subzahl="wiedervorlage"></i></a>
+            <a href="#patienten/op" data-sub="op">OP-Termin festgelegt<i data-subzahl="op"></i></a>
+          </nav>
+          <div class="card" id="pat-uebersicht">
+            <div class="filter">
+              <div class="pills" id="pills" role="group" aria-label="Nach Eingriff filtern"></div>
+              <div class="frow">
+                <label class="such"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.500-3.500"/></svg><input type="search" id="suche" placeholder="Name oder Nummer suchen" aria-label="Name oder Patientennummer suchen" autocomplete="off"></label>
+                <select id="f-status" aria-label="Nach Bearbeitungsstatus filtern"></select>
+                <select id="f-op" aria-label="Nach OP-Termin filtern"><option value="">OP-Termin: alle</option><option value="ja">OP-Termin festgelegt</option><option value="nein">Noch kein OP-Termin</option></select>
+                <span class="treffer" id="treffer" role="status" aria-live="polite"></span>
+              </div>
+            </div>
+            <div class="scroll" id="tab-alle"></div>
+          </div>
+          <div class="card" id="pat-liste" hidden>
+            <div class="card-head"><h2 id="pat-liste-titel"></h2><span class="muted" id="pat-liste-stand" role="status" aria-live="polite"></span></div>
+            <div class="scroll" id="tab-sub"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kalender -->
+      <section id="view-kalender" aria-labelledby="h-kal" hidden>
+        <div class="inner">
+          <div class="head">
+            <div>
+              <div class="eyebrow">Kalender</div>
+              <h1 id="h-kal">Beratungen und Operationen</h1>
+              <p>Alle Beratungstermine und festgelegten OP-Termine Ihrer Patientinnen und Patienten. Ein Klick auf einen Termin öffnet die Patientenakte.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <div class="kal-kopf">
+                <button class="btn btn-line btn-sm" type="button" data-kal="-1" aria-label="Vorheriger Monat">‹</button>
+                <h2 id="kal-titel" aria-live="polite"></h2>
+                <button class="btn btn-line btn-sm" type="button" data-kal="1" aria-label="Nächster Monat">›</button>
+                <button class="btn btn-line btn-sm" type="button" data-kal="0">Heute</button>
+              </div>
+              <div class="legende"><span><i style="background:var(--violet-t)"></i>Beratung</span><span><i style="background:var(--amber-t)"></i>OP-Termin</span></div>
+            </div>
+            <div class="kal" id="kal"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Nächste Termine</h2><span class="muted">in den nächsten 30 Tagen</span></div>
+            <div class="agenda" id="agenda"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schadensprotokolle -->
+      <section id="view-schadensprotokolle" aria-labelledby="h-sp" hidden>
+        <div class="inner">
+          <div class="head">
+            <div>
+              <div class="eyebrow">Schadensprotokolle</div>
+              <h1 id="h-sp">Schadensprotokolle</h1>
+              <p>Hier legen Sie in sechs Schritten ein Schadensprotokoll an: OP-Bericht, Arztbrief, Beschreibung, Fotos, Kostenvoranschlag bzw. Rechnung, Prüfung. Darunter sehen Sie den Stand bereits gemeldeter Vorgänge.</p>
+            </div>
+            <button class="btn btn-primary" type="button" data-sp-neu><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Schadensprotokoll anlegen</button>
+          </div>
+          <div class="card"><div class="scroll" id="tab-sp"></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Dialog: Patientenakte -->
+<dialog id="dlg-akte" aria-labelledby="ak-name">
+  <div class="dlg">
+    <div class="akte-kopf">
+      <div><p class="klein">Patientenakte</p><h2 id="ak-name"></h2><p class="sub" id="ak-sub"></p></div>
+      <button class="btn btn-line btn-sm" type="button" data-zu>Schließen</button>
+    </div>
+    <dl class="fakten" id="ak-fakten"></dl>
+    <div class="akte-teil"><h3>Behandlungswunsch</h3><p id="ak-wunsch"></p></div>
+    <div class="akte-teil"><h3>Verlauf</h3><ol class="verlauf" id="ak-verlauf"></ol></div>
+    <div class="dlg-foot"><button class="btn btn-line" type="button" id="ak-kontakt" data-vorwahl="kontakt">Kontakt eintragen</button><button class="btn btn-primary" type="button" id="ak-update">Update eintragen</button></div>
+  </div>
+</dialog>
+
+<!-- Dialog: Patient aktualisieren -->
+<dialog id="dlg-update" aria-labelledby="du-titel">
+  <form class="dlg" id="f-update" novalidate>
+    <div><h2 id="du-titel">Patient aktualisieren</h2><p class="sub" id="du-sub"></p></div>
+    <div class="feld"><label for="du-ergebnis">Ergebnis</label>
+      <select id="du-ergebnis">
+        <option value="kontakt">Kontakt eintragen</option>
+        <option value="termin">Beratungstermin vereinbart</option>
+        <option value="kam">Patient kam zur Beratung</option>
+        <option value="kam_nicht">Patient kam nicht</option>
+        <option value="op_geplant">OP-Termin festgelegt</option>
+        <option value="op_erfolgt">OP durchgeführt</option>
+        <option value="abgerechnet">Patient abgerechnet</option>
+        <option value="wv">Nur Wiedervorlage</option>
+        <option value="abgelehnt">Patient abgelehnt / kein Interesse</option>
+      </select><small id="du-hilfe"></small></div>
+    <div class="feld" id="du-box-termin" hidden><label for="du-termin">Beratungstermin</label><input type="datetime-local" id="du-termin" max="9999-12-31T23:59"></div>
+    <div class="kasten" id="du-box-op" hidden>
+      <div class="feld"><label for="du-op">OP-Datum</label><input type="date" id="du-op"></div>
+      <div class="feld breit"><label for="du-grund">Eingriff</label><input type="text" id="du-grund" placeholder="z. B. Brustvergrößerung"></div>
+    </div>
+    <div class="kasten" id="du-box-kontakt" hidden>
+      <div class="feld"><label for="dk-art">Kontaktart</label><select id="dk-art"><option value="anruf">Anruf</option><option value="email">E-Mail</option><option value="sms">SMS / WhatsApp</option><option value="persoenlich">Persönliches Gespräch</option><option value="brief">Brief</option></select></div>
+      <div class="feld"><label for="dk-wann">Datum und Uhrzeit</label><input type="datetime-local" id="dk-wann"></div>
+      <div class="feld"><label for="dk-erg">Ergebnis</label><select id="dk-erg"></select></div>
+      <div class="feld"><label for="dk-ein">Einschätzung</label><select id="dk-ein"><option value="offen">Noch offen</option><option value="ja">Kann behandelt werden</option><option value="nein">Kann nicht behandelt werden</option><option value="ueberlegt">Patientin überlegt noch</option></select></div>
+      <div class="feld breit"><label for="dk-wer">Kontakt durch</label><input type="text" id="dk-wer" autocomplete="off" placeholder="Name der Person, die Kontakt hatte"></div>
+    </div>
+    <div class="feld" id="du-box-wv"><label for="du-wv">Wiedervorlage am</label><input type="date" id="du-wv"><small>Die Patientin erscheint dann wieder in der Liste „Wiedervorlage fällig“.</small></div>
+    <div class="feld"><label for="du-notiz">Notiz</label><textarea id="du-notiz" placeholder="Optionale Info, z. B. Patientin möchte telefonisch erinnert werden."></textarea></div>
+    <div class="fehler" id="du-fehler" role="alert" hidden></div>
+    <div class="dlg-foot"><button class="btn btn-line" type="button" data-zu>Abbrechen</button><button class="btn btn-primary" type="submit">Speichern</button></div>
+  </form>
+</dialog>
+
+<!-- Dialog: Schadensprotokoll anlegen (sechs Schritte) -->
+<dialog id="dlg-sp" aria-labelledby="ds-titel">
+  <form class="dlg" id="f-sp" novalidate>
+    <div class="sp-kopf">
+      <div><h2 id="ds-titel">Schadensprotokoll anlegen</h2><p class="sub" id="ds-schritt" role="status" aria-live="polite"></p></div>
+      <button class="btn btn-line btn-sm" type="button" data-zu>Abbrechen</button>
+    </div>
+    <ol class="sp-stufen" id="ds-stufen" aria-label="Schritte des Schadensprotokolls"></ol>
+
+    <div class="sp-seite" data-seite="op" hidden>
+      <div class="sp-titel"><h3 tabindex="-1">OP-Bericht</h3><p>Geben Sie die Patientin oder den Patienten an und laden Sie den Bericht der ursprünglichen Operation hoch.</p></div>
+      <fieldset class="sp-pat">
+        <legend>Patientin / Patient</legend>
+        <div class="sp-pat-kopf"><span>Name und Patientenakte eintragen oder aus Ihren Patienten übernehmen.</span>
+          <button type="button" class="btn btn-line btn-sm" id="ds-pat-plus" aria-expanded="false" aria-controls="ds-pat-suche"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Aus meinen Patienten wählen</button></div>
+        <div class="sp-pat-suche" id="ds-pat-suche" hidden>
+          <label class="such" for="ds-pat-q"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.500-3.500"/></svg><input type="search" id="ds-pat-q" placeholder="Name oder Patientennummer suchen" aria-label="In meinen Patienten suchen" autocomplete="off"></label>
+          <ul class="sp-pat-liste" id="ds-pat-liste" aria-label="Treffer in meinen Patienten"></ul>
+        </div>
+        <div class="drei">
+          <div class="feld"><label for="ds-vor">Vorname</label><input type="text" id="ds-vor" autocomplete="off"></div>
+          <div class="feld"><label for="ds-nach">Nachname</label><input type="text" id="ds-nach" autocomplete="off"></div>
+          <div class="feld"><label for="ds-akte">Patientenakte (Nr.)</label><input type="text" id="ds-akte" autocomplete="off" placeholder="z. B. P-20351"></div>
+        </div>
+        <p class="sp-pat-info" id="ds-pat-info" role="status" hidden></p>
+      </fieldset>
+      <div class="up" data-up="op"></div>
+    </div>
+
+    <div class="sp-seite" data-seite="arzt" hidden>
+      <div class="sp-titel"><h3 tabindex="-1">Arztbrief</h3><p>Der aktuelle Arztbrief zum Befund, zum Beispiel vom behandelnden Facharzt.</p></div>
+      <div class="up" data-up="arzt"></div>
+    </div>
+
+    <div class="sp-seite" data-seite="was" hidden>
+      <div class="sp-titel"><h3 tabindex="-1">Was ist passiert?</h3><p>Beschreiben Sie den Vorfall so, dass wir ihn ohne Rückfrage einordnen können.</p></div>
+      <div class="zwei">
+        <div class="feld"><label for="ds-datum">Datum des Vorfalls</label><input type="date" id="ds-datum"></div>
+        <div class="feld"><label for="ds-art">Art des Schadens</label>
+          <select id="ds-art"><option>Komplikation nach der Operation</option><option>Wundheilungsstörung</option><option>Implantatschaden</option><option>Unzufriedenheit mit dem Ergebnis</option><option>Sonstiges</option></select></div>
+      </div>
+      <div class="feld"><label for="ds-text">Beschreibung des Vorfalls</label><textarea id="ds-text" placeholder="Was ist passiert? Wann wurde es festgestellt?"></textarea></div>
+      <div class="feld"><label for="ds-mass">Bereits eingeleitete Maßnahmen (optional)</label><textarea id="ds-mass" placeholder="z. B. Kontrolltermin vereinbart, Revision geplant"></textarea></div>
+      <div class="feld"><label for="ds-revision">Revisions-OP</label>
+        <select id="ds-revision"><option value="keine">Keine Revision</option><option value="geplant">Revision geplant</option><option value="erfolgt">Revision bereits erfolgt</option></select>
+        <small>Ist die Revision bereits erfolgt, fragen wir im Schritt zu den Kosten nach dem Revisions-OP-Bericht.</small></div>
+    </div>
+
+    <div class="sp-seite" data-seite="fotos" hidden>
+      <div class="sp-titel"><h3 tabindex="-1">Fotos</h3><p>Aktuelle Fotos des Befunds, mindestens eines. Bitte ohne Gesicht, wenn es für den Befund nicht nötig ist.</p></div>
+      <div class="up" data-up="fotos"></div>
+    </div>
+
+    <div class="sp-seite" data-seite="kosten" hidden>
+      <div class="sp-titel"><h3 tabindex="-1">Kostenvoranschlag bzw. Rechnung</h3><p>Mindestens eines der beiden Dokumente. Liegt beides vor, laden Sie bitte beides hoch.</p></div>
+      <div class="zwei"><div class="up" data-up="kv"></div><div class="up" data-up="rechnung"></div></div>
+      <div class="feld" style="max-width:260px"><label for="ds-betrag">Betrag in Euro (optional)</label><input type="text" id="ds-betrag" inputmode="decimal" autocomplete="off" placeholder="z. B. 1.850,00"></div>
+      <div id="ds-box-revision" hidden><div class="up" data-up="revision"></div></div>
+    </div>
+
+    <div class="sp-seite" data-seite="pruefen" hidden>
+      <div class="sp-titel"><h3 tabindex="-1">Prüfen und einreichen</h3><p>Bitte prüfen Sie Ihre Angaben. Über „Ändern“ springen Sie zurück in den jeweiligen Schritt.</p></div>
+      <dl class="sp-sum" id="ds-sum"></dl>
+      <label class="sp-ok"><input type="checkbox" id="ds-ok"><span>Die Angaben sind vollständig und richtig. Die Einwilligung der Patientin oder des Patienten zur Weitergabe der Unterlagen liegt vor.</span></label>
+    </div>
+
+    <p class="sp-demo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Demo: Dateien bleiben in Ihrem Browser und werden nicht übertragen. Bitte keine echten Patientenunterlagen verwenden, dafür gibt es „Beispieldatei verwenden“.</span></p>
+    <div class="fehler" id="ds-fehler" role="alert" hidden></div>
+    <div class="dlg-foot sp-foot"><button class="btn btn-line" type="button" id="ds-zurueck">Zurück</button><button class="btn btn-primary" type="button" id="ds-weiter">Weiter</button><button class="btn btn-primary" type="submit" id="ds-senden" hidden>Schadensprotokoll einreichen</button></div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span id="toast-text"></span></div>
+
+<script>
+(function(){
+  'use strict';
+  // ---------- Beispieldaten (alle Personen und Vorgänge sind erfunden) ----------
+  var HEUTE=new Date();HEUTE.setHours(0,0,0,0);
+  function tag(n,h,m){var d=new Date(HEUTE);d.setDate(d.getDate()+n);if(h!=null)d.setHours(h,m||0,0,0);return d;}
+  var STATUS={
+    neu:{l:'Neu',t:'t-sky'},kontaktiert:{l:'Kontaktiert',t:'t-indigo'},beratung_geplant:{l:'Beratungstermin geplant',t:'t-violet'},
+    beratung_erfolgt:{l:'Beratung erfolgt',t:'t-teal'},op_geplant:{l:'OP geplant',t:'t-amber'},op_erfolgt:{l:'OP durchgeführt',t:'t-green'},
+    abgeschlossen:{l:'Abgeschlossen',t:'t-green'},abgelehnt:{l:'Abgelehnt',t:'t-red'}
+  };
+  var REIHE=['neu','kontaktiert','beratung_geplant','beratung_erfolgt','op_geplant','op_erfolgt','abgeschlossen','abgelehnt'];
+  var patienten=[
+    {id:'P-20418',vor:'Lena',nach:'Hoffmann',eingriff:'Brustvergrößerung',zugeteilt:tag(-1),status:'neu',beratung:null,op:null,wv:null,notiz:''},
+    {id:'P-20417',vor:'Sophie',nach:'Krüger',eingriff:'Bruststraffung',zugeteilt:tag(-2),status:'neu',beratung:null,op:null,wv:null,notiz:''},
+    {id:'P-20409',vor:'Marie',nach:'Schubert',eingriff:'Brustvergrößerung',zugeteilt:tag(-4),status:'kontaktiert',beratung:null,op:null,wv:tag(2),notiz:'Telefonisch erreicht, Rückruf zur Terminwahl vereinbart.'},
+    {id:'P-20402',vor:'Julia',nach:'Brandt',eingriff:'Fettabsaugung',zugeteilt:tag(-6),status:'beratung_geplant',beratung:tag(3,10,30),op:null,wv:null,notiz:''},
+    {id:'P-20398',vor:'Katharina',nach:'Vogel',eingriff:'Brustvergrößerung',zugeteilt:tag(-8),status:'beratung_geplant',beratung:tag(5,14,0),op:null,wv:null,notiz:''},
+    {id:'P-20391',vor:'Nina',nach:'Albrecht',eingriff:'Bruststraffung',zugeteilt:tag(-11),status:'beratung_geplant',beratung:tag(9,9,0),op:null,wv:null,notiz:''},
+    {id:'P-20377',vor:'Laura',nach:'Winter',eingriff:'Brustverkleinerung',zugeteilt:tag(-16),status:'beratung_erfolgt',beratung:tag(-3,11,0),op:null,wv:tag(4),notiz:'Beratung erfolgt, Patientin möchte Bedenkzeit.'},
+    {id:'P-20369',vor:'Sarah',nach:'Lindner',eingriff:'Oberlidkorrektur',zugeteilt:tag(-19),status:'beratung_erfolgt',beratung:tag(-6,15,30),op:null,wv:null,notiz:''},
+    {id:'P-20351',vor:'Emma',nach:'Fuchs',eingriff:'Brustvergrößerung',zugeteilt:tag(-27),status:'op_geplant',beratung:tag(-14,10,0),op:tag(12),wv:null,notiz:'Implantat Mentor, rund. OP-Vorbereitung läuft.'},
+    {id:'P-20344',vor:'Johanna',nach:'Seidel',eingriff:'Bauchdeckenstraffung',zugeteilt:tag(-31),status:'op_geplant',beratung:tag(-18,13,0),op:tag(20),wv:null,notiz:''},
+    {id:'P-20338',vor:'Miriam',nach:'Kraus',eingriff:'Bruststraffung',zugeteilt:tag(-35),status:'op_geplant',beratung:tag(-22,9,30),op:tag(33),wv:null,notiz:''},
+    {id:'P-20312',vor:'Carina',nach:'Wolff',eingriff:'Brustvergrößerung',zugeteilt:tag(-52),status:'op_erfolgt',beratung:tag(-40,10,0),op:tag(-9),wv:tag(5),notiz:'OP ohne Besonderheiten, Nachsorge in einer Woche.'},
+    {id:'P-20297',vor:'Vanessa',nach:'Beck',eingriff:'Nasenkorrektur',zugeteilt:tag(-66),status:'op_erfolgt',beratung:tag(-51,16,0),op:tag(-21),wv:null,notiz:''},
+    {id:'P-20263',vor:'Daniela',nach:'Roth',eingriff:'Brustvergrößerung',zugeteilt:tag(-94),status:'abgeschlossen',beratung:tag(-80,11,30),op:tag(-58),wv:null,notiz:'Nachsorge abgeschlossen, abgerechnet.'},
+    {id:'P-20255',vor:'Franziska',nach:'Lang',eingriff:'Fettabsaugung',zugeteilt:tag(-99),status:'abgeschlossen',beratung:tag(-86,9,0),op:tag(-63),wv:null,notiz:''},
+    {id:'P-20388',vor:'Theresa',nach:'Engel',eingriff:'Brustverkleinerung',zugeteilt:tag(-13),status:'abgelehnt',beratung:null,op:null,wv:null,notiz:'Kein Interesse mehr, Anfrage zurückgezogen.'}
+  ];
+  var protokolle=[
+    {nr:'SP-2026-014',pid:'P-20312',datum:tag(-4),art:'Wundheilungsstörung',text:'Leichte Rötung an der Naht links, bei der Nachsorge festgestellt.',mass:'Kontrolltermin in drei Tagen vereinbart.',stand:'In Prüfung',unterlagen:{op:1,arzt:1,fotos:3,kv:1,rechnung:0,revision:0}},
+    {nr:'SP-2026-011',pid:'P-20297',datum:tag(-17),art:'Unzufriedenheit mit dem Ergebnis',text:'Patientin wünscht ein zweites Gespräch zum Ergebnis.',mass:'Gesprächstermin mit dem Operateur angesetzt.',stand:'Abgeschlossen',unterlagen:{op:1,arzt:1,fotos:2,kv:0,rechnung:1,revision:0}}
+  ];
+  var spZaehler=15;
+
+  // Kontakt-Erfassung: Art, Ergebnis, Einschätzung
+  var KONTAKTART={anruf:'Anruf',email:'E-Mail',sms:'SMS / WhatsApp',persoenlich:'Persönliches Gespräch',brief:'Brief'};
+  var SCHRIFTLICH={email:1,sms:1,brief:1};
+  var EINSCH={offen:{l:'Noch offen',t:'t-grau'},ja:{l:'Kann behandelt werden',t:'t-green'},nein:{l:'Kann nicht behandelt werden',t:'t-red'},ueberlegt:{l:'Überlegt noch',t:'t-amber'}};
+  function ergText(k){
+    if(SCHRIFTLICH[k.art])return k.erg==='erreicht'?'Antwort erhalten':'gesendet';
+    return k.erg==='erreicht'?'erreicht':(k.erg==='nicht'?'nicht erreicht':'Nachricht hinterlassen');
+  }
+  function kontaktText(k){
+    return 'durch '+k.wer+': '+ergText(k)+'.'+(k.ein!=='offen'?' Einschätzung: '+EINSCH[k.ein].l+'.':'')+(k.notiz?' Notiz: '+k.notiz:'');
+  }
+  function fuegeKontakt(p,k,zusatz){p.kontakte.push(k);p.verlauf.push({d:k.d,k:true,kopf:KONTAKTART[k.art],t:kontaktText(k)+(zusatz||'')});}
+  function letzterKontakt(p){var l=null;p.kontakte.forEach(function(k){if(!l||k.d>=l.d)l=k;});return l;}
+  function einVon(p){var e='offen',d=0;p.kontakte.forEach(function(k){if(k.ein!=='offen'&&k.d>=d){e=k.ein;d=k.d;}});return e;}
+
+  // Zusatzangaben für die Patientenakte (ebenfalls erfunden)
+  var ORTE=['München','Augsburg','Rosenheim','Ingolstadt','Landshut','Freising','Dachau','Starnberg'];
+  var WUNSCH={
+    'Brustvergrößerung':'Wünscht eine natürlich wirkende Vergrößerung um etwa eine Körbchengröße mit runden Implantaten.',
+    'Bruststraffung':'Möchte die Brust nach Schwangerschaft und Stillzeit straffen lassen, ohne Implantat.',
+    'Brustverkleinerung':'Leidet unter Rücken- und Nackenschmerzen und wünscht eine Verkleinerung.',
+    'Fettabsaugung':'Möchte hartnäckige Fettdepots an Bauch und Hüfte entfernen lassen.',
+    'Bauchdeckenstraffung':'Wünscht nach starker Gewichtsabnahme eine Straffung der Bauchdecke.',
+    'Oberlidkorrektur':'Stört sich an schweren Oberlidern und wünscht einen wacheren Blick.',
+    'Nasenkorrektur':'Wünscht eine Begradigung des Nasenrückens.'
+  };
+  function klein(s){return s.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss');}
+  function plus(d,n,h){var x=new Date(d);x.setDate(x.getDate()+n);if(h!=null)x.setHours(h,0,0,0);return x;}
+  function baueVerlauf(p){
+    var v=[{d:plus(p.zugeteilt,0,9),t:'Vom Deutschen Ärzte Service übermittelt.'}],i=REIHE.indexOf(p.status);
+    if(p.status==='abgelehnt'){v.push({d:plus(p.zugeteilt,3,11),t:'Anfrage zurückgezogen, Vorgang abgelehnt.'});return v;}
+    if(p.beratung&&i>=2)v.push({d:plus(p.zugeteilt,2,14),t:'Beratungstermin vereinbart für '+zeit(p.beratung)+'.'});
+    if(p.beratung&&i>=3)v.push({d:p.beratung,t:'Beratung durchgeführt.'});
+    if(p.op&&i>=4)v.push({d:plus(p.beratung||p.zugeteilt,2,12),t:'OP-Termin festgelegt: '+datum(p.op)+'.'});
+    if(p.op&&i>=5)v.push({d:plus(p.op,0,13),t:'OP durchgeführt.'});
+    if(i>=6)v.push({d:plus(p.op||p.zugeteilt,30,15),t:'Nachsorge abgeschlossen, Patientin abgerechnet.'});
+    return v;
+  }
+  patienten.forEach(function(p,i){
+    p.alter=24+(i*7)%27;p.ort=ORTE[i%ORTE.length];
+    p.telefon='0151 555 01'+zwei(10+i);p.email=klein(p.vor)+'.'+klein(p.nach)+'@example.com';
+    p.wunsch=WUNSCH[p.eingriff]||'';p.verlauf=baueVerlauf(p);p.kontakte=[];
+    var stufe=REIHE.indexOf(p.status);
+    if(p.status!=='abgelehnt'&&stufe>=1)fuegeKontakt(p,{d:plus(p.zugeteilt,1,10),art:'anruf',erg:'erreicht',ein:stufe>=3?'ja':'offen',wer:'Praxisteam',notiz:''});
+  });
+  // Weitere Beispielkontakte (erfunden)
+  fuegeKontakt(patienten[1],{d:tag(-1,16,20),art:'anruf',erg:'nicht',ein:'offen',wer:'Praxisteam',notiz:'Mailbox, kein Rückruf.'});
+  fuegeKontakt(patienten[2],{d:tag(-2,9,15),art:'email',erg:'nachricht',ein:'offen',wer:'Praxisteam',notiz:'Terminvorschläge per E-Mail geschickt.'});
+  fuegeKontakt(patienten[6],{d:tag(-1,11,30),art:'anruf',erg:'erreicht',ein:'ueberlegt',wer:'Dr. Beispiel',notiz:'Möchte sich bis Ende der Woche melden.'});
+
+  // ---------- Hilfen ----------
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function zwei(n){return (n<10?'0':'')+n;}
+  function datum(d){return d?zwei(d.getDate())+'.'+zwei(d.getMonth()+1)+'.'+d.getFullYear():'';}
+  function zeit(d){return d?datum(d)+', '+zwei(d.getHours())+':'+zwei(d.getMinutes()):'';}
+  function iso(d){return d.getFullYear()+'-'+zwei(d.getMonth()+1)+'-'+zwei(d.getDate());}
+  function byId(id){return document.getElementById(id);}
+  function finde(pid){for(var i=0;i<patienten.length;i++)if(patienten[i].id===pid)return patienten[i];return null;}
+  function pill(st){var s=STATUS[st];return '<span class="pill '+s.t+'">'+esc(s.l)+'</span>';}
+  function opZelle(p){
+    if(p.op) return '<span class="op-ja"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>'+datum(p.op)+'</span>';
+    if(p.status==='abgelehnt') return '<span class="muted">entfällt</span>';
+    return '<span class="pill t-grau">Noch offen</span>';
+  }
+  function nameZelle(p,mitNotiz){
+    return '<button type="button" class="pname" data-akte="'+esc(p.id)+'">'+esc(p.vor+' '+p.nach)+'</button><span class="pid">'+esc(p.id)+'</span>'+(mitNotiz&&p.notiz?'<span class="pnote">'+esc(p.notiz)+'</span>':'');
+  }
+  function knoepfe(p,mitKontakt){
+    return (mitKontakt?'<button class="btn btn-line btn-sm" type="button" data-update="'+esc(p.id)+'" data-vorwahl="kontakt"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Kontakt</button>':'')+
+      '<button class="btn btn-line btn-sm" type="button" data-update="'+esc(p.id)+'"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg>Update</button>';
+  }
+  function kontaktZelle(p){
+    var k=letzterKontakt(p);
+    if(!k)return '<span class="pill t-grau">Noch kein Kontakt</span>';
+    return '<span class="pname">'+zeit(k.d)+'</span><span class="pid">'+esc(KONTAKTART[k.art]+' · '+ergText(k))+'</span>'+'<span class="pid">'+(p.kontakte.length>1?p.kontakte.length+' Kontakte · ':'durch ')+esc(k.wer)+'</span>';
+  }
+  function einPill(p){var e=einVon(p);return e==='offen'?'':'<span class="unter"><span class="pill '+EINSCH[e].t+'">'+esc(EINSCH[e].l)+'</span></span>';}
+  function neuZeile(p){
+    return '<tr><td>'+nameZelle(p)+'<span class="pid">übermittelt '+datum(p.zugeteilt)+'</span></td><td>'+esc(p.eingriff)+'</td><td>'+kontaktZelle(p)+'</td><td>'+pill(p.status)+(p.beratung?'<span class="pid">Beratung: '+zeit(p.beratung)+'</span>':'')+einPill(p)+'</td><td class="akt">'+knoepfe(p,true)+'</td></tr>';
+  }
+  function tabelle(kopf,zeilen,leerTitel,leerText){
+    if(!zeilen.length) return '<div class="leer"><b>'+esc(leerTitel)+'</b>'+esc(leerText)+'</div>';
+    return '<table><thead><tr>'+kopf.map(function(k){return '<th scope="col">'+k+'</th>';}).join('')+'</tr></thead><tbody>'+zeilen.join('')+'</tbody></table>';
+  }
+
+  // ---------- Dashboard ----------
+  function zeichneDashboard(){
+    var zahl=function(f){return patienten.filter(f).length;};
+    var k=[
+      [patienten.length,'Übermittelte Patienten'],
+      [zahl(function(p){return p.status==='kontaktiert'||p.status==='beratung_geplant'||p.status==='beratung_erfolgt';}),'In Kontakt &amp; Beratung'],
+      [zahl(function(p){return p.status==='op_geplant';}),'OP-Termin festgelegt'],
+      [zahl(function(p){return p.status==='op_erfolgt'||p.status==='abgeschlossen';}),'Durchgeführte OPs']
+    ];
+    byId('kpis').innerHTML=k.map(function(x){return '<div class="kpi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('');
+
+    var offen=patienten.filter(function(p){return p.status==='neu'||p.status==='kontaktiert'||p.status==='beratung_geplant';})
+      .sort(function(a,b){var x=a.beratung?a.beratung.getTime():Infinity,y=b.beratung?b.beratung.getTime():Infinity;return x!==y?x-y:b.zugeteilt-a.zugeteilt;});
+    byId('tab-neu').innerHTML=tabelle(['Patient','Eingriff','Letzter Kontakt','Status',''],offen.map(function(p){
+      return neuZeile(p);
+    }),'Keine offenen Patienten','Sobald Patienten übermittelt oder Termine gebucht werden, erscheinen sie hier.');
+
+    var in7=tag(7,23,59);
+    var wv=patienten.filter(function(p){return p.wv&&p.wv<=in7;}).sort(function(a,b){return a.wv-b.wv;});
+    byId('karte-wv').hidden=!wv.length;
+    byId('tab-wv').innerHTML=tabelle(['Patient','Eingriff','Wiedervorlage','Notiz',''],wv.map(function(p){
+      return '<tr><td>'+nameZelle(p)+'</td><td>'+esc(p.eingriff)+'</td><td class="num">'+datum(p.wv)+'</td><td class="muted" style="min-width:220px">'+(p.notiz?esc(p.notiz):'ohne Notiz')+'</td><td class="akt">'+knoepfe(p)+'</td></tr>';
+    }),'','');
+
+    var ops=patienten.filter(function(p){return p.status==='op_geplant'&&p.op;}).sort(function(a,b){return a.op-b.op;});
+    byId('tab-op').innerHTML=tabelle(['Patient','Eingriff','OP-Termin','Status',''],ops.map(function(p){
+      return '<tr><td>'+nameZelle(p)+'</td><td>'+esc(p.eingriff)+'</td><td class="num">'+opZelle(p)+'</td><td>'+pill(p.status)+'</td><td class="akt">'+knoepfe(p)+'</td></tr>';
+    }),'Keine geplanten Operationen','Sobald ein OP-Termin festgelegt ist, erscheint er hier.');
+  }
+
+  // ---------- Meine Patienten ----------
+  var fEingriff='';
+  function zeichnePills(){
+    var arten={};patienten.forEach(function(p){arten[p.eingriff]=(arten[p.eingriff]||0)+1;});
+    if(fEingriff&&!arten[fEingriff])fEingriff='';
+    var namen=Object.keys(arten).sort(function(a,b){return arten[b]-arten[a]||a.localeCompare(b,'de');});
+    byId('pills').innerHTML='<button class="fp" type="button" data-eingriff="" aria-pressed="'+(fEingriff===''?'true':'false')+'">Alle<i>'+patienten.length+'</i></button>'+
+      namen.map(function(n){return '<button class="fp" type="button" data-eingriff="'+esc(n)+'" aria-pressed="'+(fEingriff===n?'true':'false')+'">'+esc(n)+'<i>'+arten[n]+'</i></button>';}).join('');
+  }
+  function zeichnePatienten(){
+    zeichnePills();
+    var q=byId('suche').value.trim().toLowerCase(),fs=byId('f-status').value,fo=byId('f-op').value;
+    var liste=patienten.filter(function(p){
+      if(fEingriff&&p.eingriff!==fEingriff) return false;
+      if(fs&&p.status!==fs) return false;
+      if(fo==='ja'&&!p.op) return false;
+      if(fo==='nein'&&(p.op||p.status==='abgelehnt')) return false;
+      if(q&&(p.vor+' '+p.nach+' '+p.id).toLowerCase().indexOf(q)<0) return false;
+      return true;
+    }).sort(function(a,b){return b.zugeteilt-a.zugeteilt;});
+    byId('treffer').textContent=liste.length+' von '+patienten.length+' Patienten';
+    byId('tab-alle').innerHTML=tabelle(['Patient','Eingriff','Übermittelt','Bearbeitungsstatus','OP-Termin',''],liste.map(function(p){
+      return '<tr><td>'+nameZelle(p)+'</td><td>'+esc(p.eingriff)+'</td><td class="num">'+datum(p.zugeteilt)+'</td><td>'+pill(p.status)+(p.beratung?'<span class="pid">Beratung: '+zeit(p.beratung)+'</span>':'')+(letzterKontakt(p)?'<span class="pid">Kontakt: '+zeit(letzterKontakt(p).d)+', '+esc(KONTAKTART[letzterKontakt(p).art])+'</span>':'')+einPill(p)+'</td><td class="num">'+opZelle(p)+'</td><td class="akt">'+knoepfe(p)+'</td></tr>';
+    }),'Keine Patienten gefunden','Passen Sie Suche oder Filter an.');
+    zeichneUnterliste();
+  }
+
+  // Untermenü: Neu übermittelt, Wiedervorlage, OP-Termin festgelegt
+  var patSub='';
+  var SUBS={
+    neu:{t:'Neu übermittelte Patienten',s:'Übermittelt in den letzten 14 Tagen oder noch ohne Erstkontakt.'},
+    wiedervorlage:{t:'Wiedervorlagen',s:'Alle gesetzten Wiedervorlagen, die früheste zuerst.'},
+    op:{t:'OP-Termin festgelegt',s:'Alle festgelegten OP-Termine, der nächste zuerst.'}
+  };
+  function subListen(){
+    var vor14=tag(-14,0,0);
+    return {
+      neu:patienten.filter(function(p){return p.status==='neu'||(p.zugeteilt>=vor14&&p.status!=='abgelehnt');}).sort(function(a,b){return b.zugeteilt-a.zugeteilt;}),
+      wiedervorlage:patienten.filter(function(p){return !!p.wv;}).sort(function(a,b){return a.wv-b.wv;}),
+      op:patienten.filter(function(p){return p.status==='op_geplant'&&p.op;}).sort(function(a,b){return a.op-b.op;})
+    };
+  }
+  function tageBis(d){return Math.round((new Date(d.getFullYear(),d.getMonth(),d.getDate())-HEUTE)/864e5);}
+  function frist(d,vergangen){
+    var n=tageBis(d);
+    if(n<0) return '<span class="pill t-red">'+vergangen+' seit '+(-n)+(n===-1?' Tag':' Tagen')+'</span>';
+    if(n===0) return '<span class="pill t-amber">heute</span>';
+    if(n===1) return '<span class="pill t-amber">morgen</span>';
+    return '<span class="pill '+(n<=7?'t-amber':'t-grau')+'">in '+n+' Tagen</span>';
+  }
+  function zeichneUnterliste(){
+    var L=subListen();
+    document.querySelectorAll('[data-subzahl]').forEach(function(e){var k=e.getAttribute('data-subzahl');e.textContent=k?L[k].length:patienten.length;});
+    document.querySelectorAll('[data-sub]').forEach(function(a){if(a.getAttribute('data-sub')===patSub)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    byId('pat-uebersicht').hidden=!!patSub;byId('pat-liste').hidden=!patSub;
+    var leiste=byId('subnav'),akt=leiste.querySelector('[aria-current]');
+    if(akt&&leiste.scrollWidth>leiste.clientWidth) leiste.scrollLeft=Math.max(0,akt.offsetLeft-leiste.offsetLeft-16);
+    if(!patSub) return;
+    var liste=L[patSub],kopf,zeilen;
+    byId('pat-liste-titel').textContent=SUBS[patSub].t;
+    byId('pat-liste-stand').textContent=liste.length+(liste.length===1?' Patient · ':' Patienten · ')+SUBS[patSub].s;
+    if(patSub==='neu'){
+      kopf=['Patient','Eingriff','Letzter Kontakt','Status',''];
+      zeilen=liste.map(function(p){return neuZeile(p);});
+      byId('tab-sub').innerHTML=tabelle(kopf,zeilen,'Keine neuen Patienten','Sobald Patienten übermittelt werden, erscheinen sie hier.');
+    }else if(patSub==='wiedervorlage'){
+      kopf=['Patient','Eingriff','Wiedervorlage','Fälligkeit','Notiz',''];
+      zeilen=liste.map(function(p){return '<tr><td>'+nameZelle(p)+'</td><td>'+esc(p.eingriff)+'</td><td class="num">'+datum(p.wv)+'</td><td>'+frist(p.wv,'überfällig')+'</td><td class="muted" style="min-width:200px">'+(p.notiz?esc(p.notiz):'ohne Notiz')+'</td><td class="akt">'+knoepfe(p)+'</td></tr>';});
+      byId('tab-sub').innerHTML=tabelle(kopf,zeilen,'Keine Wiedervorlagen','Über „Update“ können Sie für jeden Patienten eine Wiedervorlage setzen.');
+    }else{
+      kopf=['Patient','Eingriff','OP-Termin','Zeitraum','Beratung am',''];
+      zeilen=liste.map(function(p){return '<tr><td>'+nameZelle(p)+'</td><td>'+esc(p.eingriff)+'</td><td class="num">'+opZelle(p)+'</td><td>'+frist(p.op,'Termin verstrichen')+'</td><td class="num">'+(p.beratung?datum(p.beratung):'<span class="muted">ohne Angabe</span>')+'</td><td class="akt">'+knoepfe(p)+'</td></tr>';});
+      byId('tab-sub').innerHTML=tabelle(kopf,zeilen,'Keine geplanten Operationen','Sobald ein OP-Termin festgelegt ist, erscheint er hier.');
+    }
+  }
+
+  // ---------- Schadensprotokolle ----------
+  var spWeg='';
+  function zeichneProtokolle(){
+    var ton={'Eingereicht':'t-sky','In Prüfung':'t-amber','Abgeschlossen':'t-green'};
+    var liste=protokolle.slice().sort(function(a,b){return b.datum-a.datum;});
+    byId('tab-sp').innerHTML=tabelle(['Protokoll','Patient','Vorfall am','Art des Schadens','Unterlagen','Stand'],liste.map(function(s){
+      var p=finde(s.pid),u=s.unterlagen||{},teile=[],summe=0;
+      [['op','OP-Bericht'],['arzt','Arztbrief'],['fotos','Fotos'],['kv','Kostenvoranschlag'],['rechnung','Rechnung'],['revision','Revisions-OP-Bericht']].forEach(function(x){var n=u[x[0]]||0;if(n){summe+=n;teile.push(x[0]==='fotos'?n+(n===1?' Foto':' Fotos'):x[1]);}});
+      return '<tr><td><span class="pname">'+esc(s.nr)+'</span><span class="pnote" style="min-width:170px">'+esc(s.text)+'</span></td><td>'+(p?nameZelle(p)+'<span class="pid">'+esc(p.eingriff)+'</span>':'<span class="pname">'+esc(s.vor+' '+s.nach)+'</span><span class="pid">'+esc(s.akte?'Patientenakte '+s.akte:'ohne Patientenakte')+'</span>')+'</td><td class="num">'+datum(s.datum)+'</td><td>'+esc(s.art)+'</td><td><span class="pname">'+summe+(summe===1?' Datei':' Dateien')+'</span><span class="pnote" style="min-width:150px">'+esc(teile.join(', '))+'</span></td><td><span class="pill '+(ton[s.stand]||'t-grau')+'">'+esc(s.stand)+'</span>'+(s.stand==='Eingereicht'?'<span class="unter"><button type="button" class="sp-weg" data-sp-weg="'+esc(s.nr)+'">'+(spWeg===s.nr?'Wirklich löschen?':'Löschen')+'</button></span>':'')+'</td></tr>';
+    }),'Noch keine Schadensprotokolle','Über „Schadensprotokoll anlegen“ reichen Sie einen Vorfall mit allen Unterlagen ein.');
+  }
+
+  function alles(){
+    zeichneDashboard();zeichnePatienten();zeichneKalender();zeichneProtokolle();
+    byId('nav-zahl-pat').textContent=patienten.length;byId('nav-zahl-sp').textContent=protokolle.length;
+  }
+
+  // ---------- Patientenakte ----------
+  var dlgA=byId('dlg-akte'),akteZurueck=null;
+  function zeichneAkte(p){
+    byId('ak-name').textContent=p.vor+' '+p.nach;
+    byId('ak-sub').innerHTML='<span>'+esc(p.id+' · '+p.eingriff)+'</span>'+pill(p.status);
+    var f=[['Alter',p.alter+' Jahre'],['Wohnort',p.ort],['Telefon',p.telefon],['E-Mail',p.email],['Übermittelt am',datum(p.zugeteilt)],
+      ['Beratung',p.beratung?zeit(p.beratung):'noch offen'],['OP-Termin',p.op?datum(p.op):(p.status==='abgelehnt'?'entfällt':'noch offen')],['Wiedervorlage',p.wv?datum(p.wv):'keine'],
+      ['Letzter Kontakt',letzterKontakt(p)?zeit(letzterKontakt(p).d)+', '+KONTAKTART[letzterKontakt(p).art]:'noch keiner'],['Einschätzung',EINSCH[einVon(p)].l]];
+    byId('ak-fakten').innerHTML=f.map(function(x){return '<div><dt>'+esc(x[0])+'</dt><dd>'+esc(x[1])+'</dd></div>';}).join('');
+    byId('ak-wunsch').textContent=p.wunsch;
+    byId('ak-verlauf').innerHTML=p.verlauf.map(function(v,i){return {v:v,i:i};}).sort(function(a,b){return b.v.d-a.v.d||b.i-a.i;}).map(function(x){var v=x.v;return '<li'+(v.k?' class="k"':'')+'><time>'+zeit(v.d)+'</time><span>'+(v.kopf?'<b>'+esc(v.kopf)+'</b> ':'')+esc(v.t)+'</span></li>';}).join('');
+    byId('ak-update').setAttribute('data-update',p.id);byId('ak-kontakt').setAttribute('data-update',p.id);
+  }
+  function oeffneAkte(pid){var p=finde(pid);if(!p)return;zeichneAkte(p);if(!dlgA.open)dlgA.showModal();}
+
+  // ---------- Kalender ----------
+  var MONATE=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],WT=['Mo','Di','Mi','Do','Fr','Sa','So'];
+  var kalMonat=new Date(HEUTE.getFullYear(),HEUTE.getMonth(),1);
+  function termine(){
+    var e=[];
+    patienten.forEach(function(p){if(p.status==='abgelehnt')return;if(p.beratung)e.push({d:p.beratung,typ:'b',p:p});if(p.op)e.push({d:p.op,typ:'o',p:p});});
+    return e.sort(function(a,b){return a.d-b.d;});
+  }
+  function uhr(d){return zwei(d.getHours())+':'+zwei(d.getMinutes());}
+  function zeichneKalender(){
+    var j=kalMonat.getFullYear(),m=kalMonat.getMonth(),erste=(new Date(j,m,1).getDay()+6)%7,tage=new Date(j,m+1,0).getDate(),ev=termine();
+    byId('kal-titel').textContent=MONATE[m]+' '+j;
+    var h=WT.map(function(w){return '<div class="wt">'+w+'</div>';}).join(''),zellen=Math.ceil((erste+tage)/7)*7;
+    for(var i=0;i<zellen;i++){
+      var t=i-erste+1;
+      if(t<1||t>tage){h+='<div class="tg aus"></div>';continue;}
+      var d=new Date(j,m,t),evs=ev.filter(function(x){return x.d.getFullYear()===j&&x.d.getMonth()===m&&x.d.getDate()===t;});
+      h+='<div class="tg'+(d.getTime()===HEUTE.getTime()?' heute':'')+'"><span class="nr">'+t+'</span>'+evs.map(function(x){
+        var name=x.p.vor+' '+x.p.nach,was=x.typ==='b'?'Beratung '+uhr(x.d)+' Uhr':'OP-Termin';
+        return '<button type="button" class="ev '+x.typ+(x.d<HEUTE?' alt':'')+'" data-akte="'+esc(x.p.id)+'" title="'+esc(was+': '+name+', '+x.p.eingriff)+'" aria-label="'+esc(datum(x.d)+', '+was+': '+name+', '+x.p.eingriff)+'">'+esc((x.typ==='b'?uhr(x.d):'OP')+' '+name)+'</button>';
+      }).join('')+'</div>';
+    }
+    byId('kal').innerHTML=h;
+    var bis=tag(30,23,59),kommend=ev.filter(function(x){return (x.typ==='o'?x.d>=HEUTE:x.d>=new Date())&&x.d<=bis;});
+    byId('agenda').innerHTML=kommend.length?kommend.map(function(x){
+      return '<div class="zeile"><div class="wann">'+datum(x.d)+'<small>'+(x.typ==='b'?uhr(x.d)+' Uhr':'OP-Tag')+'</small></div>'+
+        '<div><button type="button" class="pname" data-akte="'+esc(x.p.id)+'">'+esc(x.p.vor+' '+x.p.nach)+'</button><span class="pid">'+esc(x.p.eingriff)+'</span></div>'+
+        '<span class="pill '+(x.typ==='b'?'t-violet':'t-amber')+'">'+(x.typ==='b'?'Beratung':'OP-Termin')+'</span></div>';
+    }).join(''):'<div class="leer"><b>Keine Termine</b>In den nächsten 30 Tagen ist nichts geplant.</div>';
+  }
+
+  // ---------- Ansichten (Hash) ----------
+  var ANSICHTEN=['dashboard','patienten','kalender','schadensprotokolle'];
+  function zeige(){
+    var teile=route.split('/'),v=teile[0];if(ANSICHTEN.indexOf(v)<0)v='dashboard';
+    ANSICHTEN.forEach(function(a){byId('view-'+a).hidden=a!==v;});
+    document.querySelectorAll('.nav a[data-view]').forEach(function(a){if(a.getAttribute('data-view')===v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    byId('side-sub').hidden=v!=='patienten';
+    if(v==='patienten'){patSub=Object.prototype.hasOwnProperty.call(SUBS,teile[1])?teile[1]:'';zeichneUnterliste();}
+    window.scrollTo(0,0);
+  }
+  // Route im Speicher halten: funktioniert auch dort, wo die Adresse nicht geändert werden darf (Vorschau)
+  var route=location.hash.replace('#','');
+  function geheRoute(h){
+    route=h;
+    try{if(location.hash.replace('#','')!==h)history.pushState(null,'','#'+h);}catch(e){}
+    zeige();
+  }
+  function vonAdresse(){route=location.hash.replace('#','');zeige();}
+  window.addEventListener('hashchange',vonAdresse);
+  window.addEventListener('popstate',vonAdresse);
+
+  // ---------- Toast ----------
+  var toastTimer;
+  function toast(t){byId('toast-text').textContent=t;byId('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(function(){byId('toast').hidden=true;},3200);}
+
+  // ---------- Dialog: Update ----------
+  var dlgU=byId('dlg-update'),aktuell=null;
+  var HILFE={kontakt:'Anruf, E-Mail oder Gespräch festhalten. Der Deutsche Ärzte Service sieht jeden Eintrag in seiner Übersicht.',termin:'Datum und Uhrzeit der Beratung eintragen.',kam:'Beratung wurde durchgeführt.',kam_nicht:'Termin nicht wahrgenommen. Bitte Wiedervorlage setzen.',
+    op_geplant:'OP-Datum und Eingriff eintragen.',op_erfolgt:'Der Eingriff ist erfolgt.',abgerechnet:'Abrechnung abgeschlossen.',wv:'Status bleibt, nur Datum und Notiz.',abgelehnt:'Vorgang wird abgeschlossen.'};
+  function duFelder(){
+    var e=byId('du-ergebnis').value;
+    byId('du-hilfe').textContent=HILFE[e];
+    byId('du-box-termin').hidden=e!=='termin';
+    byId('du-box-op').hidden=!(e==='op_geplant'||e==='op_erfolgt');
+    byId('du-box-wv').hidden=!(e==='kontakt'||e==='kam'||e==='kam_nicht'||e==='wv');
+    byId('du-box-kontakt').hidden=e!=='kontakt';
+    byId('du-fehler').hidden=true;
+  }
+  byId('du-ergebnis').addEventListener('change',duFelder);
+  // Ergebnis-Auswahl passt sich der Kontaktart an
+  function kontaktErgebnisse(){
+    var sch=SCHRIFTLICH[byId('dk-art').value],alt=byId('dk-erg').value;
+    byId('dk-erg').innerHTML=sch?'<option value="nachricht">Gesendet, noch keine Antwort</option><option value="erreicht">Antwort erhalten</option>'
+      :'<option value="erreicht">Erreicht</option><option value="nicht">Nicht erreicht</option><option value="nachricht">Nachricht hinterlassen</option>';
+    if(alt&&byId('dk-erg').querySelector('option[value="'+alt+'"]'))byId('dk-erg').value=alt;
+  }
+  byId('dk-art').addEventListener('change',kontaktErgebnisse);
+  function jetztLokal(){var j=new Date();return iso(j)+'T'+zwei(j.getHours())+':'+zwei(j.getMinutes());}
+  var kontaktWer='';
+  function oeffneUpdate(pid,vorwahl){
+    aktuell=finde(pid);if(!aktuell)return;
+    if(dlgA.open){akteZurueck=pid;dlgA.close();}else{akteZurueck=null;}
+    byId('f-update').reset();
+    byId('du-sub').textContent=aktuell.vor+' '+aktuell.nach+' · '+aktuell.eingriff+' · aktueller Status: '+STATUS[aktuell.status].l+(aktuell.notiz?' · Letzte Notiz: '+aktuell.notiz:'');
+    byId('du-grund').value=aktuell.eingriff;
+    if(aktuell.op) byId('du-op').value=iso(aktuell.op);
+    if(vorwahl)byId('du-ergebnis').value=vorwahl;
+    kontaktErgebnisse();byId('dk-wann').value=jetztLokal();byId('dk-wann').max=jetztLokal();
+    byId('dk-wer').value=kontaktWer||byId('wer').textContent;byId('dk-ein').value=einVon(aktuell);
+    duFelder();dlgU.showModal();
+  }
+  byId('f-update').addEventListener('submit',function(ev){
+    ev.preventDefault();if(!aktuell)return;
+    var e=byId('du-ergebnis').value,f=byId('du-fehler'),p=aktuell;
+    function fehler(t){f.textContent=t;f.hidden=false;}
+    if(e==='wv'&&!byId('du-wv').value&&!byId('du-notiz').value.trim())return fehler('Bitte ein Datum für die Wiedervorlage oder eine Notiz angeben.');
+    if(e==='termin'){
+      var t=byId('du-termin').value;if(!t)return fehler('Bitte Datum und Uhrzeit der Beratung angeben.');
+      var dt=new Date(t);if(isNaN(dt.getTime()))return fehler('Bitte ein gültiges Datum mit Uhrzeit angeben.');p.beratung=dt;p.status='beratung_geplant';
+    }else if(e==='op_geplant'||e==='op_erfolgt'){
+      var o=byId('du-op').value,g=byId('du-grund').value.trim();
+      if(!o)return fehler('Bitte das OP-Datum angeben.');
+      if(e==='op_erfolgt'&&o>iso(HEUTE))return fehler('Eine durchgeführte OP kann nicht in der Zukunft liegen.');
+      if(e==='op_geplant'&&!g)return fehler('Bitte den Eingriff angeben.');
+      if(o){var teile=o.split('-');p.op=new Date(+teile[0],+teile[1]-1,+teile[2]);}
+      if(g)p.eingriff=g;
+      p.status=e==='op_geplant'?'op_geplant':'op_erfolgt';
+    }else if(e==='kontakt'){
+      var kw=byId('dk-wann').value,kd=new Date(kw),wer=byId('dk-wer').value.trim();
+      if(!kw||isNaN(kd.getTime()))return fehler('Bitte Datum und Uhrzeit des Kontakts angeben.');
+      if(kd.getTime()>Date.now()+60000)return fehler('Der Kontakt kann nicht in der Zukunft liegen.');
+      if(!wer)return fehler('Bitte angeben, wer den Kontakt hatte.');
+      var kontakt={d:kd,art:byId('dk-art').value,erg:byId('dk-erg').value,ein:byId('dk-ein').value,wer:wer,notiz:''};
+      kontaktWer=wer;
+      if(p.status==='neu'&&kontakt.erg!=='nicht')p.status='kontaktiert';
+    }
+    else if(e==='kam'){p.status='beratung_erfolgt';if(!p.beratung||p.beratung>new Date())p.beratung=new Date();}
+    else if(e==='kam_nicht'){if(p.status==='beratung_geplant'){p.status='kontaktiert';p.beratung=null;}}
+    else if(e==='abgerechnet'){p.status='abgeschlossen';}
+    else if(e==='abgelehnt'){p.status='abgelehnt';p.op=null;if(p.beratung&&p.beratung>new Date())p.beratung=null;}
+    var w=byId('du-box-wv').hidden?'':byId('du-wv').value;
+    if(w){var wt=w.split('-');p.wv=new Date(+wt[0],+wt[1]-1,+wt[2]);}else if(e!=='wv'&&e!=='kam_nicht'){p.wv=null;}
+    var n=byId('du-notiz').value.trim();if(n)p.notiz=n;
+    var sel=byId('du-ergebnis');
+    if(e==='kontakt'){kontakt.notiz=n;fuegeKontakt(p,kontakt,w?' Wiedervorlage am '+datum(p.wv)+'.':'');}
+    else p.verlauf.push({d:new Date(),t:sel.options[sel.selectedIndex].text+'.'+(p.op&&(e==='op_geplant'||e==='op_erfolgt')?' OP-Termin: '+datum(p.op)+'.':'')+(w?' Wiedervorlage am '+datum(p.wv)+'.':'')+(n?' Notiz: '+n:'')});
+    dlgU.close();alles();toast((e==='kontakt'?'Kontakt eingetragen: ':'Update gespeichert: ')+p.vor+' '+p.nach);
+    var sicht=document.querySelector('main section:not([hidden])'),ziel=sicht&&([].filter.call(sicht.querySelectorAll('[data-update="'+p.id+'"]'),function(b){return b.offsetParent!==null;})[0]||sicht.querySelector('h1'));
+    if(ziel){if(ziel.tagName==='H1')ziel.setAttribute('tabindex','-1');ziel.focus();}
+  });
+
+  dlgU.addEventListener('close',function(){if(akteZurueck){var z=akteZurueck;akteZurueck=null;oeffneAkte(z);}});
+
+  // ---------- Dialog: Schadensprotokoll in sechs Schritten ----------
+  var dlgS=byId('dlg-sp');
+  // Reihenfolge der Schritte: nur diese Liste umstellen
+  var SCHRITTE=[
+    {k:'op',t:'OP-Bericht'},{k:'arzt',t:'Arztbrief'},{k:'was',t:'Was ist passiert?',kurz:'Vorfall'},
+    {k:'fotos',t:'Fotos'},{k:'kosten',t:'Kostenvoranschlag bzw. Rechnung',kurz:'Kosten'},{k:'pruefen',t:'Prüfen und einreichen',kurz:'Prüfen'}
+  ];
+  var UPLOADS={
+    op:{t:'OP-Bericht',pflicht:true,bsp:'OP-Bericht_Beispiel.pdf',kb:184},
+    arzt:{t:'Arztbrief',pflicht:true,bsp:'Arztbrief_Beispiel.pdf',kb:96},
+    fotos:{t:'Fotos',pflicht:true,nurBild:true,bsp:'Foto_Beispiel',kb:740},
+    kv:{t:'Kostenvoranschlag',bsp:'Kostenvoranschlag_Beispiel.pdf',kb:72},
+    rechnung:{t:'Rechnung',bsp:'Rechnung_Beispiel.pdf',kb:88},
+    revision:{t:'Revisions-OP-Bericht',pflicht:true,bsp:'Revisions-OP-Bericht_Beispiel.pdf',kb:201}
+  };
+  var MAX_MB=10,sp=null;
+  var ICO_DATEI='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>';
+  var ICO_WEG='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  function groesse(b){return b>=1048576?(b/1048576).toLocaleString('de-DE',{maximumFractionDigits:1})+' MB':Math.max(1,Math.round(b/1024))+' KB';}
+  function beispielFoto(n){
+    return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"><rect width="160" height="120" fill="#EBEDEF"/><path d="M0 92l42-38 30 26 24-18 64 46v12H0z" fill="#D9DCE0"/><circle cx="118" cy="34" r="12" fill="#C98ACC"/><text x="80" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#5F656D">Beispielfoto '+n+'</text></svg>');
+  }
+  function spFehler(txt){var f=byId('ds-fehler');f.textContent=txt;f.hidden=!txt;}
+  // Upload-Felder aufbauen
+  document.querySelectorAll('#dlg-sp .up').forEach(function(el){
+    var k=el.getAttribute('data-up'),u=UPLOADS[k];
+    el.innerHTML='<div class="up-kopf"><b id="upt-'+k+'">'+esc(u.t)+(u.pflicht?'':' <small>(eines von beiden)</small>')+'</b><button type="button" class="btn btn-line btn-sm" data-beispiel="'+k+'">Beispieldatei verwenden</button></div>'+
+      '<input class="up-in" type="file" id="up-'+k+'" multiple accept="'+(u.nurBild?'image/jpeg,image/png':'application/pdf,image/jpeg,image/png')+'" aria-labelledby="upt-'+k+'">'+
+      '<label class="up-zone" for="up-'+k+'" data-zone="'+k+'"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5M7.5 9.500L12 5l4.500 4.500M5 19h14"/></svg><b>'+(u.nurBild?'Fotos auswählen':'Datei auswählen')+'</b><span>oder hierher ziehen. '+(u.nurBild?'JPG oder PNG':'PDF, JPG oder PNG')+', je Datei bis '+MAX_MB+' MB</span></label>'+
+      '<ul class="up-liste'+(u.nurBild?' fotos':'')+'" id="upl-'+k+'" aria-label="Hochgeladen: '+esc(u.t)+'"></ul>';
+  });
+  function zeichneUp(k){
+    var u=UPLOADS[k],l=sp.dateien[k];
+    byId('upl-'+k).innerHTML=l.map(function(d,i){
+      var weg='<button type="button" class="up-weg" data-up-weg="'+k+':'+i+'" aria-label="'+esc(d.name)+' entfernen">'+ICO_WEG+'</button>';
+      return u.nurBild?'<li><img src="'+esc(d.url)+'" alt="Vorschau '+esc(d.name)+'"><span class="n">'+esc(d.name)+'</span>'+weg+'</li>'
+        :'<li>'+ICO_DATEI+'<span class="n">'+esc(d.name)+'</span><span class="g">'+groesse(d.size)+'</span>'+weg+'</li>';
+    }).join('');
+  }
+  function fuegeDateien(k,files){
+    var u=UPLOADS[k],abgelehnt=[];
+    [].forEach.call(files,function(f){
+      var bild=/^image\/(jpeg|png)$/.test(f.type)||/\.(jpe?g|png)$/i.test(f.name),pdf=f.type==='application/pdf'||/\.pdf$/i.test(f.name);
+      if(!(bild||(!u.nurBild&&pdf))){abgelehnt.push(f.name+' (Dateityp)');return;}
+      if(f.size>MAX_MB*1048576){abgelehnt.push(f.name+' (größer als '+MAX_MB+' MB)');return;}
+      sp.dateien[k].push({name:f.name,size:f.size,url:bild?URL.createObjectURL(f):''});
+    });
+    zeichneUp(k);
+    spFehler(abgelehnt.length?'Nicht übernommen: '+abgelehnt.join(', ')+'. Erlaubt sind '+(u.nurBild?'JPG und PNG':'PDF, JPG und PNG')+' bis '+MAX_MB+' MB.':'');
+  }
+  function fuegeBeispiel(k){
+    var u=UPLOADS[k],n=sp.dateien[k].filter(function(d){return d.beispiel;}).length+1;
+    sp.dateien[k].push(u.nurBild?{name:u.bsp+'_'+n+'.jpg',size:(u.kb+n*37)*1024,url:beispielFoto(n),beispiel:true}
+      :{name:n>1?u.bsp.replace('.pdf','_'+n+'.pdf'):u.bsp,size:(u.kb+(n-1)*11)*1024,url:'',beispiel:true});
+    zeichneUp(k);spFehler('');
+  }
+  function gibFrei(){if(!sp)return;Object.keys(sp.dateien).forEach(function(k){sp.dateien[k].forEach(function(d){if(d.url&&d.url.indexOf('blob:')===0)URL.revokeObjectURL(d.url);});});}
+  function betragZahl(){
+    var s=byId('ds-betrag').value.trim();if(!s)return null;
+    var z=parseFloat(s.replace(/[^\d.,]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.'));
+    return isNaN(z)||z<=0?NaN:z;
+  }
+  // Prüfung je Schritt, gibt einen Fehlertext oder '' zurück
+  function spPruefe(k){
+    var d=sp.dateien;
+    if(k==='op'){if(!byId('ds-vor').value.trim()||!byId('ds-nach').value.trim())return 'Bitte Vorname und Nachname der Patientin oder des Patienten angeben.';if(!d.op.length)return 'Bitte den OP-Bericht hochladen.';}
+    if(k==='arzt'&&!d.arzt.length)return 'Bitte den Arztbrief hochladen.';
+    if(k==='was'){
+      var dat=byId('ds-datum').value;
+      if(!dat)return 'Bitte das Datum des Vorfalls angeben.';
+      if(dat>iso(HEUTE))return 'Das Datum des Vorfalls darf nicht in der Zukunft liegen.';
+      if(!byId('ds-text').value.trim())return 'Bitte beschreiben Sie kurz, was passiert ist.';
+    }
+    if(k==='fotos'&&!d.fotos.length)return 'Bitte mindestens ein Foto hochladen.';
+    if(k==='kosten'){
+      if(!d.kv.length&&!d.rechnung.length)return 'Bitte einen Kostenvoranschlag oder eine Rechnung hochladen.';
+      if(isNaN(betragZahl()))return 'Bitte den Betrag als Zahl angeben, zum Beispiel 1.850,00.';
+      if(byId('ds-revision').value==='erfolgt'&&!d.revision.length)return 'Bitte den Revisions-OP-Bericht hochladen.';
+    }
+    if(k==='pruefen'&&!byId('ds-ok').checked)return 'Bitte bestätigen Sie, dass die Angaben vollständig und richtig sind.';
+    return '';
+  }
+  function zeichneSumme(){
+    var p=spPatient(),d=sp.dateien,b=betragZahl(),rev=byId('ds-revision'),mass=byId('ds-mass').value.trim(),akte=byId('ds-akte').value.trim();
+    function namen(k){return d[k].length?d[k].map(function(x){return esc(x.name);}).join(', '):'<span>nicht hochgeladen</span>';}
+    function zeile(titel,inhalt,k){return '<div><dt>'+titel+'</dt><dd>'+inhalt+'</dd><button type="button" class="sp-aendern" data-stufe-k="'+k+'" aria-label="'+titel+' ändern">Ändern</button></div>';}
+    byId('ds-sum').innerHTML=
+      zeile('Patientin / Patient',esc(byId('ds-vor').value.trim()+' '+byId('ds-nach').value.trim())+'<span>'+(p?esc(p.id+' · '+p.eingriff)+', aus Ihren Patienten':(akte?'Patientenakte '+esc(akte):'ohne Patientenakte'))+'</span>','op')+
+      zeile('OP-Bericht',namen('op'),'op')+
+      zeile('Arztbrief',namen('arzt'),'arzt')+
+      zeile('Vorfall',esc(byId('ds-art').value)+' am '+esc(byId('ds-datum').value.split('-').reverse().join('.'))+'<span>'+esc(byId('ds-text').value.trim())+'</span>'+(mass?'<span>Maßnahmen: '+esc(mass)+'</span>':'')+'<span>'+esc(rev.options[rev.selectedIndex].text)+'</span>','was')+
+      zeile('Fotos',d.fotos.length?d.fotos.length+(d.fotos.length===1?' Foto':' Fotos'):'<span>nicht hochgeladen</span>','fotos')+
+      zeile('Kosten',(d.kv.length?'Kostenvoranschlag: '+namen('kv'):'')+(d.kv.length&&d.rechnung.length?'<br>':'')+(d.rechnung.length?'Rechnung: '+namen('rechnung'):'')+(!d.kv.length&&!d.rechnung.length?'<span>nicht hochgeladen</span>':'')+
+        (b?'<span>Betrag: '+b.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €</span>':'')+(rev.value==='erfolgt'?'<span>Revisions-OP-Bericht: '+(d.revision.length?d.revision.map(function(x){return esc(x.name);}).join(', '):'nicht hochgeladen')+'</span>':''),'kosten');
+  }
+  // Patient: von Hand eintragen oder über das Plus aus der eigenen Liste übernehmen
+  function spPatient(){
+    var vor=byId('ds-vor').value.trim().toLowerCase(),nach=byId('ds-nach').value.trim().toLowerCase(),akte=byId('ds-akte').value.trim().toLowerCase(),p=sp.pid?finde(sp.pid):null;
+    if(p&&p.vor.toLowerCase()===vor&&p.nach.toLowerCase()===nach&&p.id.toLowerCase()===akte)return p;
+    // von Hand eingetragene Akte gehört zu einer eigenen Patientin, wenn Nummer und Nachname passen
+    for(var i=0;i<patienten.length;i++)if(akte&&patienten[i].id.toLowerCase()===akte&&patienten[i].nach.toLowerCase()===nach)return patienten[i];
+    return null;
+  }
+  function spInfo(){
+    var p=spPatient(),el=byId('ds-pat-info');
+    el.hidden=!p;if(p)el.textContent='Aus Ihren Patienten übernommen: '+p.vor+' '+p.nach+' · '+p.id+' · '+p.eingriff;
+  }
+  function spListe(){
+    var q=byId('ds-pat-q').value.trim().toLowerCase();
+    var l=patienten.filter(function(p){return !q||(p.vor+' '+p.nach+' '+p.vor+' '+p.id).toLowerCase().indexOf(q)>=0;}).sort(function(a,b){return a.nach.localeCompare(b.nach,'de');});
+    byId('ds-pat-liste').innerHTML=l.length?l.map(function(p){return '<li><button type="button" data-pat="'+esc(p.id)+'"><b>'+esc(p.nach+', '+p.vor)+'</b><span>'+esc(p.id+' · '+p.eingriff)+'</span></button></li>';}).join('')
+      :'<li class="kein">Kein Treffer. Sie können Name und Patientenakte auch von Hand eintragen.</li>';
+  }
+  function spSuche(auf){
+    byId('ds-pat-suche').hidden=!auf;byId('ds-pat-plus').setAttribute('aria-expanded',auf?'true':'false');
+    if(auf){byId('ds-pat-q').value='';spListe();byId('ds-pat-q').focus();}
+  }
+  function spUebernimm(pid){
+    var p=finde(pid);if(!p)return;
+    sp.pid=p.id;byId('ds-vor').value=p.vor;byId('ds-nach').value=p.nach;byId('ds-akte').value=p.id;
+    spSuche(false);spInfo();spFehler('');
+  }
+  byId('ds-pat-plus').addEventListener('click',function(){spSuche(byId('ds-pat-suche').hidden);});
+  byId('ds-pat-q').addEventListener('input',spListe);
+  byId('ds-pat-q').addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();var b=byId('ds-pat-liste').querySelector('[data-pat]');if(b)b.click();}});
+  ['ds-vor','ds-nach','ds-akte'].forEach(function(id){byId(id).addEventListener('input',spInfo);});
+  function spZeige(fokus){
+    var s=SCHRITTE[sp.i],letzter=sp.i===SCHRITTE.length-1;
+    document.querySelectorAll('#dlg-sp .sp-seite').forEach(function(el){el.hidden=el.getAttribute('data-seite')!==s.k;});
+    byId('ds-schritt').textContent='Schritt '+(sp.i+1)+' von '+SCHRITTE.length+': '+s.t;
+    byId('ds-stufen').innerHTML=SCHRITTE.map(function(x,i){
+      var zustand=i===sp.i?'aktiv':(i<sp.max?'fertig':'offen'),frei=i<=sp.max;
+      return '<li class="'+zustand+'"><button type="button" data-stufe="'+i+'"'+(frei?'':' disabled')+(i===sp.i?' aria-current="step"':'')+' aria-label="Schritt '+(i+1)+': '+esc(x.t)+(zustand==='fertig'?', erledigt':'')+'"><span class="tx">'+
+        (zustand==='fertig'?'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>':'<i>'+(i+1)+'</i>')+'<span>'+esc(x.kurz||x.t)+'</span></span></button></li>';
+    }).join('');
+    byId('ds-box-revision').hidden=byId('ds-revision').value!=='erfolgt';
+    if(s.k==='pruefen')zeichneSumme();
+    byId('ds-zurueck').hidden=sp.i===0;byId('ds-weiter').hidden=letzter;byId('ds-senden').hidden=!letzter;
+    spFehler('');
+    if(fokus){var h=document.querySelector('#dlg-sp .sp-seite:not([hidden]) h3');if(h)h.focus();dlgS.scrollTop=0;}
+  }
+  function spGehe(i){sp.i=Math.max(0,Math.min(i,SCHRITTE.length-1));if(sp.i>sp.max)sp.max=sp.i;spZeige(true);}
+  function spWeiter(){var f=spPruefe(SCHRITTE[sp.i].k);if(f){spFehler(f);return;}spGehe(sp.i+1);}
+  function oeffneProtokoll(pid){
+    gibFrei();
+    byId('f-sp').reset();
+    sp={i:0,max:0,pid:'',dateien:{op:[],arzt:[],fotos:[],kv:[],rechnung:[],revision:[]}};
+    spSuche(false);if(pid)spUebernimm(pid);else spInfo();
+    byId('ds-datum').value=iso(HEUTE);byId('ds-datum').max=iso(HEUTE);
+    Object.keys(UPLOADS).forEach(zeichneUp);
+    spZeige(false);dlgS.showModal();
+  }
+  byId('ds-weiter').addEventListener('click',spWeiter);
+  byId('ds-zurueck').addEventListener('click',function(){spGehe(sp.i-1);});
+  byId('ds-revision').addEventListener('change',function(){byId('ds-box-revision').hidden=this.value!=='erfolgt';});
+  dlgS.addEventListener('change',function(ev){var inp=ev.target.closest('.up-in');if(inp){fuegeDateien(inp.id.replace('up-',''),inp.files);inp.value='';}});
+  ['dragenter','dragover'].forEach(function(n){dlgS.addEventListener(n,function(ev){var z=ev.target.closest('.up-zone');if(z){ev.preventDefault();z.classList.add('drueber');}});});
+  ['dragleave','drop'].forEach(function(n){dlgS.addEventListener(n,function(ev){var z=ev.target.closest('.up-zone');if(!z)return;z.classList.remove('drueber');
+    if(n==='drop'){ev.preventDefault();if(ev.dataTransfer&&ev.dataTransfer.files.length)fuegeDateien(z.getAttribute('data-zone'),ev.dataTransfer.files);}});});
+  dlgS.addEventListener('click',function(ev){
+    var pt=ev.target.closest('[data-pat]');if(pt){spUebernimm(pt.getAttribute('data-pat'));byId('ds-pat-plus').focus();return;}
+    var b=ev.target.closest('[data-beispiel]');if(b){fuegeBeispiel(b.getAttribute('data-beispiel'));return;}
+    var w=ev.target.closest('[data-up-weg]');if(w){var t=w.getAttribute('data-up-weg').split(':'),l=sp.dateien[t[0]],x=l[+t[1]];
+      if(x&&x.url.indexOf('blob:')===0)URL.revokeObjectURL(x.url);l.splice(+t[1],1);zeichneUp(t[0]);var z=byId('up-'+t[0]);if(z)z.focus();return;}
+    var st=ev.target.closest('[data-stufe]');if(st&&!st.disabled){spGehe(+st.getAttribute('data-stufe'));return;}
+    var ae=ev.target.closest('[data-stufe-k]');if(ae){var k=ae.getAttribute('data-stufe-k');for(var i=0;i<SCHRITTE.length;i++)if(SCHRITTE[i].k===k)spGehe(i);}
+  });
+  dlgS.addEventListener('close',function(){gibFrei();sp=null;});
+  byId('f-sp').addEventListener('submit',function(ev){
+    ev.preventDefault();if(!sp)return;
+    // Eingabetaste in einem früheren Schritt bedeutet „Weiter“
+    if(sp.i<SCHRITTE.length-1){spWeiter();return;}
+    for(var i=0;i<SCHRITTE.length;i++){var f=spPruefe(SCHRITTE[i].k);if(f){if(i!==sp.i)spGehe(i);spFehler(f);return;}}
+    var d=sp.dateien,t=byId('ds-datum').value.split('-'),nr='SP-'+HEUTE.getFullYear()+'-'+('00'+spZaehler++).slice(-3),rev=byId('ds-revision').value;
+    var pat=spPatient();
+    protokolle.push({nr:nr,pid:pat?pat.id:'',vor:byId('ds-vor').value.trim(),nach:byId('ds-nach').value.trim(),akte:byId('ds-akte').value.trim(),datum:new Date(+t[0],+t[1]-1,+t[2]),art:byId('ds-art').value,text:byId('ds-text').value.trim(),mass:byId('ds-mass').value.trim(),
+      revision:rev,betrag:betragZahl(),stand:'Eingereicht',unterlagen:{op:d.op.length,arzt:d.arzt.length,fotos:d.fotos.length,kv:d.kv.length,rechnung:d.rechnung.length,revision:rev==='erfolgt'?d.revision.length:0}});
+    dlgS.close();alles();toast('Schadensprotokoll '+nr+' eingereicht');
+    if(route!=='schadensprotokolle')geheRoute('schadensprotokolle');
+  });
+
+  // ---------- Ereignisse ----------
+  document.addEventListener('click',function(ev){
+    var lk=ev.target.closest('a[href^="#"]');if(lk&&!ev.ctrlKey&&!ev.metaKey&&!ev.shiftKey){ev.preventDefault();geheRoute(lk.getAttribute('href').slice(1));return;}
+    var u=ev.target.closest('[data-update]');if(u){oeffneUpdate(u.getAttribute('data-update'),u.getAttribute('data-vorwahl'));return;}
+    var ak=ev.target.closest('[data-akte]');if(ak){oeffneAkte(ak.getAttribute('data-akte'));return;}
+    var km=ev.target.closest('[data-kal]');if(km){var kn=+km.getAttribute('data-kal');kalMonat=kn===0?new Date(HEUTE.getFullYear(),HEUTE.getMonth(),1):new Date(kalMonat.getFullYear(),kalMonat.getMonth()+kn,1);zeichneKalender();return;}
+    var s=ev.target.closest('[data-sp-neu]');if(s){oeffneProtokoll(s.getAttribute('data-sp-neu'));return;}
+    var sw=ev.target.closest('[data-sp-weg]');
+    if(sw){var nr=sw.getAttribute('data-sp-weg');
+      if(spWeg!==nr){spWeg=nr;zeichneProtokolle();var nb=document.querySelector('[data-sp-weg="'+nr+'"]');if(nb)nb.focus();return;}
+      protokolle=protokolle.filter(function(x){return x.nr!==nr;});spWeg='';alles();toast('Schadensprotokoll '+nr+' gelöscht');var h=byId('h-sp');h.setAttribute('tabindex','-1');h.focus();return;}
+    if(spWeg){spWeg='';zeichneProtokolle();}
+    var z=ev.target.closest('[data-zu]');if(z){z.closest('dialog').close();return;}
+    var f=ev.target.closest('[data-eingriff]');if(f){fEingriff=f.getAttribute('data-eingriff');zeichnePatienten();var fp=byId('pills').querySelector('[aria-pressed="true"]');if(fp)fp.focus();}
+  });
+  [dlgU,dlgA].forEach(function(d){var unten=null;d.addEventListener('mousedown',function(ev){unten=ev.target;});d.addEventListener('click',function(ev){if(ev.target===d&&unten===d)d.close();unten=null;});});
+  ['f-update','f-sp'].forEach(function(id){byId(id).addEventListener('input',function(){byId(id==='f-update'?'du-fehler':'ds-fehler').hidden=true;});});
+  byId('suche').addEventListener('input',zeichnePatienten);
+  byId('f-status').addEventListener('change',zeichnePatienten);
+  byId('f-op').addEventListener('change',zeichnePatienten);
+  byId('f-status').innerHTML='<option value="">Status: alle</option>'+REIHE.map(function(k){return '<option value="'+k+'">'+esc(STATUS[k].l)+'</option>';}).join('');
+
+  // Name aus der Anmeldung übernehmen, falls der Browser den Zwischenspeicher zulässt
+  try{var n=sessionStorage.getItem('daes-partner');if(n==='Testzugang')n='Arzt-Testzugang';if(n){byId('wer').textContent=n;byId('gruss').textContent=n;}}catch(e){}
+  byId('abmelden').addEventListener('click',function(){try{sessionStorage.removeItem('daes-partner');}catch(e){}});
+
+  alles();zeige();
+})();
+</script>
+</body>
+</html>

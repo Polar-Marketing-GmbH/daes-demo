@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brustvergrößerung · Deutscher Ärzte Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --porzellan:#FBF8F5;--puder:#F3E8E6;--rose:#E7C6CC;--pflaume:#3A2140;--pflaume-dunkel:#2A1730;--graphit:#2B2429;--nebel:#7A6E76;--linie:#E6DCD9;--champagner:#B8955A;--gold-text:#8A6A35;--weiss:#FFFFFF;
+  --display:"Cormorant Garamond", Georgia, "Times New Roman", serif;--text:"Manrope", "Segoe UI", system-ui, sans-serif;--radius:22px;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));--gutter-r:max(16px, env(safe-area-inset-right, 0px));color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--porzellan);color:var(--graphit);font-family:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--pflaume-dunkel)}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.08;margin:0;text-wrap:balance;color:var(--pflaume-dunkel)}
+h1{font-size:clamp(2.4rem,5.5vw,4.2rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.9rem,4vw,2.8rem)}
+h3{font-size:1.4rem}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--champagner)}
+.lead{font-size:1.12rem;color:var(--nebel);max-width:60ch}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.5rem;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease;font-family:var(--text)}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--champagner);outline-offset:3px}
+.btn-primary{background:var(--pflaume);color:var(--weiss)}
+.btn-primary:hover{background:var(--pflaume-dunkel)}
+.btn-ghost{background:transparent;color:var(--pflaume);border-color:var(--pflaume)}
+.btn-ghost:hover{background:var(--puder)}
+.btn-light{background:var(--weiss);color:var(--pflaume)}
+.ico{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.topbar{background:var(--pflaume-dunkel);color:#EADFE6;font-size:.82rem}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:38px;flex-wrap:wrap}
+.topbar a{text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.topbar .ico{width:15px;height:15px}
+.topbar strong{color:var(--weiss);font-weight:600}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(251,248,245,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--linie)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:78px}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--graphit)}
+.logo .mark{width:46px;height:46px;flex:none}
+.logo .word{line-height:1.05}
+.logo .word b{font-weight:700;font-size:1.12rem;letter-spacing:-.01em;color:#1C1619}
+.logo .word b span{font-weight:500}
+.logo .word small{display:block;font-size:.68rem;color:var(--nebel);letter-spacing:.02em}
+nav.main{display:flex;align-items:center;gap:1.6rem}
+nav.main a{text-decoration:none;font-weight:500;font-size:.93rem;color:var(--graphit);white-space:nowrap}
+nav.main a:hover{color:var(--pflaume)}
+nav.main .btn{padding:.65rem 1.15rem;font-size:.88rem}
+nav.main a.btn-primary,nav.main a.btn-primary:hover{color:var(--weiss)}
+[id]{scroll-margin-top:96px}
+@media (max-width:400px){header.site .wrap{gap:.8rem}.logo{gap:.5rem;min-width:0}.logo .mark{width:38px;height:38px}.logo .word b{font-size:.98rem}.logo .word small{font-size:.62rem}}
+.burger{display:none;background:none;border:1.5px solid var(--linie);border-radius:12px;padding:.5rem .6rem;cursor:pointer;color:var(--pflaume)}
+@media (max-width:1100px){
+  nav.main{display:none;position:absolute;left:0;right:0;top:100%;background:var(--porzellan);border-bottom:1px solid var(--linie);flex-direction:column;align-items:stretch;padding:1rem var(--gutter-r) 1.4rem var(--gutter-l);gap:.2rem}
+  nav.main.open{display:flex}
+  nav.main a{padding:.7rem 0;border-bottom:1px solid var(--linie)}
+  nav.main .btn{margin-top:.8rem;justify-content:center;border:0}
+  .burger{display:inline-flex}
+}
+.crumbs{font-size:.82rem;color:var(--nebel);padding-block:1.2rem 0}
+.crumbs a{text-decoration:none}
+.hero{padding-block:clamp(1.5rem,4vw,3.5rem) clamp(2rem,5vw,4rem);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+.hero-copy{display:grid;gap:1.4rem}
+.hero-copy h1 em{font-style:italic;color:var(--pflaume)}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+.hero-note{font-size:.85rem;color:var(--nebel)}
+.hero-art{position:relative;min-height:530px}
+.blob{position:absolute;border-radius:50%}
+.blob.b1{width:360px;height:360px;background:var(--rose);right:4%;top:2%}
+.blob.b2{width:200px;height:200px;background:var(--puder);left:2%;bottom:4%}
+.price-card{position:absolute;right:0;bottom:4%;background:var(--weiss);border-radius:var(--radius);padding:1.4rem 1.5rem;box-shadow:0 30px 60px -30px rgba(58,33,64,.35);width:min(340px,92%);display:grid;gap:.5rem}
+.price-card .amount{font-family:var(--display);font-size:3rem;line-height:1;color:var(--pflaume-dunkel)}
+.price-card .amount small{font-size:1rem;font-family:var(--text);color:var(--nebel);margin-left:.4rem}
+.price-card ul{margin:.2rem 0 0;padding:0;list-style:none;display:grid;gap:.3rem;font-size:.86rem}
+.price-card li{display:flex;gap:.5rem;align-items:center}
+.price-card li .ico{width:16px;height:16px;color:var(--champagner)}
+.badge{position:absolute;left:4%;top:6%;background:var(--pflaume);color:var(--weiss);border-radius:999px;padding:.6rem 1rem;font-size:.8rem;font-weight:600;display:inline-flex;gap:.5rem;align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.hero-art{min-height:520px}}
+section{padding-block:clamp(3rem,7vw,5.5rem)}
+.sec-head{display:grid;gap:.8rem;max-width:62ch;margin-bottom:2.2rem}
+.band{background:var(--puder)}
+.band-dark{background:var(--pflaume-dunkel);color:#EADFE6}
+.band-dark h2,.band-dark h3{color:var(--weiss)}
+.band-dark .lead{color:#C9B8C5}
+.band-dark .eyebrow{color:#D8B680}
+.three{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.three article{background:var(--weiss);border:1px solid var(--linie);border-radius:var(--radius);padding:1.6rem;display:grid;gap:.6rem;min-width:0}
+.three .icon-ring{width:46px;height:46px;border-radius:50%;background:var(--puder);display:grid;place-items:center;color:var(--pflaume)}
+.three p{font-size:.92rem;color:var(--nebel)}
+.three ul{margin:.2rem 0 0;padding-left:1.1rem;font-size:.9rem;color:var(--graphit);display:grid;gap:.25rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;counter-reset:step}
+.step{display:grid;gap:.5rem;min-width:0;position:relative;padding-top:1rem}
+.step::before{counter-increment:step;content:"0" counter(step);font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--rose)}
+.step::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:rgba(255,255,255,.18)}
+.step h3{font-size:1.25rem}
+.step p{font-size:.88rem;color:#C9B8C5}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.cmp{background:var(--weiss);border:1px solid var(--linie);border-radius:var(--radius);padding:1.6rem;display:grid;gap:.8rem;min-width:0}
+.cmp h3 small{display:block;font-family:var(--text);font-size:.78rem;color:var(--nebel);font-weight:500;margin-top:.2rem}
+.cmp dl{margin:0;display:grid;gap:.6rem}
+.cmp dt{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold-text)}
+.cmp dd{margin:0;font-size:.92rem;color:var(--graphit)}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.heal{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.heal div{background:var(--weiss);border:1px solid var(--linie);border-radius:18px;padding:1.2rem;display:grid;gap:.3rem;min-width:0}
+.heal b{font-family:var(--display);font-size:1.6rem;font-weight:500;color:var(--pflaume-dunkel)}
+.heal span{font-size:.88rem;color:var(--nebel)}
+@media (max-width:900px){.heal{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.heal{grid-template-columns:1fr}}
+.faq{max-width:780px;display:grid;gap:.6rem}
+.faq details{background:var(--weiss);border:1px solid var(--linie);border-radius:18px;padding:0 1.3rem}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:1.6rem;color:var(--pflaume);line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq .a{padding:0 0 1.1rem;color:var(--nebel);font-size:.95rem;max-width:65ch}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{background:var(--weiss);border:1px solid var(--linie);border-radius:999px;padding:.4rem .9rem;font-size:.86rem}
+.cta{background:var(--pflaume);color:var(--weiss);border-radius:var(--radius);padding:clamp(1.2rem,3vw,2rem);display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(1.4rem,3vw,2.6rem);align-items:center}
+.cta-photo{aspect-ratio:4/3;border-radius:16px;width:100%;height:100%;min-height:260px}
+.cta .copy{display:grid;gap:1rem;padding-block:.6rem}
+.cta h2{color:var(--weiss)}
+.cta p{color:#C9B8C5}
+.cta .actions{display:grid;gap:.7rem;justify-items:start}
+@media (max-width:760px){.cta{grid-template-columns:1fr}}
+
+/* Fotos: alle Personenfotos sind Symbolbilder, Farbwelt an die Seite angepasst */
+.photo{position:relative;overflow:hidden;background:var(--rose);margin:0}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--pos,center);transform:scale(var(--zoom,1));transform-origin:var(--origin,50% 50%)}
+.photo.no-img img{visibility:hidden}
+.arch{border-radius:999px 999px 28px 28px}
+.hero-photo{position:absolute;right:9%;top:0;width:min(360px,72%);aspect-ratio:3/4;box-shadow:0 40px 70px -40px rgba(58,33,64,.45)}
+@media (max-width:640px){
+  .hero-art{min-height:0;display:grid;justify-items:center;padding-top:3.2rem}
+  .hero-art .blob.b1,.hero-art .arc{display:none}
+  .hero-photo{position:relative;right:auto;top:auto;width:min(320px,84%)}
+  .hero-art .price-card{position:relative;right:auto;bottom:auto;margin-top:-90px;justify-self:end;width:min(330px,94%)}
+  .hero-art .badge{top:0;left:0}
+}
+
+/* Lesbarkeit: dunkleres Gold fuer Text auf hellen Flaechen, helles Gold auf Pflaume */
+.eyebrow{color:var(--gold-text)}
+.band-dark .eyebrow,.calc .eyebrow,.cta .eyebrow{color:#D8B680}
+
+footer.site{background:var(--pflaume-dunkel);color:#C9B8C5;padding-block:3rem 2rem;font-size:.88rem}
+footer.site .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem}
+footer.site h4{color:var(--weiss);font-family:var(--text);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem}
+footer.site ul{list-style:none;padding:0;margin:0;display:grid;gap:.4rem}
+footer.site a{text-decoration:none}
+footer.site a:hover{color:var(--weiss)}
+footer.site .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:2.4rem;padding-top:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem}
+footer.site .logo .word b{color:var(--weiss)}
+footer.site .logo .word small{color:#C9B8C5}
+@media (max-width:860px){footer.site .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer.site .cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="wrap">
+    <a href="tel:08002626770"><svg class="ico" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>Kostenfreie Hotline <strong>0800 2626770</strong> · Mo–Fr 8–18 Uhr</span></a>
+    <span>Seit 2004 · Fachärzte für Plastische &amp; Ästhetische Chirurgie · rund 40 Standorte</span>
+  </div>
+</div>
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Deutscher Ärzte Service, Startseite">
+      <svg class="mark" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="23" fill="#1C1619"/><text x="23" y="28" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-weight="800" font-size="15" fill="#fff" letter-spacing="-.5">DÄS</text></svg>
+      <span class="word"><b>Deutscher<span>Ärzte</span>Service</b><small>Schönheit soll bezahlbar sein</small></span>
+    </a>
+    <button class="burger" aria-expanded="false" aria-controls="mainnav" id="burger" aria-label="Menü öffnen"><svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="main" id="mainnav" aria-label="Hauptnavigation">
+      <a href="index.html#behandlungen">Behandlungen</a>
+      <a href="index.html#ablauf">Ablauf</a>
+      <a href="index.html#preise">Preise &amp; Finanzierung</a>
+      <a href="index.html#standorte">Standorte</a>
+      <a href="index.html#qualitaet">Qualität</a>
+      <a href="#faq">Fragen</a>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratung buchen</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap crumbs"><a href="index.html">Start</a> · <a href="index.html#behandlungen">Behandlungen</a> · Brust · <span>Brustvergrößerung</span></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Brust · Komplettpreis bundesweit</span>
+      <h1>Brustvergrößerung zum Festpreis von <em>2.999 €</em>.</h1>
+      <p class="lead">Beim Facharzt für Plastische und Ästhetische Chirurgie mit mindestens 1.000 Brust-OPs Erfahrung, in einer Privatklinik in Ihrer Nähe. Mit Implantaten von Mentor oder Motiva und lebenslanger Herstellergarantie, ohne Aufpreis.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch für 40 € buchen</a>
+        <a class="btn btn-ghost" href="#standorte">Standorte für Brust-OPs</a>
+      </div>
+      <p class="hero-note">Beim Beratungsgespräch zeigt Ihnen der Facharzt, welche Größe und Form zu Ihren Proportionen passt. Entscheiden Sie erst danach.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="blob b2"></div>
+      <figure class="photo arch hero-photo" style="--zoom:1.3;--origin:50% 88%"><img src="bilder/brust-hero.png" data-fallback="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_172037_01afe2b2-dccc-4be0-83be-bdd3649ed6d2.png" alt="" width="880" height="1168" fetchpriority="high" decoding="async"></figure>
+      <div class="badge"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Lebenslange Herstellergarantie</div>
+      <div class="price-card">
+        <span class="eyebrow">Im Komplettpreis enthalten</span>
+        <div class="amount">2.999 €<small>Festpreis</small></div>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Voruntersuchung &amp; Beratung</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Runde Implantate Mentor oder Motiva</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Vollnarkose &amp; OP in der Privatklinik</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Nachsorge in der Klinik</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Herstellergarantie ohne Aufpreis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Qualität</span><h2>Drei Dinge, auf die Sie sich verlassen können.</h2></div>
+    <div class="three">
+      <article>
+        <div class="icon-ring"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Der Facharzt</h3>
+        <p>„Schönheitschirurg“ darf sich jeder nennen. Unsere Partner sind Fachärzte für Plastische und Ästhetische Chirurgie.</p>
+        <ul><li>6 Jahre Studium, mindestens 6 Jahre Facharztausbildung</li><li>Mindestens 1.000 durchgeführte Brust-OPs</li><li>Begrenzte OP-Kontingente pro Monat</li></ul>
+      </article>
+      <article>
+        <div class="icon-ring"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Die Implantate</h3>
+        <p>Silikon-Gel-Implantate der höchsten Qualitätsstufe von zwei führenden Herstellern.</p>
+        <ul><li>Mentor, FDA-zugelassen, ohne Aufpreis</li><li>Motiva, CE-gekennzeichnet</li><li>Lebenslange Herstellergarantie nach deren Bedingungen</li></ul>
+      </article>
+      <article>
+        <div class="icon-ring"><svg class="ico" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13"/><path d="M10 21v-5h4v5M12 10v3M10.5 11.5h3"/></svg></div>
+        <h3>Die Klinik</h3>
+        <p>Operation und Nachsorge in einer Privatklinik in Deutschland, ohne Auslandsreise.</p>
+        <ul><li>Moderne OP-Säle und Narkoseführung</li><li>Nachsorgetermine am selben Ort</li><li>Vertrag direkt mit der Klinik</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band-dark">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Ablauf</span><h2>Von der Anfrage bis zum Ergebnis.</h2></div>
+    <div class="steps">
+      <div class="step"><h3>Anfrage &amp; Termin</h3><p>Sie fragen online an. Mit der Gebühr von 40 € ist das ärztliche Erstgespräch bezahlt, den Termin vereinbaren wir für Sie.</p></div>
+      <div class="step"><h3>Beratung beim Facharzt</h3><p>Untersuchung, Wunschgröße, Implantatform und -lage, Risiken und Heilungsverlauf. Sie erhalten einen Behandlungsplan.</p></div>
+      <div class="step"><h3>Entscheidung &amp; Vertrag</h3><p>In Ruhe zu Hause. Erst dann schließen Sie den Behandlungsvertrag mit der Klinik.</p></div>
+      <div class="step"><h3>Operation &amp; Nachsorge</h3><p>Der Eingriff dauert etwa ein bis zwei Stunden in Vollnarkose. Die Nachsorge ist im Preis enthalten.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Implantatlage</span><h2>Über oder unter dem Muskel? Das entscheiden Sie gemeinsam mit dem Facharzt.</h2><p class="lead">Beide Varianten haben Vorteile. Welche zu Ihnen passt, hängt von Ihrem Gewebe, Ihrer Brustform und Ihren Wünschen ab.</p></div>
+    <div class="compare">
+      <div class="cmp">
+        <h3>Subglandulär<small>Implantat über dem Brustmuskel, unter der Brustdrüse</small></h3>
+        <dl>
+          <dt>Vorteile</dt><dd>Kürzere Erholungszeit, weniger Schmerzen nach der OP, natürliche Bewegung der Brust beim Sport.</dd>
+          <dt>Zu bedenken</dt><dd>Bei wenig eigenem Gewebe kann das Implantat eher sichtbar oder tastbar sein.</dd>
+          <dt>Geeignet für</dt><dd>Frauen mit ausreichend Brustgewebe oder leichter Erschlaffung.</dd>
+        </dl>
+      </div>
+      <div class="cmp">
+        <h3>Submuskulär<small>Implantat unter dem großen Brustmuskel</small></h3>
+        <dl>
+          <dt>Vorteile</dt><dd>Sehr natürliches Erscheinungsbild auch bei schlanken Frauen, Implantat gut abgedeckt, geringeres Risiko einer Kapselfibrose.</dd>
+          <dt>Zu bedenken</dt><dd>Etwas längere Erholungszeit, in den ersten Tagen mehr Spannungsgefühl.</dd>
+          <dt>Geeignet für</dt><dd>Schlanke Frauen mit wenig eigenem Brustgewebe.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Heilungsverlauf</span><h2>Was Sie nach der Operation erwartet.</h2></div>
+    <div class="heal">
+      <div><b>Tag 1 bis 5</b><span>Die Schwellung ist am stärksten. Schonung, Stütz-BH, leichte Bewegung im Alltag.</span></div>
+      <div><b>Woche 2</b><span>Rückkehr in einen Büroalltag ist meist möglich. Kontrolltermin in der Klinik.</span></div>
+      <div><b>Woche 6</b><span>Sport ohne Belastung der Brustmuskulatur. Narben werden blasser.</span></div>
+      <div><b>Monat 2 bis 3</b><span>Die Schwellung ist abgeklungen, das Implantat hat sich gesetzt. Das endgültige Ergebnis zeigt sich.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Häufige Fragen</span><h2>Antworten vor dem ersten Gespräch.</h2></div>
+    <div class="faq">
+      <details open><summary>Wie finde ich den richtigen Arzt?</summary><div class="a">Achten Sie auf den Facharzttitel „Plastische und Ästhetische Chirurgie“ und auf nachgewiesene Erfahrung mit genau Ihrem Eingriff. Beides prüfen wir für jeden Partnerarzt, bevor er Patientinnen von uns operiert.</div></details>
+      <details><summary>Wie läuft das Beratungsgespräch ab?</summary><div class="a">Der Facharzt untersucht Sie, bespricht Wunschgröße und Implantatform, erklärt Risiken, Narkose und Heilungsverlauf und erstellt einen Behandlungsplan. Bringen Sie gern Bilder mit, die Ihre Vorstellung zeigen.</div></details>
+      <details><summary>Welche Risiken gibt es?</summary><div class="a">Wie bei jedem Eingriff: Nachblutung, Wundheilungsstörung, Infektion und, speziell bei Implantaten, eine Kapselfibrose. Erfahrene Fachärzte, hochwertige Implantate und eine sorgfältige Nachsorge senken diese Risiken deutlich. Der Facharzt klärt Sie im Gespräch ausführlich auf.</div></details>
+      <details><summary>Welche Implantatgröße ist die richtige?</summary><div class="a">Das hängt von Ihrem Brustkorb, dem vorhandenen Gewebe und Ihrem Wunschbild ab. Im Beratungsgespräch probieren Sie Größen mit Probeimplantaten und sehen, wie das Ergebnis zu Ihren Proportionen passt.</div></details>
+      <details><summary>Wie lange hält die Schwellung an?</summary><div class="a">Am stärksten ist sie in den ersten drei bis fünf Tagen. Nach etwa zwei Monaten ist sie abgeklungen und das Ergebnis sichtbar.</div></details>
+      <details><summary>Was ist, wenn ich mich beim Arzt nicht wohlfühle?</summary><div class="a">Dann organisieren wir ein Gespräch bei einem anderen Facharzt aus unserem Netzwerk. Ob die Gebühr von 40 € erneut anfällt, entscheidet Ihre Kundenbetreuerin im Einzelfall.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="standorte">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Standorte für Brust-OPs</span><h2>Partnerkliniken in 26 Städten.</h2><p class="lead">Weitere Standorte nennen wir Ihnen gern telefonisch unter 0800 2626770.</p></div>
+    <div class="chips">
+      <span class="chip">Bayreuth</span><span class="chip">Berlin</span><span class="chip">Bochum</span><span class="chip">Bonn</span><span class="chip">Braunschweig</span><span class="chip">Darmstadt</span><span class="chip">Dortmund</span><span class="chip">Dresden</span><span class="chip">Düsseldorf</span><span class="chip">Essen</span><span class="chip">Frankfurt am Main</span><span class="chip">Hamburg</span><span class="chip">Ingolstadt</span><span class="chip">Köln</span><span class="chip">Leipzig</span><span class="chip">Leverkusen</span><span class="chip">Magdeburg</span><span class="chip">Mainz</span><span class="chip">Mannheim</span><span class="chip">Mönchengladbach</span><span class="chip">München</span><span class="chip">Nürnberg</span><span class="chip">Reutlingen</span><span class="chip">Stuttgart</span><span class="chip">Wiesbaden</span><span class="chip">Wolfratshausen</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <figure class="photo cta-photo"><img src="bilder/beratung.png" data-fallback="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_172039_a757fd6a-ffd1-49e0-85a0-4f8354d3360e.png" alt="Beratungsgespräch zwischen einer Fachärztin und einer Patientin in einer Privatklinik (Symbolbild)" width="1344" height="752" loading="lazy" decoding="async"></figure>
+      <div class="copy">
+        <span class="eyebrow">Nächster Schritt</span>
+        <h2>Lernen Sie Ihren Facharzt kennen. Ohne Verpflichtung.</h2>
+        <p>Das Beratungsgespräch kostet einmalig 40 €. Danach entscheiden Sie in Ruhe, ob und wann Sie die Behandlung möchten.</p>
+        <div class="actions">
+          <a class="btn btn-light" href="index.html#kontakt">Beratungsgespräch anfragen</a>
+          <span style="font-size:.85rem;color:#C9B8C5">Oder anrufen: 0800 2626770, Mo–Fr 8–18 Uhr</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="logo" href="index.html"><svg class="mark" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="23" fill="#fff"/><text x="23" y="28" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-weight="800" font-size="15" fill="#1C1619" letter-spacing="-.5">DÄS</text></svg><span class="word"><b>Deutscher<span>Ärzte</span>Service</b><small>Schönheit soll bezahlbar sein</small></span></a>
+        <p style="margin-top:1rem;max-width:36ch">Seit 2004 organisieren wir Schönheitsoperationen bei Fachärzten für Plastische und Ästhetische Chirurgie, zum Festpreis und in Privatkliniken in Deutschland.</p>
+      </div>
+      <div><h4>Behandlungen</h4><ul><li><a href="brustvergroesserung.html">Brustvergrößerung</a></li><li><a href="index.html#behandlungen">Bruststraffung</a></li><li><a href="index.html#p-koerper">Fettabsaugung</a></li><li><a href="index.html#p-koerper">Bauchdeckenstraffung</a></li><li><a href="index.html#p-gesicht">Lidkorrektur</a></li><li><a href="index.html#p-gesicht">Nasenkorrektur</a></li></ul></div>
+      <div><h4>Service</h4><ul><li><a href="index.html#ablauf">Ablauf</a></li><li><a href="index.html#preise">Preise &amp; Finanzierung</a></li><li><a href="index.html#standorte">Standorte</a></li><li><a href="index.html#qualitaet">Qualität &amp; Fachärzte</a></li><li><a href="index.html#stimmen">Kundenstimmen</a></li><li><a href="index.html#faq">Häufige Fragen</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li>0800 2626770</li><li>info@deutscher-aerzte-service.de</li><li>Juliuspromenade 28<br>97070 Würzburg</li><li><a href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/DeutscherAerzteService" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 DS Deutscher Ärzte Service GmbH · Würzburg HRB 8516 · Geschäftsführerin Isabella Schneier · Alle Personenfotos sind Symbolbilder.</span>
+      <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">Widerrufsbelehrung</a> · <a href="#">Cookie-Richtlinie</a></span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  // Fotos: erst lokale Datei aus bilder/, sonst Ersatzquelle, sonst ruhige Farbflaeche
+  document.querySelectorAll('.photo img').forEach(function(img){
+    function fail(){
+      if(img.dataset.fallback && !img.dataset.tried){img.dataset.tried='1';img.src=img.dataset.fallback;return;}
+      img.closest('.photo').classList.add('no-img');
+    }
+    img.addEventListener('error',fail);
+    if(img.complete && img.naturalWidth===0 && img.getAttribute('src')) fail();
+  });
+
+  var burger=document.getElementById('burger'),nav=document.getElementById('mainnav');
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body>
+</html>
