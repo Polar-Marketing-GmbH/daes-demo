@@ -218,6 +218,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .sp-pat legend{font-size:.8rem;font-weight:600;color:var(--schwarz);padding:0 .35rem}
 .sp-pat-kopf{display:flex;justify-content:space-between;align-items:center;gap:.5rem .8rem;flex-wrap:wrap}
 .sp-pat-kopf span{font-size:.84rem;color:var(--stahl-600)}
+.sp-pat-kopf .btn{white-space:normal;text-align:left}
 .drei{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem}
 @media (max-width:640px){.drei{grid-template-columns:1fr}}
 .sp-pat-suche{display:grid;gap:.5rem;border:1px solid var(--stahl-200);border-radius:10px;padding:.7rem;background:var(--stahl-50)}
@@ -295,6 +296,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .sp-foot{justify-content:space-between}
 .sp-foot .btn-primary{margin-left:auto}
 @media (max-width:640px){
+  .sp-kopf > div{flex:1 1 15rem;min-width:0}
   .sp-stufen .tx span{display:none}
   .sp-stufen .aktiv .tx span{display:block}
   .sp-stufen{display:flex;gap:.35rem}
@@ -511,8 +513,8 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     <div class="kasten" id="du-box-kontakt" hidden>
       <div class="feld"><label for="dk-art">Kontaktart</label><select id="dk-art"><option value="anruf">Anruf</option><option value="email">E-Mail</option><option value="sms">SMS / WhatsApp</option><option value="persoenlich">Persönliches Gespräch</option><option value="brief">Brief</option></select></div>
       <div class="feld"><label for="dk-wann">Datum und Uhrzeit</label><input type="datetime-local" id="dk-wann"></div>
-      <div class="feld"><label for="dk-erg">Ergebnis</label><select id="dk-erg"></select></div>
-      <div class="feld"><label for="dk-ein">Einschätzung</label><select id="dk-ein"><option value="offen">Noch offen</option><option value="ja">Kann behandelt werden</option><option value="nein">Kann nicht behandelt werden</option><option value="ueberlegt">Patientin überlegt noch</option></select></div>
+      <div class="feld breit"><label for="dk-erg">Ergebnis</label><select id="dk-erg"></select></div>
+      <div class="feld breit"><label for="dk-ein">Einschätzung</label><select id="dk-ein"><option value="offen">Noch offen</option><option value="ja">Kann behandelt werden</option><option value="nein">Kann nicht behandelt werden</option><option value="ueberlegt">Patientin überlegt noch</option></select></div>
       <div class="feld breit"><label for="dk-wer">Kontakt durch</label><input type="text" id="dk-wer" autocomplete="off" placeholder="Name der Person, die Kontakt hatte"></div>
     </div>
     <div class="feld" id="du-box-wv"><label for="du-wv">Wiedervorlage am</label><input type="date" id="du-wv"><small>Die Patientin erscheint dann wieder in der Liste „Wiedervorlage fällig“.</small></div>
@@ -640,12 +642,12 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     if(SCHRIFTLICH[k.art])return k.erg==='erreicht'?'Antwort erhalten':'gesendet';
     return k.erg==='erreicht'?'erreicht':(k.erg==='nicht'?'nicht erreicht':'Nachricht hinterlassen');
   }
-  function kontaktText(k){
-    return 'durch '+k.wer+': '+ergText(k)+'.'+(k.ein!=='offen'?' Einschätzung: '+EINSCH[k.ein].l+'.':'')+(k.notiz?' Notiz: '+k.notiz:'');
+  function kontaktText(k,zusatz){
+    return 'durch '+k.wer+': '+ergText(k)+'.'+(k.ein!=='offen'?' Einschätzung: '+EINSCH[k.ein].l+'.':'')+(zusatz||'')+(k.notiz?' Notiz: '+k.notiz:'');
   }
-  function fuegeKontakt(p,k,zusatz){p.kontakte.push(k);p.verlauf.push({d:k.d,k:true,kopf:KONTAKTART[k.art],t:kontaktText(k)+(zusatz||'')});}
+  function fuegeKontakt(p,k,zusatz){p.kontakte.push(k);p.verlauf.push({d:k.d,k:true,kopf:KONTAKTART[k.art],t:kontaktText(k,zusatz)});}
   function letzterKontakt(p){var l=null;p.kontakte.forEach(function(k){if(!l||k.d>=l.d)l=k;});return l;}
-  function einVon(p){var e='offen',d=0;p.kontakte.forEach(function(k){if(k.ein!=='offen'&&k.d>=d){e=k.ein;d=k.d;}});return e;}
+  function einVon(p){var k=letzterKontakt(p);return k?k.ein:'offen';}
 
   // Zusatzangaben für die Patientenakte (ebenfalls erfunden)
   var ORTE=['München','Augsburg','Rosenheim','Ingolstadt','Landshut','Freising','Dachau','Starnberg'];
@@ -927,14 +929,15 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   byId('du-ergebnis').addEventListener('change',duFelder);
   // Ergebnis-Auswahl passt sich der Kontaktart an
   function kontaktErgebnisse(){
-    var sch=SCHRIFTLICH[byId('dk-art').value],alt=byId('dk-erg').value;
+    var sel=byId('dk-erg'),sch=SCHRIFTLICH[byId('dk-art').value],alt=sel.value,war=sel.options.length?!sel.querySelector('option[value="nicht"]'):null;
     byId('dk-erg').innerHTML=sch?'<option value="nachricht">Gesendet, noch keine Antwort</option><option value="erreicht">Antwort erhalten</option>'
       :'<option value="erreicht">Erreicht</option><option value="nicht">Nicht erreicht</option><option value="nachricht">Nachricht hinterlassen</option>';
-    if(alt&&byId('dk-erg').querySelector('option[value="'+alt+'"]'))byId('dk-erg').value=alt;
+    if(alt&&war===!!sch)sel.value=alt;
   }
   byId('dk-art').addEventListener('change',kontaktErgebnisse);
   function jetztLokal(){var j=new Date();return iso(j)+'T'+zwei(j.getHours())+':'+zwei(j.getMinutes());}
   var kontaktWer='';
+  var NAECHST={neu:'termin',kontaktiert:'termin',beratung_geplant:'kam',beratung_erfolgt:'op_geplant',op_geplant:'op_erfolgt',op_erfolgt:'abgerechnet',abgeschlossen:'wv',abgelehnt:'wv'};
   function oeffneUpdate(pid,vorwahl){
     aktuell=finde(pid);if(!aktuell)return;
     if(dlgA.open){akteZurueck=pid;dlgA.close();}else{akteZurueck=null;}
@@ -942,8 +945,8 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     byId('du-sub').textContent=aktuell.vor+' '+aktuell.nach+' · '+aktuell.eingriff+' · aktueller Status: '+STATUS[aktuell.status].l+(aktuell.notiz?' · Letzte Notiz: '+aktuell.notiz:'');
     byId('du-grund').value=aktuell.eingriff;
     if(aktuell.op) byId('du-op').value=iso(aktuell.op);
-    if(vorwahl)byId('du-ergebnis').value=vorwahl;
-    kontaktErgebnisse();byId('dk-wann').value=jetztLokal();byId('dk-wann').max=jetztLokal();
+    byId('du-ergebnis').value=vorwahl||NAECHST[aktuell.status]||'termin';
+    byId('dk-erg').innerHTML='';kontaktErgebnisse();byId('dk-wann').value=jetztLokal();byId('dk-wann').max=jetztLokal();
     byId('dk-wer').value=kontaktWer||byId('wer').textContent;byId('dk-ein').value=einVon(aktuell);
     duFelder();dlgU.showModal();
   }
@@ -977,7 +980,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     else if(e==='abgerechnet'){p.status='abgeschlossen';}
     else if(e==='abgelehnt'){p.status='abgelehnt';p.op=null;if(p.beratung&&p.beratung>new Date())p.beratung=null;}
     var w=byId('du-box-wv').hidden?'':byId('du-wv').value;
-    if(w){var wt=w.split('-');p.wv=new Date(+wt[0],+wt[1]-1,+wt[2]);}else if(e!=='wv'&&e!=='kam_nicht'){p.wv=null;}
+    if(w){var wt=w.split('-');p.wv=new Date(+wt[0],+wt[1]-1,+wt[2]);}else if(e!=='wv'&&e!=='kam_nicht'&&!(e==='kontakt'&&kontakt.erg!=='erreicht')){p.wv=null;}
     var n=byId('du-notiz').value.trim();if(n)p.notiz=n;
     var sel=byId('du-ergebnis');
     if(e==='kontakt'){kontakt.notiz=n;fuegeKontakt(p,kontakt,w?' Wiedervorlage am '+datum(p.wv)+'.':'');}
@@ -1040,14 +1043,14 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     spFehler(abgelehnt.length?'Nicht übernommen: '+abgelehnt.join(', ')+'. Erlaubt sind '+(u.nurBild?'JPG und PNG':'PDF, JPG und PNG')+' bis '+MAX_MB+' MB.':'');
   }
   function fuegeBeispiel(k){
-    var u=UPLOADS[k],n=sp.dateien[k].filter(function(d){return d.beispiel;}).length+1;
+    var u=UPLOADS[k],n=sp.bsp[k]=(sp.bsp[k]||0)+1;
     sp.dateien[k].push(u.nurBild?{name:u.bsp+'_'+n+'.jpg',size:(u.kb+n*37)*1024,url:beispielFoto(n),beispiel:true}
       :{name:n>1?u.bsp.replace('.pdf','_'+n+'.pdf'):u.bsp,size:(u.kb+(n-1)*11)*1024,url:'',beispiel:true});
     zeichneUp(k);spFehler('');
   }
   function gibFrei(){if(!sp)return;Object.keys(sp.dateien).forEach(function(k){sp.dateien[k].forEach(function(d){if(d.url&&d.url.indexOf('blob:')===0)URL.revokeObjectURL(d.url);});});}
   function betragZahl(){
-    var s=byId('ds-betrag').value.trim();if(!s)return null;
+    var s=byId('ds-betrag').value.replace(/€|euro?|\s/gi,'');if(!s)return null;if(!/^(\d{1,3}(\.\d{3})+|\d+)([.,]\d{1,2}|,-)?$/.test(s))return NaN;
     var z=parseFloat(s.replace(/[^\d.,]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.'));
     return isNaN(z)||z<=0?NaN:z;
   }
@@ -1076,7 +1079,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     function namen(k){return d[k].length?d[k].map(function(x){return esc(x.name);}).join(', '):'<span>nicht hochgeladen</span>';}
     function zeile(titel,inhalt,k){return '<div><dt>'+titel+'</dt><dd>'+inhalt+'</dd><button type="button" class="sp-aendern" data-stufe-k="'+k+'" aria-label="'+titel+' ändern">Ändern</button></div>';}
     byId('ds-sum').innerHTML=
-      zeile('Patientin / Patient',esc(byId('ds-vor').value.trim()+' '+byId('ds-nach').value.trim())+'<span>'+(p?esc(p.id+' · '+p.eingriff)+', aus Ihren Patienten':(akte?'Patientenakte '+esc(akte):'ohne Patientenakte'))+'</span>','op')+
+      zeile('Patientin / Patient',esc(p?p.vor+' '+p.nach:byId('ds-vor').value.trim()+' '+byId('ds-nach').value.trim())+'<span>'+(p?esc(p.id+' · '+p.eingriff)+', aus Ihren Patienten':(akte?'Patientenakte '+esc(akte):'ohne Patientenakte'))+'</span>','op')+
       zeile('OP-Bericht',namen('op'),'op')+
       zeile('Arztbrief',namen('arzt'),'arzt')+
       zeile('Vorfall',esc(byId('ds-art').value)+' am '+esc(byId('ds-datum').value.split('-').reverse().join('.'))+'<span>'+esc(byId('ds-text').value.trim())+'</span>'+(mass?'<span>Maßnahmen: '+esc(mass)+'</span>':'')+'<span>'+esc(rev.options[rev.selectedIndex].text)+'</span>','was')+
@@ -1135,7 +1138,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   function oeffneProtokoll(pid){
     gibFrei();
     byId('f-sp').reset();
-    sp={i:0,max:0,pid:'',dateien:{op:[],arzt:[],fotos:[],kv:[],rechnung:[],revision:[]}};
+    sp={i:0,max:0,pid:'',bsp:{},dateien:{op:[],arzt:[],fotos:[],kv:[],rechnung:[],revision:[]}};
     spSuche(false);if(pid)spUebernimm(pid);else spInfo();
     byId('ds-datum').value=iso(HEUTE);byId('ds-datum').max=iso(HEUTE);
     Object.keys(UPLOADS).forEach(zeichneUp);
@@ -1148,6 +1151,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   ['dragenter','dragover'].forEach(function(n){dlgS.addEventListener(n,function(ev){var z=ev.target.closest('.up-zone');if(z){ev.preventDefault();z.classList.add('drueber');}});});
   ['dragleave','drop'].forEach(function(n){dlgS.addEventListener(n,function(ev){var z=ev.target.closest('.up-zone');if(!z)return;z.classList.remove('drueber');
     if(n==='drop'){ev.preventDefault();if(ev.dataTransfer&&ev.dataTransfer.files.length)fuegeDateien(z.getAttribute('data-zone'),ev.dataTransfer.files);}});});
+  ['dragover','drop'].forEach(function(n){window.addEventListener(n,function(ev){var dt=ev.dataTransfer;if(!dt||[].indexOf.call(dt.types||[],'Files')<0||(ev.target.closest&&ev.target.closest('.up-zone')))return;ev.preventDefault();dt.dropEffect='none';});});
   dlgS.addEventListener('click',function(ev){
     var pt=ev.target.closest('[data-pat]');if(pt){spUebernimm(pt.getAttribute('data-pat'));byId('ds-pat-plus').focus();return;}
     var b=ev.target.closest('[data-beispiel]');if(b){fuegeBeispiel(b.getAttribute('data-beispiel'));return;}
@@ -1161,7 +1165,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     ev.preventDefault();if(!sp)return;
     // Eingabetaste in einem früheren Schritt bedeutet „Weiter“
     if(sp.i<SCHRITTE.length-1){spWeiter();return;}
-    for(var i=0;i<SCHRITTE.length;i++){var f=spPruefe(SCHRITTE[i].k);if(f){if(i!==sp.i)spGehe(i);spFehler(f);return;}}
+    for(var i=0;i<SCHRITTE.length;i++){var f=spPruefe(SCHRITTE[i].k);if(f){if(i!==sp.i)spGehe(i);spFehler(f);byId('ds-fehler').scrollIntoView({block:'nearest'});return;}}
     var d=sp.dateien,t=byId('ds-datum').value.split('-'),nr='SP-'+HEUTE.getFullYear()+'-'+('00'+spZaehler++).slice(-3),rev=byId('ds-revision').value;
     var pat=spPatient();
     protokolle.push({nr:nr,pid:pat?pat.id:'',vor:byId('ds-vor').value.trim(),nach:byId('ds-nach').value.trim(),akte:byId('ds-akte').value.trim(),datum:new Date(+t[0],+t[1]-1,+t[2]),art:byId('ds-art').value,text:byId('ds-text').value.trim(),mass:byId('ds-mass').value.trim(),
@@ -1172,6 +1176,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 
   // ---------- Ereignisse ----------
   document.addEventListener('click',function(ev){
+    if(spWeg&&!ev.target.closest('[data-sp-weg]')){spWeg='';zeichneProtokolle();}
     var lk=ev.target.closest('a[href^="#"]');if(lk&&!ev.ctrlKey&&!ev.metaKey&&!ev.shiftKey){ev.preventDefault();geheRoute(lk.getAttribute('href').slice(1));return;}
     var u=ev.target.closest('[data-update]');if(u){oeffneUpdate(u.getAttribute('data-update'),u.getAttribute('data-vorwahl'));return;}
     var ak=ev.target.closest('[data-akte]');if(ak){oeffneAkte(ak.getAttribute('data-akte'));return;}
@@ -1179,7 +1184,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     var s=ev.target.closest('[data-sp-neu]');if(s){oeffneProtokoll(s.getAttribute('data-sp-neu'));return;}
     var sw=ev.target.closest('[data-sp-weg]');
     if(sw){var nr=sw.getAttribute('data-sp-weg');
-      if(spWeg!==nr){spWeg=nr;zeichneProtokolle();var nb=document.querySelector('[data-sp-weg="'+nr+'"]');if(nb)nb.focus();return;}
+      if(spWeg!==nr||ev.detail>1){spWeg=nr;zeichneProtokolle();var nb=document.querySelector('[data-sp-weg="'+nr+'"]');if(nb)nb.focus();return;}
       protokolle=protokolle.filter(function(x){return x.nr!==nr;});spWeg='';alles();toast('Schadensprotokoll '+nr+' gelöscht');var h=byId('h-sp');h.setAttribute('tabindex','-1');h.focus();return;}
     if(spWeg){spWeg='';zeichneProtokolle();}
     var z=ev.target.closest('[data-zu]');if(z){z.closest('dialog').close();return;}
