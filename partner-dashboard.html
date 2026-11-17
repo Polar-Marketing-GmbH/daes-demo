@@ -120,6 +120,9 @@ tbody tr:hover td{background:rgba(129,38,133,.035)}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 td.akt{text-align:right;white-space:nowrap}
 td.akt .btn+.btn{margin-left:.35rem}
+td.akt{padding-left:.2rem}
+td.akt .btn-sm{padding:.4rem .55rem}
+td.akt .btn-ico{padding:.4rem .45rem}
 .pname{display:block;font-weight:600;color:var(--schwarz);white-space:nowrap}
 .pid{display:block;font-size:.76rem;color:var(--stahl-600);font-variant-numeric:tabular-nums;white-space:nowrap;margin-top:.15rem}
 .pnote{display:block;font-size:.78rem;color:var(--stahl-600);max-width:34ch;margin-top:.15rem}
@@ -235,8 +238,31 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .sp-weg:hover{text-decoration:underline;text-underline-offset:3px}
 .unter{display:block;margin-top:.3rem}
 .akt{white-space:nowrap}
-.akt .btn + .btn{margin-left:.4rem}
 .verlauf li.k span b{color:var(--violett)}
+.verlauf span b{color:var(--violett)}
+/* Patientenakte: Reiter, Unterlagen, Protokoll */
+.ak-tabs{display:flex;gap:.2rem;border-bottom:1px solid var(--stahl-200);overflow-x:auto;scrollbar-width:none}
+.ak-tabs::-webkit-scrollbar{display:none}
+.ak-tabs button{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem .9rem;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;font:600 .9rem var(--text);color:var(--stahl-600);cursor:pointer;white-space:nowrap;border-radius:8px 8px 0 0;flex:none}
+.ak-tabs button:hover{color:var(--schwarz);background:var(--stahl-50)}
+.ak-tabs button[aria-selected="true"]{color:var(--violett);border-bottom-color:var(--violett)}
+.ak-tabs i{font-style:normal;font-size:.72rem;font-weight:700;background:var(--stahl-100);color:var(--stahl-600);border-radius:999px;padding:.05rem .45rem;font-variant-numeric:tabular-nums}
+.ak-tabs button[aria-selected="true"] i{background:var(--violett-tint);color:var(--violett)}
+.ak-panel{display:grid;gap:1.1rem;min-width:0}
+.ak-panel:focus{outline:none}
+.ak-mehr{border:0;background:none;padding:0;font:600 .82rem var(--text);color:var(--violett);cursor:pointer;justify-self:start}
+.ak-mehr:hover{text-decoration:underline;text-underline-offset:3px}
+.ak-hoch{display:grid;grid-template-columns:210px minmax(0,1fr);gap:.9rem;align-items:start;border:1px solid var(--stahl-200);background:var(--stahl-50);border-radius:12px;padding:.9rem}
+.ak-hoch .up-zone{background:var(--weiss);padding:.9rem .8rem}
+@media (max-width:640px){.ak-hoch{grid-template-columns:minmax(0,1fr)}}
+.ak-docs{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.ak-docs li{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:.7rem;padding:.6rem .7rem .6rem .8rem;border:1px solid var(--stahl-200);border-radius:10px;background:var(--weiss)}
+.ak-docs li > .ico{color:var(--violett);width:20px;height:20px}
+.ak-docs b{display:block;font-size:.9rem;font-weight:600;color:var(--schwarz);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ak-docs span{display:block;font-size:.78rem;color:var(--stahl-600)}
+.ak-docs .kein{display:block;padding:1.2rem;text-align:center;color:var(--stahl-600);font-size:.9rem}
+@media (max-width:520px){.ak-docs li{grid-template-columns:auto minmax(0,1fr) auto}.ak-docs li .btn{grid-column:2/-1;justify-self:start}}
+.btn-ico{padding:.4rem .5rem}
 /* Schadensprotokoll in sechs Schritten */
 #dlg-sp{width:min(760px,calc(100vw - 24px))}
 #f-sp{grid-template-columns:minmax(0,1fr)}
@@ -311,7 +337,6 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .toast{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));background:var(--schwarz);color:var(--weiss);border-radius:10px;padding:.75rem 1rem;font-weight:600;font-size:.9rem;display:flex;align-items:center;gap:.6rem;box-shadow:0 20px 40px -20px rgba(1,1,1,.7);z-index:50}
 .toast .ico{color:#7BE0A4}
 /* Chat mit dem Deutschen Ärzte Service (angedeutet, Antworten sind Beispiele) */
-.toast{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 74px)}
 .chat-fab{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;border:0;background:var(--verlauf);color:var(--weiss);display:grid;place-items:center;cursor:pointer;box-shadow:0 16px 30px -12px rgba(129,38,133,.85);z-index:40;transition:transform .15s ease,filter .15s ease}
 .chat-fab:hover{transform:translateY(-2px);filter:brightness(1.07)}
 .chat-fab .ico{width:26px;height:26px}
@@ -345,6 +370,49 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .chat-form textarea{flex:1;min-width:0;resize:none;height:42px;max-height:110px;font:500 .92rem var(--text);padding:.6rem .75rem;border:1px solid var(--stahl-200);border-radius:10px;background:var(--weiss);color:var(--schwarz);line-height:1.4}
 .chat-form .btn{padding:.62rem .72rem;height:42px}
 .chat-hinweis{font-size:.72rem;line-height:1.45;color:var(--stahl-600);padding:0 1rem .8rem}
+.msg p b{display:block;font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--violett);margin-bottom:.2rem}
+.msg.blink p{box-shadow:0 0 0 2px var(--violett)}
+.sr-neu{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+/* Profil */
+.pf-body{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;padding:1.1rem}
+.pf-body .breit{grid-column:1/-1}
+.pf-foot{display:flex;justify-content:flex-end;align-items:center;gap:1rem;flex-wrap:wrap}
+.pf-zeile{display:flex;justify-content:space-between;align-items:center;gap:.6rem 1rem;flex-wrap:wrap;padding:.85rem 1.1rem;border-bottom:1px solid var(--stahl-100)}
+.pf-zeile:last-child{border-bottom:0}
+.pf-zeile > div:first-child{min-width:0;flex:1 1 260px}
+.pf-zeile b{color:var(--schwarz);font-weight:600}
+.pf-zeile em{font-style:normal;font-size:.78rem;font-weight:600;color:var(--violett);margin-left:.55rem}
+.pf-zeile span{display:block;font-size:.84rem;color:var(--stahl-600);overflow-wrap:anywhere}
+.pf-zeile .btn.sicher{border-color:var(--red-r);color:var(--red-t)}
+.pf-haupt{display:flex;gap:.6rem;align-items:center;font-size:.88rem;cursor:pointer}
+.pf-haupt input{width:18px;height:18px;margin:0;accent-color:var(--violett);flex:none}
+.prof-mobil{display:none}
+@media (max-width:640px){.pf-body{grid-template-columns:minmax(0,1fr)}}
+/* Nachrichten in der Seitenleiste */
+.side-chat{border-top:1px solid var(--leiste-linie);padding:.75rem .7rem .55rem;display:grid;gap:.3rem}
+.side-chat-kopf{display:flex;align-items:center;gap:.7rem;width:100%;padding:.55rem .7rem;border:0;border-radius:8px;background:none;color:var(--leiste-text);font:600 .93rem var(--text);cursor:pointer;text-align:left;transition:background .15s ease,color .15s ease}
+.side-chat-kopf:hover,.side-chat-kopf[aria-expanded="true"]{background:var(--leiste-aktiv);color:var(--weiss)}
+.side-chat-kopf .zahl{margin-left:auto;font-size:.72rem;font-weight:700;background:var(--violett-hell);color:var(--schwarz);border-radius:999px;padding:.05rem .5rem;font-variant-numeric:tabular-nums}
+.side-chat-liste{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+.side-chat-liste button{width:100%;display:grid;grid-template-columns:7px minmax(0,1fr) auto;gap:.1rem .55rem;align-items:baseline;padding:.45rem .6rem;border:0;border-radius:8px;background:none;color:var(--leiste-text);font:inherit;text-align:left;cursor:pointer;transition:background .15s ease}
+.side-chat-liste button:hover{background:var(--leiste-aktiv)}
+.side-chat-liste .pkt{width:7px;height:7px;border-radius:50%;align-self:center}
+.side-chat-liste .neu .pkt{background:var(--violett-hell)}
+.side-chat-liste b{font-size:.82rem;font-weight:500;color:var(--leiste-text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.side-chat-liste .neu b{font-weight:600;color:var(--weiss)}
+.side-chat-liste time{font-size:.7rem;color:#8F8499;font-variant-numeric:tabular-nums}
+.side-chat-liste .tx{grid-column:2/-1;font-size:.77rem;line-height:1.35;color:#B9B0C2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (min-width:901px){
+  .chat-fab{display:none}
+  .chat{left:278px;right:auto;bottom:16px;height:min(580px,calc(100vh - 32px));height:min(580px,calc(100dvh - 32px))}
+}
+@media (max-width:900px){
+  .side-chat{display:none}
+  .nav a[data-view="profil"]{display:none}
+  .side-foot{display:flex;align-items:center;gap:.2rem}
+  .prof-mobil{display:inline-flex}
+  .toast{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 74px)}
+}
 @media (max-width:520px){.chat{left:12px;right:12px;width:auto}}
 
 /* Schmal: Seitenleiste wird Kopfzeile */
@@ -392,9 +460,15 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
         <a href="#patienten/op" data-sub="op">OP-Termin festgelegt<span class="zahl" data-subzahl="op"></span></a>
       </div>
       <a href="#schadensprotokolle" data-view="schadensprotokolle"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M12 12v4M12 18.5h.01"/></svg><span class="lang">Schadensprotokolle</span><span class="kurz">Protokolle</span><span class="zahl" id="nav-zahl-sp"></span></a>
+      <a href="#profil" data-view="profil"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c1.200-3.600 3.800-5.500 7-5.500s5.800 1.900 7 5.500"/></svg><span>Profil</span></a>
     </nav>
+    <div class="side-chat">
+      <button type="button" class="side-chat-kopf" id="chat-seite" aria-expanded="false" aria-controls="chat"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8 9.500h8M8 12.500h5"/></svg><span>Nachrichten</span><span class="zahl" id="chat-zahl-seite" aria-hidden="true"></span></button>
+      <ul class="side-chat-liste" id="chat-vorschau" aria-label="Neueste Nachrichten vom Deutschen Ärzte Service"></ul>
+    </div>
     <div class="side-foot">
-      <div class="wer"><b id="wer">Arzt-Testzugang</b><span>Beispielklinik München · Arzt-Zugang</span></div>
+      <div class="wer"><b id="wer">Arzt-Testzugang</b><span id="wer-klinik">Beispielklinik München · Arzt-Zugang</span></div>
+      <a class="out prof-mobil" href="#profil" aria-label="Profil"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c1.200-3.600 3.800-5.500 7-5.500s5.800 1.900 7 5.500"/></svg></a>
       <a class="out" href="partner-login.html" id="abmelden" aria-label="Abmelden"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg><span>Abmelden</span></a>
     </div>
   </aside>
@@ -507,6 +581,41 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
           <div class="card"><div class="scroll" id="tab-sp"></div></div>
         </div>
       </section>
+
+      <!-- Profil -->
+      <section id="view-profil" aria-labelledby="h-profil" hidden>
+        <div class="inner">
+          <div class="head">
+            <div>
+              <div class="eyebrow">Profil</div>
+              <h1 id="h-profil">Ihr Profil</h1>
+              <p>Kontaktdaten, Ansprechpartner und operierende Ärzte. Der Deutsche Ärzte Service sieht diese Angaben und vermittelt Patientinnen und Patienten auf dieser Grundlage.</p>
+            </div>
+          </div>
+          <form class="card" id="f-profil" novalidate>
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11M9 20v-6h6v6"/></svg>Kontaktdaten</h2><span class="muted" id="pf-stand" role="status" aria-live="polite"></span></div>
+            <div class="pf-body">
+              <div class="feld breit"><label for="pf-name">Name der Praxis oder Klinik</label><input type="text" id="pf-name" autocomplete="organization"></div>
+              <div class="feld breit"><label for="pf-strasse">Straße und Hausnummer</label><input type="text" id="pf-strasse" autocomplete="street-address"></div>
+              <div class="feld"><label for="pf-plz">Postleitzahl</label><input type="text" id="pf-plz" inputmode="numeric" autocomplete="postal-code"></div>
+              <div class="feld"><label for="pf-ort">Ort</label><input type="text" id="pf-ort" autocomplete="address-level2"></div>
+              <div class="feld"><label for="pf-tel">Telefon</label><input type="tel" id="pf-tel" autocomplete="tel"></div>
+              <div class="feld"><label for="pf-mail">E-Mail</label><input type="email" id="pf-mail" autocomplete="email"></div>
+              <div class="feld breit"><label for="pf-web">Webseite (optional)</label><input type="text" id="pf-web" autocomplete="url"></div>
+              <div class="fehler breit" id="pf-fehler" role="alert" hidden></div>
+              <div class="pf-foot breit"><button class="btn btn-primary" type="submit">Kontaktdaten speichern</button></div>
+            </div>
+          </form>
+          <div class="card">
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.200"/><path d="M3 20c.800-3.400 3-5.200 6-5.200s5.200 1.800 6 5.200"/><path d="M16 5.200a3.200 3.200 0 0 1 0 5.600M18 14.900c1.600.700 2.600 2.400 3 5.100"/></svg>Ansprechpartner</h2><button class="btn btn-line btn-sm" type="button" data-pf-neu="ap"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Ansprechpartner hinzufügen</button></div>
+            <div id="pf-ap"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v6a4 4 0 0 0 8 0V3M4.500 3H6M14 3h1.500M10 13v3a4.500 4.500 0 0 0 9 0v-1.500"/><circle cx="19" cy="12.500" r="2"/></svg>Operierende Ärzte</h2><button class="btn btn-line btn-sm" type="button" data-pf-neu="arzt"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Arzt hinzufügen</button></div>
+            <div id="pf-arzt"></div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 </div>
@@ -518,11 +627,54 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       <div><p class="klein">Patientenakte</p><h2 id="ak-name"></h2><p class="sub" id="ak-sub"></p></div>
       <button class="btn btn-line btn-sm" type="button" data-zu>Schließen</button>
     </div>
-    <dl class="fakten" id="ak-fakten"></dl>
-    <div class="akte-teil"><h3>Behandlungswunsch</h3><p id="ak-wunsch"></p></div>
-    <div class="akte-teil"><h3>Verlauf</h3><ol class="verlauf" id="ak-verlauf"></ol></div>
+    <div class="ak-tabs" role="tablist" aria-label="Bereiche der Patientenakte">
+      <button type="button" role="tab" id="akt-uebersicht" data-ak-tab="uebersicht" aria-controls="akp-uebersicht">Übersicht</button>
+      <button type="button" role="tab" id="akt-unterlagen" data-ak-tab="unterlagen" aria-controls="akp-unterlagen">Unterlagen<i id="ak-zahl-u"></i></button>
+      <button type="button" role="tab" id="akt-protokoll" data-ak-tab="protokoll" aria-controls="akp-protokoll">Protokoll<i id="ak-zahl-p"></i></button>
+    </div>
+    <div class="ak-panel" id="akp-uebersicht" role="tabpanel" aria-labelledby="akt-uebersicht" tabindex="-1">
+      <dl class="fakten" id="ak-fakten"></dl>
+      <div class="akte-teil"><h3>Behandlungswunsch</h3><p id="ak-wunsch"></p></div>
+      <div class="akte-teil"><h3>Zuletzt im Protokoll</h3><ol class="verlauf" id="ak-kurz"></ol></div>
+      <button type="button" class="ak-mehr" data-ak-tab="protokoll">Ganzes Protokoll ansehen</button>
+    </div>
+    <div class="ak-panel" id="akp-unterlagen" role="tabpanel" aria-labelledby="akt-unterlagen" tabindex="-1" hidden>
+      <div class="ak-hoch">
+        <div class="feld"><label for="ak-typ">Art der Unterlage</label>
+          <select id="ak-typ"><option>Befund</option><option>Arztbrief</option><option>OP-Bericht</option><option>Einwilligung</option><option>Foto</option><option>Kostenplan</option><option>Rechnung</option><option>Sonstiges</option></select>
+          <small>Wird in der Akte abgelegt und im Protokoll vermerkt.</small></div>
+        <div class="up">
+          <div class="up-kopf"><b id="ak-up-titel">Unterlage hochladen</b><button type="button" class="btn btn-line btn-sm" id="ak-beispiel">Beispieldatei verwenden</button></div>
+          <input class="up-in" type="file" id="ak-datei" multiple accept="application/pdf,image/jpeg,image/png" aria-labelledby="ak-up-titel">
+          <label class="up-zone" for="ak-datei" id="ak-zone"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5M7.500 9.500L12 5l4.500 4.500M5 19h14"/></svg><b>Datei auswählen</b><span>oder hierher ziehen. PDF, JPG oder PNG, je Datei bis 10 MB</span></label>
+        </div>
+      </div>
+      <div class="fehler" id="ak-fehler" role="alert" hidden></div>
+      <ul class="ak-docs" id="ak-docs" aria-label="Unterlagen in der Akte"></ul>
+      <p class="sp-demo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Demo: Hochgeladene Dateien bleiben in Ihrem Browser. Die vorhandenen Unterlagen sind Beispieldokumente.</span></p>
+    </div>
+    <div class="ak-panel" id="akp-protokoll" role="tabpanel" aria-labelledby="akt-protokoll" tabindex="-1" hidden>
+      <ol class="verlauf" id="ak-verlauf"></ol>
+    </div>
     <div class="dlg-foot"><button class="btn btn-line" type="button" id="ak-kontakt" data-vorwahl="kontakt">Kontakt eintragen</button><button class="btn btn-primary" type="button" id="ak-update">Update eintragen</button></div>
   </div>
+</dialog>
+
+<!-- Dialog: Profil-Eintrag (Ansprechpartner oder Arzt) -->
+<dialog id="dlg-pf" aria-labelledby="pfd-titel">
+  <form class="dlg" id="f-pf" novalidate>
+    <div><h2 id="pfd-titel"></h2><p class="sub" id="pfd-sub"></p></div>
+    <div class="feld"><label for="pfd-name" id="pfd-name-l">Name</label><input type="text" id="pfd-name" autocomplete="off"></div>
+    <div class="feld"><label for="pfd-zwei" id="pfd-zwei-l"></label><input type="text" id="pfd-zwei" autocomplete="off"></div>
+    <div class="zwei" id="pfd-kontakt">
+      <div class="feld"><label for="pfd-tel">Telefon</label><input type="tel" id="pfd-tel" autocomplete="off"></div>
+      <div class="feld"><label for="pfd-mail">E-Mail</label><input type="email" id="pfd-mail" autocomplete="off"></div>
+    </div>
+    <div class="feld" id="pfd-schwer-box"><label for="pfd-schwer">Schwerpunkte</label><textarea id="pfd-schwer" placeholder="z. B. Brustvergrößerung, Bruststraffung"></textarea><small>Eingriffe, die dieser Arzt für den Deutschen Ärzte Service operiert.</small></div>
+    <label class="pf-haupt" id="pfd-haupt-box"><input type="checkbox" id="pfd-haupt"><span>Hauptansprechpartner für den Deutschen Ärzte Service</span></label>
+    <div class="fehler" id="pfd-fehler" role="alert" hidden></div>
+    <div class="dlg-foot"><button class="btn btn-line" type="button" data-zu>Abbrechen</button><button class="btn btn-primary" type="submit">Speichern</button></div>
+  </form>
 </dialog>
 
 <!-- Dialog: Patient aktualisieren -->
@@ -551,7 +703,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       <div class="feld"><label for="dk-wann">Datum und Uhrzeit</label><input type="datetime-local" id="dk-wann"></div>
       <div class="feld breit"><label for="dk-erg">Ergebnis</label><select id="dk-erg"></select></div>
       <div class="feld breit"><label for="dk-ein">Einschätzung</label><select id="dk-ein"><option value="offen">Noch offen</option><option value="ja">Kann behandelt werden</option><option value="nein">Kann nicht behandelt werden</option><option value="ueberlegt">Patientin überlegt noch</option></select></div>
-      <div class="feld breit"><label for="dk-wer">Kontakt durch</label><input type="text" id="dk-wer" autocomplete="off" placeholder="Name der Person, die Kontakt hatte"></div>
+      <div class="feld breit"><label for="dk-wer">Kontakt durch</label><input type="text" id="dk-wer" autocomplete="off" list="dk-wer-liste" placeholder="Name der Person, die Kontakt hatte"><datalist id="dk-wer-liste"></datalist></div>
     </div>
     <div class="feld" id="du-box-wv"><label for="du-wv">Wiedervorlage am</label><input type="date" id="du-wv"><small>Die Patientin erscheint dann wieder in der Liste „Wiedervorlage fällig“.</small></div>
     <div class="feld"><label for="du-notiz">Notiz</label><textarea id="du-notiz" placeholder="Optionale Info, z. B. Patientin möchte telefonisch erinnert werden."></textarea></div>
@@ -642,9 +794,9 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   </header>
   <div class="chat-verlauf" id="chat-verlauf" role="log" aria-live="polite" aria-label="Nachrichtenverlauf" tabindex="0"></div>
   <div class="chat-schnell" id="chat-schnell">
-    <button type="button" data-chat="Ich habe eine Rückfrage zu einer Patientin.">Rückfrage zu einer Patientin</button>
-    <button type="button" data-chat="Ich habe eine Frage zum Schadensprotokoll.">Frage zum Schadensprotokoll</button>
-    <button type="button" data-chat="Bitte rufen Sie mich zurück.">Bitte um Rückruf</button>
+    <button type="button" data-chat="Die Schlussrechnung reiche ich heute nach.">Rechnung reiche ich nach</button>
+    <button type="button" data-chat="Ich kontaktiere die Patientin heute noch einmal.">Kontaktiere die Patientin heute</button>
+    <button type="button" data-chat="Ja, die OP findet wie geplant statt.">OP findet statt</button>
   </div>
   <form class="chat-form" id="chat-form">
     <textarea id="chat-text" rows="1" aria-label="Nachricht an den Deutschen Ärzte Service" placeholder="Nachricht schreiben"></textarea>
@@ -733,6 +885,13 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     p.alter=24+(i*7)%27;p.ort=ORTE[i%ORTE.length];
     p.telefon='0151 555 01'+zwei(10+i);p.email=klein(p.vor)+'.'+klein(p.nach)+'@example.com';
     p.wunsch=WUNSCH[p.eingriff]||'';p.verlauf=baueVerlauf(p);p.kontakte=[];
+    // Beispiel-Unterlagen je nach Stand des Vorgangs
+    var st0=p.status==='abgelehnt'?0:REIHE.indexOf(p.status);
+    p.unterlagen=[{typ:'Anfrage',name:'Anfrage_'+klein(p.nach)+'.pdf',d:plus(p.zugeteilt,0,9),size:112*1024,von:'Deutscher Ärzte Service'},
+      {typ:'Einwilligung',name:'Einwilligung_Datenweitergabe.pdf',d:plus(p.zugeteilt,0,9),size:64*1024,von:'Deutscher Ärzte Service'}];
+    if(st0>=3&&p.beratung)p.unterlagen.push({typ:'Beratung',name:'Beratungsprotokoll.pdf',d:p.beratung,size:148*1024,von:'Praxis'});
+    if(st0>=4&&p.op)p.unterlagen.push({typ:'Kostenplan',name:'Kostenplan.pdf',d:plus(p.beratung||p.zugeteilt,2,12),size:86*1024,von:'Praxis'});
+    if(st0>=5&&p.op)p.unterlagen.push({typ:'OP-Bericht',name:'OP-Bericht.pdf',d:plus(p.op,0,15),size:203*1024,von:'Praxis'});
     var stufe=REIHE.indexOf(p.status);
     if(p.status!=='abgelehnt'&&stufe>=1)fuegeKontakt(p,{d:plus(p.zugeteilt,1,10),art:'anruf',erg:'erreicht',ein:stufe>=3?'ja':'offen',wer:'Praxisteam',notiz:''});
   });
@@ -759,7 +918,8 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     return '<button type="button" class="pname" data-akte="'+esc(p.id)+'">'+esc(p.vor+' '+p.nach)+'</button><span class="pid">'+esc(p.id)+'</span>'+(mitNotiz&&p.notiz?'<span class="pnote">'+esc(p.notiz)+'</span>':'');
   }
   function knoepfe(p,mitKontakt){
-    return (mitKontakt?'<button class="btn btn-line btn-sm" type="button" data-update="'+esc(p.id)+'" data-vorwahl="kontakt"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Kontakt</button>':'')+
+    return '<button class="btn btn-line btn-sm btn-ico" type="button" data-akte="'+esc(p.id)+'" title="Patientenakte öffnen" aria-label="Patientenakte von '+esc(p.vor+' '+p.nach)+' öffnen"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.500h8a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></button>'+
+      (mitKontakt?'<button class="btn btn-line btn-sm" type="button" data-update="'+esc(p.id)+'" data-vorwahl="kontakt"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Kontakt</button>':'')+
       '<button class="btn btn-line btn-sm" type="button" data-update="'+esc(p.id)+'"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg>Update</button>';
   }
   function kontaktZelle(p){
@@ -895,7 +1055,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   }
 
   function alles(){
-    zeichneDashboard();zeichnePatienten();zeichneKalender();zeichneProtokolle();
+    zeichneDashboard();zeichnePatienten();zeichneKalender();zeichneProtokolle();zeichneProfil();
     byId('nav-zahl-pat').textContent=patienten.length;byId('nav-zahl-sp').textContent=protokolle.length;
   }
 
@@ -909,10 +1069,74 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       ['Letzter Kontakt',letzterKontakt(p)?zeit(letzterKontakt(p).d)+', '+KONTAKTART[letzterKontakt(p).art]:'noch keiner'],['Einschätzung',EINSCH[einVon(p)].l]];
     byId('ak-fakten').innerHTML=f.map(function(x){return '<div><dt>'+esc(x[0])+'</dt><dd>'+esc(x[1])+'</dd></div>';}).join('');
     byId('ak-wunsch').textContent=p.wunsch;
-    byId('ak-verlauf').innerHTML=p.verlauf.map(function(v,i){return {v:v,i:i};}).sort(function(a,b){return b.v.d-a.v.d||b.i-a.i;}).map(function(x){var v=x.v;return '<li'+(v.k?' class="k"':'')+'><time>'+zeit(v.d)+'</time><span>'+(v.kopf?'<b>'+esc(v.kopf)+'</b> ':'')+esc(v.t)+'</span></li>';}).join('');
+    var eintraege=p.verlauf.map(function(v,i){return {v:v,i:i};}).sort(function(a,b){return b.v.d-a.v.d||b.i-a.i;}).map(function(x){var v=x.v;return '<li'+(v.k?' class="k"':'')+'><time>'+zeit(v.d)+'</time><span>'+(v.kopf?'<b>'+esc(v.kopf)+'</b> ':'')+esc(v.t)+'</span></li>';});
+    byId('ak-verlauf').innerHTML=eintraege.join('');byId('ak-kurz').innerHTML=eintraege.slice(0,3).join('');
+    byId('ak-zahl-p').textContent=p.verlauf.length;byId('ak-zahl-u').textContent=p.unterlagen.length;
+    byId('ak-docs').innerHTML=p.unterlagen.length?p.unterlagen.map(function(u,i){return {u:u,i:i};}).sort(function(a,b){return b.u.d-a.u.d||b.i-a.i;}).map(function(x){var u=x.u;
+      return '<li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg><div><b>'+esc(u.name)+'</b><span>'+esc(u.typ+' · '+datum(u.d)+' · '+groesse(u.size)+' · von '+u.von)+'</span></div>'+
+        '<button type="button" class="btn btn-line btn-sm" data-ak-dl="'+x.i+'" aria-label="'+esc(u.name)+' herunterladen"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.500 10.500L12 15l4.500-4.500M5 19h14"/></svg>Download</button>'+
+        (u.neu?'<button type="button" class="up-weg" data-ak-weg="'+x.i+'" aria-label="'+esc(u.name)+' aus der Akte entfernen">'+ICO_WEG+'</button>':'<span></span>')+'</li>';}).join('')
+      :'<li class="kein">Noch keine Unterlagen in dieser Akte.</li>';
     byId('ak-update').setAttribute('data-update',p.id);byId('ak-kontakt').setAttribute('data-update',p.id);
+    akteTabZeige(false);
   }
-  function oeffneAkte(pid){var p=finde(pid);if(!p)return;zeichneAkte(p);if(!dlgA.open)dlgA.showModal();}
+  var aktePid='',akteTab='uebersicht';
+  function akteTabZeige(fokus){
+    ['uebersicht','unterlagen','protokoll'].forEach(function(k){
+      var an=k===akteTab,tab=byId('akt-'+k);byId('akp-'+k).hidden=!an;tab.setAttribute('aria-selected',an?'true':'false');tab.tabIndex=an?0:-1;
+    });
+    if(fokus)byId('akt-'+akteTab).focus();
+  }
+  function oeffneAkte(pid){var p=finde(pid);if(!p)return;if(!dlgA.open||aktePid!==pid){if(!dlgA.open&&akteZurueckTab){akteTab=akteZurueckTab;}else akteTab='uebersicht';}akteZurueckTab='';aktePid=pid;byId('ak-fehler').hidden=true;zeichneAkte(p);if(!dlgA.open)dlgA.showModal();}
+  var akteZurueckTab='';
+  // Unterlagen: Beispiel-PDF für den Download erzeugen, echte Dateien direkt ausgeben
+  function ascii(s){return s.replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/Ä/g,'Ae').replace(/Ö/g,'Oe').replace(/Ü/g,'Ue').replace(/ß/g,'ss').replace(/[^\x20-\x7E]/g,'?');}
+  function beispielPdf(zeilen){
+    var inhalt='BT /F1 16 Tf 60 770 Td ('+ascii(zeilen[0]).replace(/([()\\])/g,'\\$1')+') Tj /F1 11 Tf'+zeilen.slice(1).map(function(z){return ' 0 -22 Td ('+ascii(z).replace(/([()\\])/g,'\\$1')+') Tj';}).join('')+' ET';
+    var o=['<< /Type /Catalog /Pages 2 0 R >>','<< /Type /Pages /Kids [3 0 R] /Count 1 >>','<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>',
+      '<< /Length '+inhalt.length+' >>\nstream\n'+inhalt+'\nendstream','<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>'],pdf='%PDF-1.4\n',off=[];
+    o.forEach(function(x,i){off.push(pdf.length);pdf+=(i+1)+' 0 obj\n'+x+'\nendobj\n';});
+    var xref=pdf.length;
+    pdf+='xref\n0 '+(o.length+1)+'\n0000000000 65535 f \n'+off.map(function(n){return ('0000000000'+n).slice(-10)+' 00000 n \n';}).join('')+'trailer\n<< /Size '+(o.length+1)+' /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF';
+    return new Blob([pdf],{type:'application/pdf'});
+  }
+  function ladeHerunter(blob,name){var u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;dlgA.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}
+  function akteFehler(txt){var f=byId('ak-fehler');f.textContent=txt;f.hidden=!txt;}
+  function akteHoch(files){
+    var p=finde(aktePid),abgelehnt=[],n=0,typ=byId('ak-typ').value;if(!p)return;
+    [].forEach.call(files,function(f){
+      var ok=/^image\/(jpeg|png)$/.test(f.type)||f.type==='application/pdf'||/\.(jpe?g|png|pdf)$/i.test(f.name);
+      if(!ok){abgelehnt.push(f.name+' (Dateityp)');return;}
+      if(f.size>MAX_MB*1048576){abgelehnt.push(f.name+' (größer als '+MAX_MB+' MB)');return;}
+      p.unterlagen.push({typ:typ,name:f.name,d:new Date(),size:f.size,von:byId('wer').textContent,datei:f,neu:true});
+      p.verlauf.push({d:new Date(),kopf:'Unterlage',t:'hochgeladen: '+f.name+' ('+typ+').'});n++;
+    });
+    zeichneAkte(p);akteFehler(abgelehnt.length?'Nicht übernommen: '+abgelehnt.join(', ')+'. Erlaubt sind PDF, JPG und PNG bis '+MAX_MB+' MB.':'');
+    if(n)toast(n===1?'Unterlage in der Akte abgelegt':n+' Unterlagen in der Akte abgelegt');
+  }
+  byId('ak-datei').addEventListener('change',function(){akteHoch(this.files);this.value='';});
+  ['dragenter','dragover'].forEach(function(n){byId('ak-zone').addEventListener(n,function(ev){ev.preventDefault();this.classList.add('drueber');});});
+  ['dragleave','drop'].forEach(function(n){byId('ak-zone').addEventListener(n,function(ev){this.classList.remove('drueber');if(n==='drop'){ev.preventDefault();if(ev.dataTransfer&&ev.dataTransfer.files.length)akteHoch(ev.dataTransfer.files);}});});
+  var akteBsp=0;
+  byId('ak-beispiel').addEventListener('click',function(){
+    var p=finde(aktePid);if(!p)return;var typ=byId('ak-typ').value,name=typ.replace(/[^A-Za-zÄÖÜäöüß-]/g,'')+'_Beispiel_'+(++akteBsp)+'.pdf';
+    p.unterlagen.push({typ:typ,name:name,d:new Date(),size:(90+akteBsp*13)*1024,von:byId('wer').textContent,neu:true});
+    p.verlauf.push({d:new Date(),kopf:'Unterlage',t:'hochgeladen: '+name+' ('+typ+').'});
+    zeichneAkte(p);akteFehler('');toast('Unterlage in der Akte abgelegt');
+  });
+  dlgA.addEventListener('click',function(ev){
+    var tb=ev.target.closest('[data-ak-tab]');if(tb){akteTab=tb.getAttribute('data-ak-tab');akteTabZeige(tb.getAttribute('role')!=='tab');if(tb.getAttribute('role')!=='tab')dlgA.scrollTop=0;return;}
+    var p=finde(aktePid);if(!p)return;
+    var dl=ev.target.closest('[data-ak-dl]');
+    if(dl){var u=p.unterlagen[+dl.getAttribute('data-ak-dl')];if(!u)return;
+      ladeHerunter(u.datei||beispielPdf([u.typ+': '+u.name,'Patientin: '+p.vor+' '+p.nach+' ('+p.id+'), '+p.eingriff,'Abgelegt am '+datum(u.d)+' von '+u.von,'','Beispieldokument aus der Demo DAES Connect.','Alle Personen und Vorgaenge sind erfunden.']),u.datei?u.name:u.name.replace(/\.[a-z]+$/i,'')+'.pdf');return;}
+    var wg=ev.target.closest('[data-ak-weg]');
+    if(wg){var i=+wg.getAttribute('data-ak-weg'),x=p.unterlagen[i];if(!x||!x.neu)return;p.unterlagen.splice(i,1);p.verlauf.push({d:new Date(),kopf:'Unterlage',t:'entfernt: '+x.name+'.'});zeichneAkte(p);byId('akt-unterlagen').focus();}
+  });
+  byId('akt-uebersicht').parentNode.addEventListener('keydown',function(ev){
+    var r=['uebersicht','unterlagen','protokoll'],i=r.indexOf(akteTab);
+    if(ev.key==='ArrowRight'||ev.key==='ArrowLeft'){ev.preventDefault();akteTab=r[(i+(ev.key==='ArrowRight'?1:r.length-1))%r.length];akteTabZeige(true);}
+  });
 
   // ---------- Kalender ----------
   var MONATE=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],WT=['Mo','Di','Mi','Do','Fr','Sa','So'];
@@ -946,7 +1170,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   }
 
   // ---------- Ansichten (Hash) ----------
-  var ANSICHTEN=['dashboard','patienten','kalender','schadensprotokolle'];
+  var ANSICHTEN=['dashboard','patienten','kalender','schadensprotokolle','profil'];
   function zeige(){
     var teile=route.split('/'),v=teile[0];if(ANSICHTEN.indexOf(v)<0)v='dashboard';
     ANSICHTEN.forEach(function(a){byId('view-'+a).hidden=a!==v;});
@@ -997,7 +1221,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   var NAECHST={neu:'termin',kontaktiert:'termin',beratung_geplant:'kam',beratung_erfolgt:'op_geplant',op_geplant:'op_erfolgt',op_erfolgt:'abgerechnet',abgeschlossen:'wv',abgelehnt:'wv'};
   function oeffneUpdate(pid,vorwahl){
     aktuell=finde(pid);if(!aktuell)return;
-    if(dlgA.open){akteZurueck=pid;dlgA.close();}else{akteZurueck=null;}
+    if(dlgA.open){akteZurueck=pid;akteZurueckTab=akteTab;dlgA.close();}else{akteZurueck=null;}
     byId('f-update').reset();
     byId('du-sub').textContent=aktuell.vor+' '+aktuell.nach+' · '+aktuell.eingriff+' · aktueller Status: '+STATUS[aktuell.status].l+(aktuell.notiz?' · Letzte Notiz: '+aktuell.notiz:'');
     byId('du-grund').value=aktuell.eingriff;
@@ -1227,6 +1451,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     var pat=spPatient();
     protokolle.push({nr:nr,pid:pat?pat.id:'',vor:byId('ds-vor').value.trim(),nach:byId('ds-nach').value.trim(),akte:byId('ds-akte').value.trim(),datum:new Date(+t[0],+t[1]-1,+t[2]),art:byId('ds-art').value,text:byId('ds-text').value.trim(),mass:byId('ds-mass').value.trim(),
       revision:rev,betrag:betragZahl(),stand:'Eingereicht',unterlagen:{op:d.op.length,arzt:d.arzt.length,fotos:d.fotos.length,kv:d.kv.length,rechnung:d.rechnung.length,revision:rev==='erfolgt'?d.revision.length:0}});
+    if(pat)pat.verlauf.push({d:new Date(),kopf:'Schadensprotokoll',t:nr+' eingereicht, '+(d.op.length+d.arzt.length+d.fotos.length+d.kv.length+d.rechnung.length+(rev==='erfolgt'?d.revision.length:0))+' Unterlagen. '+byId('ds-art').value+'.'});
     dlgS.close();alles();toast('Schadensprotokoll '+nr+' eingereicht');
     if(route!=='schadensprotokolle')geheRoute('schadensprotokolle');
   });
@@ -1258,36 +1483,131 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   try{var n=sessionStorage.getItem('daes-partner');if(n==='Testzugang')n='Arzt-Testzugang';if(n){byId('wer').textContent=n;byId('gruss').textContent=n;}}catch(e){}
   byId('abmelden').addEventListener('click',function(){try{sessionStorage.removeItem('daes-partner');}catch(e){}});
 
+  // ---------- Profil: Kontaktdaten, Ansprechpartner, operierende Ärzte (Beispieldaten) ----------
+  var profil={name:'Beispielklinik München',strasse:'Musterstraße 12',plz:'80331',ort:'München',tel:'089 555 0100',mail:'praxis@example.com',web:'www.beispielklinik.example',
+    ap:[{name:'Sabine Muster',zwei:'Praxismanagement',tel:'089 555 0101',mail:'s.muster@example.com',haupt:true},
+        {name:'Jonas Beispiel',zwei:'Abrechnung',tel:'089 555 0102',mail:'abrechnung@example.com',haupt:false}],
+    arzt:[{name:'Dr. med. Anna Beispiel',zwei:'Fachärztin für Plastische und Ästhetische Chirurgie',schwer:'Brustvergrößerung, Bruststraffung, Brustverkleinerung'},
+          {name:'Dr. med. Markus Muster',zwei:'Facharzt für Plastische und Ästhetische Chirurgie',schwer:'Fettabsaugung, Bauchdeckenstraffung, Oberlidkorrektur'}]};
+  var PF={ap:{einer:'Ansprechpartner',zwei:'Funktion',leer:'Noch kein Ansprechpartner hinterlegt.'},arzt:{einer:'Arzt',zwei:'Facharztbezeichnung',leer:'Noch kein operierender Arzt hinterlegt.'}};
+  var pfWeg='',pfAkt=null,dlgP=byId('dlg-pf');
+  var PF_FELDER=['name','strasse','plz','ort','tel','mail','web'];
+  function zeichneProfil(){
+    ['ap','arzt'].forEach(function(art){
+      byId('pf-'+art).innerHTML=profil[art].length?profil[art].map(function(x,i){
+        var key=art+':'+i,unten=art==='ap'?[x.zwei,x.tel,x.mail]:[x.zwei,x.schwer];
+        return '<div class="pf-zeile"><div><b>'+esc(x.name)+'</b>'+(x.haupt?'<em>Hauptansprechpartner</em>':'')+'<span>'+esc(unten.filter(Boolean).join(' · '))+'</span></div>'+
+          '<div class="akt"><button class="btn btn-line btn-sm" type="button" data-pf-edit="'+key+'" aria-label="'+esc(x.name)+' bearbeiten">Bearbeiten</button>'+
+          '<button class="btn btn-line btn-sm'+(pfWeg===key?' sicher':'')+'" type="button" data-pf-weg="'+key+'" aria-label="'+esc(x.name)+' entfernen">'+(pfWeg===key?'Wirklich entfernen?':'Entfernen')+'</button></div></div>';
+      }).join(''):'<div class="leer">'+PF[art].leer+'</div>';
+    });
+    byId('wer-klinik').textContent=profil.name+' · Arzt-Zugang';
+    byId('dk-wer-liste').innerHTML=profil.arzt.concat(profil.ap).map(function(x){return '<option value="'+esc(x.name)+'"></option>';}).join('');
+  }
+  function profilFelder(){PF_FELDER.forEach(function(k){byId('pf-'+k).value=profil[k];});}
+  profilFelder();
+  byId('f-profil').addEventListener('input',function(){byId('pf-fehler').hidden=true;});
+  byId('f-profil').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var f=byId('pf-fehler'),w={};PF_FELDER.forEach(function(k){w[k]=byId('pf-'+k).value.trim();});
+    function fehler(txt,id){f.textContent=txt;f.hidden=false;byId(id).focus();}
+    if(!w.name)return fehler('Bitte den Namen der Praxis oder Klinik angeben.','pf-name');
+    if(!w.strasse)return fehler('Bitte Straße und Hausnummer angeben.','pf-strasse');
+    if(!/^\d{5}$/.test(w.plz))return fehler('Bitte eine fünfstellige Postleitzahl angeben.','pf-plz');
+    if(!w.ort)return fehler('Bitte den Ort angeben.','pf-ort');
+    if(!w.tel)return fehler('Bitte eine Telefonnummer angeben.','pf-tel');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(w.mail))return fehler('Bitte eine gültige E-Mail-Adresse angeben.','pf-mail');
+    PF_FELDER.forEach(function(k){profil[k]=w[k];});profilFelder();zeichneProfil();
+    var j=new Date();byId('pf-stand').textContent='Zuletzt gespeichert um '+zwei(j.getHours())+':'+zwei(j.getMinutes())+' Uhr';
+    toast('Kontaktdaten gespeichert');
+  });
+  function oeffneProfilEintrag(art,i){
+    var neu=i==null,x=neu?{name:'',zwei:'',tel:'',mail:'',schwer:'',haupt:false}:profil[art][i];
+    pfAkt={art:art,i:neu?-1:i};byId('f-pf').reset();byId('pfd-fehler').hidden=true;
+    byId('pfd-titel').textContent=PF[art].einer+(neu?' hinzufügen':' bearbeiten');
+    byId('pfd-sub').textContent=art==='ap'?'Wer ist für den Deutschen Ärzte Service erreichbar, und wofür?':'Wer operiert Patientinnen und Patienten des Deutschen Ärzte Service?';
+    byId('pfd-name-l').textContent=art==='ap'?'Vor- und Nachname':'Titel und Name';
+    byId('pfd-zwei-l').textContent=PF[art].zwei+(art==='ap'?' (optional)':'');
+    byId('pfd-zwei').placeholder=art==='ap'?'z. B. Praxismanagement, Abrechnung':'z. B. Fachärztin für Plastische und Ästhetische Chirurgie';
+    byId('pfd-kontakt').hidden=art!=='ap';byId('pfd-haupt-box').hidden=art!=='ap';byId('pfd-schwer-box').hidden=art!=='arzt';
+    byId('pfd-name').value=x.name;byId('pfd-zwei').value=x.zwei||'';byId('pfd-tel').value=x.tel||'';byId('pfd-mail').value=x.mail||'';byId('pfd-schwer').value=x.schwer||'';byId('pfd-haupt').checked=!!x.haupt;
+    dlgP.showModal();
+  }
+  byId('f-pf').addEventListener('input',function(){byId('pfd-fehler').hidden=true;});
+  byId('f-pf').addEventListener('submit',function(ev){
+    ev.preventDefault();if(!pfAkt)return;
+    var f=byId('pfd-fehler'),art=pfAkt.art,name=byId('pfd-name').value.trim(),zw=byId('pfd-zwei').value.trim(),mail=byId('pfd-mail').value.trim();
+    function fehler(txt,id){f.textContent=txt;f.hidden=false;byId(id).focus();}
+    if(!name)return fehler('Bitte den Namen angeben.','pfd-name');
+    if(art==='arzt'&&!zw)return fehler('Bitte die Facharztbezeichnung angeben.','pfd-zwei');
+    if(art==='ap'&&mail&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail))return fehler('Bitte eine gültige E-Mail-Adresse angeben.','pfd-mail');
+    var x=art==='ap'?{name:name,zwei:zw,tel:byId('pfd-tel').value.trim(),mail:mail,haupt:byId('pfd-haupt').checked}:{name:name,zwei:zw,schwer:byId('pfd-schwer').value.trim()};
+    if(x.haupt)profil.ap.forEach(function(a){a.haupt=false;});
+    var neu=pfAkt.i<0,i=neu?profil[art].length:pfAkt.i;profil[art][i]=x;
+    pfAkt=null;dlgP.close();zeichneProfil();toast(PF[art].einer+(neu?' hinzugefügt: ':' gespeichert: ')+name);
+    var b=document.querySelector('[data-pf-edit="'+art+':'+i+'"]');if(b)b.focus();
+  });
+  byId('view-profil').addEventListener('click',function(ev){
+    var n=ev.target.closest('[data-pf-neu]');if(n){oeffneProfilEintrag(n.getAttribute('data-pf-neu'));return;}
+    var e=ev.target.closest('[data-pf-edit]');if(e){var t=e.getAttribute('data-pf-edit').split(':');oeffneProfilEintrag(t[0],+t[1]);return;}
+    var w=ev.target.closest('[data-pf-weg]');
+    if(w){var key=w.getAttribute('data-pf-weg'),k=key.split(':');
+      if(pfWeg!==key||ev.detail>1){pfWeg=key;zeichneProfil();var nb=document.querySelector('[data-pf-weg="'+key+'"]');if(nb)nb.focus();return;}
+      var weg=profil[k[0]].splice(+k[1],1)[0];pfWeg='';zeichneProfil();toast(PF[k[0]].einer+' entfernt: '+weg.name);byId('h-profil').setAttribute('tabindex','-1');byId('h-profil').focus();}
+  });
+  document.addEventListener('click',function(ev){if(pfWeg&&!ev.target.closest('[data-pf-weg]')){pfWeg='';zeichneProfil();}});
+
   // ---------- Chat mit dem Deutschen Ärzte Service (angedeutet, Antworten sind Beispiele) ----------
-  var chatOffen=false,chatNeu=1,chatT1,chatT2;
-  var chatLauf=[{von:'sie',t:'Guten Tag, wir haben Ihnen diese Woche zwei neue Patientinnen übermittelt. Schreiben Sie uns einfach hier, wenn etwas unklar ist.',d:tag(0,9,12)}];
+  var chatOffen=false,chatT1,chatT2,chatVon=null;
+  var chatLauf=(function(){
+    var a=finde('P-20263'),b=finde('P-20409'),c=finde('P-20351');
+    return [
+      {von:'sie',titel:'Abrechnung',t:a.vor+' '+a.nach+' ('+a.id+'): Für die Abrechnung fehlt uns noch die Schlussrechnung der Klinik.',d:tag(0,8,40),neu:true},
+      {von:'sie',titel:'Nachkontakt',t:b.vor+' '+b.nach+' ('+b.id+') wartet auf Terminvorschläge. Bitte kontaktieren Sie sie noch einmal.',d:tag(0,9,5),neu:true},
+      {von:'sie',titel:'OP-Termin',t:'Findet die OP von '+c.vor+' '+c.nach+' am '+datum(c.op)+' wie geplant statt?',d:tag(0,9,30),neu:true}
+    ];
+  })();
   function chatZeit(d){return zwei(d.getHours())+':'+zwei(d.getMinutes());}
-  function chatZeile(m){
-    return '<div class="msg '+m.von+'"><p>'+esc(m.t)+'</p><small>'+(m.von==='sie'?'Partnerbetreuung · '+chatZeit(m.d):chatZeit(m.d)+' · <span class="st">'+(m.gelesen?'gelesen':'zugestellt')+'</span>')+'</small></div>';
+  function chatZahl(){return chatLauf.filter(function(m){return m.von==='sie'&&m.neu;}).length;}
+  function chatZeile(m,i){
+    return '<div class="msg '+m.von+'" data-i="'+i+'"><p>'+(m.titel?'<b>'+esc(m.titel)+'</b>':'')+esc(m.t)+'</p><small>'+(m.von==='sie'?'Partnerbetreuung · '+chatZeit(m.d):chatZeit(m.d)+' · <span class="st">'+(m.gelesen?'gelesen':'zugestellt')+'</span>')+'</small></div>';
   }
   function chatUnten(){var v=byId('chat-verlauf');v.scrollTop=v.scrollHeight;}
+  // Zähler an beiden Auslösern und die Vorschau in der Seitenleiste
   function chatMarke(){
-    var b=byId('chat-badge');b.hidden=!chatNeu;b.textContent=chatNeu;
-    byId('chat-fab').setAttribute('aria-label',chatOffen?'Chat schließen':'Chat mit dem Deutschen Ärzte Service öffnen'+(chatNeu?', '+chatNeu+(chatNeu>1?' neue Nachrichten':' neue Nachricht'):''));
+    var n=chatZahl(),txt=chatOffen?'Chat schließen':'Chat mit dem Deutschen Ärzte Service öffnen'+(n?', '+n+(n>1?' neue Nachrichten':' neue Nachricht'):'');
+    var b=byId('chat-badge');b.hidden=!n;b.textContent=n;byId('chat-fab').setAttribute('aria-label',txt);
+    var z=byId('chat-zahl-seite');z.hidden=!n;z.textContent=n;byId('chat-seite').setAttribute('aria-label','Nachrichten. '+txt);
+    var letzte=[];for(var i=chatLauf.length-1;i>=0&&letzte.length<3;i--)if(chatLauf[i].von==='sie')letzte.push(i);
+    byId('chat-vorschau').innerHTML=letzte.map(function(i){var m=chatLauf[i];
+      return '<li'+(m.neu?' class="neu"':'')+'><button type="button" data-chat-msg="'+i+'"><i class="pkt" aria-hidden="true"></i><b>'+esc(m.titel||'Antwort')+(m.neu?'<span class="sr-neu"> (neu)</span>':'')+'</b><time>'+chatZeit(m.d)+'</time><span class="tx">'+esc(m.t)+'</span></button></li>';}).join('');
   }
   function chatPlus(m){
     chatLauf.push(m);var tp=byId('chat-tippt');if(tp)tp.remove();
-    byId('chat-verlauf').insertAdjacentHTML('beforeend',chatZeile(m));chatUnten();
+    byId('chat-verlauf').insertAdjacentHTML('beforeend',chatZeile(m,chatLauf.length-1));chatUnten();
   }
-  function chatAuf(auf){
-    chatOffen=auf;byId('chat').hidden=!auf;byId('chat-fab').setAttribute('aria-expanded',auf?'true':'false');
-    if(auf){chatNeu=0;chatMarke();chatUnten();byId('chat-text').focus();}else{chatMarke();byId('chat-fab').focus();}
+  function chatAuf(auf,zeige){
+    chatOffen=auf;byId('chat').hidden=!auf;
+    ['chat-fab','chat-seite'].forEach(function(id){byId(id).setAttribute('aria-expanded',auf?'true':'false');});
+    if(auf){
+      chatLauf.forEach(function(m){m.neu=false;});chatMarke();
+      var ziel=zeige!=null?byId('chat-verlauf').querySelector('[data-i="'+zeige+'"]'):null;
+      if(ziel){ziel.scrollIntoView({block:'center'});ziel.classList.add('blink');setTimeout(function(){ziel.classList.remove('blink');},1600);}else chatUnten();
+      byId('chat-text').focus();
+    }else{chatMarke();if(chatVon&&chatVon.offsetParent!==null)chatVon.focus();}
   }
   function chatAntwort(text){
     var t=text.toLowerCase();
+    if(/rechnung|abrechn/.test(t))return 'Danke. Sobald die Schlussrechnung da ist, schließen wir die Abrechnung ab.';
+    if(/kontaktier|melde mich|anruf|rufe/.test(t))return 'Danke. Tragen Sie den Kontakt bitte kurz in der Akte ein, dann sehen wir ihn hier sofort.';
+    if(/\bop\b|operation|findet/.test(t))return 'Perfekt, danke für die Bestätigung. Wir vermerken den Termin als bestätigt.';
     if(/schaden|protokoll|revision/.test(t))return 'Danke, das Schadensprotokoll sehen wir bei uns. Wir prüfen die Unterlagen und melden uns hier, falls noch etwas fehlt.';
-    if(/rückruf|zurück|anruf|telefon/.test(t))return 'Gern. Wir rufen Sie heute noch in der Praxis zurück.';
-    if(/patient|termin|beratung|operation|\bop\b/.test(t))return 'Danke für die Info, wir haben das bei der Patientin vermerkt. Brauchen Sie dazu noch etwas von uns?';
+    if(/rückruf|zurück|telefon/.test(t))return 'Gern. Wir rufen Sie heute noch in der Praxis zurück.';
     return 'Danke für Ihre Nachricht. Wir kümmern uns darum und melden uns hier im Chat.';
   }
   function chatSende(text){
     text=text.trim();if(!text)return;
-    chatPlus({von:'ich',t:text,d:new Date()});byId('chat-schnell').hidden=true;
+    chatPlus({von:'ich',t:text,d:new Date()});
     clearTimeout(chatT1);clearTimeout(chatT2);
     chatT1=setTimeout(function(){
       chatLauf.forEach(function(x){if(x.von==='ich')x.gelesen=true;});
@@ -1295,13 +1615,14 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       if(!byId('chat-tippt'))byId('chat-verlauf').insertAdjacentHTML('beforeend','<div class="msg sie tippt" id="chat-tippt" aria-hidden="true"><p><i></i><i></i><i></i></p></div>');
       chatUnten();
     },900);
-    chatT2=setTimeout(function(){chatPlus({von:'sie',t:chatAntwort(text),d:new Date()});if(!chatOffen){chatNeu++;chatMarke();}},2600);
+    chatT2=setTimeout(function(){chatPlus({von:'sie',t:chatAntwort(text),d:new Date(),neu:!chatOffen});chatMarke();},2600);
   }
   byId('chat-verlauf').innerHTML=chatLauf.map(chatZeile).join('');chatMarke();
-  byId('chat-fab').addEventListener('click',function(){chatAuf(!chatOffen);});
+  ['chat-fab','chat-seite'].forEach(function(id){byId(id).addEventListener('click',function(){chatVon=this;chatAuf(!chatOffen);});});
+  byId('chat-vorschau').addEventListener('click',function(ev){var b=ev.target.closest('[data-chat-msg]');if(b){chatVon=byId('chat-seite');chatAuf(true,+b.getAttribute('data-chat-msg'));}});
   byId('chat-zu').addEventListener('click',function(){chatAuf(false);});
   byId('chat').addEventListener('keydown',function(ev){if(ev.key==='Escape'){ev.stopPropagation();chatAuf(false);}});
-  byId('chat-schnell').addEventListener('click',function(ev){var b=ev.target.closest('[data-chat]');if(b){chatSende(b.getAttribute('data-chat'));byId('chat-text').focus();}});
+  byId('chat-schnell').addEventListener('click',function(ev){var b=ev.target.closest('[data-chat]');if(b){chatSende(b.getAttribute('data-chat'));b.remove();if(!byId('chat-schnell').children.length)byId('chat-schnell').hidden=true;byId('chat-text').focus();}});
   byId('chat-form').addEventListener('submit',function(ev){ev.preventDefault();var f=byId('chat-text');chatSende(f.value);f.value='';f.style.height='';f.focus();});
   byId('chat-text').addEventListener('keydown',function(ev){if(ev.key==='Enter'&&!ev.shiftKey){ev.preventDefault();byId('chat-form').requestSubmit();}});
   byId('chat-text').addEventListener('input',function(){this.style.height='';this.style.height=Math.min(this.scrollHeight+2,110)+'px';});
