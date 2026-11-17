@@ -66,6 +66,20 @@ p{margin:0}
 .dark{background:var(--schwarz);color:#C9CDD2}
 .dark h1,.dark h2,.dark h3{color:var(--weiss)}
 .dark .lead{color:#AEB3BA}
+/* Bildband mit Originalfoto der bisherigen Webseite */
+.lebens{padding-block:0;background:var(--lebens-bg,#EFCADD);overflow:hidden}
+.lebens .wrap{position:relative;display:grid;align-items:center;min-height:clamp(380px,36vw,470px)}
+.lebens-text{position:relative;z-index:1;display:grid;gap:1rem;max-width:min(500px,46%);padding-block:3rem}
+.lebens-text h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+.lebens-text .lead{color:var(--stahl-800);font-size:1.02rem}
+.lebens-text .btn{justify-self:start}
+.lebens-bild{position:absolute;right:-70px;bottom:0;height:100%;width:auto;max-width:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%)}
+@media (max-width:1000px){
+  .lebens .wrap{min-height:0;display:block;padding-top:2.6rem}
+  .lebens-text{max-width:none;padding-block:0 1.4rem}
+  .lebens-bild{position:static;display:block;width:calc(100% + var(--gutter-l) + var(--gutter-r));max-width:none;height:auto;aspect-ratio:1170/500;object-fit:cover;margin-inline:calc(-1 * var(--gutter-l)) calc(-1 * var(--gutter-r));-webkit-mask-image:none;mask-image:none}
+}
+@media (max-width:520px){.lebens-bild{aspect-ratio:4/3;object-position:center top}}
 .grau{background:var(--stahl-50)}
 
 /* Topbar + Header */
@@ -595,6 +609,18 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
       <a class="treat" href="#kontakt"><h3>Facelifting</h3><p>Strafft Gesicht und Hals für ein frisches, natürlich wirkendes Ergebnis.</p><div class="row"><span class="mono">Komplettpreis ab</span><b>3.499 €</b></div><span class="more">Beratung anfragen →</span></a>
     </div>
     <p class="note-small">Alle Angaben sind Vorabinformationen und ersetzen nicht das ärztliche Aufklärungsgespräch. Den Behandlungsvertrag schließen Sie direkt mit der Klinik.</p>
+  </div>
+</section>
+
+<section class="lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Sich im eigenen Körper wohlfühlen.</h2>
+      <p class="lead">Ob Brust, Körper oder Gesicht: Wir finden den Facharzt, der genau Ihren Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="bilder/lebensfreude-1.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="1170" height="500" loading="lazy">
   </div>
 </section>
 

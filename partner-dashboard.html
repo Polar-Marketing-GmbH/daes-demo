@@ -249,6 +249,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .ak-tabs i{font-style:normal;font-size:.74rem;font-weight:700;background:var(--stahl-200);color:var(--stahl-800);border-radius:999px;padding:.05rem .5rem;font-variant-numeric:tabular-nums}
 .ak-tabs button[aria-selected="true"] i{background:rgba(255,255,255,.24);color:var(--weiss)}
 @media (max-width:520px){.ak-tabs{gap:.35rem}.ak-tabs button{flex-direction:column;gap:.25rem;padding:.6rem .3rem;font-size:.82rem}}
+@media (max-width:350px){.ak-tabs{gap:.25rem}.ak-tabs button{font-size:.74rem;padding:.6rem .1rem}}
 .akte-akt{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:flex-end;align-items:center;margin-left:auto}
 .akte-kopf > div:first-child{flex:1 1 220px;min-width:0}
 .ak-drop{position:sticky;top:.5rem;z-index:5;display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.9rem 1rem;border-radius:12px;background:var(--violett);color:var(--weiss);font-weight:600;box-shadow:0 16px 30px -14px rgba(129,38,133,.9);pointer-events:none}
@@ -268,7 +269,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .ak-docs b{display:block;font-size:.9rem;font-weight:600;color:var(--schwarz);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ak-docs span{display:block;font-size:.78rem;color:var(--stahl-600)}
 .ak-docs .kein{display:block;padding:1.2rem;text-align:center;color:var(--stahl-600);font-size:.9rem}
-@media (max-width:520px){.ak-docs li{grid-template-columns:auto minmax(0,1fr) auto}.ak-docs li .btn{grid-column:2/-1;justify-self:start}}
+@media (max-width:520px){.ak-docs li{grid-template-columns:auto minmax(0,1fr) auto}.ak-docs li > div{grid-column:2/-1}.ak-docs li .btn{grid-column:2;justify-self:start}.ak-docs li > span:empty{display:none}}
 .btn-ico{padding:.4rem .5rem}
 /* Schadensprotokoll in sechs Schritten */
 #dlg-sp{width:min(760px,calc(100vw - 24px))}
@@ -358,6 +359,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .chat-zu:hover{background:rgba(255,255,255,.28)}
 .chat-kopf :focus-visible{outline-color:var(--weiss)}
 .chat-verlauf{padding:1rem;overflow-y:auto;display:flex;flex-direction:column;gap:.65rem;background:var(--stahl-50)}
+.chat-verlauf:focus-visible{outline-offset:-3px}
 .msg{max-width:86%;display:grid;gap:.2rem}
 .msg p{padding:.6rem .8rem;border-radius:14px;font-size:.9rem;line-height:1.45;overflow-wrap:anywhere;white-space:pre-wrap}
 .msg small{font-size:.7rem;color:var(--stahl-600)}
@@ -377,15 +379,35 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .chat-form textarea{flex:1;min-width:0;resize:none;height:42px;max-height:110px;font:500 .92rem var(--text);padding:.6rem .75rem;border:1px solid var(--stahl-200);border-radius:10px;background:var(--weiss);color:var(--schwarz);line-height:1.4}
 .chat-form .btn{padding:.62rem .72rem;height:42px}
 .chat-hinweis{font-size:.72rem;line-height:1.45;color:var(--stahl-600);padding:0 1rem .8rem}
+@media (max-height:520px){.chat-schnell,.chat-hinweis{display:none}}
 .msg p b{display:block;font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--violett);margin-bottom:.2rem}
 .msg.blink p{box-shadow:0 0 0 2px var(--violett)}
 .sr-neu{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+/* Angedeutete Bereiche: Abrechnung, Schulung, News und Ratgeber */
+.bald{display:flex;gap:.6rem;align-items:flex-start;font-size:.86rem;color:var(--stahl-600);background:var(--violett-tint);border-radius:10px;padding:.7rem .9rem}
+.bald .ico{width:16px;height:16px;margin-top:.15rem;color:var(--violett)}
+.modul{display:grid;grid-template-columns:2.4rem minmax(0,1fr) auto;gap:.1rem 1rem;align-items:center;padding:.95rem 1.1rem;border-bottom:1px solid var(--stahl-100)}
+.modul:last-child{border-bottom:0}
+.modul .nr{font-size:1.5rem;font-weight:600;color:var(--violett);font-variant-numeric:tabular-nums;line-height:1}
+.modul b{display:block;color:var(--schwarz);font-weight:600}
+.modul span{display:block;font-size:.86rem;color:var(--stahl-600)}
+.modul .re{text-align:right;font-size:.8rem;color:var(--stahl-600);white-space:nowrap}
+.modul .re b{font-size:.8rem;font-weight:600;color:var(--violett)}
+.news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.news article{background:var(--weiss);border:1px solid var(--stahl-200);border-radius:var(--r);padding:1.15rem;display:grid;gap:.5rem;align-content:start}
+.news small{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violett)}
+.news h2{font-size:1.05rem;line-height:1.3}
+.news p{font-size:.9rem;color:var(--stahl-600)}
+.news time{font-size:.78rem;color:var(--stahl-600);font-variant-numeric:tabular-nums}
+@media (max-width:900px){.news{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.modul{grid-template-columns:2rem minmax(0,1fr)}.modul .re{grid-column:2;text-align:left}}
 /* Profil */
 .pf-body{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;padding:1.1rem}
 .pf-body .breit{grid-column:1/-1}
 .pf-foot{display:flex;justify-content:flex-end;align-items:center;gap:1rem;flex-wrap:wrap}
 .pf-zeile{display:flex;justify-content:space-between;align-items:center;gap:.6rem 1rem;flex-wrap:wrap;padding:.85rem 1.1rem;border-bottom:1px solid var(--stahl-100)}
 .pf-zeile:last-child{border-bottom:0}
+.pf-zeile .akt{display:flex;gap:.4rem;flex-wrap:wrap}
 .pf-zeile > div:first-child{min-width:0;flex:1 1 260px}
 .pf-zeile b{color:var(--schwarz);font-weight:600}
 .pf-zeile em{font-style:normal;font-size:.78rem;font-weight:600;color:var(--violett);margin-left:.55rem}
@@ -394,15 +416,17 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .pf-haupt{display:flex;gap:.6rem;align-items:center;font-size:.88rem;cursor:pointer}
 .pf-haupt input{width:18px;height:18px;margin:0;accent-color:var(--violett);flex:none}
 .prof-mobil{display:none}
+.prof-mobil[aria-current="page"]{background:var(--leiste-aktiv);color:var(--weiss)}
 @media (max-width:640px){.pf-body{grid-template-columns:minmax(0,1fr)}}
 /* Nachrichten als Zeile in der Navigation, Zähler rechts */
-.nav .nav-chat{display:flex;align-items:center;gap:.7rem;width:100%;padding:.62rem .7rem;border:0;border-radius:8px;background:none;font:500 .93rem var(--text);color:var(--leiste-text);cursor:pointer;text-align:left;transition:background .15s ease,color .15s ease}
+.nav .nav-chat{display:flex;align-items:center;gap:.7rem;width:100%;padding:.62rem .7rem;border:0;border-radius:8px;background:none;font:500 .93rem/1.55 var(--text);color:var(--leiste-text);cursor:pointer;text-align:left;transition:background .15s ease,color .15s ease}
 .nav .nav-chat:hover,.nav .nav-chat[aria-expanded="true"]{background:var(--leiste-aktiv);color:var(--weiss)}
 .nav .nav-chat .zahl{background:var(--violett-hell);color:var(--schwarz)}
 @media (min-width:901px){
   .chat-fab{display:none}
   .chat{left:278px;right:auto;bottom:16px;height:min(580px,calc(100vh - 32px));height:min(580px,calc(100dvh - 32px))}
 }
+@media (min-width:901px) and (max-height:799px){.nav{padding-top:.5rem;padding-bottom:.5rem}.nav-label{display:none}.nav a,.nav .nav-chat{padding-top:.45rem;padding-bottom:.45rem}.nav .sub a{padding-top:.28rem;padding-bottom:.28rem}.side-foot{padding:.55rem 1rem .6rem;gap:.25rem}}
 @media (max-width:900px){
   .nav .nav-chat{display:none}
   .nav a[data-view="profil"]{display:none}
@@ -457,12 +481,15 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
         <a href="#patienten/op" data-sub="op">OP-Termin festgelegt<span class="zahl" data-subzahl="op"></span></a>
       </div>
       <a href="#schadensprotokolle" data-view="schadensprotokolle"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M12 12v4M12 18.5h.01"/></svg><span class="lang">Schadensprotokolle</span><span class="kurz">Protokolle</span><span class="zahl" id="nav-zahl-sp"></span></a>
+      <a href="#abrechnung" data-view="abrechnung"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg><span>Abrechnung</span><span class="zahl" id="nav-zahl-ab"></span></a>
+      <a href="#schulung" data-view="schulung"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.500 9L12 4.500 21.500 9 12 13.500z"/><path d="M6.500 11.200V16c1.500 1.400 3.400 2 5.500 2s4-.600 5.500-2v-4.800M21.500 9v5"/></svg><span>Schulung</span></a>
+      <a href="#news" data-view="news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="15" rx="1.500"/><path d="M17 9h4v9a2 2 0 0 1-4 0M7 9h6M7 13h6M7 16.500h3.500"/></svg><span class="lang">News &amp; Ratgeber</span><span class="kurz">News</span></a>
       <button type="button" class="nav-chat" id="chat-seite" aria-expanded="false" aria-controls="chat"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8 9.500h8M8 12.500h5"/></svg><span>Nachrichten</span><span class="zahl" id="chat-zahl-seite" aria-hidden="true"></span></button>
       <a href="#profil" data-view="profil"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c1.200-3.600 3.800-5.500 7-5.500s5.800 1.900 7 5.500"/></svg><span>Profil</span></a>
     </nav>
     <div class="side-foot">
       <div class="wer"><b id="wer">Arzt-Testzugang</b><span id="wer-klinik">Beispielklinik München · Arzt-Zugang</span></div>
-      <a class="out prof-mobil" href="#profil" aria-label="Profil"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c1.200-3.600 3.800-5.500 7-5.500s5.800 1.900 7 5.500"/></svg></a>
+      <a class="out prof-mobil" href="#profil" data-view="profil" aria-label="Profil"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c1.200-3.600 3.800-5.500 7-5.500s5.800 1.900 7 5.500"/></svg></a>
       <a class="out" href="partner-login.html" id="abmelden" aria-label="Abmelden"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg><span>Abmelden</span></a>
     </div>
   </aside>
@@ -573,6 +600,56 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
             <button class="btn btn-primary" type="button" data-sp-neu><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Schadensprotokoll anlegen</button>
           </div>
           <div class="card"><div class="scroll" id="tab-sp"></div></div>
+        </div>
+      </section>
+
+      <!-- Abrechnung (angedeutet) -->
+      <section id="view-abrechnung" aria-labelledby="h-ab" hidden>
+        <div class="inner">
+          <div class="head"><div>
+            <div class="eyebrow">Abrechnung</div>
+            <h1 id="h-ab">Abrechnung</h1>
+            <p>Welche Operationen sind durchgeführt und noch nicht abgerechnet, und was ist bereits erledigt.</p>
+          </div></div>
+          <p class="bald"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Dieser Bereich ist angedeutet. Rechnungen, Gutschriften und Auszahlungen folgen im nächsten Schritt.</span></p>
+          <div class="kpis" id="ab-kpis"></div>
+          <div class="card">
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Durchgeführte Operationen</h2></div>
+            <div class="scroll" id="tab-ab"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Verkaufsschulung (angedeutet) -->
+      <section id="view-schulung" aria-labelledby="h-sch" hidden>
+        <div class="inner">
+          <div class="head"><div>
+            <div class="eyebrow">Schulung</div>
+            <h1 id="h-sch">Verkaufsschulung für Ärzte</h1>
+            <p>So arbeitet der Deutsche Ärzte Service: die Leitlinien für Erstkontakt, Beratung und Abschluss, in kurzen Einheiten für Sie und Ihr Team.</p>
+          </div></div>
+          <p class="bald"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Dieser Bereich ist angedeutet. Die Einheiten sind Beispielinhalte und werden noch erstellt.</span></p>
+          <div class="card">
+            <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.500 9L12 4.500 21.500 9 12 13.500z"/><path d="M6.500 11.200V16c1.500 1.400 3.400 2 5.500 2s4-.600 5.500-2v-4.800"/></svg>Leitlinien des Deutschen Ärzte Service</h2><span class="muted">0 von 5 Einheiten abgeschlossen</span></div>
+            <div class="modul"><span class="nr">1</span><div><b>Wofür der Deutsche Ärzte Service steht</b><span>Unser Versprechen an Patientinnen und Patienten und was das für Ihre Praxis bedeutet.</span></div><div class="re">12 Min.<b>Bald verfügbar</b></div></div>
+            <div class="modul"><span class="nr">2</span><div><b>Der erste Kontakt</b><span>Zügig anrufen, freundlich nachfassen und jeden Kontakt im Portal festhalten.</span></div><div class="re">15 Min.<b>Bald verfügbar</b></div></div>
+            <div class="modul"><span class="nr">3</span><div><b>Das Beratungsgespräch</b><span>Wünsche verstehen, ehrlich beraten und den Festpreis verständlich erklären.</span></div><div class="re">20 Min.<b>Bald verfügbar</b></div></div>
+            <div class="modul"><span class="nr">4</span><div><b>Vom Gespräch zum OP-Termin</b><span>Bedenkzeit begleiten, Finanzierung ansprechen und den Termin festlegen.</span></div><div class="re">15 Min.<b>Bald verfügbar</b></div></div>
+            <div class="modul"><span class="nr">5</span><div><b>Nachsorge und Rückmeldungen</b><span>Betreuung nach der Operation und der Umgang mit Bewertungen und Beschwerden.</span></div><div class="re">10 Min.<b>Bald verfügbar</b></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- News und Ratgeber (angedeutet) -->
+      <section id="view-news" aria-labelledby="h-news" hidden>
+        <div class="inner">
+          <div class="head"><div>
+            <div class="eyebrow">News &amp; Ratgeber</div>
+            <h1 id="h-news">Neues vom Deutschen Ärzte Service</h1>
+            <p>Mitteilungen für Partner und Ratgeber, die Sie an Patientinnen und Patienten weitergeben können.</p>
+          </div></div>
+          <p class="bald"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Dieser Bereich ist angedeutet. Die Beiträge sind Beispiele.</span></p>
+          <div class="news" id="news"></div>
         </div>
       </section>
 
@@ -904,6 +981,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     var stufe=REIHE.indexOf(p.status);
     if(p.status!=='abgelehnt'&&stufe>=1)fuegeKontakt(p,{d:plus(p.zugeteilt,1,10),art:'anruf',erg:'erreicht',ein:stufe>=3?'ja':'offen',wer:'Praxisteam',notiz:''});
   });
+  protokolle.forEach(function(s){var q=finde(s.pid),u=s.unterlagen||{},n=0;Object.keys(u).forEach(function(k){n+=u[k];});if(q)q.verlauf.push({d:plus(s.datum,0,16),kopf:'Schadensprotokoll',t:s.nr+' eingereicht, '+n+' Unterlagen. '+s.art+'.'});});
   // Weitere Beispielkontakte (erfunden)
   fuegeKontakt(patienten[1],{d:tag(-1,16,20),art:'anruf',erg:'nicht',ein:'offen',wer:'Praxisteam',notiz:'Mailbox, kein Rückruf.'});
   fuegeKontakt(patienten[2],{d:tag(-2,9,15),art:'email',erg:'nachricht',ein:'offen',wer:'Praxisteam',notiz:'Terminvorschläge per E-Mail geschickt.'});
@@ -1064,7 +1142,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   }
 
   function alles(){
-    zeichneDashboard();zeichnePatienten();zeichneKalender();zeichneProtokolle();zeichneProfil();
+    zeichneDashboard();zeichnePatienten();zeichneKalender();zeichneProtokolle();zeichneProfil();zeichneAbrechnung();
     byId('nav-zahl-pat').textContent=patienten.length;byId('nav-zahl-sp').textContent=protokolle.length;
   }
 
@@ -1096,7 +1174,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     });
     if(fokus)byId('akt-'+akteTab).focus();
   }
-  function oeffneAkte(pid){var p=finde(pid);if(!p)return;if(!dlgA.open||aktePid!==pid){if(!dlgA.open&&akteZurueckTab){akteTab=akteZurueckTab;}else akteTab='uebersicht';}akteZurueckTab='';if(aktePid!==pid||!dlgA.open)byId('ak-notiz').hidden=true;aktePid=pid;byId('ak-fehler').hidden=true;zeichneAkte(p);if(!dlgA.open)dlgA.showModal();}
+  function oeffneAkte(pid){var p=finde(pid);if(!p)return;if(!dlgA.open||aktePid!==pid){if(!dlgA.open&&akteZurueckTab){akteTab=akteZurueckTab;}else akteTab='uebersicht';}akteZurueckTab='';if(aktePid!==pid||!dlgA.open)byId('ak-notiz').hidden=true;aktePid=pid;byId('ak-fehler').hidden=true;zeichneAkte(p);if(!dlgA.open)dlgA.showModal();toastOrt();}
   var akteZurueckTab='';
   // Unterlagen: Beispiel-PDF für den Download erzeugen, echte Dateien direkt ausgeben
   function ascii(s){return s.replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/Ä/g,'Ae').replace(/Ö/g,'Oe').replace(/Ü/g,'Ue').replace(/ß/g,'ss').replace(/[^\x20-\x7E]/g,'?');}
@@ -1171,7 +1249,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     if(dl){var u=p.unterlagen[+dl.getAttribute('data-ak-dl')];if(!u)return;
       ladeHerunter(u.datei||beispielPdf([u.typ+': '+u.name,'Patientin: '+p.vor+' '+p.nach+' ('+p.id+'), '+p.eingriff,'Abgelegt am '+datum(u.d)+' von '+u.von,'','Beispieldokument aus der Demo DAES Connect.','Alle Personen und Vorgaenge sind erfunden.']),u.datei?u.name:u.name.replace(/\.[a-z]+$/i,'')+'.pdf');return;}
     var wg=ev.target.closest('[data-ak-weg]');
-    if(wg){var i=+wg.getAttribute('data-ak-weg'),x=p.unterlagen[i];if(!x||!x.neu)return;p.unterlagen.splice(i,1);p.verlauf.push({d:new Date(),kopf:'Unterlage',t:'entfernt: '+x.name+'.'});zeichneAkte(p);byId('akt-unterlagen').focus();}
+    if(wg){var i=+wg.getAttribute('data-ak-weg'),x=p.unterlagen[i];if(!x||!x.neu||ev.detail>1)return;p.unterlagen.splice(i,1);p.verlauf.push({d:new Date(),kopf:'Unterlage',t:'entfernt: '+x.name+'.'});zeichneAkte(p);byId('akt-unterlagen').focus();}
   });
   byId('akt-uebersicht').parentNode.addEventListener('keydown',function(ev){
     var r=['uebersicht','unterlagen','protokoll'],i=r.indexOf(akteTab);
@@ -1210,11 +1288,11 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   }
 
   // ---------- Ansichten (Hash) ----------
-  var ANSICHTEN=['dashboard','patienten','kalender','schadensprotokolle','profil'];
+  var ANSICHTEN=['dashboard','patienten','kalender','schadensprotokolle','abrechnung','schulung','news','profil'];
   function zeige(){
     var teile=route.split('/'),v=teile[0];if(ANSICHTEN.indexOf(v)<0)v='dashboard';
     ANSICHTEN.forEach(function(a){byId('view-'+a).hidden=a!==v;});
-    document.querySelectorAll('.nav a[data-view]').forEach(function(a){if(a.getAttribute('data-view')===v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    document.querySelectorAll('.side a[data-view]').forEach(function(a){if(a.getAttribute('data-view')===v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     byId('side-sub').hidden=v!=='patienten';
     if(v==='patienten'){patSub=Object.prototype.hasOwnProperty.call(SUBS,teile[1])?teile[1]:'';zeichneUnterliste();}
     window.scrollTo(0,0);
@@ -1232,7 +1310,9 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 
   // ---------- Toast ----------
   var toastTimer;
-  function toast(t){byId('toast-text').textContent=t;byId('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(function(){byId('toast').hidden=true;},3200);}
+  function toastOrt(){var el=byId('toast'),ziel=document.querySelector('dialog[open]')||document.body;if(el.parentNode!==ziel)ziel.appendChild(el);}
+  function toast(t){toastOrt();byId('toast-text').textContent=t;byId('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(function(){byId('toast').hidden=true;},3200);}
+  document.querySelectorAll('dialog').forEach(function(dl){dl.addEventListener('close',function(){setTimeout(toastOrt,0);});});
 
   // ---------- Dialog: Update ----------
   var dlgU=byId('dlg-update'),aktuell=null;
@@ -1507,7 +1587,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     var sw=ev.target.closest('[data-sp-weg]');
     if(sw){var nr=sw.getAttribute('data-sp-weg');
       if(spWeg!==nr||ev.detail>1){spWeg=nr;zeichneProtokolle();var nb=document.querySelector('[data-sp-weg="'+nr+'"]');if(nb)nb.focus();return;}
-      protokolle=protokolle.filter(function(x){return x.nr!==nr;});spWeg='';alles();toast('Schadensprotokoll '+nr+' gelöscht');var h=byId('h-sp');h.setAttribute('tabindex','-1');h.focus();return;}
+      var spAlt=protokolle.filter(function(x){return x.nr===nr;})[0],spPat=spAlt&&finde(spAlt.pid);if(spPat)spPat.verlauf.push({d:new Date(),kopf:'Schadensprotokoll',t:nr+' gelöscht.'});protokolle=protokolle.filter(function(x){return x.nr!==nr;});spWeg='';alles();toast('Schadensprotokoll '+nr+' gelöscht');var h=byId('h-sp');h.setAttribute('tabindex','-1');h.focus();return;}
     if(spWeg){spWeg='';zeichneProtokolle();}
     var z=ev.target.closest('[data-zu]');if(z){z.closest('dialog').close();return;}
     var f=ev.target.closest('[data-eingriff]');if(f){fEingriff=f.getAttribute('data-eingriff');zeichnePatienten();var fp=byId('pills').querySelector('[aria-pressed="true"]');if(fp)fp.focus();}
@@ -1522,6 +1602,22 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   // Name aus der Anmeldung übernehmen, falls der Browser den Zwischenspeicher zulässt
   try{var n=sessionStorage.getItem('daes-partner');if(n==='Testzugang')n='Arzt-Testzugang';if(n){byId('wer').textContent=n;byId('gruss').textContent=n;}}catch(e){}
   byId('abmelden').addEventListener('click',function(){try{sessionStorage.removeItem('daes-partner');}catch(e){}});
+
+  // ---------- Abrechnung und News (angedeutet, aus den Beispieldaten) ----------
+  function zeichneAbrechnung(){
+    var offen=patienten.filter(function(p){return p.status==='op_erfolgt';}),fertig=patienten.filter(function(p){return p.status==='abgeschlossen';});
+    byId('ab-kpis').innerHTML=[[offen.length,'Noch abzurechnen'],[fertig.length,'Abgerechnet'],[offen.length+fertig.length,'Durchgeführte OPs']].map(function(x){return '<div class="kpi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('');
+    byId('nav-zahl-ab').textContent=offen.length||'';byId('nav-zahl-ab').hidden=!offen.length;
+    byId('tab-ab').innerHTML=tabelle(['Patient','Eingriff','OP am','Stand',''],offen.concat(fertig).sort(function(a,b){return (b.op||0)-(a.op||0);}).map(function(p){
+      var off=p.status==='op_erfolgt';
+      return '<tr><td>'+nameZelle(p)+'</td><td>'+esc(p.eingriff)+'</td><td class="num">'+(p.op?datum(p.op):'<span class="muted">ohne Angabe</span>')+'</td><td><span class="pill '+(off?'t-amber':'t-green')+'">'+(off?'Noch abzurechnen':'Abgerechnet')+'</span></td><td class="akt">'+knoepfe(p)+'</td></tr>';
+    }),'Noch keine durchgeführten Operationen','Sobald eine OP als durchgeführt eingetragen ist, erscheint sie hier.');
+  }
+  byId('news').innerHTML=[
+    {k:'Portal',t:'Schadensprotokolle jetzt direkt in DÄS Connect',x:'OP-Bericht, Arztbrief, Fotos und Kostenvoranschlag laden Sie in sechs Schritten hoch. Wir sehen den Vorgang sofort.',d:tag(-2)},
+    {k:'Ratgeber',t:'Die häufigsten Fragen vor einer Brustvergrößerung',x:'Zum Weitergeben an Ihre Patientinnen: Implantate, Narkose, Heilungsverlauf und Kosten verständlich erklärt.',d:tag(-9)},
+    {k:'Ratgeber',t:'Ratenzahlung im Beratungsgespräch ansprechen',x:'Wann der richtige Moment ist und wie Sie die Finanzierung über unsere Partner erklären.',d:tag(-16)}
+  ].map(function(n){return '<article><small>'+esc(n.k)+'</small><h2>'+esc(n.t)+'</h2><p>'+esc(n.x)+'</p><time>'+datum(n.d)+'</time></article>';}).join('');
 
   // ---------- Profil: Kontaktdaten, Ansprechpartner, operierende Ärzte (Beispieldaten) ----------
   var profil={name:'Beispielklinik München',strasse:'Musterstraße 12',plz:'80331',ort:'München',tel:'089 555 0100',mail:'praxis@example.com',web:'www.beispielklinik.example',
@@ -1538,7 +1634,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
         var key=art+':'+i,unten=art==='ap'?[x.zwei,x.tel,x.mail]:[x.zwei,x.schwer];
         return '<div class="pf-zeile"><div><b>'+esc(x.name)+'</b>'+(x.haupt?'<em>Hauptansprechpartner</em>':'')+'<span>'+esc(unten.filter(Boolean).join(' · '))+'</span></div>'+
           '<div class="akt"><button class="btn btn-line btn-sm" type="button" data-pf-edit="'+key+'" aria-label="'+esc(x.name)+' bearbeiten">Bearbeiten</button>'+
-          '<button class="btn btn-line btn-sm'+(pfWeg===key?' sicher':'')+'" type="button" data-pf-weg="'+key+'" aria-label="'+esc(x.name)+' entfernen">'+(pfWeg===key?'Wirklich entfernen?':'Entfernen')+'</button></div></div>';
+          '<button class="btn btn-line btn-sm'+(pfWeg===key?' sicher':'')+'" type="button" data-pf-weg="'+key+'" aria-label="'+esc(x.name)+(pfWeg===key?' wirklich entfernen?':' entfernen')+'">'+(pfWeg===key?'Wirklich entfernen?':'Entfernen')+'</button></div></div>';
       }).join(''):'<div class="leer">'+PF[art].leer+'</div>';
     });
     byId('wer-klinik').textContent=profil.name+' · Arzt-Zugang';
@@ -1574,6 +1670,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     dlgP.showModal();
   }
   byId('f-pf').addEventListener('input',function(){byId('pfd-fehler').hidden=true;});
+  dlgP.addEventListener('close',function(){if(!pfAkt)return;var b=pfAkt.i<0?null:document.querySelector('[data-pf-edit="'+pfAkt.art+':'+pfAkt.i+'"]');pfAkt=null;if(b)b.focus();});
   byId('f-pf').addEventListener('submit',function(ev){
     ev.preventDefault();if(!pfAkt)return;
     var f=byId('pfd-fehler'),art=pfAkt.art,name=byId('pfd-name').value.trim(),zw=byId('pfd-zwei').value.trim(),mail=byId('pfd-mail').value.trim();
@@ -1593,19 +1690,19 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     var w=ev.target.closest('[data-pf-weg]');
     if(w){var key=w.getAttribute('data-pf-weg'),k=key.split(':');
       if(pfWeg!==key||ev.detail>1){pfWeg=key;zeichneProfil();var nb=document.querySelector('[data-pf-weg="'+key+'"]');if(nb)nb.focus();return;}
-      var weg=profil[k[0]].splice(+k[1],1)[0];pfWeg='';zeichneProfil();toast(PF[k[0]].einer+' entfernt: '+weg.name);byId('h-profil').setAttribute('tabindex','-1');byId('h-profil').focus();}
+      var weg=profil[k[0]].splice(+k[1],1)[0];pfWeg='';zeichneProfil();toast(PF[k[0]].einer+' entfernt: '+weg.name);var nz=document.querySelector('[data-pf-neu="'+k[0]+'"]');if(nz)nz.focus();}
   });
   document.addEventListener('click',function(ev){if(pfWeg&&!ev.target.closest('[data-pf-weg]')){pfWeg='';zeichneProfil();}});
 
   // ---------- Chat mit dem Deutschen Ärzte Service (angedeutet, Antworten sind Beispiele) ----------
-  var chatOffen=false,chatT1,chatT2,chatVon=null;
+  var chatOffen=false,chatT1,chatT2,chatVon=null,chatWarte=[];
   var chatLauf=(function(){
-    var a=finde('P-20263'),b=finde('P-20409'),c=finde('P-20351'),e=finde('P-20402');
+    var a=finde('P-20297'),b=finde('P-20409'),c=finde('P-20351'),e=finde('P-20402');
     return [
-      {von:'sie',titel:'Abrechnung',t:a.vor+' '+a.nach+' ('+a.id+'): Für die Abrechnung fehlt uns noch die Schlussrechnung der Klinik.',d:tag(0,8,40),neu:true},
-      {von:'sie',titel:'Nachkontakt',t:b.vor+' '+b.nach+' ('+b.id+') wartet auf Terminvorschläge. Bitte kontaktieren Sie sie noch einmal.',d:tag(0,9,5),neu:true},
-      {von:'sie',titel:'OP-Termin',t:'Findet die OP von '+c.vor+' '+c.nach+' am '+datum(c.op)+' wie geplant statt?',d:tag(0,9,30),neu:true},
-      {von:'sie',titel:'Beratungstermin',t:'Bitte bestätigen Sie den Beratungstermin von '+e.vor+' '+e.nach+' am '+zeit(e.beratung)+' Uhr.',d:tag(0,10,15),neu:true}
+      {von:'sie',titel:'Abrechnung',t:a.vor+' '+a.nach+' ('+a.id+'): Für die Abrechnung fehlt uns noch die Schlussrechnung der Klinik.',d:new Date(Date.now()-95*60000),neu:true},
+      {von:'sie',titel:'Nachkontakt',t:b.vor+' '+b.nach+' ('+b.id+') hat auf die Terminvorschläge noch nicht geantwortet. Bitte kontaktieren Sie sie noch einmal.',d:new Date(Date.now()-70*60000),neu:true},
+      {von:'sie',titel:'OP-Termin',t:'Findet die OP von '+c.vor+' '+c.nach+' am '+datum(c.op)+' wie geplant statt?',d:new Date(Date.now()-45*60000),neu:true},
+      {von:'sie',titel:'Beratungstermin',t:'Bitte bestätigen Sie den Beratungstermin von '+e.vor+' '+e.nach+' am '+zeit(e.beratung)+' Uhr.',d:new Date(Date.now()-20*60000),neu:true}
     ];
   })();
   function chatZeit(d){return zwei(d.getHours())+':'+zwei(d.getMinutes());}
@@ -1632,14 +1729,14 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       var ziel=zeige!=null?byId('chat-verlauf').querySelector('[data-i="'+zeige+'"]'):null;
       if(ziel){ziel.scrollIntoView({block:'center'});ziel.classList.add('blink');setTimeout(function(){ziel.classList.remove('blink');},1600);}else chatUnten();
       byId('chat-text').focus();
-    }else{chatMarke();if(chatVon&&chatVon.offsetParent!==null)chatVon.focus();}
+    }else{chatMarke();if(chatVon&&chatVon.getClientRects().length)chatVon.focus();}
   }
   function chatAntwort(text){
     var t=text.toLowerCase();
     if(/rechnung|abrechn/.test(t))return 'Danke. Sobald die Schlussrechnung da ist, schließen wir die Abrechnung ab.';
     if(/kontaktier|melde mich|anruf|rufe/.test(t))return 'Danke. Tragen Sie den Kontakt bitte kurz in der Akte ein, dann sehen wir ihn hier sofort.';
     if(/beratungstermin|bestätigt/.test(t))return 'Danke, wir geben die Bestätigung an die Patientin weiter.';
-    if(/\bop\b|operation|findet/.test(t))return 'Perfekt, danke für die Bestätigung. Wir vermerken den Termin als bestätigt.';
+    if(/\bop\b|operation|findet\b.*\bstatt\b/.test(t))return /nicht|nein|kein|verschob|verschieb|abgesagt|absage/.test(t)?'Danke für die Information. Wir vermerken die Änderung und melden uns bei Ihnen.':'Perfekt, danke für die Bestätigung. Wir vermerken den Termin als bestätigt.';
     if(/schaden|protokoll|revision/.test(t))return 'Danke, das Schadensprotokoll sehen wir bei uns. Wir prüfen die Unterlagen und melden uns hier, falls noch etwas fehlt.';
     if(/rückruf|zurück|telefon/.test(t))return 'Gern. Wir rufen Sie heute noch in der Praxis zurück.';
     return 'Danke für Ihre Nachricht. Wir kümmern uns darum und melden uns hier im Chat.';
@@ -1647,14 +1744,14 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   function chatSende(text){
     text=text.trim();if(!text)return;
     chatPlus({von:'ich',t:text,d:new Date()});
-    clearTimeout(chatT1);clearTimeout(chatT2);
+    chatWarte.push(text);clearTimeout(chatT1);clearTimeout(chatT2);
     chatT1=setTimeout(function(){
       chatLauf.forEach(function(x){if(x.von==='ich')x.gelesen=true;});
       document.querySelectorAll('#chat-verlauf .msg.ich .st').forEach(function(e){e.textContent='gelesen';});
       if(!byId('chat-tippt'))byId('chat-verlauf').insertAdjacentHTML('beforeend','<div class="msg sie tippt" id="chat-tippt" aria-hidden="true"><p><i></i><i></i><i></i></p></div>');
       chatUnten();
     },900);
-    chatT2=setTimeout(function(){chatPlus({von:'sie',t:chatAntwort(text),d:new Date(),neu:!chatOffen});chatMarke();},2600);
+    chatT2=setTimeout(function(){var da={};chatWarte.splice(0).forEach(function(x){var a=chatAntwort(x);if(!da[a]){da[a]=1;chatPlus({von:'sie',t:a,d:new Date(),neu:!chatOffen});}});chatMarke();},2600);
   }
   byId('chat-verlauf').innerHTML=chatLauf.map(chatZeile).join('');chatMarke();
   ['chat-fab','chat-seite'].forEach(function(id){byId(id).addEventListener('click',function(){chatVon=this;chatAuf(!chatOffen);});});
