@@ -310,6 +310,42 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 
 .toast{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));background:var(--schwarz);color:var(--weiss);border-radius:10px;padding:.75rem 1rem;font-weight:600;font-size:.9rem;display:flex;align-items:center;gap:.6rem;box-shadow:0 20px 40px -20px rgba(1,1,1,.7);z-index:50}
 .toast .ico{color:#7BE0A4}
+/* Chat mit dem Deutschen Ärzte Service (angedeutet, Antworten sind Beispiele) */
+.toast{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 74px)}
+.chat-fab{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;border:0;background:var(--verlauf);color:var(--weiss);display:grid;place-items:center;cursor:pointer;box-shadow:0 16px 30px -12px rgba(129,38,133,.85);z-index:40;transition:transform .15s ease,filter .15s ease}
+.chat-fab:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.chat-fab .ico{width:26px;height:26px}
+.chat-badge{position:absolute;top:-3px;right:-3px;min-width:22px;height:22px;padding:0 5px;border-radius:999px;background:var(--weiss);color:var(--violett);border:2px solid var(--violett);font:700 .72rem var(--text);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.chat{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(max(20px,env(safe-area-inset-bottom,0px)) + 72px);width:min(384px,calc(100vw - 24px));height:min(580px,calc(100vh - 116px));height:min(580px,calc(100dvh - 116px));background:var(--weiss);border:1px solid var(--stahl-200);border-radius:16px;box-shadow:0 40px 80px -30px rgba(1,1,1,.6);display:grid;grid-template-rows:auto minmax(0,1fr) auto auto auto;overflow:hidden;z-index:40}
+.chat-kopf{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;background:var(--verlauf);color:var(--weiss)}
+.chat-avatar{width:38px;height:38px;border-radius:50%;background:var(--weiss);color:var(--schwarz);font:700 .76rem var(--text);display:grid;place-items:center;flex:none}
+.chat-kopf b{display:block;font-size:.95rem;font-weight:600;line-height:1.25}
+.chat-kopf div span{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.88)}
+.chat-punkt{width:8px;height:8px;border-radius:50%;background:#7BE0A4;flex:none}
+.chat-zu{margin-left:auto;border:0;background:rgba(255,255,255,.16);color:var(--weiss);width:32px;height:32px;border-radius:8px;display:grid;place-items:center;cursor:pointer;flex:none}
+.chat-zu:hover{background:rgba(255,255,255,.28)}
+.chat-kopf :focus-visible{outline-color:var(--weiss)}
+.chat-verlauf{padding:1rem;overflow-y:auto;display:flex;flex-direction:column;gap:.65rem;background:var(--stahl-50)}
+.msg{max-width:86%;display:grid;gap:.2rem}
+.msg p{padding:.6rem .8rem;border-radius:14px;font-size:.9rem;line-height:1.45;overflow-wrap:anywhere;white-space:pre-wrap}
+.msg small{font-size:.7rem;color:var(--stahl-600)}
+.msg.sie{align-self:flex-start}
+.msg.sie p{background:var(--weiss);border:1px solid var(--stahl-200);border-bottom-left-radius:4px;color:var(--stahl-800)}
+.msg.ich{align-self:flex-end;justify-items:end}
+.msg.ich p{background:var(--violett);color:var(--weiss);border-bottom-right-radius:4px}
+.msg.tippt p{display:flex;gap:4px;align-items:center;padding:.75rem .8rem}
+.msg.tippt i{width:6px;height:6px;border-radius:50%;background:var(--stahl-400);animation:chatTippt 1s ease-in-out infinite}
+.msg.tippt i:nth-child(2){animation-delay:.15s}
+.msg.tippt i:nth-child(3){animation-delay:.3s}
+@keyframes chatTippt{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+.chat-schnell{display:flex;gap:.4rem;flex-wrap:wrap;padding:.7rem 1rem 0}
+.chat-schnell button{border:1px solid var(--stahl-200);background:var(--weiss);border-radius:8px;padding:.32rem .65rem;font:500 .8rem var(--text);color:var(--stahl-800);cursor:pointer;transition:border-color .15s ease,color .15s ease}
+.chat-schnell button:hover{border-color:var(--violett);color:var(--violett)}
+.chat-form{display:flex;gap:.5rem;align-items:flex-end;padding:.7rem 1rem .5rem}
+.chat-form textarea{flex:1;min-width:0;resize:none;height:42px;max-height:110px;font:500 .92rem var(--text);padding:.6rem .75rem;border:1px solid var(--stahl-200);border-radius:10px;background:var(--weiss);color:var(--schwarz);line-height:1.4}
+.chat-form .btn{padding:.62rem .72rem;height:42px}
+.chat-hinweis{font-size:.72rem;line-height:1.45;color:var(--stahl-600);padding:0 1rem .8rem}
+@media (max-width:520px){.chat{left:12px;right:12px;width:auto}}
 
 /* Schmal: Seitenleiste wird Kopfzeile */
 @media (max-width:900px){
@@ -595,6 +631,27 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     <div class="dlg-foot sp-foot"><button class="btn btn-line" type="button" id="ds-zurueck">Zurück</button><button class="btn btn-primary" type="button" id="ds-weiter">Weiter</button><button class="btn btn-primary" type="submit" id="ds-senden" hidden>Schadensprotokoll einreichen</button></div>
   </form>
 </dialog>
+
+<!-- Chat mit dem Deutschen Ärzte Service (angedeutet) -->
+<button class="chat-fab" id="chat-fab" type="button" aria-expanded="false" aria-controls="chat" aria-label="Chat mit dem Deutschen Ärzte Service öffnen"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8 9.500h8M8 12.500h5"/></svg><span class="chat-badge" id="chat-badge" aria-hidden="true">1</span></button>
+<section class="chat" id="chat" aria-label="Chat mit dem Deutschen Ärzte Service" hidden>
+  <header class="chat-kopf">
+    <span class="chat-avatar" aria-hidden="true">DÄS</span>
+    <div><b>Deutscher Ärzte Service</b><span><i class="chat-punkt" aria-hidden="true"></i>Partnerbetreuung ist online</span></div>
+    <button type="button" class="chat-zu" id="chat-zu" aria-label="Chat schließen"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </header>
+  <div class="chat-verlauf" id="chat-verlauf" role="log" aria-live="polite" aria-label="Nachrichtenverlauf" tabindex="0"></div>
+  <div class="chat-schnell" id="chat-schnell">
+    <button type="button" data-chat="Ich habe eine Rückfrage zu einer Patientin.">Rückfrage zu einer Patientin</button>
+    <button type="button" data-chat="Ich habe eine Frage zum Schadensprotokoll.">Frage zum Schadensprotokoll</button>
+    <button type="button" data-chat="Bitte rufen Sie mich zurück.">Bitte um Rückruf</button>
+  </div>
+  <form class="chat-form" id="chat-form">
+    <textarea id="chat-text" rows="1" aria-label="Nachricht an den Deutschen Ärzte Service" placeholder="Nachricht schreiben"></textarea>
+    <button class="btn btn-primary" type="submit" aria-label="Nachricht senden"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.500-6.500z"/><path d="M11.500 13.500L20 4"/></svg></button>
+  </form>
+  <p class="chat-hinweis">Demo: Die Antworten sind Beispiele. Im Betrieb erscheint jede Nachricht sofort beim Deutschen Ärzte Service, sobald dort jemand im Portal angemeldet ist.</p>
+</section>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span id="toast-text"></span></div>
 
@@ -1200,6 +1257,54 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   // Name aus der Anmeldung übernehmen, falls der Browser den Zwischenspeicher zulässt
   try{var n=sessionStorage.getItem('daes-partner');if(n==='Testzugang')n='Arzt-Testzugang';if(n){byId('wer').textContent=n;byId('gruss').textContent=n;}}catch(e){}
   byId('abmelden').addEventListener('click',function(){try{sessionStorage.removeItem('daes-partner');}catch(e){}});
+
+  // ---------- Chat mit dem Deutschen Ärzte Service (angedeutet, Antworten sind Beispiele) ----------
+  var chatOffen=false,chatNeu=1,chatT1,chatT2;
+  var chatLauf=[{von:'sie',t:'Guten Tag, wir haben Ihnen diese Woche zwei neue Patientinnen übermittelt. Schreiben Sie uns einfach hier, wenn etwas unklar ist.',d:tag(0,9,12)}];
+  function chatZeit(d){return zwei(d.getHours())+':'+zwei(d.getMinutes());}
+  function chatZeile(m){
+    return '<div class="msg '+m.von+'"><p>'+esc(m.t)+'</p><small>'+(m.von==='sie'?'Partnerbetreuung · '+chatZeit(m.d):chatZeit(m.d)+' · <span class="st">'+(m.gelesen?'gelesen':'zugestellt')+'</span>')+'</small></div>';
+  }
+  function chatUnten(){var v=byId('chat-verlauf');v.scrollTop=v.scrollHeight;}
+  function chatMarke(){
+    var b=byId('chat-badge');b.hidden=!chatNeu;b.textContent=chatNeu;
+    byId('chat-fab').setAttribute('aria-label',chatOffen?'Chat schließen':'Chat mit dem Deutschen Ärzte Service öffnen'+(chatNeu?', '+chatNeu+(chatNeu>1?' neue Nachrichten':' neue Nachricht'):''));
+  }
+  function chatPlus(m){
+    chatLauf.push(m);var tp=byId('chat-tippt');if(tp)tp.remove();
+    byId('chat-verlauf').insertAdjacentHTML('beforeend',chatZeile(m));chatUnten();
+  }
+  function chatAuf(auf){
+    chatOffen=auf;byId('chat').hidden=!auf;byId('chat-fab').setAttribute('aria-expanded',auf?'true':'false');
+    if(auf){chatNeu=0;chatMarke();chatUnten();byId('chat-text').focus();}else{chatMarke();byId('chat-fab').focus();}
+  }
+  function chatAntwort(text){
+    var t=text.toLowerCase();
+    if(/schaden|protokoll|revision/.test(t))return 'Danke, das Schadensprotokoll sehen wir bei uns. Wir prüfen die Unterlagen und melden uns hier, falls noch etwas fehlt.';
+    if(/rückruf|zurück|anruf|telefon/.test(t))return 'Gern. Wir rufen Sie heute noch in der Praxis zurück.';
+    if(/patient|termin|beratung|operation|\bop\b/.test(t))return 'Danke für die Info, wir haben das bei der Patientin vermerkt. Brauchen Sie dazu noch etwas von uns?';
+    return 'Danke für Ihre Nachricht. Wir kümmern uns darum und melden uns hier im Chat.';
+  }
+  function chatSende(text){
+    text=text.trim();if(!text)return;
+    chatPlus({von:'ich',t:text,d:new Date()});byId('chat-schnell').hidden=true;
+    clearTimeout(chatT1);clearTimeout(chatT2);
+    chatT1=setTimeout(function(){
+      chatLauf.forEach(function(x){if(x.von==='ich')x.gelesen=true;});
+      document.querySelectorAll('#chat-verlauf .msg.ich .st').forEach(function(e){e.textContent='gelesen';});
+      if(!byId('chat-tippt'))byId('chat-verlauf').insertAdjacentHTML('beforeend','<div class="msg sie tippt" id="chat-tippt" aria-hidden="true"><p><i></i><i></i><i></i></p></div>');
+      chatUnten();
+    },900);
+    chatT2=setTimeout(function(){chatPlus({von:'sie',t:chatAntwort(text),d:new Date()});if(!chatOffen){chatNeu++;chatMarke();}},2600);
+  }
+  byId('chat-verlauf').innerHTML=chatLauf.map(chatZeile).join('');chatMarke();
+  byId('chat-fab').addEventListener('click',function(){chatAuf(!chatOffen);});
+  byId('chat-zu').addEventListener('click',function(){chatAuf(false);});
+  byId('chat').addEventListener('keydown',function(ev){if(ev.key==='Escape'){ev.stopPropagation();chatAuf(false);}});
+  byId('chat-schnell').addEventListener('click',function(ev){var b=ev.target.closest('[data-chat]');if(b){chatSende(b.getAttribute('data-chat'));byId('chat-text').focus();}});
+  byId('chat-form').addEventListener('submit',function(ev){ev.preventDefault();var f=byId('chat-text');chatSende(f.value);f.value='';f.style.height='';f.focus();});
+  byId('chat-text').addEventListener('keydown',function(ev){if(ev.key==='Enter'&&!ev.shiftKey){ev.preventDefault();byId('chat-form').requestSubmit();}});
+  byId('chat-text').addEventListener('input',function(){this.style.height='';this.style.height=Math.min(this.scrollHeight+2,110)+'px';});
 
   alles();zeige();
 })();
