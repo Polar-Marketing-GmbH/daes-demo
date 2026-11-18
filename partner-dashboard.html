@@ -74,6 +74,7 @@ button{font-family:var(--text)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.62rem 1rem;border-radius:8px;border:1px solid transparent;font-weight:600;font-size:.9rem;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .15s ease,background .15s ease,border-color .15s ease,color .15s ease}
 .btn-primary{background:var(--verlauf);background-origin:border-box;color:var(--weiss);box-shadow:0 10px 22px -12px rgba(129,38,133,.8)}
 .btn-primary:hover{transform:translateY(-1px);filter:brightness(1.07)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;filter:none;box-shadow:none}
 .btn-line{background:var(--weiss);border-color:var(--stahl-200);color:var(--stahl-800)}
 .btn-line:hover{border-color:var(--violett);color:var(--violett)}
 .btn-sm{padding:.4rem .7rem;font-size:.82rem}
@@ -415,6 +416,51 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .zert p b{color:var(--schwarz)}
 .zert .knoepfe{display:flex;gap:.5rem;flex-wrap:wrap}
 #dlg-test{width:min(680px,calc(100vw - 24px))}
+/* Kurs: Fortschritt, Lektionen, Lektionsansicht */
+.kurs-stand{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.4rem 1.2rem;align-items:center;padding:1.1rem 1.2rem}
+.kurs-prozent{font-size:2.4rem;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--violett);font-variant-numeric:tabular-nums;grid-row:span 2}
+.kurs-stand.fertig .kurs-prozent{color:var(--green-t)}
+.kurs-balken{height:10px;border-radius:999px;background:var(--stahl-100);overflow:hidden}
+.kurs-balken span{display:block;height:100%;width:0;border-radius:999px;background:var(--verlauf);transition:width .5s ease}
+.kurs-stand.fertig .kurs-balken span{background:linear-gradient(90deg,#1F7A45,#2F9A5C)}
+.kurs-text{font-size:.88rem;color:var(--stahl-600)}
+.kurs-text b{color:var(--schwarz)}
+.lek{display:grid;grid-template-columns:2.6rem minmax(0,1fr) auto;gap:.2rem 1rem;align-items:center;padding:1rem 1.1rem;border-bottom:1px solid var(--stahl-100)}
+.lek:last-child{border-bottom:0}
+.lek-nr{width:2.4rem;height:2.4rem;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--violett-tint);color:var(--violett);font-variant-numeric:tabular-nums}
+.lek.fertig .lek-nr{background:var(--green-b);color:var(--green-t)}
+.lek.fertig .lek-nr .ico{width:18px;height:18px;stroke-width:2.4}
+.lek b{display:block;color:var(--schwarz);font-weight:600}
+.lek .lek-kurz{display:block;font-size:.86rem;color:var(--stahl-600)}
+.lek .lek-meta{display:flex;gap:.4rem .6rem;align-items:center;flex-wrap:wrap;margin-top:.35rem;font-size:.78rem;color:var(--stahl-600)}
+.lek-mini{display:inline-block;width:72px;height:5px;border-radius:999px;background:var(--stahl-100);overflow:hidden;vertical-align:middle}
+.lek-mini i{display:block;height:100%;background:var(--violett);border-radius:999px}
+.lek.fertig .lek-mini i{background:var(--green-t)}
+.lek .btn{justify-self:end}
+@media (max-width:560px){.lek{grid-template-columns:2.4rem minmax(0,1fr)}.lek .btn{grid-column:2;justify-self:start;margin-top:.4rem}.kurs-prozent{font-size:2rem}}
+#dlg-lektion{width:min(720px,calc(100vw - 24px))}
+#f-lektion > *{min-width:0}
+.lek-kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.lek-kopf .klein{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--violett);margin-bottom:.3rem}
+.lek-kopf h2{font-size:1.3rem}
+.lek-punkte{display:flex;gap:.35rem}
+.lek-punkte span{flex:1;height:5px;border-radius:999px;background:var(--stahl-200)}
+.lek-punkte span.an{background:var(--verlauf)}
+.lek-inhalt{display:grid;gap:.85rem;min-height:220px;align-content:start}
+.lek-inhalt:focus{outline:none}
+.lek-inhalt h3{font-size:1.15rem}
+.lek-inhalt p{color:var(--stahl-800);line-height:1.65}
+.lek-inhalt ul{margin:0;padding:0;list-style:none;display:grid;gap:.5rem}
+.lek-inhalt li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:.55rem;color:var(--stahl-800);line-height:1.55}
+.lek-inhalt li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--violett);margin:.5rem 0 0 .35rem}
+.merke{border-left:3px solid var(--violett);background:var(--violett-tint);border-radius:0 10px 10px 0;padding:.8rem 1rem;font-size:.92rem;color:var(--schwarz)}
+.merke b{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--violett);margin-bottom:.2rem}
+.zitat{border-radius:10px;background:var(--stahl-50);border:1px solid var(--stahl-200);padding:.9rem 1rem;font-style:italic;color:var(--stahl-800)}
+.zitat b{display:block;font-style:normal;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stahl-600);margin-bottom:.25rem}
+.lek-fertig{display:grid;justify-items:center;text-align:center;gap:.7rem;padding:1.2rem 0}
+.lek-fertig .ico{width:54px;height:54px;color:var(--green-t);stroke-width:1.6}
+.lek-fertig h3{font-size:1.3rem}
+.lek-fertig p{color:var(--stahl-600);max-width:46ch}
 .frage{border:1px solid var(--stahl-200);border-radius:10px;padding:.75rem .9rem .85rem;margin:0;display:grid;gap:.5rem;min-width:0}
 .frage legend{font-weight:600;color:var(--schwarz);font-size:.92rem;padding:0 .3rem}
 .frage label{display:flex;gap:.6rem;align-items:flex-start;font-size:.9rem;cursor:pointer}
@@ -682,19 +728,14 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
           <div class="head"><div>
             <div class="eyebrow">Schulung</div>
             <h1 id="h-sch">Verkaufsschulung für Ärzte und Personal</h1>
-            <p>Pflichtschulung für alle, die Patientinnen und Patienten des Deutschen Ärzte Service betreuen: die Leitlinien für Erstkontakt, Beratung, Festpreise und Abrechnung. Abgeschlossen ist sie erst mit bestandenem Abschlusstest und Zertifikat.</p>
+            <p>Pflichtschulung für alle, die Patientinnen und Patienten des Deutschen Ärzte Service betreuen. Sechs kurze Lektionen in beliebiger Reihenfolge, danach der Abschlusstest. Abgeschlossen ist die Schulung erst mit bestandenem Test und Zertifikat.</p>
           </div></div>
-          <p class="bald"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Dieser Bereich ist angedeutet. Einheiten und Testfragen sind Beispiele, die Inhalte werden noch erstellt.</span></p>
+          <div class="card kurs-stand" id="kurs-stand"></div>
           <div class="card">
             <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.500 9L12 4.500 21.500 9 12 13.500z"/><path d="M6.500 11.200V16c1.500 1.400 3.400 2 5.500 2s4-.600 5.500-2v-4.800"/></svg>Leitlinien des Deutschen Ärzte Service</h2><span id="schul-kopf"></span></div>
-            <div class="modul"><span class="nr">1</span><div><b>Wofür der Deutsche Ärzte Service steht</b><span>Unser Versprechen an Patientinnen und Patienten und was das für Ihre Praxis bedeutet.</span></div><div class="re">12 Min.<b>Bald verfügbar</b></div></div>
-            <div class="modul"><span class="nr">2</span><div><b>Der erste Kontakt</b><span>Zügig anrufen, freundlich nachfassen und jeden Kontakt im Portal festhalten.</span></div><div class="re">15 Min.<b>Bald verfügbar</b></div></div>
-            <div class="modul"><span class="nr">3</span><div><b>Das Beratungsgespräch</b><span>Wünsche verstehen, ehrlich beraten und realistische Erwartungen schaffen.</span></div><div class="re">20 Min.<b>Bald verfügbar</b></div></div>
-            <div class="modul"><span class="nr">4</span><div><b>Die Festpreise des Deutschen Ärzte Service</b><span>Was im Komplettpreis enthalten ist, warum er für alle gleich ist und wie Sie den Preis im Gespräch sicher begründen.</span></div><div class="re">20 Min.<b>Bald verfügbar</b></div></div>
-            <div class="modul"><span class="nr">5</span><div><b>Vom Gespräch zum OP-Termin</b><span>Bedenkzeit begleiten, Finanzierung ansprechen und den Termin festlegen.</span></div><div class="re">15 Min.<b>Bald verfügbar</b></div></div>
-            <div class="modul"><span class="nr">6</span><div><b>So funktioniert die Abrechnung</b><span>Wer wem die Rechnung stellt, wann gezahlt wird und was Sie dafür im Portal eintragen.</span></div><div class="re">15 Min.<b>Bald verfügbar</b></div></div>
-            <div class="modul"><span class="nr">7</span><div><b>Nachsorge und Rückmeldungen</b><span>Betreuung nach der Operation und der Umgang mit Bewertungen und Beschwerden.</span></div><div class="re">10 Min.<b>Bald verfügbar</b></div></div>
+            <div id="kurs-liste"></div>
           </div>
+          <p class="bald"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Grundlage sind die Leitlinien des Deutschen Ärzte Service zum Ablauf mit Patientinnen und Patienten und zur Argumentation im Kundengespräch. Ihr Lernstand wird in diesem Browser gespeichert.</span></p>
           <div class="card" id="schul-test-karte"></div>
         </div>
       </section>
@@ -801,6 +842,19 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       <ol class="verlauf" id="ak-verlauf"></ol>
     </div>
     <div class="dlg-foot"><button class="btn btn-line" type="button" id="ak-kontakt" data-vorwahl="kontakt">Kontakt eintragen</button><button class="btn btn-primary" type="button" id="ak-update">Update eintragen</button></div>
+  </div>
+</dialog>
+
+<!-- Dialog: Lektion der Pflichtschulung -->
+<dialog id="dlg-lektion" aria-labelledby="lek-titel">
+  <div class="dlg" id="f-lektion">
+    <div class="lek-kopf">
+      <div><p class="klein" id="lek-klein"></p><h2 id="lek-titel"></h2><p class="sub" id="lek-schritt" role="status" aria-live="polite"></p></div>
+      <button class="btn btn-line btn-sm" type="button" data-zu>Schließen</button>
+    </div>
+    <div class="lek-punkte" id="lek-punkte" aria-hidden="true"></div>
+    <div class="lek-inhalt" id="lek-inhalt" tabindex="-1"></div>
+    <div class="dlg-foot sp-foot"><button class="btn btn-line" type="button" id="lek-zurueck">Zurück</button><button class="btn btn-primary" type="button" id="lek-weiter">Weiter</button></div>
   </div>
 </dialog>
 
@@ -1704,29 +1758,136 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   // ---------- Pflichtschulung: Status, Abschlusstest, Zertifikat (Beispielfragen) ----------
   var schulung={bestanden:false,datum:null,richtig:0,versuche:0},dlgT=byId('dlg-test');
   var FRAGEN=[
-    {f:'Was ist im Komplettpreis einer Brustvergrößerung enthalten?',a:['Voruntersuchung, Implantate, Narkose, Operation und Nachsorge','Nur die Operation, alles andere wird einzeln berechnet','Operation und Implantate, die Narkose kommt hinzu'],r:0},
-    {f:'Wo halten Sie jeden Kontakt mit einer Patientin fest?',a:['Nur in der eigenen Praxissoftware','In der Patientenakte in DÄS Connect','Ein Kontakt muss nicht festgehalten werden'],r:1},
-    {f:'Mit wem schließt die Patientin den Behandlungsvertrag?',a:['Mit dem Deutschen Ärzte Service','Mit dem Finanzierungspartner','Direkt mit der Klinik'],r:2},
-    {f:'Was kostet das persönliche Beratungsgespräch beim Facharzt?',a:['40 €','Es ist immer kostenlos','150 €'],r:0},
-    {f:'Was reichen Sie bei einem Schadensfall ein?',a:['Eine formlose E-Mail genügt','Ein Schadensprotokoll mit OP-Bericht, Arztbrief, Fotos und Kostenvoranschlag oder Rechnung','Nichts, der Deutsche Ärzte Service fragt selbst nach'],r:1}
+    {f:'Wer vereinbart nach der Beratung den OP-Termin und schließt den Behandlungsvertrag mit der Patientin?',a:['Der Deutsche Ärzte Service','Klinik oder Arzt, unmittelbar nach dem Gespräch','Die Patientin über das Onlineportal'],r:1},
+    {f:'Wer kümmert sich um Verschiebungen und Stornierungen von Beratungsterminen?',a:['Der Deutsche Ärzte Service','Die Klinik','Der operierende Arzt'],r:0},
+    {f:'Bis wann sollte der komplette Rechnungsbetrag beim DÄS eingegangen sein?',a:['Am Tag der Operation','Spätestens einen Werktag nach der Operation','Mindestens 8 Werktage vor dem geplanten Eingriff'],r:2},
+    {f:'Wie oft müssen Partnerärzte den jeweiligen Eingriff mindestens durchgeführt haben?',a:['20-mal','100-mal','Eine Mindestzahl gibt es nicht'],r:1},
+    {f:'Eine Patientin fragt: „Wo ist der Haken bei den günstigen Preisen?“ Was antworten Sie?',a:['Die OP-Kontingente sind begrenzt, daher frühzeitig einen Termin sichern','Die Implantate sind günstiger als üblich','Die Nachsorge ist nicht enthalten'],r:0}
   ];
   var TEST_MIN=4;
   var ICO_WARN='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4.500M12 17.500h.01"/></svg>',ICO_OK='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.500l2.800 2.800L16.500 9.500"/></svg>';
+  // Kurs: sechs Lektionen aus den Leitlinien des Deutschen Ärzte Service
+  // Quellen: „Werbekampagne, Ablauf, Organisation“ und „Argumentation für das Kundengespräch“
+  var KURS=[
+    {id:'aktion',titel:'Die Aktionen des DÄS: Werbung und Diskretion',kurz:'Warum es die Aktionen gibt und wann Patientinnen Klinik und Arzt erfahren.',min:5,schritte:[
+      {h:'Worum es bei den Aktionen geht',x:'<p>Der Deutsche Ärzte Service bewirbt in Printmedien und im Internet Schönheitsoperationen zu interessanten Paketpreisen.</p><p>Ziel ist es, Kundinnen, die nicht über die notwendigen finanziellen Mittel verfügen und sonst ins Ausland abwandern müssten, eine Operation in Deutschland zu einem attraktiven Preis zu ermöglichen.</p>'},
+      {h:'Diskretion gegenüber Kliniken und Ärzten',x:'<p>In den Werbekampagnen werden die beteiligten Partnerkliniken und Fachärzte für Ästhetische und Plastische Chirurgie namentlich nicht genannt.</p><p>Der DÄS versteht sich als Partner der Ärzte, der Kliniken und der Industrie. Diskretion ist deshalb selbstverständlich.</p><ul><li>Nur ernsthafte Interessenten erfahren bei der Kontaktaufnahme nähere Informationen über Operationsmöglichkeiten in der Nähe ihres Wohnortes.</li></ul>'},
+      {h:'Wann Patientinnen Klinik und Arzt erfahren',x:'<p>Details über die Klinik, den behandelnden Arzt und den Buchungsablauf gibt der DÄS erst bekannt, wenn zwei Dinge erfüllt sind:</p><ul><li>die verbindliche Anmeldung für ein Beratungsgespräch</li><li>der Eingang der Beratungsgebühr</li></ul><div class="merke"><b>Merke</b>Wer zu Ihnen in die Beratung kommt, hat sich verbindlich angemeldet und die Beratungsgebühr bereits bezahlt.</div>'}
+    ]},
+    {id:'termine',titel:'Beratungstermine: Vergabe und Organisation',kurz:'Wie Termine verteilt werden und was Sie zweimal pro Woche vom DÄS erhalten.',min:7,schritte:[
+      {h:'Sie geben die Zeitfenster vor',x:'<p>Der DÄS informiert Klinik und Arzt rechtzeitig über die Situation der eingehenden Anmeldungen.</p><ul><li>Arzt bzw. Klinik nennen dem DÄS die freien Beratungskapazitäten und geben die Zeitfenster vor.</li><li>Der DÄS verteilt diese vorgegebenen Beratungstermine. Die Patientin hat keine freie Terminauswahl.</li><li>Auf Wunsch können Termine auch im Onlineterminkalender des Arztes eingebucht werden.</li></ul>'},
+      {h:'Gut vorbereitete Patientinnen',x:'<p>Allgemeine Patientenfragen beantwortet der DÄS bereits im Vorfeld. Patientinnen kommen dadurch ganz anders vorbereitet zum Beratungsgespräch.</p><div class="merke"><b>Ihr Vorteil</b>Sie können sich im persönlichen Beratungsgespräch auf den rein medizinischen Bereich konzentrieren.</div>'},
+      {h:'Verschiebungen und Stornierungen',x:'<p>Neben der Terminvergabe kümmert sich der DÄS auch um Verschiebungen und Stornierungen.</p><ul><li>Arzt und Klinik sind hierfür nicht die Ansprechpartner und sollen nicht mit dieser Planungsarbeit belastet werden.</li><li>Ausfälle ersetzt der DÄS, soweit möglich, durch neue Patientinnen.</li></ul>'},
+      {h:'Die Terminliste am Dienstag und Freitag',x:'<p>Jeden Dienstag und Freitag informiert der DÄS die Partnerkliniken und Ärzte über den aktuellen Stand der vergebenen Beratungstermine. So können freie Zeitfenster noch anderweitig genutzt werden.</p><p>Die Liste enthält:</p><ul><li>Beratungstag und geplante Uhrzeit</li><li>Name und Telefonnummer der Patientin</li><li>Behandlungswunsch</li><li>eine Spalte für die Vermerke des Arztes</li></ul><div class="merke"><b>So geht es weiter</b>Am Ende des Beratungstages senden Sie die Liste, ergänzt um die Beratungsergebnisse, an den DÄS zurück.</div>'}
+    ]},
+    {id:'vertrag',titel:'Nach der Beratung: OP-Termin und Behandlungsvertrag',kurz:'Was Sie direkt nach dem Gespräch tun und was der DÄS übernimmt.',min:4,schritte:[
+      {h:'Direkt nach dem Gespräch',x:'<p>Möchte die Patientin nach der medizinischen Beratung und Aufklärung den Eingriff vornehmen lassen, vereinbaren Klinik oder Arzt unmittelbar nach dem Gespräch:</p><ul><li>den OP-Termin mit der Patientin</li><li>den Behandlungsvertrag mit der Patientin</li></ul>'},
+      {h:'Den DÄS informieren',x:'<p>Arzt oder Klinik teilen dem DÄS den Umfang des Behandlungsvertrages und den genauen OP-Termin mit.</p><p>Auf dieser Grundlage versendet der DÄS rechtzeitig die Rechnung an die Patientin.</p>'},
+      {h:'Wer was übernimmt',x:'<ul><li>Der DÄS schließt keine Behandlungsverträge mit den Patientinnen.</li><li>Der DÄS übernimmt nicht die OP-Planung.</li><li>Bei allen anderen kaufmännischen Serviceleistungen hilft der DÄS gern.</li></ul><div class="merke"><b>Merke</b>Behandlungsvertrag und OP-Planung liegen bei Ihnen. Rechnung, Zahlung und Organisation rund um die Patientin übernimmt der DÄS.</div>'}
+    ]},
+    {id:'abrechnung',titel:'Zahlung und Abrechnung',kurz:'Rechnung, Zahlungsziel, Auszahlung an die Klinik und Unterlagen zum Monatsende.',min:7,schritte:[
+      {h:'Die Rechnung an die Patientin',x:'<p>Die Rechnung stellt der DÄS im Namen und Auftrag der Klinik nach dem vorgegebenen Muster. Die Patientin erhält sie mit einem Begleitschreiben des DÄS über alle Zahlungsmodalitäten.</p><p>Auch die Bezahlung der OP-Rechnung stellt der DÄS sicher.</p>'},
+      {h:'Das Zahlungsziel',x:'<ul><li>Der komplette Rechnungsbetrag sollte mindestens 8 Werktage vor dem geplanten Eingriff auf dem Konto des DÄS eingegangen sein.</li><li>Der DÄS achtet auf die Einhaltung des Zahlungsziels und informiert die Patientinnen vorab über die Zahlungsfrist.</li><li>Bei einem extrem kurzfristigen OP-Termin, oder wenn die Überweisung nicht mehr sicher vor dem OP-Tag eingeht, darf die Patientin im Ausnahmefall bar in der Klinik bezahlen.</li></ul><div class="merke"><b>In jedem Fall</b>Der gesamte Rechnungsbetrag muss vor OP-Beginn beglichen sein.</div>'},
+      {h:'Übernachtung und Zahlungseingänge',x:'<p>Die Übernachtungskosten von 299 Euro pro Nacht und Person werden nicht über den DÄS abgerechnet. Diesen Betrag vereinnahmt die Klinik oder der Arzt.</p><p>Über die Zahlungseingänge der Operationen informiert Sie der DÄS im Zuge der zweimaligen Benachrichtigungen pro Woche.</p>'},
+      {h:'Auszahlung an die Klinik',x:'<p>Spätestens einen Werktag nach der Operation erhält die Klinik den Gesamtbetrag der Behandlung, abzüglich der Rechnungsbeträge für Verwaltungskosten und gegebenenfalls Implantate.</p><ul><li>Bei Brustvergrößerungen teilen Sie dem DÄS nach der OP die Seriennummern der verwendeten Implantate mit.</li><li>Über den Rahmenvertrag des DÄS erhalten Sie Sonderkonditionen bei Premium-Implantaten. Um Abrechnung und Bezahlung dieser Implantate müssen Sie sich bei DÄS-Patientinnen nicht kümmern.</li></ul>'},
+      {h:'Unterlagen zum Monatsende',x:'<p>Am Monatsende sendet der DÄS Ihnen alle Buchhaltungsunterlagen:</p><ul><li>Duplikate der Kundenrechnungen</li><li>Rechnungen für Verwaltungskosten</li><li>Rechnungen für Implantate</li></ul>'}
+    ]},
+    {id:'netzwerk',titel:'Warum Fachärzte Teil des DÄS-Netzwerks sind',kurz:'Ihre Haltung im Gespräch: Qualifikation, Effizienz und Verantwortung in Deutschland.',min:5,schritte:[
+      {h:'Die Ausgangslage',x:'<p>Viele Kliniken und Operateure in Deutschland beobachten seit Jahren, dass Patientinnen ins Ausland abwandern, häufig aus rein finanziellen Gründen.</p><p>In der Praxis zeigt sich immer wieder, dass diese Eingriffe dort unter fragwürdigen Bedingungen stattfinden und Nachbehandlungen oder Korrekturen dann in Deutschland erfolgen müssen.</p>'},
+      {h:'Verantwortung hier in Deutschland',x:'<p>Die Teilnahme an den Aktionen des DÄS ist Ausdruck besonderer fachlicher Qualifikation, wirtschaftlicher Effizienz und gesellschaftlicher Verantwortung.</p><p>Auch in Deutschland geraten zunehmend Menschen durch Inflation und steigende Lebenshaltungskosten an finanzielle Grenzen, wenn es um ästhetisch-medizinische Eingriffe geht. Mit der Beteiligung an den Aktionen ermöglichen Sie eine hochwertige, sichere und bezahlbare Behandlung in Deutschland, ohne Kompromisse bei Qualität oder Sorgfalt.</p><div class="zitat"><b>So können Sie es sagen</b>„Viele engagierte Ärztinnen und Ärzte bringen ihre Fähigkeiten in Hilfsorganisationen wie Ärzte ohne Grenzen ein. Wir haben uns bewusst für einen anderen Weg entschieden: Wir setzen unsere Expertise dort ein, wo wir tagtäglich arbeiten, hier in Deutschland.“</div>'},
+      {h:'Wer Partner werden kann',x:'<ul><li>Der DÄS arbeitet ausschließlich mit Fachärzten für Plastische und Ästhetische Chirurgie und distanziert sich von sogenannten „Schönheitschirurgen“.</li><li>Alle Partnerärzte müssen nachweislich auf den angebotenen Eingriff spezialisiert sein und eine hohe Anzahl durchgeführter Operationen vorweisen.</li><li>Die OP-Kontingente sind bewusst limitiert: einzelne, klar definierte Termine nach dem Prinzip „Qualität vor Quantität“.</li></ul>'}
+    ]},
+    {id:'preise',titel:'Die Festpreise im Gespräch begründen',kurz:'Fünf Argumente, die Frage nach dem Haken und zwei Vergleiche aus dem Alltag.',min:8,schritte:[
+      {h:'Warum sind die Preise so günstig?',x:'<p>Der DÄS steht für hochwertige medizinische Leistungen zu fairen Preisen. Viele Patientinnen sind überrascht, wie viel sie sparen können, ohne Kompromisse bei der Qualität.</p><p>Damit Sie die Gründe klar und verständlich vermitteln, finden Sie in dieser Lektion die wichtigsten Argumente, mit Fokus auf den Nutzen für die Patientin.</p>'},
+      {h:'Größe und schlanke Prozesse',x:'<h3>1. Synergien durch Größe und Struktur</h3><p>Der DÄS ist bundesweit tätig. Kosten für Organisation, IT und Marketing verteilen sich auf tausende Behandlungen jährlich. Der zentrale Einkauf hochwertiger Implantate bringt Großhandelsrabatte, die an die Patientinnen weitergegeben werden.</p><h3>2. Schlanke Prozesse</h3><p>Die komplette kaufmännische Abwicklung läuft zentral über den DÄS. Praxen und Kliniken sparen Verwaltungsaufwand und konzentrieren sich auf die medizinische Betreuung. Für Patientinnen heißt das: strukturierte Abläufe, klare Ansprechpartner und eine verlässliche Terminorganisation.</p>'},
+      {h:'Planung und Spezialisierung',x:'<h3>3. Optimierte Planung</h3><p>Klar geplante OP-Tage und langfristige Koordination nutzen Kapazitäten optimal. Das reduziert Wartezeiten und sorgt für einen zügigen, professionell organisierten Behandlungsverlauf.</p><h3>4. Qualität durch Spezialisierung</h3><p>Der DÄS arbeitet ausschließlich mit Fachärzten für Plastische und Ästhetische Chirurgie, die den jeweiligen Eingriff mindestens 100-mal durchgeführt haben. Das bedeutet hohe Routine, geringere Komplikationsraten und überzeugende Ergebnisse.</p><div class="merke"><b>Kernsatz</b>Wer etwas oft macht, macht es gut, sicher und schneller. Das schafft Vertrauen und verkürzt OP- und Anästhesiedauer.</div>'},
+      {h:'„Wo ist der Haken?“',x:'<p>Eine berechtigte Frage, denn Qualität und faire Preise wirken oft wie ein Widerspruch. Das Angebot beruht auf optimierten Abläufen, effizienter Organisation und begrenzten OP-Kontingenten.</p><ul><li>Für jede Aktion steht nur eine bestimmte Anzahl an OP-Terminen zur Verfügung, meist verteilt auf wenige Tage pro Monat.</li><li>Ist das Kontingent ausgeschöpft, können für diesen Zeitraum keine weiteren Patientinnen angenommen werden.</li><li>Häufig ist die Nachfrage höher als das Angebot.</li></ul><div class="zitat"><b>So können Sie es sagen</b>„Wer sich für einen Eingriff entscheidet, sollte nicht zögern und frühzeitig einen passenden Termin sichern. So können wir als Klinik bestmöglich planen, und Sie profitieren von einem reibungslosen Ablauf zu besten Konditionen.“</div>'},
+      {h:'Zwei Vergleiche aus dem Alltag',x:'<h3>Das Hotel</h3><p>In einem 5-Sterne-Hotel kostet dasselbe Zimmer je nach Saison, Auslastung und Buchungszeitpunkt unterschiedlich. Die Qualität des Zimmers bleibt gleich. Beim DÄS ermöglichen gebündelte OP-Tage und genau getaktete Abläufe eine optimale Auslastung: Top-Qualität zu einem kalkulierbaren Vorteilspreis.</p><h3>Die Flugreise</h3><p>Wer früh oder Last-Minute bucht, sich an feste Zeiten hält und auf unnötige Extras verzichtet, fliegt zum besten Preis, ohne Einbußen beim Komfort. Am Ende sitzen alle in derselben Lufthansa-Maschine. Genauso funktioniert das Prinzip des DÄS.</p><div class="merke"><b>Fazit</b>Medizin auf höchstem Niveau: effizient organisiert, transparent kalkuliert und auf die Patientin ausgerichtet. Nutzen Sie diese Argumente, um Vertrauen zu schaffen und den Mehrwert der DÄS-Aktion nachvollziehbar zu erklären.</div>'}
+    ]}
+  ];
+  var kurs={fertig:{},schritt:{}},lekAkt=null,lekI=0,dlgL=byId('dlg-lektion');
+  try{var ks=JSON.parse(localStorage.getItem('daes-kurs')||'null');if(ks&&ks.fertig)kurs=ks;}catch(e){}
+  function kursSpeichern(){try{localStorage.setItem('daes-kurs',JSON.stringify(kurs));}catch(e){}}
+  function kursZahl(){return KURS.filter(function(k){return kurs.fertig[k.id];}).length;}
+  function kursProzent(){return Math.round(kursZahl()/KURS.length*100);}
+  var ICO_HAKEN='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg>';
+  function zeichneKurs(){
+    var n=kursZahl(),pz=kursProzent(),alle=n===KURS.length,st=byId('kurs-stand');
+    st.classList.toggle('fertig',alle);
+    st.innerHTML='<span class="kurs-prozent">'+pz+' %</span>'+
+      '<div class="kurs-balken" role="progressbar" aria-label="Fortschritt der Pflichtschulung" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pz+'" aria-valuetext="'+pz+' Prozent, '+n+' von '+KURS.length+' Lektionen"><span style="width:'+pz+'%"></span></div>'+
+      '<p class="kurs-text"><b>'+n+' von '+KURS.length+' Lektionen abgeschlossen.</b> '+(schulung.bestanden?'Abschlusstest bestanden.':alle?'Der Abschlusstest ist freigeschaltet.':'Der Abschlusstest wird freigeschaltet, sobald alle Lektionen abgeschlossen sind.')+'</p>';
+    byId('kurs-liste').innerHTML=KURS.map(function(k,i){
+      var f=!!kurs.fertig[k.id],s=kurs.schritt[k.id]||0,anteil=f?100:Math.round(s/k.schritte.length*100);
+      var stand=f?'Abgeschlossen':s?'Begonnen, Schritt '+(s+1)+' von '+k.schritte.length:'Offen';
+      return '<div class="lek'+(f?' fertig':'')+'"><span class="lek-nr">'+(f?ICO_HAKEN+'<span class="sr-neu">erledigt</span>':(i+1))+'</span><div><b>'+esc(k.titel)+'</b><span class="lek-kurz">'+esc(k.kurz)+'</span>'+
+        '<span class="lek-meta"><span>'+k.schritte.length+' Schritte · ca. '+k.min+' Min.</span><span class="lek-mini" aria-hidden="true"><i style="width:'+anteil+'%"></i></span><span>'+stand+'</span></span></div>'+
+        '<button class="btn '+(f?'btn-line':'btn-primary')+' btn-sm" type="button" data-kurs="'+k.id+'">'+(f?'Wiederholen':s?'Fortsetzen':'Starten')+'</button></div>';
+    }).join('');
+  }
+  function lektionZeige(){
+    var k=lekAkt,schritte=k.schritte,fertigAnsicht=lekI>=schritte.length,nr=KURS.indexOf(k)+1;
+    byId('lek-klein').textContent='Lektion '+nr+' von '+KURS.length;
+    byId('lek-titel').textContent=k.titel;
+    byId('lek-punkte').innerHTML=schritte.map(function(_,i){return '<span'+(i<=lekI?' class="an"':'')+'></span>';}).join('');
+    if(fertigAnsicht){
+      var naechste=KURS.filter(function(x){return !kurs.fertig[x.id];})[0];
+      byId('lek-schritt').textContent='Lektion abgeschlossen. Fortschritt: '+kursProzent()+' %';
+      byId('lek-inhalt').innerHTML='<div class="lek-fertig">'+ICO_OK+'<h3>Lektion abgeschlossen</h3><p>'+(naechste?'Sie haben '+kursZahl()+' von '+KURS.length+' Lektionen geschafft. Weiter geht es mit „'+esc(naechste.titel)+'“.':'Alle Lektionen sind abgeschlossen. Der Abschlusstest ist jetzt freigeschaltet.')+'</p></div>';
+      byId('lek-zurueck').hidden=true;
+      byId('lek-weiter').textContent=naechste?'Nächste Lektion':(schulung.bestanden?'Schließen':'Zum Abschlusstest');
+      byId('lek-weiter').setAttribute('data-ziel',naechste?naechste.id:(schulung.bestanden?'':'test'));
+    }else{
+      var s=schritte[lekI];
+      byId('lek-schritt').textContent='Schritt '+(lekI+1)+' von '+schritte.length;
+      byId('lek-inhalt').innerHTML='<h3>'+esc(s.h)+'</h3>'+s.x;
+      byId('lek-zurueck').hidden=lekI===0;
+      byId('lek-weiter').textContent=lekI===schritte.length-1?'Lektion abschließen':'Weiter';
+      byId('lek-weiter').removeAttribute('data-ziel');
+    }
+    byId('lek-inhalt').focus();dlgL.scrollTop=0;
+  }
+  function oeffneLektion(id){
+    lekAkt=KURS.filter(function(k){return k.id===id;})[0];if(!lekAkt)return;
+    lekI=kurs.fertig[id]?0:Math.min(kurs.schritt[id]||0,lekAkt.schritte.length-1);
+    lektionZeige();if(!dlgL.open)dlgL.showModal();
+  }
+  byId('lek-zurueck').addEventListener('click',function(){if(lekI>0){lekI--;lektionZeige();}});
+  byId('lek-weiter').addEventListener('click',function(){
+    var k=lekAkt;if(!k)return;
+    if(lekI>=k.schritte.length){
+      var z=this.getAttribute('data-ziel');
+      if(z==='test'){dlgL.close();zeichneSchulung();oeffneTest();}else if(z){oeffneLektion(z);}else dlgL.close();
+      return;
+    }
+    if(lekI===k.schritte.length-1){
+      kurs.fertig[k.id]=true;delete kurs.schritt[k.id];kursSpeichern();lekI=k.schritte.length;
+      toast('Lektion abgeschlossen: '+kursProzent()+' % der Pflichtschulung erledigt');
+    }else{
+      lekI++;if(!kurs.fertig[k.id]){kurs.schritt[k.id]=lekI;kursSpeichern();}
+    }
+    lektionZeige();
+  });
+  // Liste erst nach dem Schließen neu zeichnen, damit der Knopf, der die Lektion geöffnet hat, den Fokus zurückbekommt
+  dlgL.addEventListener('close',function(){var k=lekAkt;lekAkt=null;zeichneSchulung();var b=k&&document.querySelector('[data-kurs="'+k.id+'"]');if(b&&!dlgT.open)b.focus();});
+
   function zeichneSchulung(){
     var ok=schulung.bestanden,st=byId('schul-status'),nv=byId('nav-schul');
+    zeichneKurs();
     st.className='schul-status '+(ok?'gruen':'rot');
     st.innerHTML=ok?ICO_OK+'<b>Pflichtschulung bestanden</b><span>Exklusiver Partner des Deutschen Ärzte Service, Zertifikat vom '+datum(schulung.datum)+'.</span><span class="mehr">Zertifikat ansehen</span>'
-      :ICO_WARN+'<b>Pflichtschulung offen</b><span>Die Verkaufsschulung für Ärzte und Personal ist noch nicht abgeschlossen.</span><span class="mehr">Zur Schulung</span>';
-    nv.className='zahl '+(ok?'gruen':'rot');nv.textContent=ok?'Bestanden':'Pflicht';
+      :ICO_WARN+'<b>Pflichtschulung offen, '+kursProzent()+' % erledigt</b><span>'+(kursZahl()===KURS.length?'Alle Lektionen abgeschlossen. Jetzt fehlt nur noch der Abschlusstest.':kursZahl()+' von '+KURS.length+' Lektionen der Verkaufsschulung abgeschlossen.')+'</span><span class="mehr">'+(kursZahl()?'Weiterlernen':'Zur Schulung')+'</span>';
+    nv.className='zahl '+(ok?'gruen':'rot');nv.textContent=ok?'Bestanden':(kursZahl()?kursProzent()+' %':'Pflicht');
     byId('schul-kopf').innerHTML='<span class="pill '+(ok?'t-green':'t-red')+'">'+(ok?'Bestanden':'Pflicht, noch nicht abgeschlossen')+'</span>';
     byId('schul-test-karte').innerHTML='<div class="card-head"><h2>'+(ok?ICO_OK:ICO_WARN)+'Abschlusstest und Zertifikat</h2><span class="pill '+(ok?'t-green':'t-red')+'">'+(ok?'Zertifikat erhalten':'Zertifikat fehlt')+'</span></div>'+
       '<div class="zert"><p>'+(ok?'<b>Bestanden am '+datum(schulung.datum)+'.</b> Sie sind exklusiver Partner des Deutschen Ärzte Service. Das Zertifikat können Sie für die Klinik und für jeden operierenden Arzt ausdrucken.'
-        :'<b>Fünf Fragen zu den Leitlinien.</b> Mit mindestens '+TEST_MIN+' richtigen Antworten gilt die Pflichtschulung als bestanden und das Zertifikat wird ausgestellt.'+(schulung.versuche?' Bisherige Versuche: '+schulung.versuche+'.':''))+'</p>'+
-      '<div class="knoepfe">'+(ok?'':'<button class="btn btn-primary" type="button" id="schul-start">Abschlusstest starten</button>')+'</div></div>'+
+        :'<b>Fünf Fragen zu den Leitlinien.</b> Mit mindestens '+TEST_MIN+' richtigen Antworten gilt die Pflichtschulung als bestanden und das Zertifikat wird ausgestellt.'+(kursZahl()<KURS.length?' Der Test wird freigeschaltet, sobald alle '+KURS.length+' Lektionen abgeschlossen sind. Noch offen: '+(KURS.length-kursZahl())+'.':'')+(schulung.versuche?' Bisherige Versuche: '+schulung.versuche+'.':''))+'</p>'+
+      '<div class="knoepfe">'+(ok?'':'<button class="btn btn-primary" type="button" id="schul-start"'+(kursZahl()<KURS.length?' disabled aria-disabled="true"':'')+'>'+(kursZahl()<KURS.length?'Abschlusstest gesperrt':'Abschlusstest starten')+'</button>')+'</div></div>'+
       (ok?'<div class="zert-liste">'+[{k:'klinik',n:profil.name,z:'Zertifikat für die Klinik'}].concat(profil.arzt.map(function(a,i){return {k:'arzt:'+i,n:a.name,z:a.zwei||'Operierender Arzt'};})).map(function(x){
         return '<div class="zert-zeile"><div><b>'+esc(x.n)+'</b><span>'+esc(x.z)+'</span></div><button class="btn btn-line btn-sm" type="button" data-zert="'+x.k+'" aria-label="Zertifikat drucken für '+esc(x.n)+'"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V4h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="6"/></svg>Zertifikat drucken</button></div>';}).join('')+'</div>':'');
   }
   function oeffneTest(){
+    if(kursZahl()<KURS.length&&!schulung.bestanden)return;
     byId('test-fragen').innerHTML=FRAGEN.map(function(q,i){
       return '<fieldset class="frage" data-frage="'+i+'"><legend>'+(i+1)+'. '+esc(q.f)+'</legend>'+q.a.map(function(a,j){return '<label><input type="radio" name="frage'+i+'" value="'+j+'"><span>'+esc(a)+'</span></label>';}).join('')+'</fieldset>';
     }).join('');
@@ -1735,6 +1896,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   }
   byId('view-schulung').addEventListener('click',function(ev){
     if(ev.target.closest('#schul-start')){oeffneTest();return;}
+    var kb=ev.target.closest('[data-kurs]');if(kb){oeffneLektion(kb.getAttribute('data-kurs'));return;}
     var zb=ev.target.closest('[data-zert]');if(zb)oeffneZertifikat(zb.getAttribute('data-zert'));
   });
   // Zertifikat „Exklusiver Partner“: für die Klinik und für jeden operierenden Arzt
