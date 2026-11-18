@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -603,12 +610,24 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt ls-zwei" id="mini-facelifting-ab-3-499-euro">
+<section class="ls-abschnitt vor-lebens ls-zwei" id="mini-facelifting-ab-3-499-euro">
   <div class="wrap"><div class="ls-inhalt ls-raster">
 <div class="ls-seite"><h2>Mini-Facelifting ab 3.499,- Euro</h2>
 </div>
 <div class="ls-text"><p>Das Mini-Facelifting ist ein kleiner, sehr beliebter Eingriff. Mit diesem Eingriff lässt sich ein jugendliches, hübsches und frisches Aussehen der Haut wiederherstellen. Besonders hervorzuheben ist die schnelle Erholungsphase nach dieser Operation.</p></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Jünger wirken. Natürlich bleiben.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011631_b6a952fe-47ba-45aa-9b0d-6bcad4c33a20.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="klassisches-facelifting-ab-4-999-euro">

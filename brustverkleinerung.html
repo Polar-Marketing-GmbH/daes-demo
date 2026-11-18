@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -600,7 +607,7 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt ls-zwei" id="fuer-eine-brustgroesse-die-besser-zu-ihrem-leben-passt">
+<section class="ls-abschnitt vor-lebens ls-zwei" id="fuer-eine-brustgroesse-die-besser-zu-ihrem-leben-passt">
   <div class="wrap"><div class="ls-inhalt ls-raster">
 <div class="ls-seite"><h2>Für eine Brustgröße, die besser zu Ihrem Leben passt</h2>
 </div>
@@ -610,6 +617,18 @@ main{counter-reset:abschnitt}
 <p>Beim Deutschen Ärzte Service ist eine<b> Brustverkleinerung ab 3.499 €</b> an rund 40 Standorten in Deutschland möglich. Die Operationen werden von erfahrenen <b>Fachärzten für Plastische und Ästhetische Chirurgie</b> durchgeführt. Wir begleiten Sie von der persönlichen Beratung über die Organisation Ihrer Operation bis zur Nachsorge.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Leichter leben. Freier bewegen.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011628_403dd755-5c16-482a-884e-3097ca7d4230.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="gruende-fuer-eine-brustverkleinerung">

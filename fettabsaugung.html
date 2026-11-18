@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -606,7 +613,7 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt ls-zwei" id="gruende-fuer-eine-fettabsaugung">
+<section class="ls-abschnitt vor-lebens ls-zwei" id="gruende-fuer-eine-fettabsaugung">
   <div class="wrap"><div class="ls-inhalt ls-raster">
 <div class="ls-seite"><h2>Gründe für eine Fettabsaugung</h2>
 </div>
@@ -615,6 +622,18 @@ main{counter-reset:abschnitt}
 <p>Eine Fettabsaugung eignet sich insbesondere dazu, den Körper zu formen. Sie ersetzt keine Diät und dient nicht dazu Gewicht zu verlieren. Welche Behandlungsmöglichkeiten in Ihrem persönlichen Fall sinnvoll sind und welches Ergebnis realistisch erreicht werden kann, bespricht Ihr behandelnder Facharzt ausführlich mit Ihnen.</p>
 <p>Genauso individuell wie Ihre Ausgangssituation sollte auch die Wahl des behandelnden Facharztes sein. Deshalb achten wir darauf, dass Sie nicht irgendeinen Arzt kennenlernen, sondern einen Spezialisten, der regelmäßig Fettabsaugungen durchführt.</p></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Die Silhouette, die Sie sich wünschen.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011628_c398d080-8509-4264-9b6a-85f0619aace7.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">

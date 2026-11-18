@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -603,7 +610,7 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt" id="brustoperationen-ihre-moeglichkeiten-auf-einen-blick">
+<section class="ls-abschnitt vor-lebens" id="brustoperationen-ihre-moeglichkeiten-auf-einen-blick">
   <div class="wrap"><div class="ls-inhalt">
 <h2>Brustoperationen: Ihre Möglichkeiten auf einen Blick</h2>
 <p>Keine Brust ist wie die andere und genauso unterschiedlich sind die Wünsche, mit denen Frauen zu uns kommen. Manche wünschen sich mehr Volumen, andere möchten eine große oder schwere Brust verkleinern. Bei wieder anderen hat sich die Brust nach Schwangerschaft, Stillzeit oder einer Gewichtsveränderung verändert und soll wieder gestrafft oder neu geformt werden.</p>
@@ -641,6 +648,18 @@ main{counter-reset:abschnitt}
 <p><b>ab 4.499€</b></p>
 <p>Bei manchen Frauen fehlt nicht nur Brustvolumen, sondern gleichzeitig ist die Haut erschlafft. Das kann beispielsweise nach einer Schwangerschaft, Stillzeit oder einer deutlichen Gewichtsabnahme auftreten. In solchen Fällen kann eine Kombination aus Brustvergrößerung und Bruststraffung sinnvoll sein.<br>Bei dem kombinierten Eingriff wird die Brust neu geformt, überschüssige Haut entfernt und mit einem Implantat das gewünschte Volumen ergänzt.</p></div></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Ein Dekolleté, das zu Ihnen passt.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011627_5e9e6f5d-decf-458b-a9e4-af53d2317fe1.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt" id="brustoperationen-in-ganz-deutschland">

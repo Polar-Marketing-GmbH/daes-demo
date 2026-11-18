@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -599,7 +606,7 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt ls-zwei" id="schamlippenverkleinerung-beim-deutschen-aerzte-service">
+<section class="ls-abschnitt vor-lebens ls-zwei" id="schamlippenverkleinerung-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt ls-raster">
 <div class="ls-seite"><h2>Schamlippenverkleinerung beim Deutschen Ärzte Service</h2>
 </div>
@@ -607,6 +614,18 @@ main{counter-reset:abschnitt}
 <p>Sie denken oft an eine <b>Schamlippenverkleinerung </b>und haben sich bisher nicht getraut ihr Problem anzusprechen? Dann begeben Sie sich in die <b>erfahrenen und vertrauensvollen Hände</b> der spezialisierten Fachärzte des Deutschen Ärzte Service und lassen Sie uns gemeinsam Ihren Herzenswunsch in die Tat umsetzen. Diskretion und Einfühlungsvermögen ist bei uns eine Selbstverständlichkeit.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Sich rundum wohlfühlen. Ganz diskret.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011630_97561f2a-4711-4d61-94cd-61c82acf6be9.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="das-gesamtpaket">

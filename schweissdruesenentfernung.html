@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -600,13 +607,25 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt ls-zwei" id="das-gesamtpaket">
+<section class="ls-abschnitt vor-lebens ls-zwei" id="das-gesamtpaket">
   <div class="wrap"><div class="ls-inhalt ls-raster">
 <div class="ls-seite"><h2>Das Gesamtpaket</h2>
 </div>
 <div class="ls-text"><p><b> Das Komplettangebot der Kliniken beinhaltet im Einzelnen folgende Leistungen: </b></p>
 <div class="ls-tabelle"><table><tbody><tr><td>Medizinische Voruntersuchung</td></tr><tr><td>Eingehende Beratung und Aufklärung über die Schweißdrüsenentfernung</td></tr><tr><td>Vorbereitung, Organisation und Terminabstimmung der Schönheitsoperation</td></tr><tr><td>Anästhesie</td></tr><tr><td>Schweißdrüsenabsaugung (z.B. Achseln) inklusive aller medizinisch notwendigen Nebenleistungen</td></tr><tr><td>Nachsorge</td></tr></tbody></table></div></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Unbeschwert durch jeden Tag.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011630_b8b5cedb-6afc-4eed-af34-2deb63b0aa33.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="schweissdruesenentfernung-in-deutschland-ihre-vorteile-beim-">

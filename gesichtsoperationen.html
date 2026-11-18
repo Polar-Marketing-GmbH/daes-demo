@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -605,7 +612,7 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt" id="gesichtsoperationen-ihre-moeglichkeiten-auf-einen-blick">
+<section class="ls-abschnitt vor-lebens" id="gesichtsoperationen-ihre-moeglichkeiten-auf-einen-blick">
   <div class="wrap"><div class="ls-inhalt">
 <h2>Gesichtsoperationen: Ihre Möglichkeiten auf einen Blick</h2>
 <p>Ästhetische Gesichtschirurgie umfasst verschiedene Eingriffe, die unterschiedliche Bereiche des Gesichts betreffen. Eine Oberlidkorrektur kann beispielsweise Schlupflider behandeln, während bei einer Unterlidkorrektur unter anderem Tränensäcke oder Hautüberschüsse korrigiert werden können. Bei einer Nasenkorrektur stehen Form und Proportionen der Nase im Mittelpunkt. Eine Ohrenkorrektur kann abstehende Ohren anlegen, während ein Facelifting altersbedingte Veränderungen an Gesicht und Hals behandeln kann.</p>
@@ -639,6 +646,18 @@ main{counter-reset:abschnitt}
 <p>Ein Facelifting kann altersbedingte Veränderungen im Gesicht und am Hals korrigieren. Dabei wird nicht einfach nur die Haut gestrafft. Je nach Ausgangssituation und Operationsmethode berücksichtigt der Facharzt auch die darunterliegenden Gewebeschichten. Moderne Verfahren wie das SMAS-Facelift oder Deep-Plane-Facelift setzen gezielt an tieferen Strukturen an. Ziel ist es, abgesunkenes Gewebe neu zu positionieren und die Gesichtskonturen zu definieren, ohne die individuelle Mimik und Natürlichkeit des Gesichts zu verlieren.</p>
 <p>Da ein Facelifting individuell an den jeweiligen Ausgangsbefund angepasst wird, können Operationsmethode und Umfang unterschiedlich ausfallen.</p></div></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Frisch aussehen. Sie selbst bleiben.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011627_0f9b0c0c-ebd7-4ad1-be46-1b49442a95e9.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt" id="gesichtsoperationen-in-ganz-deutschland">

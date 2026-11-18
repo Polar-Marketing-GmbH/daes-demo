@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -607,7 +614,7 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt ls-zwei" id="gruende-fuer-eine-brustvergroesserung-mit-bruststraffung">
+<section class="ls-abschnitt vor-lebens ls-zwei" id="gruende-fuer-eine-brustvergroesserung-mit-bruststraffung">
   <div class="wrap"><div class="ls-inhalt ls-raster">
 <div class="ls-seite"><h2>Gründe für eine Brustvergrößerung mit Bruststraffung</h2>
 </div>
@@ -617,6 +624,18 @@ main{counter-reset:abschnitt}
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Schwangerschaft und Stillzeit: Die Brust hat an Volumen und Festigkeit verloren.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Starke Gewichtsabnahme: Die Brust wirkt leer und die überschüssige Haut bildet sich nicht ausreichend zurück.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Veränderungen durch das Älterwerden: Haut und Bindegewebe verlieren an Elastizität und die Brust sinkt ab.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Wunsch nach einem volleren Dekolleté: Besonders im oberen Brustbereich fehlt Volumen.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Asymmetrische Brüste: Die Brüste unterscheiden sich in Größe, Form oder dem Grad der Erschlaffung.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliches Wohlbefinden: Manche Frauen fühlen sich im Bikini, im Sport-Top oder ohne BH nicht mehr so wohl wie früher.</span></li></ul>
 <p>Ob eine Brustvergrößerung mit Straffung die richtige Behandlung ist oder eine Bruststraffung beziehungsweise Brustvergrößerung allein ausreicht, beurteilt Ihr Facharzt im persönlichen Beratungsgespräch. Dabei berücksichtigt er Ihre körperlichen Voraussetzungen, Ihre Wünsche und das medizinisch realistisch erreichbare Ergebnis.</p></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Form und Fülle in einem Schritt.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011626_b111b7c8-c15f-4039-a6ef-2a459a1631a0.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">

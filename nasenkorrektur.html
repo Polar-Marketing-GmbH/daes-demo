@@ -550,6 +550,13 @@ main{counter-reset:abschnitt}
 .ls-video{aspect-ratio:16/9;border-radius:22px}
 @media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
+/* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
+.ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
+.ls-lebens + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-lebens + .ls-abschnitt{padding-top:clamp(3rem,6vw,5.6rem)!important}
+.ls-lebens .lebens-bild{right:clamp(1rem,9%,8rem)}
+@media (max-width:1000px){.ls-abschnitt.vor-lebens{padding-bottom:clamp(3rem,6vw,5.6rem)}}
+
 /* Instagram unter den FAQ */
 .ls-insta{border-top:1px solid var(--stahl-200);background:var(--weiss)}
 
@@ -604,13 +611,25 @@ main{counter-reset:abschnitt}
 </div></div>
 </section>
 
-<section class="ls-abschnitt ls-zwei" id="gruende-fuer-eine-nasenkorrektur">
+<section class="ls-abschnitt vor-lebens ls-zwei" id="gruende-fuer-eine-nasenkorrektur">
   <div class="wrap"><div class="ls-inhalt ls-raster">
 <div class="ls-seite"><h2>Gründe für eine Nasenkorrektur</h2>
 </div>
 <div class="ls-text"><p>Jede Nase ist einzigartig und ebenso individuell sind die Gründe für eine Nasenkorrektur. Manche Patientinnen stören sich seit vielen Jahren an einem Nasenhöcker oder einer schiefen Nase, andere wünschen sich eine feinere Nasenspitze, schmalere Nasenflügel oder eine insgesamt harmonischere Gesichtsproportion. Auch Asymmetrien nach Verletzungen können Anlass für eine Behandlung sein.</p>
 <p>Ziel jeder Nasenkorrektur ist eine Veränderung, die natürlich wirkt und mit der Sie sich im Alltag wohl und schön fühlen. Welche Korrektur medizinisch sinnvoll und ästhetisch möglich ist, besprechen Sie ausführlich mit Ihrem behandelnden Facharzt.</p></div>
 </div></div>
+</section>
+
+<section class="lebens ls-lebens" aria-labelledby="h-lebens">
+  <div class="wrap">
+    <div class="lebens-text">
+      <span class="label">Schönheit soll bezahlbar sein</span>
+      <h2 id="h-lebens">Ein Profil, das zu Ihrem Gesicht passt.</h2>
+      <p class="lead">Wir finden den Facharzt, der genau diesen Eingriff regelmäßig durchführt. Zum festen Komplettpreis.</p>
+      <a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch buchen</a>
+    </div>
+    <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011631_ffa9382d-a21b-465a-8234-f54adc0314bf.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
+  </div>
 </section>
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
