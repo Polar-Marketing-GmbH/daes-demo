@@ -381,7 +381,7 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
 .ins-laden .btn{flex:none}
 .ins-echt{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.2rem .1rem 1rem;scrollbar-width:thin}
 .ins-echt[hidden]{display:none}
-.ins-post{flex:0 0 min(340px,86vw);scroll-snap-align:start;min-width:0}
+.ins-post{position:relative;flex:0 0 min(340px,86vw);scroll-snap-align:start;min-width:0}
 .ins-post .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:100%!important;border:1px solid var(--stahl-200)!important;border-radius:10px!important;box-shadow:none!important}
 .ins-post > blockquote > a{display:grid;place-items:center;min-height:380px;font-size:.9rem;color:var(--violett)}
 @media (max-width:900px){.ins-raster{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -506,7 +506,12 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
+.ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
+.ls-text > .ls-spalten > .ls-spalte > p{font-size:1.04rem}
 .ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-inhalt > .ls-split,.ls-inhalt > .ls-karten,.ls-inhalt > .ls-spalten,.ls-inhalt > .ls-fakten,.ls-inhalt > .ls-banner,.ls-inhalt > .ls-bild-breit{margin-block:0}
+@media (max-width:760px){.ls-inhalt > .ls-split{gap:1rem}}
 .ls-seite:empty{display:block}
 .ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
 .ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
@@ -557,7 +562,7 @@ main{counter-reset:abschnitt}
 
 /* Video: am Desktop 16:9, am Handy so hoch wie nötig */
 .ls-video{aspect-ratio:16/9;border-radius:22px}
-@media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
+@media (max-width:640px),(min-width:901px) and (max-width:1023px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
 /* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
 .ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
@@ -604,7 +609,7 @@ main{counter-reset:abschnitt}
       <span class="label">Körperchirurgie</span>
       <h1>Bauchdeckenstraffung ab 3.999,- €</h1>
       <p class="ls-hero-text">Bauchdeckenstraffung ab 3.999 € beim Facharzt – nach Schwangerschaft oder Gewichtsabnahme für einen flacheren, strafferen Bauch. Beratung 40 €.</p>
-      
+      <nav class="ls-sprung" aria-label="Auf dieser Seite"><a href="#teil-1">Infos zum Angebot</a><a href="#das-gesamtpaket">Gesamtpaket</a><a href="#bauchdeckenstraffung-alle-fakten-auf-einen-blick">Fakten</a><a href="#haeufige-fragen-zur-bauchdeckenstraffung">FAQ</a></nav>
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
     <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_013935_a059c2d4-8829-4a17-8b4f-e2cf6fa17990.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
@@ -614,11 +619,9 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<div class="ls-spalten" style="--n:4"><div class="ls-spalte"><p><b><a href="#teil-1">Infos zum Angebot</a> </b></p></div><div class="ls-spalte"><p><b><a href="#das-gesamtpaket">Gesamtpaket</a></b></p></div><div class="ls-spalte"><p><a href="#bauchdeckenstraffung-alle-fakten-auf-einen-blick"><b>Fakten</b></a></p></div><div class="ls-spalte"><p><a href="#haeufige-fragen-zur-bauchdeckenstraffung"><b>FAQ</b></a></p></div></div>
-<div class="ls-raster ohne-kopf">
-<div class="ls-seite"></div>
-<div class="ls-text"><p>Wie gerne hätte ich wieder meine Figur von früher! Diesen Wunsch können viele Frauen und Männer nachvollziehen, wenn sich die eigene Figur im Laufe der Zeit verändert hat, ohne dass man aktiv etwas getan hat, z.B. die Ernährung umgestellt hat. Gerade in der Bauchregion sorgen erschlaffte Hautpartien für einen unschönen Anblick. Dies führt zu einem verminderten Körpergefühl. Eine erfolgreiche Bauchdeckenstraffung hilft Ihnen die Zeichen der Zeit zurückzudrehen und sorgt für ein besseres Körpergefühl. Der Bauch ist wieder schlank und straff und Sie gewinnen an Lebensqualität.</p>
-<p>Die Gründe einer Bauchdeckenstraffung sind vielfältig. Insbesondere durch Schwangerschaften wird der Bauch in Mitleidenschaft gezogen. Selbst beste Hautpflege und gezielte Gymnastikübungen für die Bauchregion können dem Bauch oft nicht das Aussehen von früher verleihen. Dies liegt unter anderem an der Anatomie der geraden Bauchmuskeln. Durch eine Geburt werden diese so beansprucht, dass sie sich nicht wieder von selbst verbinden können. Das unschöne Ergebnis ist eine erschlaffte Bauchhaut.</p>
+<div class="ls-raster">
+<div class="ls-seite"><p class="ls-lead">Wie gerne hätte ich wieder meine Figur von früher! Diesen Wunsch können viele Frauen und Männer nachvollziehen, wenn sich die eigene Figur im Laufe der Zeit verändert hat, ohne dass man aktiv etwas getan hat, z.B. die Ernährung umgestellt hat. Gerade in der Bauchregion sorgen erschlaffte Hautpartien für einen unschönen Anblick. Dies führt zu einem verminderten Körpergefühl. Eine erfolgreiche Bauchdeckenstraffung hilft Ihnen die Zeichen der Zeit zurückzudrehen und sorgt für ein besseres Körpergefühl. Der Bauch ist wieder schlank und straff und Sie gewinnen an Lebensqualität.</p></div>
+<div class="ls-text"><p>Die Gründe einer Bauchdeckenstraffung sind vielfältig. Insbesondere durch Schwangerschaften wird der Bauch in Mitleidenschaft gezogen. Selbst beste Hautpflege und gezielte Gymnastikübungen für die Bauchregion können dem Bauch oft nicht das Aussehen von früher verleihen. Dies liegt unter anderem an der Anatomie der geraden Bauchmuskeln. Durch eine Geburt werden diese so beansprucht, dass sie sich nicht wieder von selbst verbinden können. Das unschöne Ergebnis ist eine erschlaffte Bauchhaut.</p>
 <p>Auch die hormonelle Umstellung einer Schwangerschaft z.B. die vermehrte Ausschüttung weiblicher Hormone bedingen ein Erschlaffen des Bindegewebes. Insbesondere das Hormon Östrogen sorgt für ein weiches Gewebe, damit körperliche Veränderungen der Schwangerschaft erleichtert werden können. Daher fragen beim Deutschen Ärzte Service Frauen verstärkt nach diesem Eingriff. Aber auch Männer, die unter einer verstärkten Fettansammlung am Bauch leiden, können mit diesem Eingriff wieder von einem flachen, gut proportionierten Bauch profitieren.</p>
 <p>Da jeder Patient, jedes Haut- und Bindegewebe einzigartig ist, wird die Bauchdeckenstraffung beim Deutschen Ärzte Service nur von ausgewählten Spezialisten durchgeführt. Der Preis ist mit „ab“ gekennzeichnet, da er regional geringfügig abweichen kann. Informationen zur optimalen Auswahl Ihres Behandlungsstandortes erhalten Sie kostenfrei unter <a href="tel:+498002626770"><span class="ls-nb">0800 / 2626770</span></a>. Trotz der günstigen Preise wird diese Behandlung höchst individuell gehandhabt. Deshalb informieren wir Sie im Beratungsgespräch ausführlich über die individuelle Vorgehensweise der Bauchdeckenstraffung. Vereinbaren Sie noch heute Ihren Beratungstermin.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
@@ -806,7 +809,7 @@ main{counter-reset:abschnitt}
   var fertig=false;
   function siegel(){
     if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
-    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:(window.matchMedia&&window.matchMedia("(min-width:901px)").matches)?"left":"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
   }
   window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
@@ -821,7 +824,7 @@ html.siegel-an .pe-pro-seal{opacity:1!important;transform:none!important;pointer
 (function(){
   var html=document.documentElement;
   function grenze(){var h=document.querySelector('.hero');return h?h.getBoundingClientRect().bottom+window.scrollY-120:600;}
-  function pruefe(){html.classList.toggle('siegel-an',window.scrollY>grenze());}
+  function pruefe(){var f=document.querySelector('footer.site'),ende=f&&f.getBoundingClientRect().top<window.innerHeight-40;html.classList.toggle('siegel-an',window.scrollY>grenze()&&!ende);}
   window.addEventListener('scroll',pruefe,{passive:true});window.addEventListener('resize',pruefe);window.addEventListener('load',pruefe);pruefe();
 })();
 </script>

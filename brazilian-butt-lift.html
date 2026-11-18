@@ -381,7 +381,7 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
 .ins-laden .btn{flex:none}
 .ins-echt{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.2rem .1rem 1rem;scrollbar-width:thin}
 .ins-echt[hidden]{display:none}
-.ins-post{flex:0 0 min(340px,86vw);scroll-snap-align:start;min-width:0}
+.ins-post{position:relative;flex:0 0 min(340px,86vw);scroll-snap-align:start;min-width:0}
 .ins-post .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:100%!important;border:1px solid var(--stahl-200)!important;border-radius:10px!important;box-shadow:none!important}
 .ins-post > blockquote > a{display:grid;place-items:center;min-height:380px;font-size:.9rem;color:var(--violett)}
 @media (max-width:900px){.ins-raster{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -506,7 +506,12 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
+.ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
+.ls-text > .ls-spalten > .ls-spalte > p{font-size:1.04rem}
 .ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-inhalt > .ls-split,.ls-inhalt > .ls-karten,.ls-inhalt > .ls-spalten,.ls-inhalt > .ls-fakten,.ls-inhalt > .ls-banner,.ls-inhalt > .ls-bild-breit{margin-block:0}
+@media (max-width:760px){.ls-inhalt > .ls-split{gap:1rem}}
 .ls-seite:empty{display:block}
 .ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
 .ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
@@ -557,7 +562,7 @@ main{counter-reset:abschnitt}
 
 /* Video: am Desktop 16:9, am Handy so hoch wie nötig */
 .ls-video{aspect-ratio:16/9;border-radius:22px}
-@media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
+@media (max-width:640px),(min-width:901px) and (max-width:1023px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
 
 /* Bildband wie auf der Startseite: die Frau ragt oben über das Band */
 .ls-abschnitt.vor-lebens{padding-bottom:calc(clamp(3rem,6vw,5.6rem) + 2.2rem)}
@@ -604,7 +609,7 @@ main{counter-reset:abschnitt}
       <span class="label">Körperchirurgie</span>
       <h1>Brazilian Butt Lift ab 3.999 ,-€</h1>
       <p class="ls-hero-text">Brazilian Butt Lift (BBL) ab 3.999 € beim Facharzt – Po-Modellierung mit Eigenfett oder Implantat. Komplettpreis inkl. Nachsorge, Beratung 40 €.</p>
-      
+      <nav class="ls-sprung" aria-label="Auf dieser Seite"><a href="#brazilian-butt-lift-ihr-traum-von-einem-wohlgeformten-po">Infos zum Angebot</a><a href="#das-gesamtpaket">Gesamtpaket</a><a href="#alle-fakten-auf-einen-blick-fuer-ihr-brazilian-buttock-lifti">Fakten</a><a href="#haeufig-gestellte-fragen-zum-brazilian-butt-lift">FAQ</a></nav>
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
     <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_013935_da05103f-8ac3-4137-a241-7adc12848702.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
@@ -612,17 +617,27 @@ main{counter-reset:abschnitt}
   </div>
 </section>
 
-<section class="ls-abschnitt" id="teil-1">
-  <div class="wrap"><div class="ls-inhalt">
-<div class="ls-spalten" style="--n:4"><div class="ls-spalte"><p><b><a href="#teil-1">Infos zum Angebot</a> </b></p></div><div class="ls-spalte"><p><b><a href="#das-gesamtpaket">Gesamtpaket</a></b></p></div><div class="ls-spalte"><p><a href="#alle-fakten-auf-einen-blick-fuer-ihr-brazilian-buttock-lifti"><b>Fakten</b></a></p></div><div class="ls-spalte"><p><a href="#haeufig-gestellte-fragen-zum-brazilian-butt-lift"><b>FAQ</b></a></p></div></div>
-</div></div>
-</section>
-
-<section class="ls-abschnitt vor-lebens ls-zwei" id="brazilian-butt-lift-ihr-traum-von-einem-wohlgeformten-po">
+<section class="ls-abschnitt ls-zwei" id="brazilian-butt-lift-ihr-traum-von-einem-wohlgeformten-po">
   <div class="wrap"><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Brazilian Butt Lift – Ihr Traum von einem wohlgeformten Po</h2></div>
 <div class="ls-text"><p>Der Po ist <b>Schönheitsideal und Symbol für Weiblichkeit</b>. Doch nur wenige Frauen sind mit ihrem Gesäß wirklich zufrieden. So ist er manchen zu klein und flach, andere wünschen ihn sich etwas fester. Die Hollywoodstars machen es vor und helfen der Natur nach. Auch Menschen mit geringerem Einkommen wünschen sich auch einen gut definierten Po. Mit dem <b>Brazilian Butt Lift</b> können wir Ihren Traum vom Wunsch Po erfüllen!</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="ls-abschnitt vor-lebens" id="brazilian-butt-lift-wie-funktioniert-die-behandlung">
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Brazilian Butt Lift: Wie funktioniert die Behandlung?</h2></div>
+<div class="ls-text"><p>Sie sind schon länger mit der Form und Größe Ihres Gesäßes unzufrieden und trotz sportlicher Betätigung, gezieltem Gesäß-Training und gesunder Ernährung lässt ein zufriedenstellendes Ergebnis auf sich warten? Vereinbaren Sie einen <b>ersten Beratungstermin</b> über den Deutschen Ärzte Service! Beim DÄS wartet auf Sie ein kompetenter und einfühlsamer Facharzt für Plastische und Ästhetische Chirurgie, der sehr viel Erfahrung mit dem Brazilian Butt Lift hat. Gemeinsam besprechen Sie alle Möglichkeiten zu den <b>schonenden Methoden</b> des Brazilian Butt Lifts, schauen sich <b>Bilder</b> an, die beeindrucken und finden die richtige Technik. Wahlweise kann das Ergebnis mit Eigenfett modelliert werden, bei sehr schlanken Frauen kann man auf speziell für den Po angefertigte Implantate zurückgreifen. Bei einer Eigenfettbehandlung haben Sie einen Synergieeffekt: Aus ungeliebten Fettpölsterchen an anderen Stellen (wie z.B. den Oberschenkeln oder am Bauch) wird ein runder, voller Po gezaubert.</p>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<h3>Wie läuft der Eingriff ab?</h3>
+<div class="ls-spalten" style="--n:1"><div class="ls-spalte"><p>Bei der Eigenfett-Variante der Po-Vergrößerung <b>kommen keine Implantate zum Einsatz</b>, sondern es findet eine <b>sanfte Fettumverteilung </b>statt. Ihr Facharzt für Plastische und Ästhetische Chirurgie bespricht mit Ihnen im Vorfeld ganz genau, <b>welche Körperpartien sich für die Fettzellenentnahme anbieten</b>. Dieses innovative Verfahren besteht aus zwei Schritten. Während der Operation entfernt der Spezialist die Fettpölsterchen zuerst mithilfe einer besonders feinen Kanüle. Geeignete Regionen sind die Hüfte, der Bauch oder die Oberschenkel. In einem zweiten Schritt wird das das so gewonnene Fettgewebe aufbereitet. Dann wird das gereinigte Material genutzt um <b>Ihren Po gezielt zu modellieren</b>. Auch dabei kommt eine hauchdünne Kanüle zum Einsatz, wodurch in der Regel <b>keinerlei Narben zurückbleiben</b>. Eine äußerst akkurate Vorgehensweise sorgt für eine schön geformten Po. Nur der erfahrene plastische Chirurg weiß, wo das Fett eingespritzt werden muss. Bei einer perfekten Behandlung wächst das Eigenfett sehr gut an und verbindet sich zu einer Einheit mit Ihrem körpereigenen Pogewebe. Vertrauen Sie auf die Spezialisten und Fachärzte, die sich auf diesen Eingriff fokussiert haben. Dieses Verfahren ist auch beim DÄS nicht an allen Standorten erhältlich – fragen Sie telefonisch unter <span class="ls-nb">0800/ 26 26 770</span> kostenfrei an, in welchen Städten es aktuell möglich wäre.</p>
+<p>Bei einer Po-vergrößerung mit Implantaten ist der Eingriff aufwändiger. Es gibt verschiedene Formen und Größen von Silikongelimplantaten, so dass Ihre persönlich gewünschte Po-Form realisiert werden kann. Aufgrund der guten Eigenfettverträglichkeit ist eine Po-Vergrößerung mit Implantaten nur bei sehr schlanken Frauen, die nicht über die notwendigen Fettpölsterchen für das Eigenfett verfügen, die bessere Methode.</p>
+<p>Bei dieser Technik sind die richtige Aufklärung und das ausführliche Vorgespräch mit dem Arzt besonders wichtig, damit Ihr Wunsch auch perfekt umgesetzt werden kann. Die richtige Größe des Implantats ermittelt der Plastische Chirurg schon bei der Voruntersuchung.</p></div></div>
+<h3>Nach der Schönheitsoperation</h3>
+<p>Nach der Operation – die Sie <b>im komfortablen Dämmerschlaf, Lokalanästhesie oder auf Wunsche auch in Vollnarkose</b> verbringen – erholen Sie sich noch wenige Stunden in der Privatklinik und lassen sich verwöhnen. Danach haben Sie die Wahl, ob Sie direkt nach Hause möchten oder noch ein bis zwei Tage stationär bei uns bleiben möchten. Die nächsten <b>vier bis sechs Wochen</b> tragen Sie eine <b>spezielle Kompressionshose</b>. Sie fördert den Heilungsprozess und mindert die Schwellung. <b>Bis zu 14 Tage</b> nach dem Eingriff sollten Sie sich unbedingt schonen und <b>wenig Druck auf Ihr Gesäß</b> ausüben. Das gilt auch <b>beim Sitzen und Schlafen</b>. Sportliche Betätigung können Sie in der Regel nach vier bis sechs Wochen wieder aufnehmen. Sprechen Sie Ihre Vorhaben jedoch vor allem in der ersten Zeit ruhig mit Ihrem behandelnden Facharzt ab.<br></p></div>
 </div>
 </div></div>
 </section>
@@ -637,25 +652,6 @@ main{counter-reset:abschnitt}
     </div>
     <img class="lebens-bild" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_011631_a8341421-86f8-4fcd-9fab-ba352d9957a6.png" alt="Lachende Frau in Sommerkleidung, Symbolbild" width="688" height="1024" loading="lazy">
   </div>
-</section>
-
-<section class="ls-abschnitt" id="brazilian-butt-lift-wie-funktioniert-die-behandlung">
-  <div class="wrap"><div class="ls-inhalt">
-<div class="ls-raster">
-<div class="ls-seite"><h2>Brazilian Butt Lift: Wie funktioniert die Behandlung?</h2></div>
-<div class="ls-text"><p>Sie sind schon länger mit der Form und Größe Ihres Gesäßes unzufrieden und trotz sportlicher Betätigung, gezieltem Gesäß-Training und gesunder Ernährung lässt ein zufriedenstellendes Ergebnis auf sich warten? Vereinbaren Sie einen <b>ersten Beratungstermin</b> über den Deutschen Ärzte Service! Beim DÄS wartet auf Sie ein kompetenter und einfühlsamer Facharzt für Plastische und Ästhetische Chirurgie, der sehr viel Erfahrung mit dem Brazilian Butt Lift hat. Gemeinsam besprechen Sie alle Möglichkeiten zu den <b>schonenden Methoden</b> des Brazilian Butt Lifts, schauen sich <b>Bilder</b> an, die beeindrucken und finden die richtige Technik. Wahlweise kann das Ergebnis mit Eigenfett modelliert werden, bei sehr schlanken Frauen kann man auf speziell für den Po angefertigte Implantate zurückgreifen. Bei einer Eigenfettbehandlung haben Sie einen Synergieeffekt: Aus ungeliebten Fettpölsterchen an anderen Stellen (wie z.B. den Oberschenkeln oder am Bauch) wird ein runder, voller Po gezaubert.</p>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
-<h3>Wie läuft der Eingriff ab?</h3></div>
-</div>
-<div class="ls-spalten" style="--n:1"><div class="ls-spalte"><p>Bei der Eigenfett-Variante der Po-Vergrößerung <b>kommen keine Implantate zum Einsatz</b>, sondern es findet eine <b>sanfte Fettumverteilung </b>statt. Ihr Facharzt für Plastische und Ästhetische Chirurgie bespricht mit Ihnen im Vorfeld ganz genau, <b>welche Körperpartien sich für die Fettzellenentnahme anbieten</b>. Dieses innovative Verfahren besteht aus zwei Schritten. Während der Operation entfernt der Spezialist die Fettpölsterchen zuerst mithilfe einer besonders feinen Kanüle. Geeignete Regionen sind die Hüfte, der Bauch oder die Oberschenkel. In einem zweiten Schritt wird das das so gewonnene Fettgewebe aufbereitet. Dann wird das gereinigte Material genutzt um <b>Ihren Po gezielt zu modellieren</b>. Auch dabei kommt eine hauchdünne Kanüle zum Einsatz, wodurch in der Regel <b>keinerlei Narben zurückbleiben</b>. Eine äußerst akkurate Vorgehensweise sorgt für eine schön geformten Po. Nur der erfahrene plastische Chirurg weiß, wo das Fett eingespritzt werden muss. Bei einer perfekten Behandlung wächst das Eigenfett sehr gut an und verbindet sich zu einer Einheit mit Ihrem körpereigenen Pogewebe. Vertrauen Sie auf die Spezialisten und Fachärzte, die sich auf diesen Eingriff fokussiert haben. Dieses Verfahren ist auch beim DÄS nicht an allen Standorten erhältlich – fragen Sie telefonisch unter <span class="ls-nb">0800/ 26 26 770</span> kostenfrei an, in welchen Städten es aktuell möglich wäre.</p>
-<p>Bei einer Po-vergrößerung mit Implantaten ist der Eingriff aufwändiger. Es gibt verschiedene Formen und Größen von Silikongelimplantaten, so dass Ihre persönlich gewünschte Po-Form realisiert werden kann. Aufgrund der guten Eigenfettverträglichkeit ist eine Po-Vergrößerung mit Implantaten nur bei sehr schlanken Frauen, die nicht über die notwendigen Fettpölsterchen für das Eigenfett verfügen, die bessere Methode.</p>
-<p>Bei dieser Technik sind die richtige Aufklärung und das ausführliche Vorgespräch mit dem Arzt besonders wichtig, damit Ihr Wunsch auch perfekt umgesetzt werden kann. Die richtige Größe des Implantats ermittelt der Plastische Chirurg schon bei der Voruntersuchung.</p></div></div>
-<div class="ls-raster ohne-kopf">
-<div class="ls-seite"></div>
-<div class="ls-text"><h3>Nach der Schönheitsoperation</h3>
-<p>Nach der Operation – die Sie <b>im komfortablen Dämmerschlaf, Lokalanästhesie oder auf Wunsche auch in Vollnarkose</b> verbringen – erholen Sie sich noch wenige Stunden in der Privatklinik und lassen sich verwöhnen. Danach haben Sie die Wahl, ob Sie direkt nach Hause möchten oder noch ein bis zwei Tage stationär bei uns bleiben möchten. Die nächsten <b>vier bis sechs Wochen</b> tragen Sie eine <b>spezielle Kompressionshose</b>. Sie fördert den Heilungsprozess und mindert die Schwellung. <b>Bis zu 14 Tage</b> nach dem Eingriff sollten Sie sich unbedingt schonen und <b>wenig Druck auf Ihr Gesäß</b> ausüben. Das gilt auch <b>beim Sitzen und Schlafen</b>. Sportliche Betätigung können Sie in der Regel nach vier bis sechs Wochen wieder aufnehmen. Sprechen Sie Ihre Vorhaben jedoch vor allem in der ersten Zeit ruhig mit Ihrem behandelnden Facharzt ab.<br></p></div>
-</div>
-</div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="das-gesamtpaket">
@@ -833,7 +829,7 @@ main{counter-reset:abschnitt}
   var fertig=false;
   function siegel(){
     if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
-    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:(window.matchMedia&&window.matchMedia("(min-width:901px)").matches)?"left":"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
   }
   window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
@@ -848,7 +844,7 @@ html.siegel-an .pe-pro-seal{opacity:1!important;transform:none!important;pointer
 (function(){
   var html=document.documentElement;
   function grenze(){var h=document.querySelector('.hero');return h?h.getBoundingClientRect().bottom+window.scrollY-120:600;}
-  function pruefe(){html.classList.toggle('siegel-an',window.scrollY>grenze());}
+  function pruefe(){var f=document.querySelector('footer.site'),ende=f&&f.getBoundingClientRect().top<window.innerHeight-40;html.classList.toggle('siegel-an',window.scrollY>grenze()&&!ende);}
   window.addEventListener('scroll',pruefe,{passive:true});window.addEventListener('resize',pruefe);window.addEventListener('load',pruefe);pruefe();
 })();
 </script>

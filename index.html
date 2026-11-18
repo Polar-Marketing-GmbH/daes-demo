@@ -115,7 +115,7 @@ p{margin:0}
 .ins-laden .btn{flex:none}
 .ins-echt{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.2rem .1rem 1rem;scrollbar-width:thin}
 .ins-echt[hidden]{display:none}
-.ins-post{flex:0 0 min(340px,86vw);scroll-snap-align:start;min-width:0}
+.ins-post{position:relative;flex:0 0 min(340px,86vw);scroll-snap-align:start;min-width:0}
 .ins-post .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:100%!important;border:1px solid var(--stahl-200)!important;border-radius:10px!important;box-shadow:none!important}
 .ins-post > blockquote > a{display:grid;place-items:center;min-height:380px;font-size:.9rem;color:var(--violett)}
 @media (max-width:900px){.ins-raster{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -1288,7 +1288,7 @@ html.siegel-an .pe-pro-seal{opacity:1!important;transform:none!important;pointer
 (function(){
   var html=document.documentElement;
   function grenze(){var h=document.querySelector('.hero');return h?h.getBoundingClientRect().bottom+window.scrollY-120:600;}
-  function pruefe(){html.classList.toggle('siegel-an',window.scrollY>grenze());}
+  function pruefe(){var f=document.querySelector('footer.site'),ende=f&&f.getBoundingClientRect().top<window.innerHeight-40;html.classList.toggle('siegel-an',window.scrollY>grenze()&&!ende);}
   window.addEventListener('scroll',pruefe,{passive:true});window.addEventListener('resize',pruefe);window.addEventListener('load',pruefe);pruefe();
 })();
 </script>
