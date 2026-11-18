@@ -345,10 +345,52 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
 @media (max-width:860px){footer.site .cols{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){footer.site .cols{grid-template-columns:1fr}}
 
+/* Instagram (wie Startseite) */
+.insta{padding-block:clamp(2.6rem,5vw,4rem)}
+.ins-kopf{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.ins-avatar{width:64px;height:64px;border-radius:50%;padding:3px;background:linear-gradient(45deg,#F2A04B,#E1306C 45%,#812685);flex:none}
+.ins-avatar svg{display:block;width:100%;height:100%;border-radius:50%;border:3px solid var(--weiss)}
+.ins-text-kopf{display:grid;gap:.2rem;min-width:0;flex:1 1 280px}
+.ins-text-kopf a{font-weight:700;font-size:1.1rem;color:var(--schwarz);text-decoration:none}
+.ins-text-kopf a:hover{color:var(--violett)}
+.ins-text-kopf p{font-size:.92rem;color:var(--stahl-600);line-height:1.5}
+.ins-folgen{margin-left:auto}
+.ins-raster[hidden]{display:none}
+.ins-raster{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.5rem}
+.ins-kachel{position:relative;display:block;aspect-ratio:1/1;border-radius:10px;overflow:hidden;text-decoration:none;isolation:isolate}
+.ins-kachel .photo{position:absolute;inset:0;border-radius:0}
+.ins-kachel .photo img{transition:transform .4s ease}
+.ins-kachel:hover .photo img,.ins-kachel:hover > img{transform:scale(1.05)}
+.ins-reel{position:absolute;top:.55rem;right:.55rem;width:22px;height:22px;color:var(--weiss);stroke:currentColor;fill:none;stroke-width:1.7;filter:drop-shadow(0 1px 2px rgba(1,1,1,.45));z-index:2}
+.ins-hover{position:absolute;inset:0;display:grid;place-items:center;background:rgba(1,1,1,.32);color:var(--weiss);opacity:0;transition:opacity .2s ease;z-index:3}
+.ins-hover .ico{width:30px;height:30px}
+.ins-kachel:hover .ins-hover,.ins-kachel:focus-visible .ins-hover{opacity:1}
+.ins-text{display:flex;flex-direction:column;justify-content:space-between;padding:1rem .9rem}
+.ins-text.dunkel{background:var(--verlauf);color:var(--weiss)}
+.ins-text.hell{background:linear-gradient(160deg,var(--violett-tint),#EFCADD);color:var(--schwarz)}
+.ins-frage{font-size:clamp(.92rem,1.35vw,1.12rem);font-weight:700;line-height:1.25;padding-right:1.4rem}
+.ins-marke{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.ins-text.hell .ins-reel{color:var(--violett);filter:none}
+.ins-person{background:linear-gradient(160deg,var(--violett-tint),#EFCADD)}
+.ins-person > img{position:absolute;left:50%;bottom:0;height:96%;width:auto;max-width:none;transform-origin:50% 100%;translate:-50% 0;transition:transform .4s ease}
+.ins-hinweis{font-size:.8rem;color:var(--stahl-600);margin-top:.9rem}
+.ins-laden[hidden]{display:none}
+.ins-laden{display:flex;align-items:center;justify-content:space-between;gap:.8rem 1.2rem;flex-wrap:wrap;margin-top:1rem;padding:.9rem 1.1rem;border:1px solid var(--stahl-200);border-radius:10px;background:var(--stahl-50)}
+.ins-laden p{font-size:.86rem;color:var(--stahl-600);max-width:64ch}
+.ins-laden p b{color:var(--schwarz)}
+.ins-laden .btn{flex:none}
+.ins-echt{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.2rem .1rem 1rem;scrollbar-width:thin}
+.ins-echt[hidden]{display:none}
+.ins-post{flex:0 0 min(340px,86vw);scroll-snap-align:start;min-width:0}
+.ins-post .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:100%!important;border:1px solid var(--stahl-200)!important;border-radius:10px!important;box-shadow:none!important}
+.ins-post > blockquote > a{display:grid;place-items:center;min-height:380px;font-size:.9rem;color:var(--violett)}
+@media (max-width:900px){.ins-raster{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.ins-raster{grid-template-columns:repeat(2,minmax(0,1fr))}.ins-folgen{margin-left:0;width:100%}.ins-frage{font-size:1rem}}
+
 /* Leistungsseiten: Inhalte der bisherigen Webseite im neuen Design */
 .ls-hero{padding-bottom:clamp(2rem,4vw,3rem)}
 .ls-hero .crumbs a{color:inherit}
-.ls-kopf{display:grid;gap:1.2rem;max-width:860px;padding-top:clamp(1.6rem,3.5vw,2.8rem)}
+.ls-kopf{display:grid;grid-template-columns:minmax(0,1fr);gap:1.2rem;max-width:860px;padding-top:clamp(1.6rem,3.5vw,2.8rem)}
 .ls-kopf h1{font-size:clamp(1.9rem,4vw,3.1rem);overflow-wrap:break-word;hyphens:auto}
 .ls-inhalt{overflow-wrap:break-word;hyphens:auto}
 .ls-inhalt > *{min-width:0}
@@ -357,7 +399,6 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
 .ls-sprung a:hover{border-color:var(--violett);color:var(--violett)}
 .ls-titelbild{margin:clamp(1.6rem,3vw,2.4rem) 0 0;aspect-ratio:1170/500;border-radius:14px;overflow:hidden;background:var(--violett-tint)}
 .ls-titelbild img{display:block;width:100%;height:100%;object-fit:cover}
-@media (max-width:640px){.ls-titelbild{aspect-ratio:4/3}}
 .ls-abschnitt{padding-block:clamp(2.6rem,5.5vw,4.6rem)}
 .ls-inhalt{display:grid;gap:1.05rem}
 .ls-inhalt > h2,.ls-inhalt > h3,.ls-inhalt > h4,.ls-inhalt > p,.ls-inhalt > .ls-liste,.ls-inhalt > .ls-cta,.ls-inhalt > .faq,.ls-inhalt > .ls-knopf{max-width:840px}
@@ -383,10 +424,10 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-split.bild-rechts .ls-bild{order:2}
 .ls-split-text,.ls-schritt-text,.ls-spalte,.ls-karte{display:grid;gap:.85rem;align-content:start;min-width:0}
 /* Ablauf: senkrechte Zeitleiste, ein leuchtender Punkt läuft von oben nach unten wie auf der Startseite */
-.ls-schritte{--takt:8s;position:relative;display:grid;max-width:880px;margin-block:.6rem}
-.ls-schritte::before{content:"";position:absolute;left:27px;top:28px;bottom:40px;border-left:2px solid var(--stahl-200)}
-.ls-schritte::after{content:"";position:absolute;left:23px;top:28px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(201,138,204,.55),0 0 18px 7px rgba(201,138,204,.75);animation:lsLauf var(--takt) linear infinite;pointer-events:none}
-@keyframes lsLauf{0%{top:28px;opacity:0}3%{opacity:1}94%{opacity:1}100%{top:calc(100% - 50px);opacity:0}}
+.ls-schritte{--takt:8s;--start:28px;--ende:calc(100% - 45px);position:relative;display:grid;max-width:880px;margin-block:.6rem}
+.ls-schritte::before{content:"";position:absolute;left:27px;top:var(--start);height:calc(var(--ende) - var(--start));border-left:2px solid var(--stahl-200)}
+.ls-schritte::after{content:"";position:absolute;left:23px;top:calc(var(--start) - 5px);width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(201,138,204,.55),0 0 18px 7px rgba(201,138,204,.75);animation:lsLauf var(--takt) linear infinite;pointer-events:none}
+@keyframes lsLauf{0%{top:calc(var(--start) - 5px);opacity:0}4%{opacity:1}85%{top:calc(var(--ende) - 5px);opacity:1}100%{top:calc(var(--ende) - 5px);opacity:0}}
 .ls-schritt{display:grid;grid-template-columns:56px minmax(0,1fr);gap:1.2rem;position:relative;padding-bottom:1.6rem}
 .ls-nr{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:var(--verlauf);color:var(--weiss);display:grid;place-items:center;font-size:1.35rem;font-weight:700;box-shadow:var(--schatten-violett);animation:lsPunkt var(--takt) linear infinite;animation-delay:var(--verz,0s)}
 @keyframes lsPunkt{0%{transform:scale(1.12);box-shadow:0 0 0 6px rgba(201,138,204,.35),0 0 26px 10px rgba(201,138,204,.7)}14%,100%{transform:scale(1);box-shadow:0 10px 24px -8px rgba(129,38,133,.5)}}
@@ -406,7 +447,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-karte{position:relative;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
 .ls-karte:has(.ls-weiter):hover{transform:translateY(-3px);border-color:var(--violett);box-shadow:0 18px 34px -22px rgba(129,38,133,.6)}
 .ls-inhalt a.ls-weiter{color:var(--schwarz);text-decoration:none;font-weight:inherit}
-.ls-inhalt a.ls-weiter::after{content:" 92";color:var(--violett)}
+.ls-inhalt a.ls-weiter::after{content:" \2192";color:var(--violett)}
 .ls-karte a.ls-weiter::before{content:"";position:absolute;inset:0;z-index:1}
 .ls-inhalt a.ls-weiter:hover{color:var(--violett)}
 .ls-banner{position:relative;margin:0 0 1rem;border-radius:14px;overflow:hidden}
@@ -419,17 +460,102 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-tabelle th{background:var(--stahl-50);font-weight:700;color:var(--schwarz)}
 .ls-tabelle tr:last-child td{border-bottom:0}
 .ls-faq{max-width:840px}
-.ls-video{max-width:840px;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#2A1A33,#4B1D6E);display:grid;place-items:center;margin-block:.6rem}
+.ls-video{max-width:840px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#2A1A33,#4B1D6E);display:grid;place-items:center;margin-block:.6rem}
 .ls-video iframe{width:100%;height:100%;border:0;display:block}
+.ls-video:has(iframe){aspect-ratio:16/9}
 .ls-video-platz{display:grid;gap:.9rem;justify-items:center;text-align:center;padding:1.5rem;max-width:560px}
 .ls-video-platz p{color:#E9DDF0!important;font-size:.95rem}
 .ls-video-knoepfe{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;align-items:center}
 .ls-video .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
 .ls-video-info{color:#E9DDF0!important;font-size:.85rem}
+.ls-video :focus-visible{outline-color:#fff}
 .ls-faq .a p{margin:0 0 .6rem}
 @media (max-width:900px){.ls-spalten,.ls-karten{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){.ls-split,.ls-split.bild-rechts{grid-template-columns:minmax(0,1fr)}.ls-split.bild-rechts .ls-bild{order:0}}
-@media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte::before{left:21px;top:22px}.ls-schritte::after{left:17px;top:22px}}
+@media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
+
+/* ===== Moderner Auftritt der Leistungsseiten ===== */
+.ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
+.ls-hero{position:relative;border-bottom:0;background:radial-gradient(55% 70% at 88% 18%,rgba(201,138,204,.34),transparent 62%),radial-gradient(45% 60% at 4% 100%,rgba(239,202,221,.5),transparent 60%),linear-gradient(180deg,#FCFAFD 0%,#fff 100%);padding-bottom:clamp(2.6rem,5vw,4.6rem)}
+.ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
+.ls-kopf{max-width:none;gap:1.4rem}
+.ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-sprung{gap:.5rem}
+.ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
+.ls-sprung a:hover{background:var(--weiss)}
+.ls-held{position:relative;margin:0;justify-self:end;width:100%;max-width:470px;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--violett-tint);box-shadow:0 46px 90px -46px rgba(75,29,110,.65),0 0 0 1px rgba(129,38,133,.08)}
+.ls-held img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.ls-held::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,transparent 62%,rgba(75,29,110,.18));pointer-events:none}
+@media (max-width:860px){.ls-hero-raster{grid-template-columns:minmax(0,1fr)}.ls-held{justify-self:stretch;max-width:none;aspect-ratio:5/4;border-radius:22px}}
+@media (max-width:560px){.ls-held{aspect-ratio:1/1}}
+
+main{counter-reset:abschnitt}
+.ls-abschnitt,.ls-abschnitt.grau{background:none;padding-block:clamp(3rem,6vw,5.6rem)}
+.ls-abschnitt + .ls-abschnitt:not(.ls-hervor) > .wrap{border-top:1px solid var(--stahl-200);padding-top:clamp(3rem,6vw,5.6rem)}
+.ls-abschnitt + .ls-abschnitt:not(.ls-hervor){padding-top:0}
+.ls-hervor + .ls-abschnitt > .wrap{border-top:0!important}
+.ls-inhalt h2{font-size:clamp(1.9rem,3.4vw,2.85rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:.4rem}
+.ls-inhalt h2::before{counter-increment:abschnitt;content:counter(abschnitt,decimal-leading-zero);display:block;width:max-content;font-size:.8rem;font-weight:700;letter-spacing:.16em;color:var(--violett);margin-bottom:1rem;padding-bottom:.55rem;border-bottom:2px solid var(--violett)}
+.ls-banner figcaption h2::before,.ls-karte h2::before,.ls-spalte h2::before{content:none}
+.ls-inhalt > p,.ls-text > p{font-size:1.04rem}
+.ls-inhalt > h2,.ls-inhalt > h3,.ls-inhalt > h4,.ls-inhalt > p,.ls-inhalt > .ls-liste,.ls-inhalt > .ls-cta,.ls-inhalt > .faq,.ls-inhalt > .ls-knopf,.ls-tabelle{max-width:820px}
+
+/* zweispaltig: Überschrift links (mitlaufend), Text rechts */
+.ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
+.ls-seite{position:sticky;top:110px}
+.ls-seite h2{margin:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text > *{max-width:none!important}
+@media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
+
+/* Listen */
+.ls-liste.zwei{grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1.6rem}
+@media (max-width:560px){.ls-liste.zwei{grid-template-columns:minmax(0,1fr)}}
+.ls-liste li{padding-bottom:.55rem;border-bottom:1px solid var(--stahl-100)}
+.ls-liste li:last-child,.ls-liste.zwei li:nth-last-child(2):nth-child(odd){border-bottom:0}
+
+/* Kosten und Preise hervorgehoben */
+.ls-hervor{padding-block:clamp(1rem,3vw,2rem)}
+.ls-hervor > .wrap > .ls-inhalt{position:relative;overflow:hidden;border-radius:30px;padding:clamp(1.6rem,5vw,4rem);background:radial-gradient(60% 90% at 100% 0%,rgba(201,138,204,.45),transparent 60%),linear-gradient(135deg,#FBF5FB 0%,#F4EAF4 55%,#F1D6E8 100%);border:1px solid rgba(129,38,133,.12)}
+.ls-hervor .ls-cta{background:var(--weiss)}
+
+/* Hinweis mit Knopf */
+.ls-cta{background:var(--verlauf);border-radius:20px;padding:1.4rem 1.6rem;box-shadow:0 26px 50px -30px rgba(75,29,110,.75)}
+.ls-cta p{color:var(--weiss)!important}
+.ls-cta a:not(.btn){color:var(--weiss)!important}
+.ls-cta .btn-primary{background:var(--weiss);color:var(--violett-dunkel);box-shadow:none}
+.ls-cta .btn-primary:hover{background:#FBF2FB}
+.ls-hervor .ls-cta{background:var(--verlauf)}
+
+/* Bilder, Karten, Fakten */
+.ls-bild,.ls-banner{border-radius:22px}
+.ls-split{gap:clamp(1.6rem,5vw,4.4rem)}
+.ls-karte{border-radius:22px;border-color:var(--stahl-100);box-shadow:0 1px 0 rgba(1,1,1,.02),0 20px 40px -34px rgba(75,29,110,.4)}
+.ls-fakten{gap:.9rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+.ls-fakten dt,.ls-fakten dd{hyphens:auto;overflow-wrap:break-word}
+.ls-fakten dt{letter-spacing:.04em}
+.ls-fakten div{border-radius:18px;border-color:var(--stahl-100);padding:1.2rem 1.25rem;background:linear-gradient(160deg,#fff,#FBF7FC)}
+.ls-fakten dd{font-size:1.05rem;letter-spacing:-.01em}
+.ls-tabelle{border-radius:18px;border-color:var(--stahl-100)}
+.ls-tabelle td+td{overflow-wrap:anywhere}
+
+/* FAQ als ruhige Karten */
+.ls-faq{border-top:0;display:grid;gap:.6rem}
+.ls-faq details{border:1px solid var(--stahl-200);border-radius:16px;padding:0 1.2rem;background:var(--weiss);transition:border-color .2s ease,box-shadow .2s ease}
+.ls-faq details[open]{border-color:rgba(129,38,133,.35);box-shadow:0 18px 36px -30px rgba(75,29,110,.55)}
+.ls-faq summary{padding:1.05rem 0}
+
+/* Video: am Desktop 16:9, am Handy so hoch wie nötig */
+.ls-video{aspect-ratio:16/9;border-radius:22px}
+@media (max-width:640px){.ls-video:not(:has(iframe)){aspect-ratio:auto}}
+
+/* Instagram unter den FAQ */
+.ls-insta{border-top:1px solid var(--stahl-200);background:linear-gradient(180deg,#FCFAFD,#fff)}
+
+/* sanftes Einblenden beim Scrollen */
+.ls-auf{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.ls-auf.da{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.ls-auf{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -440,25 +566,28 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
     <nav class="main" id="mainnav" aria-label="Hauptnavigation">
       <div class="nav-item"><button class="nav-top" type="button" aria-expanded="false" aria-controls="mm-leistungen">Leistungen<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mega" id="mm-leistungen" hidden><div class="mega-in"><div class="mega-head"><span class="mega-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l6-2 9.5-9.5a2.1 2.1 0 0 0-3-3L7 15l-3 5z"/><path d="M13.5 8.5l3 3"/></svg></span><div><b>Leistungen</b><span>Ästhetisch-chirurgische Eingriffe zum festen Komplettpreis</span></div><a class="mega-all" href="schoenheitsoperationen.html">Alle Eingriffe ansehen →</a></div><div class="mega-grid"><div class="mega-col"><h4>Brust</h4><a href="brustvergroesserung.html">Brustvergrößerung<span>ab 2.999 €</span></a><a href="brustvergroesserung-mit-bruststraffung.html">Brustvergrößerung mit Straffung<span>ab 4.499 €</span></a><a href="bruststraffung.html">Bruststraffung<span>ab 3.499 €</span></a><a href="brustverkleinerung.html">Brustverkleinerung<span>ab 3.499 €</span></a><a href="brustvergroesserung-mit-eigenfett.html">Brustvergrößerung mit Eigenfett<span>ab 2.500 €</span></a><a href="implantatwechsel.html">Implantatwechsel<span>ab 3.499 €</span></a></div><div class="mega-col"><h4>Körper</h4><a href="fettabsaugung.html">Fettabsaugung (2 Zonen)<span>ab 1.899 €</span></a><a href="bauchdeckenstraffung.html">Bauchdeckenstraffung<span>ab 3.999 €</span></a><a href="brazilian-butt-lift.html">Brazilian Butt Lift<span>ab 3.999 €</span></a><a href="lipoedem.html">Lipödem-Behandlung<span>ab 1.899 €</span></a><a href="schamlippenverkleinerung.html">Schamlippenverkleinerung<span>ab 1.399 €</span></a><a href="schweissdruesenentfernung.html">Schweißdrüsenentfernung<span>ab 1.299 €</span></a></div><div class="mega-col"><h4>Gesicht</h4><a href="oberlidkorrektur.html">Oberlidkorrektur<span>ab 899 €</span></a><a href="unterlidkorrektur.html">Unterlidkorrektur<span>ab 1.399 €</span></a><a href="nasenkorrektur.html">Nasenkorrektur<span>ab 3.499 €</span></a><a href="ohrenkorrektur.html">Ohrenkorrektur<span>ab 999 €</span></a><a href="facelifting.html">Facelifting<span>ab 3.499 €</span></a></div><div class="mega-feature"><span class="mega-kicker">Beliebtester Eingriff</span><b>Brustvergrößerung</b><strong>2.999 €</strong><p>Komplettpreis mit Implantaten von Mentor oder Motiva, Narkose, Operation und Nachsorge.</p><a class="btn btn-primary" href="brustvergroesserung.html">Zum Eingriff</a></div></div></div></div></div>
       <div class="nav-item"><button class="nav-top" type="button" aria-expanded="false" aria-controls="mm-fachzentren">Fachzentren<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mega" id="mm-fachzentren" hidden><div class="mega-in"><div class="mega-head"><span class="mega-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg></span><div><b>Fachzentren</b><span>Partnerkliniken nach Eingriff und Stadt</span></div><a class="mega-all" href="index.html#standorte">Zur Standortkarte →</a></div><div class="mega-fach"><div class="mega-col"><h4>Brust-OPs in 26 Städten</h4><div class="mega-grps"><div class="mega-grp"><span>Baden-Württemberg</span><div class="mega-list"><a href="index.html#standorte">Mannheim</a><a href="index.html#standorte">Reutlingen</a><a href="index.html#standorte">Stuttgart</a></div></div><div class="mega-grp"><span>Bayern</span><div class="mega-list"><a href="index.html#standorte">Bayreuth</a><a href="index.html#standorte">Ingolstadt</a><a href="index.html#standorte">München</a><a href="index.html#standorte">Nürnberg</a><a href="index.html#standorte">Wolfratshausen</a></div></div><div class="mega-grp"><span>Hessen &amp; Rheinland-Pfalz</span><div class="mega-list"><a href="index.html#standorte">Darmstadt</a><a href="index.html#standorte">Frankfurt</a><a href="index.html#standorte">Mainz</a><a href="index.html#standorte">Wiesbaden</a></div></div><div class="mega-grp"><span class="s2">Nordrhein-Westfalen</span><div class="mega-list c2 s2"><a href="index.html#standorte">Bochum</a><a href="index.html#standorte">Bonn</a><a href="index.html#standorte">Dortmund</a><a href="index.html#standorte">Düsseldorf</a><a href="index.html#standorte">Essen</a><a href="index.html#standorte">Köln</a><a href="index.html#standorte">Leverkusen</a><a href="index.html#standorte">Mönchengladbach</a></div></div><div class="mega-grp"><span>Nord &amp; Ost</span><div class="mega-list"><a href="index.html#standorte">Berlin</a><a href="index.html#standorte">Braunschweig</a><a href="index.html#standorte">Dresden</a><a href="index.html#standorte">Hamburg</a><a href="index.html#standorte">Leipzig</a><a href="index.html#standorte">Magdeburg</a></div></div></div></div><div class="mega-col"><h4>Fettabsaugung in 16 Städten</h4><div class="mega-grps"><div class="mega-grp"><span>Baden-Württemberg</span><div class="mega-list"><a href="index.html#standorte">Mannheim</a></div></div><div class="mega-grp"><span>Bayern</span><div class="mega-list"><a href="index.html#standorte">Ingolstadt</a><a href="index.html#standorte">München</a></div></div><div class="mega-grp"><span>Hessen &amp; Rheinland-Pfalz</span><div class="mega-list"><a href="index.html#standorte">Darmstadt</a><a href="index.html#standorte">Frankfurt</a><a href="index.html#standorte">Mainz</a><a href="index.html#standorte">Wiesbaden</a></div></div><div class="mega-grp"><span class="s2">Nordrhein-Westfalen</span><div class="mega-list c2 s2"><a href="index.html#standorte">Bochum</a><a href="index.html#standorte">Dortmund</a><a href="index.html#standorte">Düsseldorf</a><a href="index.html#standorte">Essen</a><a href="index.html#standorte">Köln</a><a href="index.html#standorte">Leverkusen</a></div></div><div class="mega-grp"><span>Nord &amp; Ost</span><div class="mega-list"><a href="index.html#standorte">Berlin</a><a href="index.html#standorte">Dresden</a><a href="index.html#standorte">Hamburg</a></div></div></div></div></div></div></div></div>
-      <div class="nav-item"><button class="nav-top" type="button" aria-expanded="false" aria-controls="mm-preise">Preise &amp; Finanzierung<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mega" id="mm-preise" hidden><div class="mega-in"><div class="mega-head"><span class="mega-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h11l5 5-5 5H4z"/><circle cx="8" cy="12" r="1.2"/></svg></span><div><b>Preise &amp; Finanzierung</b><span>Feste Komplettpreise, auf Wunsch in Raten</span></div><a class="mega-all" href="index.html#rechner">Finanzierungsrechner öffnen →</a></div><div class="mega-cards"><a class="mega-card" href="index.html#warum"><span><b>Preisversprechen</b><em>Festpreise ohne versteckte Kosten</em></span></a><a class="mega-card" href="index.html#ablauf"><span><b>Ablauf</b><em>In fünf Schritten zur Operation</em></span></a><a class="mega-card" href="index.html#preise"><span><b>Finanzierung</b><em>Ratenzahlung über smava und medkred</em></span></a><a class="mega-card" href="brustvergroesserung.html"><span><b>Komplettpaket Brustvergrößerung</b><em>Was im Preis von 2.999 € enthalten ist</em></span></a><a class="mega-card" href="brustvergroesserung.html#datenblatt"><span><b>Brustvergrößerung Kosten</b><em>Alle Eckdaten im Überblick</em></span></a><a class="mega-card" href="index.html#qualitaet"><span><b>Absicherung nach der OP</b><em>Nachsorge und Herstellergarantie</em></span></a></div></div></div></div>
-      <div class="nav-item"><button class="nav-top" type="button" aria-expanded="false" aria-controls="mm-ueber">Über uns<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mega" id="mm-ueber" hidden><div class="mega-in"><div class="mega-head"><span class="mega-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><div><b>Über uns</b><span>Seit 2004 an Ihrer Seite, mit Sitz in Würzburg</span></div><a class="mega-all" href="index.html#kontakt">Kontakt aufnehmen →</a></div><div class="mega-cards mega-cards-4"><a class="mega-card" href="index.html#warum"><span><b>Firmengeschichte</b><em>Gegründet 2004 in Würzburg</em></span></a><a class="mega-card" href="index.html#faq"><span><b>Ratgeber</b><em>Antworten auf häufige Fragen</em></span></a><a class="mega-card" href="index.html#qualitaet"><span><b>Qualität</b><em>Was wir von Partnerärzten verlangen</em></span></a><a class="mega-card" href="index.html#standorte"><span><b>Standorte</b><em>Rund 40 Partnerkliniken</em></span></a><a class="mega-card" href="index.html#kontakt"><span><b>Beratung</b><em>Persönliches Gespräch für 40 €</em></span></a><a class="mega-card" href="brustvergroesserung.html#datenblatt"><span><b>Implantate</b><em>Mentor und Motiva</em></span></a><a class="mega-card" href="index.html#stimmen"><span><b>Kundenbewertungen</b><em>Erfahrungen von Patientinnen</em></span></a><a class="mega-card" href="index.html#qualitaet"><span><b>Fachärzte</b><em>Nur Plastische und Ästhetische Chirurgie</em></span></a></div></div></div></div>
+      <div class="nav-item"><button class="nav-top" type="button" aria-expanded="false" aria-controls="mm-preise">Preise &amp; Finanzierung<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mega" id="mm-preise" hidden><div class="mega-in"><div class="mega-head"><span class="mega-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h11l5 5-5 5H4z"/><circle cx="8" cy="12" r="1.2"/></svg></span><div><b>Preise &amp; Finanzierung</b><span>Feste Komplettpreise, auf Wunsch in Raten</span></div><a class="mega-all" href="index.html#rechner">Finanzierungsrechner öffnen →</a></div><div class="mega-cards"><a class="mega-card" href="index.html#warum"><span><b>Preisversprechen</b><em>Festpreise ohne versteckte Kosten</em></span></a><a class="mega-card" href="index.html#ablauf"><span><b>Ablauf</b><em>In fünf Schritten zur Operation</em></span></a><a class="mega-card" href="index.html#preise"><span><b>Finanzierung</b><em>Ratenzahlung über smava und medkred</em></span></a><a class="mega-card" href="brustvergroesserung.html"><span><b>Komplettpaket Brustvergrößerung</b><em>Was im Preis von 2.999 € enthalten ist</em></span></a><a class="mega-card" href="brustvergroesserung.html#die-wichtigsten-fakten-zur-brustvergroesserung"><span><b>Brustvergrößerung Kosten</b><em>Alle Eckdaten im Überblick</em></span></a><a class="mega-card" href="index.html#qualitaet"><span><b>Absicherung nach der OP</b><em>Nachsorge und Herstellergarantie</em></span></a></div></div></div></div>
+      <div class="nav-item"><button class="nav-top" type="button" aria-expanded="false" aria-controls="mm-ueber">Über uns<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mega" id="mm-ueber" hidden><div class="mega-in"><div class="mega-head"><span class="mega-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><div><b>Über uns</b><span>Seit 2004 an Ihrer Seite, mit Sitz in Würzburg</span></div><a class="mega-all" href="index.html#kontakt">Kontakt aufnehmen →</a></div><div class="mega-cards mega-cards-4"><a class="mega-card" href="index.html#warum"><span><b>Firmengeschichte</b><em>Gegründet 2004 in Würzburg</em></span></a><a class="mega-card" href="index.html#faq"><span><b>Ratgeber</b><em>Antworten auf häufige Fragen</em></span></a><a class="mega-card" href="index.html#qualitaet"><span><b>Qualität</b><em>Was wir von Partnerärzten verlangen</em></span></a><a class="mega-card" href="index.html#standorte"><span><b>Standorte</b><em>Rund 40 Partnerkliniken</em></span></a><a class="mega-card" href="index.html#kontakt"><span><b>Beratung</b><em>Persönliches Gespräch für 40 €</em></span></a><a class="mega-card" href="brustvergroesserung.html#moeglichkeiten-bei-der-brustvergroesserung"><span><b>Implantate</b><em>Mentor und Motiva</em></span></a><a class="mega-card" href="index.html#stimmen"><span><b>Kundenbewertungen</b><em>Erfahrungen von Patientinnen</em></span></a><a class="mega-card" href="index.html#qualitaet"><span><b>Fachärzte</b><em>Nur Plastische und Ästhetische Chirurgie</em></span></a></div></div></div></div>
       <a class="partner-btn" href="partner-login.html" aria-label="Partner-Login: DÄS Connect für Ärzte und Kliniken" title="DÄS Connect, Partner-Login"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/></svg><span>Partner-Login</span></a>
       <a class="btn btn-primary" href="index.html#kontakt">Beratung buchen</a>
     </nav>
   </div>
 </header>
 
+<div class="ls-fortschritt" aria-hidden="true"></div>
 <main>
 <section class="hero ls-hero">
   <div class="wrap">
     <div class="crumbs"><a href="index.html">Start</a> / <a href="schoenheitsoperationen.html">Leistungen</a></div>
+    <div class="ls-hero-raster">
     <div class="ls-kopf">
       <span class="label">Körperchirurgie</span>
       <h1>Schönheitsoperationen am Körper bei erfahrenen Fachärzten in Deutschland</h1>
       
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
-    <figure class="ls-titelbild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Titelbild-KoerperOps.jpg" alt="" width="1170" height="500" fetchpriority="high"></figure>
+    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_004426_765fce9d-ca3a-44d4-a629-aa495815e4e7.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
+    </div>
   </div>
 </section>
 
@@ -468,10 +597,10 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 <p>Der Deutsche Ärzte Service bietet <b>seit 2004</b> verschiedene körperformende Schönheitsoperationen zu attraktiven Komplettpreisen an. Dazu gehören <b>Fettabsaugungen</b>, <b>Lipödem-Behandlungen</b>, <b>Bauchdeckenstraffungen</b>, <b>Po-Vergrößerungen mit Eigenfett</b> (Brazilian Butt Lift) oder Implantaten, <b>Schweißdrüsenentfernungen</b> und <b>Schamlippenverkleinerungen</b>.</p>
 <p>Wir arbeiten bundesweit an mehr als <b>40 Standorten</b> mit ausgewählten<a href="https://www.deutscher-aerzte-service.de/fachaerzte" target="_blank" rel="noopener"> <b>Fachärzten für Plastische und Ästhetische Chirurgie</b></a> zusammen, die über besondere Erfahrung mit den jeweiligen Eingriffen verfügen. Unser Anspruch: <a href="index.html#qualitaet">hochwertige Schönheitsoperationen in Deutschland</a> zu bezahlbaren Preisen – mit erfahrenen Fachärzten, transparenten Kosten und persönlicher Betreuung. Welche Behandlung für Sie infrage kommt, erfahren Sie in einem persönlichen Beratungsgespräch mit einem Facharzt. Die Bearbeitungsgebühr beträgt einmalig 40 €. Anschließend haben Sie ausreichend Zeit, sich in Ruhe zu entscheiden.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 35.- buchen – Hotline: 0800 2626770</p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
-  </div></div>
+</div></div>
 </section>
 
-<section class="ls-abschnitt grau" id="koerperoperationen-ihre-moeglichkeiten-auf-einen-blick">
+<section class="ls-abschnitt" id="koerperoperationen-ihre-moeglichkeiten-auf-einen-blick">
   <div class="wrap"><div class="ls-inhalt">
 <h2>Körperoperationen: Ihre Möglichkeiten auf einen Blick</h2>
 <p>Jeder Körper ist anders. Deshalb gibt es auch nicht die eine Schönheitsoperation, die für alle Menschen passt.</p>
@@ -482,7 +611,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 <h3><a class="ls-weiter" href="bauchdeckenstraffung.html">Bauchdeckenstraffung</a></h3></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbils-Schweissdruesenentfernung.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
 <h3><a class="ls-weiter" href="schweissdruesenentfernung.html">Schweißdrüsenentfernung</a></h3></div></div>
 <div class="ls-karten" style="--n:3"><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Schamlippenverkleinerung.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
-<h3>Schamlippenkorrektur</h3></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-BBL.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
+<h3><a class="ls-weiter" href="schamlippenverkleinerung.html">Schamlippenkorrektur</a></h3></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-BBL.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
 <h3><a class="ls-weiter" href="brazilian-butt-lift.html">Brazilian Butt Lift</a></h3></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Lipoedem.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
 <h3><a class="ls-weiter" href="lipoedem.html">Lipödem</a></h3></div></div>
 <div class="ls-split"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Fettabsaugung.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h4><a class="ls-weiter" href="fettabsaugung.html">Fettabsaugung</a></h4>
@@ -498,12 +627,12 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 <p><b>ab 1.299€</b></p>
 <p>Starkes Schwitzen kann im Alltag unangenehm sein. Sichtbare Schweißflecken, häufiges Wechseln der Kleidung oder die Sorge vor unangenehmen Situationen können dazu führen, dass Betroffene sich unwohl fühlen.</p>
 <p>Eine operative Schweißdrüsenentfernung kann die Schweißproduktion in bestimmten Körperregionen dauerhaft reduzieren. Besonders häufig steht dabei das übermäßige Schwitzen unter den Achseln im Mittelpunkt.</p></div></div>
-<div class="ls-split bild-rechts"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Schamlippenverkleinerung.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h4>Schamlippenkorrektur</h4>
+<div class="ls-split bild-rechts"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Schamlippenverkleinerung.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h4><a class="ls-weiter" href="schamlippenverkleinerung.html">Schamlippenkorrektur</a></h4>
 <p><b>ab 1.399€</b></p>
 <p>Die eigene Intimregion ist ein sehr persönliches Thema. Manche Frauen empfinden die Größe oder Form ihrer inneren Schamlippen als störend beim Sport, beim Fahrradfahren, beim Tragen enger Kleidung oder beim Geschlechtsverkehr. Andere wünschen sich aus ästhetischen Gründen eine Veränderung.</p>
 <p>Bei einer Schamlippenverkleinerung, medizinisch Labioplastik genannt, kann der Facharzt überschüssiges Gewebe der inneren Schamlippen entfernen und die Form entsprechend der individuellen Anatomie neu gestalten.</p>
 <p>Der Eingriff erfordert eine besonders persönliche und diskrete Beratung. Dabei geht es nicht darum, einem bestimmten Ideal zu entsprechen. Entscheidend ist, was Sie selbst als störend empfinden und welche Veränderung Sie sich wünschen.</p></div></div>
-<div class="ls-split"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-BBL.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h4>Brazilian Butt Lift / Po-Vergrößerung mit Eigenfett oder Implantaten</h4>
+<div class="ls-split"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-BBL.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h4><a class="ls-weiter" href="brazilian-butt-lift.html">Brazilian Butt Lift / Po-Vergrößerung mit Eigenfett oder Implantaten</a></h4>
 <p><b>ab 3.999€</b></p>
 <p>Sie wünschen sich einen volleren oder stärker konturierten Po? Eine Möglichkeit kann eine Po-Vergrößerung mit körpereigenem Fett sein. Beim sogenannten Brazilian Butt Lift wird zunächst Fett an geeigneten Körperstellen abgesaugt. Nach der Aufbereitung bringt der Facharzt das Fett gezielt in das Unterhautfettgewebe der Gesäßregion ein. So lassen sich gleichzeitig bestimmte Körperregionen konturieren und das Volumen des Pos verändern.</p>
 <p>Die Methode eignet sich nicht für jeden. Voraussetzung sind unter anderem ausreichende Fettreserven. Außerdem lässt sich nicht genau vorhersagen, wie viel des eingebrachten Eigenfetts dauerhaft erhalten bleibt. Wenn nicht genügend Eigenfett vorhanden ist, kann eine Po-Vergrößerung mit Implantaten eine Alternative sein.</p></div></div>
@@ -511,7 +640,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 <p><b>Preis und Behandlungsumfang: nach individueller Prüfung</b></p>
 <p>Ein Lipödem ist eine chronische Erkrankung, bei der sich Fettgewebe vor allem an Beinen und teilweise an Armen krankhaft vermehrt. Häufig treten Schmerzen, Druckempfindlichkeit und eine Neigung zu Blutergüssen auf. Eine Liposuktion kann bei geeigneter medizinischer Indikation Teil der Behandlung sein.</p>
 <p>Ob eine Operation sinnvoll ist, welche Voraussetzungen gelten und welche Behandlungsmöglichkeiten infrage kommen, muss individuell fachärztlich beurteilt werden. Die Behandlung eines Lipödems ist von einer rein ästhetischen Fettabsaugung zu unterscheiden.</p></div></div>
-  </div></div>
+</div></div>
 </section>
 
 <section class="ls-abschnitt" id="schoenheitsoperationen-am-koerper-in-ganz-deutschland">
@@ -520,10 +649,10 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 <div class="ls-split"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/08/Deutschlandkarte-Standorte-2.png" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><p>Eine ästhetische Operation sollte nicht daran scheitern, dass eine geeignete Fachklinik viele Stunden entfernt liegt. Deshalb arbeitet der Deutsche Ärzte Service mit erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie an verschiedenen Standorten in Deutschland zusammen.</p>
 <p>Von Hamburg und Berlin über Nordrhein-Westfalen und Hessen bis nach Bayern und Baden-Württemberg finden Sie DÄS-Partner in vielen Regionen.</p>
 <p>Wir berücksichtigen bei der Arztsuche Ihren gewünschten Eingriff und Ihren Wohnort. Dabei achten wir besonders darauf, dass der Facharzt über entsprechende Erfahrung und Spezialisierung für die jeweilige Operation verfügt.</p></div></div>
-  </div></div>
+</div></div>
 </section>
 
-<section class="ls-abschnitt grau" id="ihre-vorteile-beim-deutschen-aerzte-service">
+<section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
 <h2>Ihre Vorteile beim Deutschen Ärzte Service</h2>
 <div class="ls-karten" style="--n:3"><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Vertrauen.png" alt="" loading="lazy" decoding="async"></figure>
@@ -533,24 +662,46 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 <p><br>Eine Schönheitsoperation sollte gut vorbereitet sein. Deshalb legen wir großen Wert auf ein persönliches Gespräch mit einem Facharzt.<br>Sie teilen uns mit, für welchen Eingriff Sie sich interessieren und wo Sie Ihre Behandlung bevorzugt durchführen lassen möchten. Anschließend organisieren wir ein persönliches Beratungsgespräch mit einem passenden Facharzt aus unserem Netzwerk.<br>Auch nach der Terminvereinbarung bleiben wir für Sie erreichbar. Unser eigenes Team unterstützt Sie bei Fragen rund um die Organisation und den Ablauf Ihrer Behandlung.</p></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Bezahlbar.png" alt="" loading="lazy" decoding="async"></figure>
 <h3>Schönheitsoperationen zu attraktiven Preisen</h3>
 <p>Der Deutsche Ärzte Service hat es sich zur Aufgabe gemacht, hochwertige Schönheitsoperationen zu bezahlbaren Preisen anzubieten.<br>Durch eine effiziente Organisation, standardisierte Abläufe und wirtschaftliche Vorteile beim Einkauf können wir ausgewählte Eingriffe zu besonders attraktiven DÄS-Komplettpreisen anbieten. Diese liegen häufig 30 bis 50 Prozent unter den regulären Preisen der Fachärzte.<br>Unsere Komplettpreise umfassen die wesentlichen Leistungen rund um die Operation, einschließlich Narkose und Nachsorge. Den genauen Preis für Ihren gewünschten Eingriff erfahren Sie nach der persönlichen Untersuchung beim Facharzt.<br>Auf Wunsch können Sie auch Finanzierungsmöglichkeiten über unseren Partner <a href="index.html#rechner">smava </a>nutzen.</p></div></div>
-  </div></div>
+</div></div>
 </section>
 
-<section class="ls-abschnitt" id="ihr-naechster-schritt-persoenliche-beratung-zur-schoenheits-">
-  <div class="wrap"><div class="ls-inhalt">
-<h2>Ihr nächster Schritt: persönliche Beratung zur Schönheits-OP</h2>
-<p>Vielleicht wissen Sie bereits genau, welchen Eingriff Sie durchführen lassen möchten. Vielleicht sind Sie sich auch noch unsicher, welche Behandlung für Sie möglich oder sinnvoll wäre und wie der Eingriff abläuft. Beides ist völlig in Ordnung.</p>
+<section class="ls-abschnitt ls-zwei" id="ihr-naechster-schritt-persoenliche-beratung-zur-schoenheits-">
+  <div class="wrap"><div class="ls-inhalt ls-raster">
+<div class="ls-seite"><h2>Ihr nächster Schritt: persönliche Beratung zur Schönheits-OP</h2>
+</div>
+<div class="ls-text"><p>Vielleicht wissen Sie bereits genau, welchen Eingriff Sie durchführen lassen möchten. Vielleicht sind Sie sich auch noch unsicher, welche Behandlung für Sie möglich oder sinnvoll wäre und wie der Eingriff abläuft. Beides ist völlig in Ordnung.</p>
 <p>Für <b>einmalig 40 € Bearbeitungsgebühr</b> können Sie über den Deutschen Ärzte Service ein persönliches Beratungsgespräch mit einem erfahrenen Facharzt vereinbaren. Sie sprechen über Ihre Wünsche, zeigen dem Arzt, was Sie stört, und erfahren, welche Möglichkeiten zu Ihrer individuellen Ausgangssituation passen.</p>
 <p>Dabei geht es nicht darum, Sie zu einer Operation zu überzeugen. Sie sollen eine fundierte Grundlage für Ihre eigene Entscheidung bekommen.</p>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 35.- buchen – Hotline: 0800 2626770</p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
-  </div></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 35.- buchen – Hotline: 0800 2626770</p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div></div>
 </section>
 
-<section class="ls-abschnitt grau" id="haeufige-fragen-zu-schoenheitsoperationen-am-koerper">
-  <div class="wrap"><div class="ls-inhalt">
-<h2>Häufige Fragen zu Schönheitsoperationen am Körper</h2>
-<div class="faq ls-faq"><details open><summary>Welche Schönheitsoperationen am Körper bietet der Deutsche Ärzte Service an?</summary><div class="a"><p>Der Deutsche Ärzte Service bietet verschiedene ästhetische Eingriffe am Körper an. Dazu gehören Fettabsaugungen, Bauchdeckenstraffungen, Brazilian Butt Lifts beziehungsweise Po-Vergrößerungen mit Eigenfett, Schweißdrüsenentfernungen und Schamlippenverkleinerungen.<br>Wo der nächste Standort ist, der Ihren gewünschten Eingriff anbietet, erfahren Sie bei Ihrer Anfrage.</p></div></details><details><summary>Was kostet eine Schönheitsoperation am Körper?</summary><div class="a"><p>Die Kosten hängen vom jeweiligen Eingriff, dem Umfang der Behandlung und Ihrer individuellen Ausgangssituation ab. Deshalb gibt es nicht für jede Schönheitsoperation einen einheitlichen Preis.<br>Durch die DÄS-Konditionen können ausgewählte Eingriffe zu attraktiven Preisen angeboten werden, die 30 bis 50 Prozent unter dem üblichen Preis der Fachärzte liegen. Unsere Komplettpreise umfassen die wesentlichen Leistungen rund um die Operation, einschließlich Narkose und Nachsorge. Ihren individuellen Preis erfahren Sie nach der Untersuchung beim Facharzt.</p></div></details><details><summary>Was ist der Unterschied zwischen einer Fettabsaugung und einer Bauchdeckenstraffung?</summary><div class="a"><p>Bei einer Fettabsaugung werden gezielt Fettdepots entfernt, um die Körperkonturen zu verändern. Eine Bauchdeckenstraffung dient dagegen vor allem dazu, überschüssige Haut am Bauch zu entfernen und die Bauchregion zu straffen.<br>Welche Behandlung sinnvoll ist, hängt unter anderem von der Hautbeschaffenheit und der Menge des vorhandenen Fettgewebes ab. In manchen Fällen können beide Eingriffe miteinander kombiniert werden.</p></div></details><details><summary>Kann ich nach einer starken Gewichtsabnahme eine Schönheitsoperation durchführen lassen?</summary><div class="a"><p>Ja, nach einer deutlichen Gewichtsabnahme kann eine ästhetische Operation grundsätzlich infrage kommen. Besonders häufig stört überschüssige Haut am Bauch oder an anderen Körperregionen. Dabei können Straffungsoperationen helfen, wieder eine klare Körperkontur zu erreichen.<br>Idealerweise sollte das Körpergewicht vor der Operation über einen längeren Zeitraum stabil sein.</p></div></details><details><summary>Wie finde ich den passenden Arzt für meine Schönheitsoperation?</summary><div class="a"><p>Der Deutsche Ärzte Service unterstützt Sie bei der Suche nach einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie. Dabei berücksichtigen wir Ihren gewünschten Eingriff und Ihren bevorzugten Standort.<br>Vor einer Operation steht ein persönliches Beratungsgespräch. Dabei lernen Sie den Arzt kennen, der den Eingriff durchführen würde, und können Ihre Wünsche, Fragen und Erwartungen direkt mit ihm besprechen.</p></div></details><details><summary>Kann ich den Arzt vor der Operation persönlich kennenlernen?</summary><div class="a"><p>Ja. Das persönliche Beratungsgespräch findet direkt mit dem Facharzt statt, der Ihre Operation durchführen wird.</p></div></details><details><summary>Wo finden die Schönheitsoperationen statt?</summary><div class="a"><p>Die Eingriffe finden in ausgewählten Partnerkliniken in Deutschland statt. Der Deutsche Ärzte Service arbeitet mit Fachärzten an zahlreichen Standorten zusammen, unter anderem in Hamburg, Berlin, Nordrhein-Westfalen, Hessen, Bayern und Baden-Württemberg.</p></div></details><details><summary>Übernimmt die Krankenkasse die Kosten für eine Schönheitsoperation?</summary><div class="a"><p>Bei rein ästhetischen Schönheitsoperationen übernehmen gesetzliche Krankenkassen die Kosten in der Regel nicht.<br>Eine Kostenübernahme kann bei bestimmten medizinisch notwendigen Eingriffen unter besonderen Voraussetzungen infrage kommen. Ob eine medizinische Indikation vorliegt und welche Kosten übernommen werden, entscheidet die jeweilige Krankenkasse.<br>Der Deutsche Ärzte Service bietet ästhetische Operationen ausschließlich zu privaten Konditionen an.</p></div></details><details><summary>Muss ich mich nach dem Beratungsgespräch für eine Operation entscheiden?</summary><div class="a"><p>Nein.<br>Das Beratungsgespräch ist zunächst dazu da, Ihre individuelle Situation zu besprechen und Ihre Fragen zu beantworten. Sie erfahren, welche Möglichkeiten bestehen und welches Ergebnis realistisch sein kann.<br>Ob Sie sich anschließend für oder gegen eine Operation entscheiden, liegt bei Ihnen. Sie können sich nach dem Gespräch in Ruhe entscheiden.</p></div></details><details><summary>Ist eine Schönheitsoperation am Körper das Richtige für mich?</summary><div class="a"><p>Diese Frage lässt sich nicht pauschal beantworten.<br>Vielleicht stört Sie eine bestimmte Körperregion schon lange. Vielleicht sind Sie sich aber noch nicht sicher, ob eine Operation wirklich die passende Lösung ist. Ein persönliches Beratungsgespräch kann Ihnen dabei helfen, die Möglichkeiten besser einzuschätzen.<br>Der Facharzt beurteilt Ihre individuelle Ausgangssituation, erklärt Ihnen die möglichen Behandlungsmethoden und spricht mit Ihnen auch über Grenzen und Risiken.<br>Danach können Sie Ihre Entscheidung in Ruhe treffen.</p></div></details></div>
-  </div></div>
+<section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen-zu-schoenheitsoperationen-am-koerper">
+  <div class="wrap"><div class="ls-inhalt ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen zu Schönheitsoperationen am Körper</h2>
+</div>
+<div class="ls-text"><div class="faq ls-faq"><details open><summary>Welche Schönheitsoperationen am Körper bietet der Deutsche Ärzte Service an?</summary><div class="a"><p>Der Deutsche Ärzte Service bietet verschiedene ästhetische Eingriffe am Körper an. Dazu gehören Fettabsaugungen, Bauchdeckenstraffungen, Brazilian Butt Lifts beziehungsweise Po-Vergrößerungen mit Eigenfett, Schweißdrüsenentfernungen und Schamlippenverkleinerungen.<br>Wo der nächste Standort ist, der Ihren gewünschten Eingriff anbietet, erfahren Sie bei Ihrer Anfrage.</p></div></details><details><summary>Was kostet eine Schönheitsoperation am Körper?</summary><div class="a"><p>Die Kosten hängen vom jeweiligen Eingriff, dem Umfang der Behandlung und Ihrer individuellen Ausgangssituation ab. Deshalb gibt es nicht für jede Schönheitsoperation einen einheitlichen Preis.<br>Durch die DÄS-Konditionen können ausgewählte Eingriffe zu attraktiven Preisen angeboten werden, die 30 bis 50 Prozent unter dem üblichen Preis der Fachärzte liegen. Unsere Komplettpreise umfassen die wesentlichen Leistungen rund um die Operation, einschließlich Narkose und Nachsorge. Ihren individuellen Preis erfahren Sie nach der Untersuchung beim Facharzt.</p></div></details><details><summary>Was ist der Unterschied zwischen einer Fettabsaugung und einer Bauchdeckenstraffung?</summary><div class="a"><p>Bei einer Fettabsaugung werden gezielt Fettdepots entfernt, um die Körperkonturen zu verändern. Eine Bauchdeckenstraffung dient dagegen vor allem dazu, überschüssige Haut am Bauch zu entfernen und die Bauchregion zu straffen.<br>Welche Behandlung sinnvoll ist, hängt unter anderem von der Hautbeschaffenheit und der Menge des vorhandenen Fettgewebes ab. In manchen Fällen können beide Eingriffe miteinander kombiniert werden.</p></div></details><details><summary>Kann ich nach einer starken Gewichtsabnahme eine Schönheitsoperation durchführen lassen?</summary><div class="a"><p>Ja, nach einer deutlichen Gewichtsabnahme kann eine ästhetische Operation grundsätzlich infrage kommen. Besonders häufig stört überschüssige Haut am Bauch oder an anderen Körperregionen. Dabei können Straffungsoperationen helfen, wieder eine klare Körperkontur zu erreichen.<br>Idealerweise sollte das Körpergewicht vor der Operation über einen längeren Zeitraum stabil sein.</p></div></details><details><summary>Wie finde ich den passenden Arzt für meine Schönheitsoperation?</summary><div class="a"><p>Der Deutsche Ärzte Service unterstützt Sie bei der Suche nach einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie. Dabei berücksichtigen wir Ihren gewünschten Eingriff und Ihren bevorzugten Standort.<br>Vor einer Operation steht ein persönliches Beratungsgespräch. Dabei lernen Sie den Arzt kennen, der den Eingriff durchführen würde, und können Ihre Wünsche, Fragen und Erwartungen direkt mit ihm besprechen.</p></div></details><details><summary>Kann ich den Arzt vor der Operation persönlich kennenlernen?</summary><div class="a"><p>Ja. Das persönliche Beratungsgespräch findet direkt mit dem Facharzt statt, der Ihre Operation durchführen wird.</p></div></details><details><summary>Wo finden die Schönheitsoperationen statt?</summary><div class="a"><p>Die Eingriffe finden in ausgewählten Partnerkliniken in Deutschland statt. Der Deutsche Ärzte Service arbeitet mit Fachärzten an zahlreichen Standorten zusammen, unter anderem in Hamburg, Berlin, Nordrhein-Westfalen, Hessen, Bayern und Baden-Württemberg.</p></div></details><details><summary>Übernimmt die Krankenkasse die Kosten für eine Schönheitsoperation?</summary><div class="a"><p>Bei rein ästhetischen Schönheitsoperationen übernehmen gesetzliche Krankenkassen die Kosten in der Regel nicht.<br>Eine Kostenübernahme kann bei bestimmten medizinisch notwendigen Eingriffen unter besonderen Voraussetzungen infrage kommen. Ob eine medizinische Indikation vorliegt und welche Kosten übernommen werden, entscheidet die jeweilige Krankenkasse.<br>Der Deutsche Ärzte Service bietet ästhetische Operationen ausschließlich zu privaten Konditionen an.</p></div></details><details><summary>Muss ich mich nach dem Beratungsgespräch für eine Operation entscheiden?</summary><div class="a"><p>Nein.<br>Das Beratungsgespräch ist zunächst dazu da, Ihre individuelle Situation zu besprechen und Ihre Fragen zu beantworten. Sie erfahren, welche Möglichkeiten bestehen und welches Ergebnis realistisch sein kann.<br>Ob Sie sich anschließend für oder gegen eine Operation entscheiden, liegt bei Ihnen. Sie können sich nach dem Gespräch in Ruhe entscheiden.</p></div></details><details><summary>Ist eine Schönheitsoperation am Körper das Richtige für mich?</summary><div class="a"><p>Diese Frage lässt sich nicht pauschal beantworten.<br>Vielleicht stört Sie eine bestimmte Körperregion schon lange. Vielleicht sind Sie sich aber noch nicht sicher, ob eine Operation wirklich die passende Lösung ist. Ein persönliches Beratungsgespräch kann Ihnen dabei helfen, die Möglichkeiten besser einzuschätzen.<br>Der Facharzt beurteilt Ihre individuelle Ausgangssituation, erklärt Ihnen die möglichen Behandlungsmethoden und spricht mit Ihnen auch über Grenzen und Risiken.<br>Danach können Sie Ihre Entscheidung in Ruhe treffen.</p></div></details></div></div>
+</div></div>
+</section>
+
+<section class="insta ls-insta" aria-labelledby="h-insta">
+  <div class="wrap">
+    <div class="ins-kopf">
+      <span class="ins-avatar" aria-hidden="true"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="23" fill="#010101"/><text x="23" y="28" text-anchor="middle" font-family="Instrument Sans, Arial, sans-serif" font-weight="700" font-size="14.5" fill="#fff">DÄS</text></svg></span>
+      <div class="ins-text-kopf">
+        <h2 id="h-insta" class="label" style="margin:0">Folgen Sie uns auf Instagram</h2>
+        <a href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener">@deutscher_aerzte_service</a>
+        <p>Schönheitsoperationen bei Plastischen Chirurgen deutschlandweit. Reels zu Ablauf, Heilung und Kosten, erklärt in 60 Sekunden.</p>
+      </div>
+      <a class="btn btn-primary ins-folgen" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Folgen auf Instagram</a>
+    </div>
+    <div class="ins-raster"><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Brustvergrößerung beim Deutschen Ärzte Service (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 30%"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195428_ba6a97fd-4884-41d2-99f5-7bf4e40c8a45.png" alt="" loading="lazy" decoding="async"></figure><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-text dunkel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Wann braucht es eine Bruststraffung? (Beitrag auf Instagram)"><span class="ins-frage">Wann braucht es eine Bruststraffung?</span><span class="ins-marke">DÄS erklärt</span><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Kriterien bei der Voruntersuchung (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 40%"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195430_74be97c8-9609-4f32-acd0-0f8d960ff9ae.png" alt="" loading="lazy" decoding="async"></figure><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-person" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Sich im eigenen Körper wohlfühlen (Beitrag auf Instagram)"><img src="bilder/lebensfreude-1-frei.png" alt="" loading="lazy" decoding="async"><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-text hell" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Ist die Genesung nach einer Brust-OP schmerzhaft? (Beitrag auf Instagram)"><span class="ins-frage">Ist die Genesung nach einer Brust-OP schmerzhaft?</span><span class="ins-marke">DÄS erklärt</span><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Unsere Partnerkliniken (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 40%"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195427_c02f1331-9f56-4d22-a126-0220e6b75c24.png" alt="" loading="lazy" decoding="async"></figure><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a></div>
+    <div class="ins-laden" id="ins-laden">
+      <p><b>Aktuelle Beiträge direkt von Instagram anzeigen.</b> Beim Laden werden Daten an Instagram (Meta Platforms) übertragen. Bis dahin sehen Sie Beispielbilder.</p>
+      <button class="btn btn-primary" type="button" id="ins-laden-btn">Beiträge von Instagram laden</button>
+    </div>
+    <div class="ins-echt" id="ins-echt" aria-label="Aktuelle Beiträge auf Instagram" hidden><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DfsAsc2DPVh/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/p/DfsAsc2DPVh/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfjzaU3Dyn4/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DfjzaU3Dyn4/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DffFzreiMnW/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/p/DffFzreiMnW/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfZxXaBieKt/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DfZxXaBieKt/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DfSC-ZqjfeP/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/p/DfSC-ZqjfeP/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfAGjuCj7kN/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DfAGjuCj7kN/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div></div>
+  </div>
 </section>
 </main>
 
@@ -562,7 +713,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
         <p style="margin-top:1rem;max-width:38ch">Seit 2004 organisieren wir ästhetisch-chirurgische Eingriffe bei Fachärzten für Plastische und Ästhetische Chirurgie, zum Festpreis und in Privatkliniken in Deutschland.</p>
       </div>
       <div><h4>Eingriffe</h4><ul><li><a href="brustvergroesserung.html">Brustvergrößerung</a></li><li><a href="index.html#p-brust">Bruststraffung</a></li><li><a href="index.html#p-koerper">Fettabsaugung</a></li><li><a href="index.html#p-koerper">Bauchdeckenstraffung</a></li><li><a href="index.html#p-gesicht">Lidkorrektur</a></li><li><a href="index.html#p-gesicht">Nasenkorrektur</a></li></ul></div>
-      <div><h4>Service</h4><ul><li><a href="index.html#ablauf">Ablauf</a></li><li><a href="index.html#preise">Preise &amp; Finanzierung</a></li><li><a href="index.html#standorte">Standorte</a></li><li><a href="index.html#qualitaet">Fachärzte &amp; Kliniken</a></li><li><a href="index.html#stimmen">Erfahrungen</a></li><li><a href="#faq">Häufige Fragen</a></li></ul></div>
+      <div><h4>Service</h4><ul><li><a href="index.html#ablauf">Ablauf</a></li><li><a href="index.html#preise">Preise &amp; Finanzierung</a></li><li><a href="index.html#standorte">Standorte</a></li><li><a href="index.html#qualitaet">Fachärzte &amp; Kliniken</a></li><li><a href="index.html#stimmen">Erfahrungen</a></li><li><a href="#haeufige-fragen-zu-schoenheitsoperationen-am-koerper">Häufige Fragen</a></li></ul></div>
       <div><h4>Kontakt</h4><ul><li>0800 2626770</li><li>info@deutscher-aerzte-service.de</li><li>Juliuspromenade 28<br>97070 Würzburg</li><li><a href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/DeutscherAerzteService" target="_blank" rel="noopener">Facebook</a></li></ul></div>
     </div>
     <div class="legal">
@@ -614,11 +765,10 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 (function(){
   function takt(){
     document.querySelectorAll('.ls-schritte').forEach(function(box){
-      var T=8,h=box.offsetHeight,start=28,ende=h-50;
-      box.querySelectorAll('.ls-nr').forEach(function(nr){
-        var y=nr.getBoundingClientRect().top-box.getBoundingClientRect().top+nr.offsetHeight/2,anteil=Math.max(0,Math.min(1,(y-start)/Math.max(1,ende-start)));
-        nr.style.setProperty('--verz',(T*0.03+anteil*T*0.91).toFixed(2)+'s');
-      });
+      var T=8,bt=box.getBoundingClientRect().top,nrs=box.querySelectorAll('.ls-nr');if(!nrs.length)return;
+      function mitte(n){var r=n.getBoundingClientRect();return r.top-bt+r.height/2;}
+      var start=mitte(nrs[0]),ende=mitte(nrs[nrs.length-1]);box.style.setProperty('--ende',ende+'px');
+      nrs.forEach(function(nr){nr.style.setProperty('--verz',(T*0.85*(mitte(nr)-start)/Math.max(1,ende-start)).toFixed(2)+'s');});
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
@@ -626,9 +776,41 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){
       var id=b.getAttribute('data-video'),box=b.closest('.ls-video');if(!id||!box)return;
-      box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="'+(b.getAttribute('data-titel')||'Video')+'" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+      box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="'+(b.getAttribute('data-titel')||'Video')+'" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';box.querySelector('iframe').focus();
     });
   });
+})();
+</script>
+<script>
+(function(){
+  // Lesefortschritt oben
+  var bar=document.querySelector('.ls-fortschritt');
+  function fort(){if(!bar)return;var h=document.documentElement,max=h.scrollHeight-h.clientHeight;bar.style.transform='scaleX('+(max>0?Math.min(1,h.scrollTop/max):0)+')';}
+  window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
+  // Inhalte beim Scrollen weich einblenden
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+  ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
+})();
+</script>
+<script>
+(function(){
+  // Instagram: echte Beiträge erst nach Klick laden (Datenschutz), Entscheidung im Browser merken
+  (function(){
+    var btn=document.getElementById('ins-laden-btn');if(!btn)return;
+    function laden(){
+      var raster=document.querySelector('.ins-raster'),echt=document.getElementById('ins-echt'),box=document.getElementById('ins-laden');
+      echt.hidden=false;raster.hidden=true;box.hidden=true;
+      if(window.instgrm&&window.instgrm.Embeds){window.instgrm.Embeds.process();return;}
+      var s=document.createElement('script');s.async=true;s.src='https://www.instagram.com/embed.js';
+      s.onerror=function(){echt.hidden=true;raster.hidden=false;box.hidden=false;btn.textContent='Erneut versuchen';};
+      document.body.appendChild(s);
+    }
+    btn.addEventListener('click',function(){try{localStorage.setItem('daes-insta','ja');}catch(e){}laden();});
+    var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
+    if(ok)laden();
+  })();
 })();
 </script>
 </body>

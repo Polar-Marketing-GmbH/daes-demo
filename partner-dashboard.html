@@ -584,6 +584,38 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   .out{padding:.5rem}
 }
 @media (max-width:520px){.kpis{grid-template-columns:1fr 1fr}.kpi b{font-size:2.1rem}.head .btn{width:100%}}
+/* Am Handy: Tabellen werden Karten, seitlich scrollbare Leisten zeigen eine Kante und einen Pfeil */
+@media (max-width:640px){
+  table.karten-tab,table.karten-tab tbody,table.karten-tab tr,table.karten-tab td{display:block;width:auto}
+  table.karten-tab thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  table.karten-tab tr{padding:.85rem 1rem;border-bottom:1px solid var(--stahl-200);display:grid;gap:.45rem}
+  table.karten-tab tbody tr:last-child{border-bottom:0}
+  table.karten-tab tbody tr:hover td{background:none}
+  table.karten-tab td{padding:0!important;border:0;min-width:0!important;display:grid;grid-template-columns:7.2rem minmax(0,1fr);gap:.15rem .6rem;align-items:baseline;text-align:left;row-gap:.1rem}
+  table.karten-tab td::before{grid-row:1/span 3;align-self:start;padding-top:.15rem;content:attr(data-label);font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--stahl-600)}
+  table.karten-tab td:not([data-label])::before,table.karten-tab td:first-child::before{content:none}
+  table.karten-tab td:first-child,table.karten-tab td:not([data-label]){display:block}
+  table.karten-tab td:first-child .pname{font-size:1rem}
+  table.karten-tab td > .pill,table.karten-tab td > .ko{justify-self:start}
+  table.karten-tab td.akt{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-start;margin-top:.2rem}
+  table.karten-tab td.akt .btn+.btn{margin-left:0}
+  table.karten-tab .pname,table.karten-tab .pid{white-space:normal}
+  table.karten-tab .pnote{max-width:none;min-width:0!important}
+}
+.wisch{--kante:28px}
+.wisch.mehr-r{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 46px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 46px),transparent)}
+.wisch.mehr-l{-webkit-mask-image:linear-gradient(to right,transparent,#000 var(--kante));mask-image:linear-gradient(to right,transparent,#000 var(--kante))}
+.wisch.mehr-l.mehr-r{-webkit-mask-image:linear-gradient(to right,transparent,#000 var(--kante),#000 calc(100% - 46px),transparent);mask-image:linear-gradient(to right,transparent,#000 var(--kante),#000 calc(100% - 46px),transparent)}
+.wisch-box{position:relative;min-width:0}
+.wisch-pfeil{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:0;display:none;place-items:center;cursor:pointer;z-index:2;background:var(--weiss);color:var(--violett);box-shadow:0 4px 14px -4px rgba(1,1,1,.35);animation:wischWink 2.4s ease-in-out 3}
+.wisch-pfeil .ico{width:16px;height:16px;stroke-width:2.4}
+.wisch-pfeil.r{right:4px}
+.wisch-pfeil.l{left:4px;animation:none}
+.wisch-box.mehr-r .wisch-pfeil.r,.wisch-box.mehr-l .wisch-pfeil.l{display:grid}
+.side .wisch-pfeil{background:#2A2530;color:var(--weiss);box-shadow:0 4px 14px -4px rgba(0,0,0,.6)}
+@keyframes wischWink{0%,100%{transform:translateY(-50%)}50%{transform:translate(4px,-50%)}}
+@media (prefers-reduced-motion:reduce){.wisch-pfeil{animation:none}}
+@media (min-width:901px){.side .wisch-pfeil{display:none!important}.side .wisch{-webkit-mask-image:none;mask-image:none}}
 @media (max-width:480px){.nav{gap:.15rem;padding-left:.5rem;padding-right:.5rem}.nav > a{flex:1 1 auto;justify-content:center;padding:.5rem .35rem;font-size:.82rem}.nav > a .ico{display:none}}
 </style>
 </head>
@@ -1195,7 +1227,11 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   }
   function tabelle(kopf,zeilen,leerTitel,leerText){
     if(!zeilen.length) return '<div class="leer"><b>'+esc(leerTitel)+'</b>'+esc(leerText)+'</div>';
-    return '<table><thead><tr>'+kopf.map(function(k){return '<th scope="col">'+k+'</th>';}).join('')+'</tr></thead><tbody>'+zeilen.join('')+'</tbody></table>';
+    var tpl=document.createElement('template');
+    tpl.innerHTML='<table class="karten-tab"><thead><tr>'+kopf.map(function(k){return '<th scope="col">'+k+'</th>';}).join('')+'</tr></thead><tbody>'+zeilen.join('')+'</tbody></table>';
+    var titel=[].map.call(tpl.content.querySelectorAll('thead th'),function(th){return th.textContent.trim();});
+    [].forEach.call(tpl.content.querySelectorAll('tbody tr'),function(tr){[].forEach.call(tr.children,function(td,i){if(titel[i])td.setAttribute('data-label',titel[i]);});});
+    return tpl.innerHTML;
   }
 
   // ---------- Dashboard ----------
@@ -1794,7 +1830,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     {k:'News',t:'Was jetzt für Sie als Partnerarzt am wichtigsten ist',x:'Fünf Punkte, die den Ablauf für Sie, Ihre Patientinnen und uns spürbar einfacher machen. Kurz, praktisch und sofort umsetzbar.',d:-6,b:'<p>Wir haben mit vielen Partnerkliniken gesprochen und gesammelt, was im Alltag den größten Unterschied macht.</p><ul><li><b>Beratungsergebnis am selben Tag eintragen:</b> Je schneller wir wissen, wie das Gespräch ausgegangen ist, desto schneller können wir nachfassen oder freie Termine neu vergeben.</li><li><b>OP-Termin direkt melden:</b> Nur dann können wir die Rechnung rechtzeitig verschicken und das Zahlungsziel von 8 Werktagen einhalten.</li><li><b>Kontaktstatus pflegen:</b> Ob behandelbar, nicht behandelbar oder noch am Überlegen: Ihre Einschätzung hilft uns, die Patientin richtig zu begleiten.</li><li><b>Unterlagen in die Patientenakte:</b> OP-Bericht, Arztbrief und Implantat-Seriennummern gehören in DÄS Connect, nicht in die E-Mail.</li><li><b>Pflichtschulung abschließen:</b> Ärzte und Personal, die DÄS-Patientinnen betreuen, absolvieren die Verkaufsschulung und erhalten ihr Partnerzertifikat.</li></ul>'},
     {k:'Portal',t:'Schadensprotokolle jetzt direkt in DÄS Connect',x:'OP-Bericht, Arztbrief, Fotos und Kostenvoranschlag laden Sie in sechs Schritten hoch. Wir sehen den Vorgang sofort.',d:-9,b:'<p>Kommt es nach einer Operation zu einer Komplikation, melden Sie den Fall ab sofort direkt im Portal. Das Schadensprotokoll führt Sie in sechs Schritten durch alle nötigen Angaben.</p><ul><li>OP-Bericht und Arztbrief hochladen</li><li>Kurz beschreiben, was passiert ist</li><li>Fotos und Kostenvoranschlag oder Rechnung ergänzen</li><li>Alles prüfen und absenden</li></ul><p>Der Vorgang erscheint sofort bei uns. Rückfragen stellen wir Ihnen über die Nachrichten im Portal.</p>'},
     {k:'News',t:'OP-Kontingente für Januar bis März 2027 jetzt melden',x:'Die Nachfrage für das neue Jahr ist hoch. Bitte nennen Sie uns bis Mitte Dezember Ihre freien Beratungs- und OP-Tage.',d:-11,b:'<p>Viele Interessentinnen planen ihren Eingriff zum Jahresbeginn. Damit wir die Beratungstermine rechtzeitig verteilen können, brauchen wir Ihre Kapazitäten für das erste Quartal 2027.</p><ul><li>Freie Zeitfenster für Beratungsgespräche</li><li>Geplante OP-Tage je Eingriff</li><li>Urlaubs- und Schließzeiten Ihrer Klinik</li></ul><p>Wie gewohnt erhalten Sie dienstags und freitags den aktuellen Stand der vergebenen Termine.</p>'},
-    {k:'Ratgeber',t:'Die häufigsten Fragen vor einer Brustvergrößerung',x:'Zum Weitergeben an Ihre Patientinnen: Implantate, Narkose, Heilungsverlauf und Kosten verständlich erklärt.',d:-14,b:'<p>Diese Fragen hören wir am häufigsten, bevor Patientinnen zum Beratungsgespräch kommen. Viele davon beantworten wir schon vorab, damit Sie sich auf den medizinischen Teil konzentrieren können.</p><ul><li>Welche Implantatform und -größe passt zu mir?</li><li>Wie lange dauern Operation und Narkose?</li><li>Wann kann ich wieder arbeiten und Sport machen?</li><li>Wie sieht die Nachsorge aus?</li><li>Was ist im Festpreis enthalten?</li></ul>'},
+    {k:'Ratgeber',t:'Die häufigsten Fragen vor einer Brustvergrößerung',x:'Diese Fragen stellen Patientinnen vor dem Beratungsgespräch am häufigsten: Implantate, Narkose, Heilungsverlauf und Kosten.',d:-14,b:'<p>Diese Fragen hören wir am häufigsten, bevor Patientinnen zum Beratungsgespräch kommen. Viele davon beantworten wir schon vorab, damit Sie sich auf den medizinischen Teil konzentrieren können.</p><ul><li>Welche Implantatform und -größe passt zu mir?</li><li>Wie lange dauern Operation und Narkose?</li><li>Wann kann ich wieder arbeiten und Sport machen?</li><li>Wie sieht die Nachsorge aus?</li><li>Was ist im Festpreis enthalten?</li></ul>'},
     {k:'Ratgeber',t:'Ratenzahlung im Beratungsgespräch ansprechen',x:'Wann der richtige Moment ist und wie Sie die Finanzierung über unsere Partner erklären.',d:-18,b:'<p>Für viele Patientinnen ist die Finanzierung der entscheidende Punkt. Sprechen Sie das Thema offen an, sobald der Behandlungswunsch klar ist.</p><ul><li>Nennen Sie den Festpreis und die Möglichkeit der Ratenzahlung zusammen.</li><li>Verweisen Sie für Details an den Deutschen Ärzte Service. Wir begleiten die Anfrage.</li><li>Die Zahlung muss vor dem Eingriff vollständig eingegangen sein.</li></ul>'},
     {k:'Ratgeber',t:'Nachsorge: Was Patientinnen in den ersten zwei Wochen wissen sollten',x:'Ein kompakter Leitfaden zum Weitergeben: Ruhe, Kompression, Kontrolltermine und wann man sich melden sollte.',d:-23,b:'<p>Eine gute Vorbereitung auf die ersten Tage nach der Operation senkt Unsicherheit und Rückfragen.</p><ul><li>Ruhe einplanen und Begleitung für die Heimfahrt organisieren</li><li>Kompressionswäsche oder Stütz-BH wie besprochen tragen</li><li>Kontrolltermine in der Klinik wahrnehmen</li><li>Bei Fieber, starker Schwellung oder Schmerzen sofort die Klinik anrufen</li></ul>'},
     {k:'Portal',t:'Pflichtschulung und Partnerzertifikat in DÄS Connect',x:'Sechs kurze Lektionen, ein Abschlusstest und Ihr Zertifikat als exklusiver Partner, für die Klinik und jeden operierenden Arzt.',d:-27,b:'<p>Die Verkaufsschulung für Ärzte und Personal ist jetzt direkt im Portal. Sie bearbeiten die Lektionen in Ihrem Tempo und sehen jederzeit Ihren Fortschritt.</p><ul><li>Ablauf mit Patientinnen von der Anmeldung bis zur Auszahlung</li><li>Argumente für das Kundengespräch und die Festpreise</li><li>Abschlusstest mit fünf Fragen</li><li>Zertifikat zum Ausdrucken für die Klinik und jeden Arzt</li></ul><p>Die Schulungsunterlagen gibt es zusätzlich als PDF zum Herunterladen.</p>'}
@@ -1803,7 +1839,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   var dlgN=byId('dlg-news');
   byId('news').addEventListener('click',function(ev){
     var b=ev.target.closest('[data-news]');if(!b)return;var n=NEWS[+b.getAttribute('data-news')];
-    byId('nw-klein').textContent=n.k;byId('nw-titel').textContent=n.t;byId('nw-datum').textContent=datum(tag(n.d));byId('nw-inhalt').innerHTML=n.b;
+    byId('nw-klein').textContent=n.k;byId('nw-titel').textContent=n.t;byId('nw-datum').textContent=datum(tag(n.d));byId('nw-inhalt').innerHTML=n.b.replace(/<li>/g,'<li><span>').replace(/<\/li>/g,'</span></li>');
     dlgN.showModal();byId('nw-inhalt').scrollTop=0;
   });
   document.querySelector('.news-filter').addEventListener('click',function(ev){
@@ -2142,6 +2178,48 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   byId('chat-text').addEventListener('input',function(){this.style.height='';this.style.height=Math.min(this.scrollHeight+2,110)+'px';});
 
   alles();zeige();
+})();
+</script>
+<script>
+// Seitlich scrollbare Bereiche sichtbar machen: weiche Kante plus Pfeil, kurzes Anstupsen beim ersten Laden
+(function(){
+  var PFEIL_R='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>',PFEIL_L='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>';
+  function einrichten(el){
+    if(el.dataset.wisch)return;el.dataset.wisch='1';el.classList.add('wisch');
+    var box=document.createElement('div');box.className='wisch-box';el.parentNode.insertBefore(box,el);box.appendChild(el);
+    ['l','r'].forEach(function(seite){
+      var b=document.createElement('button');b.type='button';b.className='wisch-pfeil '+seite;b.tabIndex=-1;b.setAttribute('aria-hidden','true');b.innerHTML=seite==='r'?PFEIL_R:PFEIL_L;
+      b.addEventListener('click',function(){el.scrollBy({left:(seite==='r'?1:-1)*el.clientWidth*.7,behavior:'smooth'});});
+      box.appendChild(b);
+    });
+    function pruefe(){
+      var r=el.scrollLeft+el.clientWidth<el.scrollWidth-4,l=el.scrollLeft>4;
+      el.classList.toggle('mehr-r',r);el.classList.toggle('mehr-l',l);box.classList.toggle('mehr-r',r);box.classList.toggle('mehr-l',l);
+    }
+    el.addEventListener('scroll',pruefe,{passive:true});window.addEventListener('resize',pruefe);
+    if(window.ResizeObserver)new ResizeObserver(pruefe).observe(el);
+    if(window.MutationObserver)new MutationObserver(function(){setTimeout(pruefe,0);}).observe(el,{childList:true,subtree:true});
+    pruefe();
+    return pruefe;
+  }
+  var nav=document.querySelector('.side .nav'),sub=document.getElementById('subnav');
+  [nav,sub].concat([].slice.call(document.querySelectorAll('.scroll'))).forEach(function(el){if(el)einrichten(el);});
+  // aktiven Menüpunkt ins Bild holen
+  function aktivZeigen(){
+    [nav,sub].forEach(function(el){
+      if(!el||el.scrollWidth<=el.clientWidth)return;
+      var a=el.querySelector('[aria-current="page"],.aktiv');if(!a)return;
+      var ziel=a.offsetLeft-(el.clientWidth-a.offsetWidth)/2;el.scrollTo({left:Math.max(0,ziel),behavior:'smooth'});
+    });
+  }
+  window.addEventListener('hashchange',function(){setTimeout(aktivZeigen,60);});
+  document.addEventListener('click',function(ev){if(ev.target.closest('.nav a,.subnav a'))setTimeout(aktivZeigen,60);});
+  // einmal kurz anstupsen, damit man sieht, dass die Leiste weitergeht
+  var gestupst=false;try{gestupst=sessionStorage.getItem('daes-wisch')==='1';}catch(e){}
+  if(!gestupst&&nav&&nav.scrollWidth>nav.clientWidth+4&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setTimeout(function(){nav.scrollTo({left:56,behavior:'smooth'});setTimeout(function(){nav.scrollTo({left:0,behavior:'smooth'});setTimeout(aktivZeigen,450);},650);},700);
+    try{sessionStorage.setItem('daes-wisch','1');}catch(e){}
+  }else setTimeout(aktivZeigen,300);
 })();
 </script>
 </body>
