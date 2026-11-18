@@ -891,5 +891,19 @@ main{counter-reset:abschnitt}
   window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
+<style>
+/* Siegel erst nach dem Hero-Bereich zeigen */
+.pe-pro-seal{opacity:0!important;transform:translateY(24px) scale(.96)!important;pointer-events:none!important;transition:opacity .45s ease,transform .55s cubic-bezier(.2,.8,.2,1.2)!important}
+html.siegel-an .pe-pro-seal{opacity:1!important;transform:none!important;pointer-events:auto!important}
+@media (prefers-reduced-motion:reduce){.pe-pro-seal{transition:opacity .2s linear!important;transform:none!important}}
+</style>
+<script>
+(function(){
+  var html=document.documentElement;
+  function grenze(){var h=document.querySelector('.hero');return h?h.getBoundingClientRect().bottom+window.scrollY-120:600;}
+  function pruefe(){html.classList.toggle('siegel-an',window.scrollY>grenze());}
+  window.addEventListener('scroll',pruefe,{passive:true});window.addEventListener('resize',pruefe);window.addEventListener('load',pruefe);pruefe();
+})();
+</script>
 </body>
 </html>
