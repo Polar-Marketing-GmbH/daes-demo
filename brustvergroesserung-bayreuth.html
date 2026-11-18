@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -630,9 +640,7 @@ main{counter-reset:abschnitt}
 <p>Wir legen höchsten Wert auf die <b>besten Implantate</b>. Selbstverständlich sind auch Implantate mit lebenslanger Garantie ohne Mehrpreis erhältlich.</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Detaillierte <a href="https://www.deutscher-aerzte-service.de/information-zu-silikonimplantaten" target="_blank" rel="noopener">Informationen zu den verwendeten Brustimplantaten</a> finden Sie hier.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Alle <a href="brustvergroesserung.html">Informationen zur Brustvergrößerung</a> haben wir hier bereitgestellt.</span></li></ul>
 <div class="ls-cta"><p>Sie denken über eine Brustvergrößerung nach, benötigen vorab aber noch mehr Infos?<br> Dann schauen Sie doch mal in unsere Broschüre. Einfach herunterladen und dann ganz in Ruhe darin schmökern.</p><a class="btn btn-primary" href="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/03/Informationsbroschuere-fuer-Patienten-2026.pdf">Broschüre “Die Bestseller der plastischen Chirurgie preiswert” (PDF | 2.6 MB)</a></div>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p></div>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-bayreuth" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-bayreuth" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div></div>
 </div>
 </div></div>
 </section>
@@ -654,9 +662,7 @@ main{counter-reset:abschnitt}
 <div class="ls-raster">
 <div class="ls-seite"><h2>Häufig gestellte Fragen zur Brustvergrößerung Bayreuth</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Wie finde ich den richtigen Arzt?</summary><div class="a"><p>Bei der Auswahl des Arztes für die Brustvergrößerung sollte man sich im Voraus detailliert über den entsprechenden Arzt informieren. In Deutschland ist der Begriff „Schönheitschirurg“ nicht geschützt, d.h. ein Gynäkologe könnte nach entsprechender Weiterbildung eine Brustvergrößerung durchführen. Wir beim DÄS achten darauf, dass unsere Kooperationspartner ausschließlich Fachärzte für Plastische und Ästhetische Chirurgie sind. Diese Fachärzte haben zusätzlich zu ihrem sechsjährigem Medizinstudium eine weitere sechsjährige Facharztausbildung in der Ästhetik durchlaufen.</p></div></details><details><summary>Auf was muss man bei einem Beratungsgespräch achten?</summary><div class="a"><p>Bei einem medizinischem Beratungsgespräch geht der Arzt mit Ihnen Ihre Wünsche und Vorstellungen durch und erklärt Ihnen die bestehenden Möglichkeiten. Weiterhin werden Sie über die möglichen Risiken der OP aufgeklärt. Ohne ausführliche Aufklärung sollten Sie keine Operation durchführen. Da vor allem bei einer Erst-OP die Aufregung groß ist, können Sie sich im Voraus einen kleinen Notizzettel mit Fragen, die Sie dem Arzt stellen möchten, vorbereiten. Ansonsten brauchen Sie im Regelfall noch keine weiteren Dokumente für das Erstgespräch mitzunehmen.</p></div></details><details><summary>Welche Risiken gibt es bei Brust OP?</summary><div class="a"><p>Die Risiken bei einer Brustvergrößerung durch einen Facharzt sind gering. In Einzelfällen kann es zu Nachblutungen, Wundheilungsstörungen oder Infektionen kommen. Eine besondere Komplikation ist die Kapselfibrose, die nach einer Brustvergrößerung mit Implantat auftreten kann. Über die Risiken wird Sie der Arzt in Ihrem Beratungsgespräch detailliert aufklären.</p></div></details><details><summary>Implantat vor oder hinter dem Brustmuskel?</summary><div class="a"><p>Die Lage über dem Muskel (subglandulär) ist die älteste. Sie ist weniger invasiv, da der Brustmuskel bestehen bleibt und ist eine vergleichsweise schnelle Operation und Heilung. Allerdings eignet sie sich nicht für jede Klientin, denn Sie benötigen für ein schönes Ergebnis Sie eine Mindestmenge an eigenem Brustgewebe. Ansonsten zeichnet sich der Umriss des Implantats unter der Haut ab. Sollten Sie sich für besonders große Implantate entscheiden, kann es bei dieser Technik zu einem Verrutschen der Implantate nach unten kommen.<br>Wenn man das Implantat unter dem Brustmuskel (submuskuläre Lage) einsetzt, dauert die OP und die Nachsorge etwas länger. In der Zeit nach der Operation kann die Brust spannen bei bestimmten Bewegungen. Ein großer Vorteil der submuskulären Lage: Der Muskel verdeckt die Ränder des Implantats und es entsteht ein natürliches Ergebnis, außerdem ist die Wahrscheinlichkeit, dass das Implantat verrutsch geringer.</p></div></details><details><summary>Wie viel Größe schwillt nach der Brust OP noch ab?</summary><div class="a"><p>Die Schwellung wird in den ersten 3 bis 5 Tagen am größten sein und es kann ebenso vorkommen, dass eine Seite mehr Schwellung aufweist als die andere Seite. Dies ist nichts ungewöhnliches und man muss sich deswegen keine Sorgen machen. Nach Ablauf von ca. 2 Monaten sollten die Schwellungen ganz abgeklungen sein und man kann sich über das Ergebnis freuen.</p></div></details></div>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-bayreuth" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-bayreuth" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
 </div>
 </div></div>
@@ -750,6 +756,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

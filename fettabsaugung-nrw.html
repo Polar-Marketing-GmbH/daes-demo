@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -622,20 +632,20 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<div class="ls-raster">
-<div class="ls-seite"><p class="ls-lead">Auch schlanke Menschen sind nicht vor Problemzonen gefeit. Viele besitzen trotz eines sportlich-aktiven Lebensstils und gesunder Ernährung Körperstellen, die ihnen nicht gefallen. Das mindert nicht nur das Selbstvertrauen, sondern auch die Wirkung auf andere Menschen. Vereinbaren Sie einen Termin zur Fettabsaugung in NRW und sagen Sie gemeinsam mit unseren Fachärzten den Fettpölsterchen den Kampf an!</p></div>
-<div class="ls-text"><p><a href="index.html#kontakt"></a></p></div>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><p>Auch schlanke Menschen sind nicht vor Problemzonen gefeit. Viele besitzen trotz eines sportlich-aktiven Lebensstils und gesunder Ernährung Körperstellen, die ihnen nicht gefallen. Das mindert nicht nur das Selbstvertrauen, sondern auch die Wirkung auf andere Menschen. Vereinbaren Sie einen Termin zur Fettabsaugung in NRW und sagen Sie gemeinsam mit unseren Fachärzten den Fettpölsterchen den Kampf an!</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="1-schoenheitsoperationen-mit-dem-deutschen-aerzte-service">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="besonderheiten"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>1. Schönheitsoperationen mit dem Deutschen Ärzte Service</h2></div>
 <div class="ls-text"><p>Als es den Deutschen Ärzte Service – kurz DÄS – noch nicht gab, gehörten Schönheitsoperationen in Deutschland zu den wahren Luxusbehandlungen. Selbst gut verdienende Frauen konnten sich einen solchen Eingriff nicht leisten. Um sich ihren Wunsch von einem verbesserten Körpergefühl zu erfüllen, nahmen sie oftmals riskante Eingriffe im Ausland auf sich.</p>
 <h3>Inhaltsverzeichnis</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-nrw.html#besonderheiten">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-nrw.html#vorteile">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-nrw.html#wann">3. Wann lohnt sich eine Fettabsaugung in NRW?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-nrw.html#ablauf">4. Der Ablauf einer Liposuktion</a></span></li></ul>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#1-schoenheitsoperationen-mit-dem-deutschen-aerzte-service">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#ihre-vorteile-mit-dem-daes">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#wann-lohnt-sich-eine-fettabsaugung-in-nordrhein-westfalen">3. Wann lohnt sich eine Fettabsaugung in NRW?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#der-ablauf-einer-liposuktion">4. Der Ablauf einer Liposuktion</a></span></li></ul>
 <p>Dort kosteten die Eingriffe bloß einen Bruchteil. Doch wenig Erfahrung und minderwertiges Material sorgten in vielen Fällen für Enttäuschungen und gesundheitliche Probleme. 2004 nahm der DÄS die Arbeit auf. Das Ziel: dem nicht immer ungefährlichen Medizintourismus ein Ende zu setzen und auch in Deutschland Schönheitsoperationen zu günstigen Preisen anzubieten. Das Interesse an Brustvergrößerung, Facelifting und Fettabsaugungen ist seitdem weiter gewachsen, sodass neue Standorte und Anwendungen das Portfolio des DÄS stetig erweitern.</p></div>
 </div>
 </div></div>
@@ -654,7 +664,7 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="ihre-vorteile-mit-dem-daes">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="vorteile"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Ihre Vorteile mit dem DÄS</h2></div>
 <div class="ls-text"><p>Wir haben es uns zur Aufgabe gemacht qualitativ hochwertige Schönheitschirurgie in Deutschland bezahlbar zu machen. Mehr als 50.000 Personen haben bisher von unseren Leistungen profitiert.</p>
@@ -665,26 +675,25 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt" id="wann-lohnt-sich-eine-fettabsaugung-in-nordrhein-westfalen">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="wann"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Wann lohnt sich eine Fettabsaugung in Nordrhein-Westfalen?</h2></div>
 <div class="ls-text"><p>Eine Fettabsaugung ist keine Methode, um einfach und schnell an Gewicht zu verlieren. Sie bietet sich deswegen vor allem bei wohlgeformten Menschen an, die mit einigen Problemzonen zu kämpfen haben. Lösen sich kleine Pölsterchen trotz langanhaltender gesunder Ernährung und einem regelmäßigen Sportprogramm nicht auf, verhilft Ihnen der Eingriff zu einer verbesserten Definition Ihres Körpers. Doch wie funktioniert das Prinzip der Fettabsaugung?</p>
 <p>In unserem Körper befinden sich an vielen Stellen Reservoirs an Fettzellen. Sie füllen sich, sobald wir an Gewicht zulegen, und leeren sich, wenn wir weniger Kalorien zu uns nehmen, als wir verbrauchen. Der Körper holt sich daraus die Energie, die er benötigt. Die Fettabsaugung reduziert sehr große Ansammlungen dieser Zellen und unterstützt Sie bei der Konturierung Ihres Körpers. Doch keine Sorge: Dabei werden bei weitem nicht alle möglichen Energiespeicher beseitigt.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/17349-nrw-fettabsaugung-stadtansicht.jpg" alt="Fettabsaugung in NRW: Stadtansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/17349-nrw-fettabsaugung-stadtansicht.jpg" alt="Fettabsaugung in NRW: Stadtansicht" loading="lazy" decoding="async"></figure>
 <h3>Voraussetzungen</h3>
-<p>Um für eine Fettabsaugung in NRW infrage zu kommen, müssen Sie vor allem gesund sein und über eine möglichst elastische Haut verfügen. Nur so lässt sich Ihr gewünschtes Ergebnis realisieren. Es ist essenziell, dass sich die Haut nach dem Eingriff wieder strafft, ansonsten hängt sie womöglich unschön herunter. Eine verminderte Spannkraft der Epidermis kann genetisch bedingt sein, kommt aber auch bei jahrelangen Rauchern vor.</p>
-<p><a href="index.html#kontakt"></a></p></div>
+<p>Um für eine Fettabsaugung in NRW infrage zu kommen, müssen Sie vor allem gesund sein und über eine möglichst elastische Haut verfügen. Nur so lässt sich Ihr gewünschtes Ergebnis realisieren. Es ist essenziell, dass sich die Haut nach dem Eingriff wieder strafft, ansonsten hängt sie womöglich unschön herunter. Eine verminderte Spannkraft der Epidermis kann genetisch bedingt sein, kommt aber auch bei jahrelangen Rauchern vor.</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="der-ablauf-einer-liposuktion">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="ablauf"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Der Ablauf einer Liposuktion</h2></div>
 <div class="ls-text"><p>Eine Fettabsaugung steht in unseren Partnerkliniken in Nordrhein-Westfalen regelmäßig auf der Tagesordnung. Die Schönheitschirurgen setzen in die zu korrigierenden Zonen routiniert ein paar winzige Einschnitte, durch die sie dann eine kleine Kanüle einführen.</p>
 <p>Mit sanften Bewegungen lockert der speziell ausgebildete Facharzt damit die Fettzellen und saugt sie gleichzeitig ab. Ist das erwünschte Ergebnis erreicht, vernäht er die kleinen Einstiche, sodass bei normaler Wundheilung keine sichtbaren Narben zurückbleiben.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
 <h3>Die wichtigsten Details in Kürze</h3>
 <p><b>Die Dauer des Eingriffs</b><br> Die Problemzonen variieren von Mensch zu Mensch. Während Frauen gern die sogenannten Reiterhosen an Gesäß und Oberschenkeln entfernen lassen möchten, nehmen Männer eine Fettabsaugung in NRW lieber am Bauch vor. Aus diesem Grund lässt sich die Dauer des Eingriffs auch schwer vorhersagen. In einem Beratungsgespräch erläutert Ihr Facharzt Ihnen alle wissenswerten Details. Er untersucht Sie gründlich und nennt Ihnen anschließend Ihre Möglichkeiten und eine genaue Zeitspanne. Rechnen Sie pro Zone ungefähr mit zwei bis vier Stunden.</p>
 <p><b>Örtliche Betäubung oder tiefer Schlummer</b><br> Eine Fettabsaugung findet nicht immer unter Vollnarkose statt. Wünschen Sie, dass nur kleinere Fettpölsterchen beseitigt werden, können Sie sich auch für eine örtliche Betäubung aussprechen. Die Entscheidung liegt ganz bei Ihnen! Ihr behandelnder Arzt wird Sie im Voraus gründlich zu den Möglichkeiten beraten.</p>
@@ -784,6 +793,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

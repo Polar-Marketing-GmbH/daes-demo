@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -622,20 +632,20 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<div class="ls-raster">
-<div class="ls-seite"><p class="ls-lead">Manche Fettpolster bleiben trotz Sport und gesunder Ernährung bestehen, zum Beispiel an Bauch, Hüften oder Oberschenkeln. Eine Fettabsaugung (Liposuktion) kann diese Bereiche gezielt formen. Beim Deutschen Ärzte Service kostet eine Fettabsaugung ab 1.899 € für 2 Zonen. In Sachsen ist der Eingriff bei einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie in <a href="fettabsaugung-dresden.html">Dresden</a> möglich.</p></div>
-<div class="ls-text"><p><a href="index.html#kontakt"></a></p></div>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><p>Manche Fettpolster bleiben trotz Sport und gesunder Ernährung bestehen, zum Beispiel an Bauch, Hüften oder Oberschenkeln. Eine Fettabsaugung (Liposuktion) kann diese Bereiche gezielt formen. Beim Deutschen Ärzte Service kostet eine Fettabsaugung ab 1.899 € für 2 Zonen. In Sachsen ist der Eingriff bei einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie in <a href="fettabsaugung-dresden.html">Dresden</a> möglich.</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="schoenheitsoperationen-mit-dem-deutschen-aerzte-service-prof">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="besonderheiten"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Schönheitsoperationen mit dem Deutschen Ärzte Service: Profitieren Sie von unseren Besonderheiten</h2></div>
 <div class="ls-text"><p>Der Deutsche Ärzte Service – kurz DÄS – besteht seit 2004. Er begann ursprünglich als zeitlich begrenztes Projekt. DÄS Ziel: den teilweise riskanten Medizintourismus ins Ausland einzudämmen. Schönheitsoperationen waren damals ein reines Luxusprodukt und für viele Frauen, die sich sehnlichst eine Brustvergrößerung wünschten, einfach nicht bezahlbar.</p>
 <h3>Inhaltsverzeichnis</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-sachsen.html#besonderheiten">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-sachsen.html#vorteile">2. Ihre Vorteile durch den DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-sachsen.html#wann">3. Die Fettabsaugung: Wann und für wen lohnt sie sich?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-sachsen.html#ablauf">4. Der Ablauf einer Fettabsaugung in Sachsen und weitere wichtige Details</a></span></li></ul>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#schoenheitsoperationen-mit-dem-deutschen-aerzte-service-prof">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#ihre-vorteile-mit-dem-daes">2. Ihre Vorteile durch den DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#fettabsaugung-in-sachsen-wann-und-fuer-wen-sinnvoll">3. Die Fettabsaugung: Wann und für wen lohnt sie sich?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#ein-haeufig-durchgefuehrter-eingriff-der-ablauf-einer-fettab">4. Der Ablauf einer Fettabsaugung in Sachsen und weitere wichtige Details</a></span></li></ul>
 <p>Das wollte der DÄS ändern. Mit fairen Komplettpreisen, hochwertigen Materialien und erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie wurde daraus ein bundesweites Netzwerk an rund 40 Standorten.</p></div>
 </div>
 </div></div>
@@ -654,7 +664,7 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="ihre-vorteile-mit-dem-daes">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="vorteile"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Ihre Vorteile mit dem DÄS</h2></div>
 <div class="ls-text"><p>Wir haben es uns zur Aufgabe gemacht qualitativ hochwertige Schönheitschirurgie in Deutschland bezahlbar zu machen. Über 100.000 Kundinnen und Kunden haben wir bisher beraten.</p>
@@ -665,25 +675,24 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt" id="fettabsaugung-in-sachsen-wann-und-fuer-wen-sinnvoll">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="wann"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Fettabsaugung in Sachsen: Wann und für wen sinnvoll?</h2></div>
 <div class="ls-text"><p>Eine Fettabsaugung – in Fachkreisen oft Liposuktion genannt – unterstützt Sie bei der Definition Ihrer Figur. Deshalb kommt sie vor allem an schlanken Körpern zum Einsatz, bei denen überzählige Fettdepots am Gesäß, Bauch oder auch den Oberschenkeln unschön auftragen. Das Absaugen dieser Zellen verhilft unseren Kundinnen und Kunden zu mehr Selbstvertrauen. Doch welche Aufgaben haben die Fettpolster eigentlich?</p>
 <p>Die Funktion ist schnell erklärt: Die Fettzellen sind die Energiespeicher unseres Körpers. Nehmen wir durch Nahrung mehr Kalorien auf, als wir verbrennen, wird die überschüssige Energie in den Depots eingelagert und wir legen an Gewicht zu. Verbrauchen wir hingegen mehr Energie, als wir aufnehmen, zehrt unser Körper aus dem Fettspeicher. Dadurch purzeln die Kilos. Doch manchmal lassen sich hartnäckige Energiedepots auch von gesunder Ernährung und viel Bewegung nicht beeindrucken: In diesen Fällen kann eine Fettabsaugung eine Möglichkeit sein. Ob sie für Sie geeignet ist, klärt Ihr Facharzt im Beratungsgespräch.</p>
 <figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2024/03/Fettabsaugung-Sachsen-Arzt.jpg" alt="Fettabsaugung in Sachsen: Sächsische Schweiz" width="837" height="471" loading="lazy" decoding="async"></figure>
 <h3>Voraussetzungen</h3>
-<p>Eine Fettabsaugung ist keine bequeme Art der Diät! Im Gegenteil: Der Eingriff ist spezialisiert auf Kundinnen und Kunden, die bereits relativ normalgewichtig sind, aber noch hier und da kleinere Fettpölsterchen aufweisen. Weiterhin ist die Hautbeschaffenheit essenziell für das Gelingen der Liposuktion. Es ist wichtig, dass sie möglichst straff und anpassungsfähig ist, damit sie nach dem Eingriff nicht unschön hängt. Ist Ihre Haut nicht mehr so elastisch, wie Sie es sich wünschen – Gründe hierfür sind meist jahrelanges Rauchen oder genetische Voraussetzungen – besteht die Möglichkeit, die Fettabsaugung in Sachsen mit einer anschließenden Hautstraffung zu kombinieren.</p>
-<p><a href="index.html#kontakt"></a></p></div>
+<p>Eine Fettabsaugung ist keine bequeme Art der Diät! Im Gegenteil: Der Eingriff ist spezialisiert auf Kundinnen und Kunden, die bereits relativ normalgewichtig sind, aber noch hier und da kleinere Fettpölsterchen aufweisen. Weiterhin ist die Hautbeschaffenheit essenziell für das Gelingen der Liposuktion. Es ist wichtig, dass sie möglichst straff und anpassungsfähig ist, damit sie nach dem Eingriff nicht unschön hängt. Ist Ihre Haut nicht mehr so elastisch, wie Sie es sich wünschen – Gründe hierfür sind meist jahrelanges Rauchen oder genetische Voraussetzungen – besteht die Möglichkeit, die Fettabsaugung in Sachsen mit einer anschließenden Hautstraffung zu kombinieren.</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="ein-haeufig-durchgefuehrter-eingriff-der-ablauf-einer-fettab">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="ablauf"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Ein häufig durchgeführter Eingriff: der Ablauf einer Fettabsaugung in Sachsen</h2></div>
 <div class="ls-text"><p>Bei der Liposuktion setzt Ihr Facharzt winzig kleine Schnitte in die Haut Ihrer Problemzone. Dadurch führt er eine dünne Kanüle ein, mit der er durch gezielte Bewegungen die Fettzellen löst und dann sofort absaugt. Im Anschluss werden die kleinen Einstiche versorgt. Sie verheilen in der Regel gut und sind später meist kaum sichtbar. Unsere Partnerärzte führen Fettabsaugungen regelmäßig durch. Wie bei jeder Operation gibt es Risiken, etwa Schwellungen, Blutergüsse oder Wundheilungsstörungen. Darüber klärt Sie Ihr Facharzt ausführlich auf.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
 <h3>Die wichtigsten Details in Kürze</h3>
 <p><b>OP-Dauer</b><br> Wie lange eine Fettabsaugung andauert, hängt stets von der betroffenen Körperpartie ab. Besonders große Zonen – zum Beispiel die typischen Reiterhosen, die sich auf das Gesäß und die Oberschenkel auswirken – nehmen natürlich mehr Zeit in Anspruch. Eine Anwendung dauert in der Regel zwei bis vier Stunden. Mit welchem Zeitraum Sie genau rechnen können, teilt Ihnen Ihr Facharzt während der Beratung mit.</p>
 <p><b>Narkose oder örtliche Betäubung?</b><br> Sie können selbst entscheiden, ob Sie die Fettabsaugung in Sachsen im komfortablen Dämmerschlaf, unter örtlicher Betäubung oder Vollnarkose vornehmen möchten. Die meisten unserer Kundinnen und Kunden wählen die Vollnarkose.</p>
@@ -783,6 +792,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

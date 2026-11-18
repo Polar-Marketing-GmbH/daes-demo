@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -622,9 +632,9 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<div class="ls-raster">
-<div class="ls-seite"><p class="ls-lead">Eine Fettabsaugung eignet sich vor allem für bereits gut proportionierte Menschen, die ihren Körper von Problemzonen befreien möchten, die ihnen ein Dorn im Auge sind. Sie ersetzt dabei jedoch keine Diät. Erfahren Sie Wissenswertes über den auch Liposuktion genannten Eingriff und vereinbaren Sie beim Deutschen Ärzte Service einen Termin zur Fettabsaugung in Baden-Württemberg!</p></div>
-<div class="ls-text"><p><a href="index.html#kontakt"></a></p></div>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><p>Eine Fettabsaugung eignet sich vor allem für bereits gut proportionierte Menschen, die ihren Körper von Problemzonen befreien möchten, die ihnen ein Dorn im Auge sind. Sie ersetzt dabei jedoch keine Diät. Erfahren Sie Wissenswertes über den auch Liposuktion genannten Eingriff und vereinbaren Sie beim Deutschen Ärzte Service einen Termin zur Fettabsaugung in Baden-Württemberg!</p></div>
 </div>
 </div></div>
 </section>
@@ -635,7 +645,7 @@ main{counter-reset:abschnitt}
 <div class="ls-seite"><h2>Schönheitsoperationen mit dem Deutschen Ärzte Service</h2></div>
 <div class="ls-text"><p>Lange Zeit waren Schönheitsoperationen in Deutschland kaum zu bezahlen. Sie kosteten ein halbes Vermögen! Die Menschen, die sich in ihrem Körper unwohl fühlten, blieben dabei auf der Strecke. Viele – vor allem Frauen mit dem Wunsch nach einer Brustvergrößerung – reisten deshalb ins Ausland, um günstiger operiert zu werden. Oft auf Kosten der Qualität und Gesundheit: Einfacheres Material und unerfahrenere Ärzte sorgten dabei in vielen Fällen für Unzufriedenheit. Der Deutsche Ärzte Service gründete sich, um dem entgegenzuwirken: Das Unternehmen bietet seit 2004 hochwertige Schönheitsoperationen zu günstigen Preisen an. Ganz gleich, ob Brust-OP, Facelifting oder Fettabsaugung: In Baden-Württemberg, Hamburg, Nordrhein-Westfalen, Bayern und auch in vielen anderen Bundesländern treffen Sie auf die Partnerkliniken des Deutschen Ärzte Service – kurz DÄS. Vereinbaren Sie noch heute einen Termin für ein unverbindliches Beratungsgespräch und gehen Sie einen wichtigen Schritt in Richtung Ihres Traumkörpers!</p>
 <h3>Inhaltsverzeichnis</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-nrw.html#besonderheiten">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-nrw.html#vorteile">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#wann">3. Fettabsaugung in Baden-Württemberg: Kosten, Voraussetzungen, Ablauf und Details</a></span></li></ul></div>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-nrw.html#besonderheiten">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-nrw.html#vorteile">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#fettabsaugung-in-baden-wuerttemberg-kosten-voraussetzungen-u">3. Fettabsaugung in Baden-Württemberg: Kosten, Voraussetzungen, Ablauf und Details</a></span></li></ul></div>
 </div>
 </div></div>
 </section>
@@ -664,15 +674,14 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-hervor" id="fettabsaugung-in-baden-wuerttemberg-kosten-voraussetzungen-u">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="wann"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Fettabsaugung in Baden-Württemberg: Kosten, Voraussetzungen und Details</h2></div>
 <div class="ls-text"><p>Nach der Brust-OP ist die Fettabsaugung in Baden-Württemberg der beliebteste Eingriff beim Deutschen Ärzte Service. Doch was geschieht eigentlich während der Liposuktion?</p>
 <p>Sie eignet sich nicht dafür, komfortabel an Gewicht zu verlieren. Vielmehr stellt sie eine lohnende Möglichkeit für Menschen mit gesundem BMI dar, Problemzonen zu beseitigen und ihren Körper genau nach ihren Vorstellungen zu modellieren. Dabei werden Fettzellen entfernt, die sonst unschön auftragen. Nehmen wir an Gewicht zu, füllen sie sich. Ernähren wir uns stattdessen achtsam und treiben regelmäßig Sport, zieht sich unser Körper die benötigte Energie aus den angesparten Fettdepots. Wir verlieren überflüssige Kilogramm und werden schlanker. Doch vor allem am Bauch, den Oberschenkeln und dem Gesäß sammeln sich mehr Fettzellen an, als wir benötigen. Durch ein gezieltes Absaugen der Speicherzellen gelingt es, die störenden Fettpölsterchen zu besiegen.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/17349-nrw-fettabsaugung-stadtansicht.jpg" alt="Fettabsaugung in NRW: Stadtansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/17349-nrw-fettabsaugung-stadtansicht.jpg" alt="Fettabsaugung in NRW: Stadtansicht" loading="lazy" decoding="async"></figure>
 <h3>Voraussetzungen</h3>
-<p>Sie möchten Ihren Problemzonen den Kampf ansagen und eine Fettabsaugung in Baden-Württemberg vornehmen lassen? Vereinbaren Sie ein unverbindliches Beratungsgespräch in unserer Partnerklinik in Stuttgart und Mannheim und lassen Sie sich individuell zu den Voraussetzungen, der Operation an sich und allen weiteren wichtigen Details informieren.</p>
-<p><a href="index.html#kontakt"></a></p></div>
+<p>Sie möchten Ihren Problemzonen den Kampf ansagen und eine Fettabsaugung in Baden-Württemberg vornehmen lassen? Vereinbaren Sie ein unverbindliches Beratungsgespräch in unserer Partnerklinik in Stuttgart und Mannheim und lassen Sie sich individuell zu den Voraussetzungen, der Operation an sich und allen weiteren wichtigen Details informieren.</p></div>
 </div>
 </div></div>
 </section>
@@ -682,7 +691,7 @@ main{counter-reset:abschnitt}
 <div class="ls-raster">
 <div class="ls-seite"><h2>Der Ablauf einer Liposuktion</h2></div>
 <div class="ls-text"><p>Der Facharzt für Plastische und Ästhetische Chirurgie setzt in Ihre Problemzone nur winzig kleine Schnitte, in die er anschließend eine dünne Kanüle einführt. Durch sanfte Bewegungen lockert er die Fettzellen und saugt sie gleichzeitig ab. Ist das gewünschte Ergebnis erreicht, schließt er die millimetergroßen Wunden und vernäht sie so, dass sie unsichtbar verheilen. Nach einer Liposuktion werden in der Regel keine Narben zurückbleiben.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
 <h3>Was Sie sonst noch wissen sollten: wichtige Details zu Ihrer Schönheitsoperation</h3>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Dauer </b><br> Eine der häufigsten Fragen der Kundinnen des DÄS lautet: Wie lange dauert der Eingriff? Die Antwort darauf lässt sich nur schwer pauschalisieren, kommt es doch auf den Umfang und den Bereich der Operation an. Durchschnittlich dauert eine Fettabsaugung zwei bis vier Stunden.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Preis</b><br> Ebenso wie die Dauer der Liposuktion ist auch der Preis von diversen Faktoren abhängig. Eine Fettabsaugung in Baden-Württemberg kostet Sie circa 1.899,– Euro für zwei Zonen. Bei Ihrem persönlichen Beratungsgespräch nennt Ihnen der Ästhetisch-Plastische Chirurg den genauen Betrag.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Narkose</b><br> Eine Fettabsaugung ist eine minimalinvasive Behandlung, weshalb sie gern unter einer örtlichen Betäubung durchgeführt wird. Doch auch eine Vollanästhesie ermöglichen wir Ihnen.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Stationär oder ambulant?</b><br> Bereits wenige Stunden nach der Operation können Sie den Heimweg antreten – natürlich nicht ohne eine gründliche Nachsorge durch Ihren Facharzt. Möchten Sie sich jedoch noch eine Nacht in einer unserer modernen Privatkliniken ausruhen, erhalten Sie diese zum DÄS-Sonderpreis von nur 199,– Euro.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Nachbehandlung</b><br> Vier bis sechs Wochen nach der Fettabsaugung in Baden-Württemberg tragen Sie an der behandelten Zone noch eine Kompressionshose oder -bandage. Weitere postoperative Maßnahmen sind nicht notwendig.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Einschränkungen nach der OP</b><br> Nach der Liposuktion sollten Sie sich einige Tage schonen. Sportlichen Aktivitäten können Sie bereits nach vier bis sechs Wochen wieder nachgehen.</span></li></ul>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Jetzt informieren</a></div></div>
@@ -778,6 +787,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

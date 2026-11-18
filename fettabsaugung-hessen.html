@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -622,20 +632,20 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<div class="ls-raster">
-<div class="ls-seite"><p class="ls-lead">Nobody is perfect! Selbst schlanke Menschen besitzen die eine oder andere Körperpartie, mit der sie sich nicht wohlfühlen. Meist treten sie in Form von kleineren Fettpölsterchen auf, die auch mit einem bewegten Alltag und gesunder Ernährung einfach nicht in den Griff zu bekommen sind. Erfahren Sie mehr über Fettabsaugungen in Hessen und holen Sie sich Ihr verloren gegangenes Selbstvertrauen zurück!</p></div>
-<div class="ls-text"><p><a href="index.html#kontakt"></a></p></div>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><p>Nobody is perfect! Selbst schlanke Menschen besitzen die eine oder andere Körperpartie, mit der sie sich nicht wohlfühlen. Meist treten sie in Form von kleineren Fettpölsterchen auf, die auch mit einem bewegten Alltag und gesunder Ernährung einfach nicht in den Griff zu bekommen sind. Erfahren Sie mehr über Fettabsaugungen in Hessen und holen Sie sich Ihr verloren gegangenes Selbstvertrauen zurück!</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="schoenheitsoperationen-mit-dem-deutschen-aerzte-service-prof">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="besonderheiten"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Schönheitsoperationen mit dem Deutschen Ärzte Service: Profitieren Sie von unseren Besonderheiten</h2></div>
 <div class="ls-text"><p>Der Deutsche Ärzte Service besteht seit dem Jahr 2004. Er gründete sich mit dem Vorhaben, in Deutschland hochwertige Schönheitsoperationen zu fairen Preisen anzubieten. Bis dahin nahmen Frauen riskante Reisen ins Ausland auf sich, wenn sie sich die Eingriffe im Bundesgebiet nicht leisten konnten. Doch dort erwarteten sie oft unerfahrene Ärzte und minderwertiges Material, wodurch sich der Heilprozess verlangsamte oder das Ergebnis nicht so gelang, wie sie es sich erhofften.</p>
 <h3>Inhaltsverzeichnis</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-hessen.html#besonderheiten">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-hessen.html#vorteile">2. Die Vorteile durch den DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-hessen.html#wann">3. Die Fettabsaugung: Wann lohnt sich eine Fettabsaugung?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="fettabsaugung-hessen.html#ablauf">4. Der Ablauf einer Fettabsaugung in Hessen und weitere wichtige Details</a></span></li></ul>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#schoenheitsoperationen-mit-dem-deutschen-aerzte-service-prof">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#die-vorteile-durch-den-daes">2. Die Vorteile durch den DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#fettabsaugung-in-hessen-wann-ist-sie-sinnvoll">3. Die Fettabsaugung: Wann lohnt sich eine Fettabsaugung?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#ein-haeufig-durchgefuehrter-eingriff-der-ablauf-einer-fettab">4. Der Ablauf einer Fettabsaugung in Hessen und weitere wichtige Details</a></span></li></ul>
 <p>Auch wenn der Deutsche Ärzte Service – kurz DÄS – als zeitlich begrenztes Projekt startete: Die starke Nachfrage sorgte dafür, dass wir die Eingriffe – vor allem Brust-OPs und Fettabsaugungen – dauerhaft zu solch günstigen Preisen und hohen Qualitätsstandards etablieren konnten.</p></div>
 </div>
 </div></div>
@@ -654,7 +664,7 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="die-vorteile-durch-den-daes">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="vorteile"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Die Vorteile durch den DÄS</h2></div>
 <div class="ls-text"><p>Wir haben es uns zur Aufgabe gemacht qualitativ hochwertige Schönheitschirurgie in Deutschland bezahlbar zu machen. Über 100.000 Kundinnen und Kunden haben wir bisher beraten.</p>
@@ -665,25 +675,24 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt" id="fettabsaugung-in-hessen-wann-ist-sie-sinnvoll">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="wann"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Fettabsaugung in Hessen: Wann ist sie sinnvoll?</h2></div>
 <div class="ls-text"><p>Eine Fettabsaugung in Hessen hilft Ihnen, Problemzonen an Ihrem Körper effektiv zu beseitigen. Doch damit ist sie keine Alternative zur Diät: Sie dient nicht der schnellen Gewichtsabnahme, sondern unterstützt Sie dabei, Bauch, Hüfte, Gesäß oder Oberschenkel zu definieren. Wichtig ist deshalb, dass interessierte Kundinnen und Kunden relativ normalgewichtig sind. Nur dann lohnt sich der Eingriff, und Sie können Ihrem Selbstbewusstsein durch eine gewisse Konturierung dauerhaft auf die Sprünge helfen.</p>
 <figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2024/03/fettabsaugung-hessen-arzt.jpg" alt="Fettabsaugung in Hessen: Stadtansicht Hessen" width="840" height="560" loading="lazy" decoding="async"></figure>
 <h3>Voraussetzungen</h3>
-<p>Damit die Haut nach der Liposuktion – dem Fachbegriff für diese Schönheitsoperation – an den behandelten Körperpartien nicht hängt, ist es unerlässlich, dass Ihr Bindegewebe noch straff ist. Vor allem bei langjährigen Rauchern besteht das Risiko, dass die Haut ihre Elastizität verliert. Ist das der Fall, können Sie die Fettabsaugung in Hessen jedoch gleich bequem mit einer Hautstraffung verbinden. Ihr behandelnder Facharzt informiert Sie in jedem Fall über die Beschaffenheit Ihres Bindegewebes und die optimale Behandlung.</p>
-<p><a href="index.html#kontakt"></a></p></div>
+<p>Damit die Haut nach der Liposuktion – dem Fachbegriff für diese Schönheitsoperation – an den behandelten Körperpartien nicht hängt, ist es unerlässlich, dass Ihr Bindegewebe noch straff ist. Vor allem bei langjährigen Rauchern besteht das Risiko, dass die Haut ihre Elastizität verliert. Ist das der Fall, können Sie die Fettabsaugung in Hessen jedoch gleich bequem mit einer Hautstraffung verbinden. Ihr behandelnder Facharzt informiert Sie in jedem Fall über die Beschaffenheit Ihres Bindegewebes und die optimale Behandlung.</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="ein-haeufig-durchgefuehrter-eingriff-der-ablauf-einer-fettab">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="ablauf"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Ein häufig durchgeführter Eingriff: der Ablauf einer Fettabsaugung in Hessen</h2></div>
 <div class="ls-text"><p>Dank des großen Partnernetzwerks des DÄS können Sie in ganz Deutschland Fettabsaugungen vornehmen lassen. In Hessen stehen Ihnen die Fachzentren in Frankfurt, Mainz, Wiesbaden und im Kreis Darmstadt zur Wahl. Doch wie läuft so eine Liposuktion ab? In einer unverbindlichen Beratung schildern Sie Ihrem Facharzt, mit welchen Körperpartien Sie sich unwohl fühlen. Nach einer umfangreichen Untersuchung erfahren Sie, welche Möglichkeiten Ihnen zur Verfügung stehen und was Sie der Eingriff genau kosten wird. Über den DÄS erhalten Sie eine Fettabsaugung in Hessen bereits ab 1.899,– Euro für 2 Zonen.</p>
 <p>Die Liposuktion an sich geht so minimalinvasiv wie möglich vonstatten: Der Facharzt nimmt in der zu behandelnden Problemzone winzige Einschnitte in die Haut vor, durch die er dann eine dünne Kanüle einführt. Nun bewegt er diese hin und her, löst damit die Fettzellen. Gleichzeitig saugt er sie mit der Kanüle ab. Nach der Operation werden die kleinen Einstiche versorgt. Sie verheilen in der Regel gut und sind später meist kaum sichtbar.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
 <h3>Die wichtigsten Details in Kürze</h3>
 <p><b>Dauer der Operation</b><br> Wie lange der Eingriff dauert, hängt stark davon ab, welchen Körperbereich Sie sich definieren lassen. Normalerweise müssen sie zwischen 2- 4 Stunden rechnen. Eine exakte Zeitspanne nennt Ihnen Ihr behandelnder Arzt während der Vorgespräche.</p>
 <p><b>Narkose</b><br> Sie haben die Wahl, ob Sie die Fettabsaugung in Hessen unter örtlicher Betäubung oder unter Vollnarkose verbringen möchten. Wir empfehlen Ihnen den komfortablen Dämmerschlaf.</p>
@@ -783,6 +792,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

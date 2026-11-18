@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -660,7 +670,7 @@ main{counter-reset:abschnitt}
 <p>Wir besprechen die <b>hohen Standards unseres Hauses</b> bei der Planung und welche Möglichkeiten Ihnen bei der Anpassung der Brüste nach Ihren Wünschen zur Verfügung stehen.</p>
 <p>Was für uns zählt, sind das Ergebnis und eine<a href="https://www.instagram.com/deutscher_aerzte_service/" target="_blank" rel="noopener"> zufriedene Kundin</a> – Sie –, daher behandeln unsere Experten jeden Fall <b>ganz individuell und passen Operation und Methoden an Ihre Bedürfnisse an</b>.</p>
 <h3>Inhaltsverzeichnis</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>1. <a href="brustvergroesserung-hamburg.html#vorteile">Darum sind Brustvergrößerungen beliebt</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>2. <a href="brustvergroesserung-hamburg.html#standards">Die Brustvergrößerung in Deutschland zu europäischen Standards durchführen lassen</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>3. <a href="brustvergroesserung-hamburg.html#kosten">Wie können die Kosten der Brustvergrößerung in Hamburg so niedrig gehalten werden?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>4. <a href="brustvergroesserung-hamburg.html#aufbau">Der Aufbau der Brust und Ort für das Implantat</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>5. <a href="brustvergroesserung-hamburg.html#eingriff">Wie wird der Eingriff durchgeführt?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>6. <a href="brustvergroesserung-hamburg.html#herstellung">Herstellung und Modelle der Brustimplantate</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>7. <a href="brustvergroesserung-hamburg.html#op">OP, Nachsorge und Gesundheit</a></span></li></ul>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>1. <a href="#brustvergroesserungen-sind-ein-weltweit-beliebter-eingriff-f">Darum sind Brustvergrößerungen beliebt</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>2. <a href="#die-brustvergroesserung-in-deutschland-zu-europaeischen-stan">Die Brustvergrößerung in Deutschland zu europäischen Standards durchführen lassen</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>3. <a href="#wie-koennen-die-kosten-der-brustvergroesserung-in-hamburg-so">Wie können die Kosten der Brustvergrößerung in Hamburg so niedrig gehalten werden?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>4. <a href="#der-aufbau-der-brust-und-die-platzierung-fuer-das-implantat">Der Aufbau der Brust und Ort für das Implantat</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>5. <a href="#wie-wird-der-eingriff-durchgefuehrt">Wie wird der Eingriff durchgeführt?</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>6. <a href="#herstellung-und-modelle-der-brustimplantate">Herstellung und Modelle der Brustimplantate</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>7. <a href="#op-nachsorge-und-gesundheit">OP, Nachsorge und Gesundheit</a></span></li></ul>
 <p>Wir haben es uns zur Aufgabe gemacht qualitativ hochwertige Schönheitschirurgie in Deutschland bezahlbar zu machen. Mehr als 100.000 Personen haben bisher von unseren Leistungen profitiert.</p>
 <p>Wir legen besonderen Wert auf die langjährige Erfahrung der plastischen Chirurgen und die hohe Qualität der verwendeten Materialien.</p>
 <p>Wir haben einen Weg gefunden, Schönheitsoperationen für jeden bezahlbar zu machen, ohne dabei auf Qualität und Sicherheit verzichten zu müssen.</p></div>
@@ -669,10 +679,10 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="brustvergroesserungen-sind-ein-weltweit-beliebter-eingriff-f">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="vorteile"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Brustvergrößerungen sind ein weltweit beliebter Eingriff für viele Frauen – warum auch in Hamburg?</h2></div>
-<div class="ls-text"><p>Einer <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-OP</a> können viele unterschiedliche Überlegungen zugrunde liegen. Die „Deutsche Gesellschaft der Plastischen, Rekonstruktiven und Ästhetischen Chirurgen“ (<a href="https://www.dgpraec.de/" target="_blank" rel="noopener">DGPRÄC</a>) kennt die vielen Hintergründe, die den Wunsch nach einer Brustvergrößerung wecken können. Viele unserer Kundinnen erlangen dadurch ein großes Stück Lebensqualität zurück, andere fühlen sich zum ersten Mal in ihrem Leben rundum wohl und zufrieden. Daher verwundert es nicht, dass die Brustvergrößerung weltweit mit ca. 1,5 Millionen OPs der <a href="https://www.vdaepc.de/neue-vdaepc-behandlungsstatistik-2024/" target="_blank" rel="noopener">beliebteste plastisch-ästhetische Eingriff</a> ist.</p>
+<div class="ls-text"><p>Einer <a href="brustvergroesserung.html">Brust-OP</a> können viele unterschiedliche Überlegungen zugrunde liegen. Die „Deutsche Gesellschaft der Plastischen, Rekonstruktiven und Ästhetischen Chirurgen“ (<a href="https://www.dgpraec.de/" target="_blank" rel="noopener">DGPRÄC</a>) kennt die vielen Hintergründe, die den Wunsch nach einer Brustvergrößerung wecken können. Viele unserer Kundinnen erlangen dadurch ein großes Stück Lebensqualität zurück, andere fühlen sich zum ersten Mal in ihrem Leben rundum wohl und zufrieden. Daher verwundert es nicht, dass die Brustvergrößerung weltweit mit ca. 1,5 Millionen OPs der <a href="https://www.vdaepc.de/neue-vdaepc-behandlungsstatistik-2024/" target="_blank" rel="noopener">beliebteste plastisch-ästhetische Eingriff</a> ist.</p>
 <p>Zu kleine Brüste können bei einer Frau zu einem großen seelischen Leidensdruck führen. Ein zu geringes Volumen oder Ungleichheiten hemmen das Selbstbewusstsein, was sich auf das eigene Selbstwertgefühl, Partnerschaft und Karriere auswirken kann. Bei einer Brustvergrößerung in Hamburg erzielen erfahrene Fachärzte mit nur einem Eingriff ein Resultat, das Ihnen zu einem veränderten Körperempfinden verhilft und Sie sich in einem völlig neuen Licht betrachten. Eine straffe Oberweite und ein ansehnliches Dekolleté lassen sich auch nach anderen, zum Teil großen körperlichen Veränderungen, wiederherstellen. Viele Patientinnen haben vor einer Brustvergrößerung oder -anpassung bereits einen großen Schritt getan, indem sie viel Gewicht abgenommen haben. Um nun ein zufriedenstellendes Körpergefühl zu erhalten, fehlt nur noch ein kleiner Eingriff.</p>
 <p>Darüber hinaus sind die Folgen von Schwangerschaften wie geschwächtes Gewebe, aber auch natürlich bedingte Asymmetrien Gründe für eine Anpassung. Mit einer Brustvergrößerung geht in solchen Fällen nicht selten eine <a href="bruststraffung.html">Straffung</a> Hand in Hand. <b>Unsere Fachärzte der plastischen Chirurgie vom Deutschen Ärzte Service beraten Sie zu allen Fragen umfassend</b> und setzen Ihre Vorstellungen bzw. Wünsche 1:1 um. Sie finden einen Weg, die bestmögliche Lösung für Sie zu realisieren und eine Brustvergrößerung in Hamburg nach Ihren Vorstellungen zu ermöglichen. Daraus ergeben sich viele positiven Effekte für Ihr Leben.</p>
 <h3>Das berichten begeisterte Frauen nach einer ästhetischen Brustvergrößerung:</h3>
@@ -683,13 +693,12 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt" id="die-brustvergroesserung-in-deutschland-zu-europaeischen-stan">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="standards"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Die Brustvergrößerung in Deutschland zu europäischen Standards durchführen lassen</h2></div>
 <div class="ls-text"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2024/03/brustvergroesserung-hamburg-preis.jpg" alt="Brustvergrößerung in Hamburg: Aussicht" width="570" height="380" loading="lazy" decoding="async"></figure>
 <p>Warum sollte die Brustvergrößerung in Deutschland stattfinden und nicht im Ausland? Bei einer Brustvergrößerung in Hamburg oder anderen inländischen Standorten stehen Sie im Mittelpunkt und werden sicher und kompetent betreut. Häufig veranlasst der Kostenfaktor viele Frauen dazu, den kosmetischen Eingriff im Ausland durchführen zu lassen.</p>
 <p>Dank unserer hervorragenden Organisation und des großen Netzwerks sparen wir Kosten und bieten unsere exzellenten Services im Bundesvergleich zu <a href="preisversprechen.html">unschlagbaren Preisen</a> an. Hinzu kommt, dass Sie in der Bundesrepublik Deutschland rechtlich abgesichert sind und mit der Folgekostenversicherung keinerlei finanzielles Risiko eingehen. Ebenso bleiben Ihnen unnötige Reisen erspart.</p>
-<p><a href="index.html#kontakt"></a></p>
 <p>Eine <b>renommierte Privatklinik und ein Facharzt in Deutschland</b> gewähren Ihnen nicht nur eine warmherzige Umgebung und intensive Beratung ohne Zeitdruck, sondern vor allem Rechtssicherheitsstandards. Die deutschen Vorgaben bezüglich der Aufklärung über Risiken und Belehrung sowie die Notwendigkeit von Einverständniserklärungen und Versicherungsschutz sind im nahen oder fernen Ausland nicht zwingend gegeben.</p>
 <p>Die deutschen Ärzte besitzen die besten technischen Möglichkeiten und sind den hier streng kontrollierten Vorgaben im medizinischen Bereich unterworfen.</p>
 <p>Die <b>Kliniken verfügen über modernste Ausstattungen</b> und bestens ausgebildetes medizinisches Personal in allen Abteilungen. Darüber hinaus unterliegen die für die Brustvergrößerung verwendeten Implantate genauen Prüfungen.</p>
@@ -700,33 +709,31 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-hervor" id="wie-koennen-die-kosten-der-brustvergroesserung-in-hamburg-so">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="kosten"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Wie können die Kosten der Brustvergrößerung in Hamburg so niedrig gehalten werden?</h2></div>
 <div class="ls-text"><p>Mit dem <b>DÄS arbeiten ausschließlich Fachärzte für Plastische Chirurgie</b> zusammen. Hierbei handelt es sich um Mediziner, die nach ihrem Medizinstudium eine 6-jährige Weiterbildung in genau diesem Bereich absolviert und sich damit zu Spezialisten im jeweiligen Fachgebiet entwickelt haben. Die Verschönerung Ihres Körpers sind unser Metier und unsere Leidenschaft. Obwohl jede Frau und jede Brust einzigartig sind, schaffen es die Mediziner mit ihrer Routine stets ein hervorragendes Ergebnis zu erzielen, um Ihre Lebensqualität zu verbessern. Ihr Traum von einer perfekten größeren Oberweite ist bei uns nicht unerschwinglich, wir stellen uns in den Dienst unserer Kundinnen und entlassen Sie aus unserer Betreuung mit einem neuen, leichten Lebensgefühl und einem optimistischen Blick in eine Zukunft mit neu gewonnenen Freiheiten.</p>
-<p>Wie können trotz dieses hohen medizinischen Niveaus die durchschnittlichen Preise von 5.000 bis 6.000 Euro für eine <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Burstvergrößerung</a> in Hamburg und andernorts in Deutschlands so unterboten werden? Das hat vor allem etwas mit unserer Organisation und Arbeitsstruktur zu tun. Wir sparen bei Planungen in den Fachkliniken enorme Summen, indem OP-Säle ganztägig angemietet und die Chirurgen und Kliniken optimal ausgelastet werden.</p>
+<p>Wie können trotz dieses hohen medizinischen Niveaus die durchschnittlichen Preise von 5.000 bis 6.000 Euro für eine <a href="brustvergroesserung.html">Burstvergrößerung</a> in Hamburg und andernorts in Deutschlands so unterboten werden? Das hat vor allem etwas mit unserer Organisation und Arbeitsstruktur zu tun. Wir sparen bei Planungen in den Fachkliniken enorme Summen, indem OP-Säle ganztägig angemietet und die Chirurgen und Kliniken optimal ausgelastet werden.</p>
 <p>Neben einer straffen Organisation haben wir durch die hohe Nachfrage die Möglichkeit, große Mengenrabatte für die Qualitätsimplantate zu erhalten. Unser Konzept, ein <b>Ansprechpartner auch für Kundinnen mit schmalerem Geldbeutel</b> zu sein, wurde von den führenden Herstellern der Medizinprodukte für plastische Chirurgie von Anfang an unterstützt. So ermöglichen wir vielen Frauen mit den unterschiedlichsten Biografien einen glücklichen Neustart mit wohlgeformter Oberweite.</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="der-aufbau-der-brust-und-die-platzierung-fuer-das-implantat">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="aufbau"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Der Aufbau der Brust und die Platzierung für das Implantat</h2></div>
 <div class="ls-text"><p>Wenn im Laufe der Zeit durch Alter, Gewichtsschwankungen oder Schwangerschaften die Festigkeit des Gewebes nachlässt, können Brüste zu hängen beginnen. Im vertrauensvollen Gespräch hören sich unsere Ärztinnen und Ärzte sowohl Ihre aktuelle Situation sowie Vorgeschichte an und untersuchen Sie eingehend. Infolge von Schwangerschaften kann es zu einem Erschlaffen der Brustdrüsen und folgend dem Einfall von Brusthaut im oberen Brustbereich kommen. Der Spezialist spricht hierbei von Involutionsatrophie. Nicht nur optisch, sondern vor allem psychisch kann dies zu starken Veränderungen bei der Frau führen. Hier greifen wir unterstützend ein! Eine <b>Brustvergrößerung</b> in Kombination mit einer häufig notwendigen Straffung bewegt viel.</p>
 <p>Die Mamma-Augmentation ist mittlerweile so vielfältig, dass der zuständige <b>Facharzt fast alle Ihre Wünsche in die Tat umsetzt</b>. Lassen Sie sich bildlich gesprochen eine Idealform der Brust bei uns designen. <b>Verschiedene Implantatformen und -größen</b> werden so exakt auf Ihren Körper und Ihre Oberweite angepasst. Der Blick in den Spiegel wird Ihnen nach der kleinen Anpassung nicht nur wieder leicht fallen, sondern Sie mit Stolz erfüllen und glücklich machen. Eine <b>Brustvergrößerung in Hamburg</b> ist prinzipiell in jedem Alter möglich. Eine junge Frau sollte voll entwickelt und das Brustwachstum abgeschlossen sein. Wir helfen Kundinnen in jeder Lebenssituation weiter und verwandeln Unbehagen in Zufriedenheit und ein neues leichtes Alltagsgefühl mit einer schönen, voluminösen Oberweite.</p>
 <p>Ziele bei einer Brustvergrößerung sind maßgeblich die <b>Anpassung der Form und die Erhöhung des Volumens der Brüste</b>. Das Implantat wird beim Eingriff an einer bestimmten Stelle unter der Brust platziert. Hierfür formen die <b>erfahrenen Schönheitschirurgen des Deutschen Ärzte Service</b> eine Tasche, in der das Implantat zum Vergrößern, Ausgleichen und Formen der Brust seinen Platz findet. Dieser Ort befindet sich bei einer ersten Variante unter dem Brustmuskel. Das Implantat wird teilweise oder ganz darunter geschoben, hier wird auch von submuskulärer Implantation gesprochen. Diese bietet sich vor allem bei eher schlankeren Frauen mit weniger Fett- und Drüsengewebe an.</p>
 <p>Eine weitere Variante ist die Platzierung des Implantats unter der Brustdrüse, aber über dem Brustmuskel. Diese Möglichkeit heißt subglanduläre Implantation. In beiden Fällen wird das Brustgewebe selbst kaum in Mitleidenschaft gezogen. Allerdings muss hier erwähnt sein, dass allein mit Implantaten bei stark hängenden Brüsten nicht immer ein Erfolg erzielt wird. Zusätzlich zur <a href="brustvergroesserung-mit-bruststraffung.html">Brustvergrößerung wird mit einer Bruststraffung</a> für den gewünschten Effekt gesorgt. Die Ergebnisse sind erstaunlich! Unsere <b>Kundinnen sind begeistert</b> und es stellt sich bei vielen sofort eine Euphorie, aber auch Erleichterung ein. Die kosmetische Anpassung gibt Ihnen neues<b> Selbstbewusstsein,</b> wiedergewonnenen Stolz auf ganzer Linie und eine rundum passende Optik des Busens.</p>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p></div>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-hamburg" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-hamburg" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="wie-wird-der-eingriff-durchgefuehrt">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="eingriff"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Wie wird der Eingriff durchgeführt?</h2></div>
 <div class="ls-text"><div class="ls-gruppe"><p>Am Anfang stehen natürlich eine <b>gründliche Voruntersuchung und eine <a href="https://www.deutscher-aerzte-service.de/beratung" target="_blank" rel="noopener">umfassende Beratung</a></b>. Hier werden Ihre Wünsche und Vorstellungen besprochen und mit den Möglichkeiten der Umsetzung abgestimmt. Eine <b>Beratung</b> verpflichtet Sie selbstverständlich zu keiner Zeit zu der Vergrößerung. Sie sollten sich stets sicher sein, dass Ihnen die Aussichten und Resultate genau zusagen. Wichtig ist vor allem, dass Sie dem behandelnden Arzt möglichst detailliert schildern, was Sie sich wünschen und wie Ihre Brüste am Ende idealerweise aussehen sollen.</p></div>
@@ -739,7 +746,7 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="herstellung-und-modelle-der-brustimplantate">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="herstellung"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Herstellung und Modelle der Brustimplantate</h2></div>
 <div class="ls-text"><p>Brustimplantate für die <b>Brustvergrößerung in Hamburg</b> sind so variabel wie ihre Trägerinnen. Verschiedene Basismodelle lassen sich genau anpassen und auf die Patientin abstimmen. Bereits im Vorfeld legen wir Form, Volumen und auch die Beschaffenheit der Implantate mit Ihnen zusammen fest. So unterscheiden wir beispielsweise zwei Grundformen mit unterschiedlichem Anspruch und Ergebnis. Die erste Variante ist ein eher rundes Implantat, das die Größe der Brust von oben nach unten beziehungsweise über die gesamte Fläche der Brust verändert.</p>
@@ -749,23 +756,19 @@ main{counter-reset:abschnitt}
 <p>Die<b> Implantate sind mehrfach getestet</b> und werden in unterschiedlichen Schritten aus hochwertigen, geprüften Materialen erzeugt. Bei Silikonimplantaten wird in zwei Schritten einerseits die Hülle mithilfe eines Formkörpers (Mandrell) individuell hergestellt und andererseits der Füllstoff gefertigt.</p>
 <p><b>Sichtprüfungen und Kontrollen</b> der Dicke garantieren eine <a href="index.html#qualitaet">hervorragende Qualität</a>. Die Füllungen sind genau an die Bedürfnisse der Patientin abgestimmt, um beispielsweise Ungleichheiten bei den Brüsten bei der Brustvergrößerung anzupassen.</p>
 <p>Youtube Video Vollbreite</p>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p></div>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-hamburg" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-hamburg" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="op-nachsorge-und-gesundheit">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="op"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>OP, Nachsorge und Gesundheit</h2></div>
 <div class="ls-text"><p>Die <b>Brustvergrößerung ist ein risikoarmer Eingriff.</b> Implantate, Operations- und Behandlungsmethoden sind bereits heute sehr optimiert. Sie bekommen dank der Narkose vom eigentlichen Eingriff nichts mit und erwachen kurze Zeit nach der OP <b>mit Ihrer Wunschkörbchengröße</b>. Wir raten Ihnen, am großen Tag eine Begleitperson mitzunehmen, die Sie unterstützt und sich in der ersten Zeit nach dem Aufwachen um Sie kümmert. Sollte dies nicht möglich sein, erhalten Sie durch unser Personal in der Klinik eine fürsorgliche und warmherzige Pflege. Das <b>Krankenhaus verlassen Sie in der Regel nach ein bis zwei Tagen</b>. Mindestens eine Nacht sollten Sie unter ärztlicher Aufsicht bleiben. Eine eventuell auftretende Schläfrigkeit nach dem Eingriff geht schnell vorbei – und auch wenn das Endergebnis erst später in Gänze bestaunt werden kann, ist die Veränderung für Sie sofort sichtbar.</p>
 <p>Sie erhalten einen Stütz-BH, der etwa sechs Wochen lang dauerhaft getragen wird. Die Fäden werden nach ca. zwei Wochen und der Verband wird bereits nach wenigen Tagen entfernt. Jeder erholt sich unterschiedlich schnell, aber gern dürfen Sie bereits nach wenigen Tagen wieder zur Arbeit gehen, vorausgesetzt diese beinhaltet keine körperlichen Anstrengungen. Fitnessstudio und schweres Heben sind die ersten Wochen tabu. Die Teilnahme am Leben mit Ihrem neuen Dekolleté und einer voluminöseren Körbchengröße dürfen Sie sofort wieder genießen und sich an der <b>gewonnenen Leichtigkeit des neuen Lebensabschnittes erfreuen</b>.</p>
 <p>Sicherlich sind Sie gespannt auf das finale Ergebnis! Bis sich das endgültige Resultat Ihrer Brustvergrößerung zeigt, vergehen etwa sechs bis acht Wochen. Bei den Nachkontrollen erhalten Sie stets weitere Informationen. Wir freuen uns darauf, Ihre Brustvergrößerung in einer unserer Kliniken durchzuführen und Ihnen <b>zum gewünschten Aussehen und einer bezaubernden Oberweite zu verhelfen</b>. Nehmen Sie jetzt <b>Kontakt zum DÄS</b> auf und werden Sie eine glückliche Kundin!</p>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-hamburg" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-hamburg" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div>
 <h3>Das Komplettangebot der Kliniken für 2.999,-€ beinhaltet im Einzelnen folgende Leistungen:</h3>
 <div class="ls-tabelle"><table><tbody><tr><td>Medizinische Voruntersuchung</td></tr><tr><td>Eingehende Beratung und Aufklärung über die Brustvergrößerung</td></tr><tr><td>Vorbereitung, Organisation und Terminabstimmung der Schönheitsoperation</td></tr><tr><td><a href="https://www.deutscher-aerzte-service.de/information-zu-silikonimplantaten" target="_blank" rel="noopener">Silikon-Gel-Implantate</a> verschiedener Hersteller. Große Implantatauswahl – auf Wunsch auch mit RFID Chip erhältlich.</td></tr><tr><td>Anästhesie</td></tr><tr><td>Implantation inklusive aller medizinisch notwendigen Nebenleistungen</td></tr><tr><td>Nachsorge</td></tr><tr><td>Aufpreis anatomische Implantatform 330,- €</td></tr></tbody></table></div>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
@@ -870,6 +873,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

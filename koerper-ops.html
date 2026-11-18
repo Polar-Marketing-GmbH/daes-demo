@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -700,11 +710,11 @@ main{counter-reset:abschnitt}
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
 <div class="ls-kopfzeile"><h2>Ihre Vorteile beim Deutschen Ärzte Service</h2></div>
-<div class="ls-karten" style="--n:3"><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Vertrauen.png" alt="" loading="lazy" decoding="async"></figure>
+<div class="ls-karten" style="--n:3"><div class="ls-karte"><figure class="ls-bild ls-bild-frei"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Vertrauen.png" alt="" loading="lazy" decoding="async"></figure>
 <h3>Erfahrene Fachärzte für Plastische und Ästhetische Chirurgie</h3>
-<p>Bei einer ästhetischen Operation zählt nicht nur das gewünschte Ergebnis, sondern auch die Sicherheit während der OP und eine gute Begleitung während der Heilungsphase.<br>Deshalb arbeitet der Deutsche Ärzte Service mit Fachärzten für Plastische und Ästhetische Chirurgie zusammen. Dabei achten wir besonders darauf, dass die Ärzte über umfangreiche Erfahrung mit den jeweiligen Eingriffen verfügen und entsprechend spezialisiert sind.<br>Im persönlichen Beratungsgespräch lernen Sie den Facharzt kennen, der Ihre Operation durchführen würde. Sie können Ihre Wünsche und Fragen direkt mit ihm besprechen und sich einen eigenen Eindruck verschaffen.</p></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Kompetenz.png" alt="" loading="lazy" decoding="async"></figure>
+<p>Bei einer ästhetischen Operation zählt nicht nur das gewünschte Ergebnis, sondern auch die Sicherheit während der OP und eine gute Begleitung während der Heilungsphase.<br>Deshalb arbeitet der Deutsche Ärzte Service mit Fachärzten für Plastische und Ästhetische Chirurgie zusammen. Dabei achten wir besonders darauf, dass die Ärzte über umfangreiche Erfahrung mit den jeweiligen Eingriffen verfügen und entsprechend spezialisiert sind.<br>Im persönlichen Beratungsgespräch lernen Sie den Facharzt kennen, der Ihre Operation durchführen würde. Sie können Ihre Wünsche und Fragen direkt mit ihm besprechen und sich einen eigenen Eindruck verschaffen.</p></div><div class="ls-karte"><figure class="ls-bild ls-bild-frei"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Kompetenz.png" alt="" loading="lazy" decoding="async"></figure>
 <h3>Persönliche Beratung</h3>
-<p><br>Eine Schönheitsoperation sollte gut vorbereitet sein. Deshalb legen wir großen Wert auf ein persönliches Gespräch mit einem Facharzt.<br>Sie teilen uns mit, für welchen Eingriff Sie sich interessieren und wo Sie Ihre Behandlung bevorzugt durchführen lassen möchten. Anschließend organisieren wir ein persönliches Beratungsgespräch mit einem passenden Facharzt aus unserem Netzwerk.<br>Auch nach der Terminvereinbarung bleiben wir für Sie erreichbar. Unser eigenes Team unterstützt Sie bei Fragen rund um die Organisation und den Ablauf Ihrer Behandlung.</p></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Bezahlbar.png" alt="" loading="lazy" decoding="async"></figure>
+<p><br>Eine Schönheitsoperation sollte gut vorbereitet sein. Deshalb legen wir großen Wert auf ein persönliches Gespräch mit einem Facharzt.<br>Sie teilen uns mit, für welchen Eingriff Sie sich interessieren und wo Sie Ihre Behandlung bevorzugt durchführen lassen möchten. Anschließend organisieren wir ein persönliches Beratungsgespräch mit einem passenden Facharzt aus unserem Netzwerk.<br>Auch nach der Terminvereinbarung bleiben wir für Sie erreichbar. Unser eigenes Team unterstützt Sie bei Fragen rund um die Organisation und den Ablauf Ihrer Behandlung.</p></div><div class="ls-karte"><figure class="ls-bild ls-bild-frei"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Bezahlbar.png" alt="" loading="lazy" decoding="async"></figure>
 <h3>Schönheitsoperationen zu attraktiven Preisen</h3>
 <p>Der Deutsche Ärzte Service hat es sich zur Aufgabe gemacht, hochwertige Schönheitsoperationen zu bezahlbaren Preisen anzubieten.<br>Durch eine effiziente Organisation, standardisierte Abläufe und wirtschaftliche Vorteile beim Einkauf können wir ausgewählte Eingriffe zu besonders attraktiven DÄS-Komplettpreisen anbieten. Diese liegen häufig 30 bis 50 Prozent unter den regulären Preisen der Fachärzte.<br>Unsere Komplettpreise umfassen die wesentlichen Leistungen rund um die Operation, einschließlich Narkose und Nachsorge. Den genauen Preis für Ihren gewünschten Eingriff erfahren Sie nach der persönlichen Untersuchung beim Facharzt.<br>Auf Wunsch können Sie auch Finanzierungsmöglichkeiten über unseren Partner <a href="index.html#rechner">smava </a>nutzen.</p></div></div>
 </div></div>
@@ -819,6 +829,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -625,7 +635,7 @@ main{counter-reset:abschnitt}
 <div class="ls-raster ohne-kopf">
 <div class="ls-seite"></div>
 <div class="ls-text"><div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
-<p>Die <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brustvergrößerung</a> ist ein sehr häufig nachgefragter Eingriff mit einer hohen Zufriedenheit bei unseren Kunden. Wir haben uns auf diesen Eingriff spezialisiert und stehen<b> seit 2004</b> für ein TOP Preis-Leistungsniveau. <b>Günstige Festpreise: nur 2.999,-€</b> mit runden hochwertigen Markensilikongel-Implantaten. Für Ihre Brustvergrößerung in <b>München</b> stehen verschiedene Privatkliniken, in denen erfahrene Fachärzte tätig sind zur Auswahl. Bei uns können Sie nicht nur 30-50% zum Normalpreis sparen, sondern auch noch Ihren Wunscharzt auswählen. Und das alles ohne Abstriche bei der Qualität zu machen. Natürlich ist dieser günstige Preis für die <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-OP</a> in München nur möglich, da wir bundesweit tätig sind und dadurch einige Vorteile haben. Die <b>hochwertigen Implantate</b> kaufen wir in größeren Mengen ein und diese Implantatrabatte geben wir an Sie weiter. Wir bieten Ihnen das Beste zum günstigen Preis und nicht günstiges noch billiger. Zudem möchten wir und exquisite Münchner Kliniken die Abwanderung ins osteuropäische Ausland minimieren und geben uns daher gewisse Sonderkontingente frei. So können auch Sie unter den <b>besten und sichersten Voraussetzungen</b> operiert werden. Die Plastischen Chirurgen werden Sie vorab natürlich umfassend beraten und über alle OP-Möglichkeiten und die ideale Platzierung der Implantate aufklären. Welche <b>OP-Methode</b> für Sie infrage kommt, ist so individuell wie die Wahl des richtigen Implantates.</p></div>
+<p>Die <a href="brustvergroesserung.html">Brustvergrößerung</a> ist ein sehr häufig nachgefragter Eingriff mit einer hohen Zufriedenheit bei unseren Kunden. Wir haben uns auf diesen Eingriff spezialisiert und stehen<b> seit 2004</b> für ein TOP Preis-Leistungsniveau. <b>Günstige Festpreise: nur 2.999,-€</b> mit runden hochwertigen Markensilikongel-Implantaten. Für Ihre Brustvergrößerung in <b>München</b> stehen verschiedene Privatkliniken, in denen erfahrene Fachärzte tätig sind zur Auswahl. Bei uns können Sie nicht nur 30-50% zum Normalpreis sparen, sondern auch noch Ihren Wunscharzt auswählen. Und das alles ohne Abstriche bei der Qualität zu machen. Natürlich ist dieser günstige Preis für die <a href="brustvergroesserung.html">Brust-OP</a> in München nur möglich, da wir bundesweit tätig sind und dadurch einige Vorteile haben. Die <b>hochwertigen Implantate</b> kaufen wir in größeren Mengen ein und diese Implantatrabatte geben wir an Sie weiter. Wir bieten Ihnen das Beste zum günstigen Preis und nicht günstiges noch billiger. Zudem möchten wir und exquisite Münchner Kliniken die Abwanderung ins osteuropäische Ausland minimieren und geben uns daher gewisse Sonderkontingente frei. So können auch Sie unter den <b>besten und sichersten Voraussetzungen</b> operiert werden. Die Plastischen Chirurgen werden Sie vorab natürlich umfassend beraten und über alle OP-Möglichkeiten und die ideale Platzierung der Implantate aufklären. Welche <b>OP-Methode</b> für Sie infrage kommt, ist so individuell wie die Wahl des richtigen Implantates.</p></div>
 </div>
 </div></div>
 </section>
@@ -661,11 +671,9 @@ main{counter-reset:abschnitt}
 <p>Für eine <b>Brustvergrößerung in München</b> können Sie auf dieser Seite ein Beratungsgespräch bei einem Facharzt in München buchen. Qualität und Sicherheit stehen bei uns an erster Stelle für Brust-OPs. Die angebotenen Leistungen werden ausschließlich von <b>erfahrenen Fachärzten</b> für Plastische und Ästhetische Chirurgie erbracht. Wir vereinbaren mit diesem Arzt in München das <b>Beratungsgespräch</b> und Sie erhalten dann den Termin mitgeteilt. Hierzu müssen Sie <a href="index.html#kontakt">hier online das Beratungsgespräch für € 40,- buchen</a>. Eine Buchung ist nur hier online möglich. Dies senkt die Kosten, was damit letztlich Ihnen zu Gute kommt.</p>
 <p>Wenn Sie mehr über den weiteren Ablauf wissen möchten, haben wir dies für Sie hier <a href="ablauf.html">auf der folgenden Seite zusammengestellt</a>.</p>
 <h3>Das Beratungsgespräch zur Brustvergrößerung verpflichtet zu nichts</h3>
-<p>Das Beratungsgespräch verpflichtet Sie selbstverständlich nicht zu einer Brust-Operation. Wenn Sie sich für eine <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-OP</a> entscheiden, schließen Sie den Vertrag dann direkt in der Klinik ab. Normalerweise führt der Arzt die Operation durch, mit dem Sie auch das Beratungsgespräch haben. Sie sollten in diesem Gespräch alle Fragen, die Sie zu der <b>Brustvergrößerung </b>haben, stellen und sich in aller Ruhe informieren und aufklären lassen. Da wir nur für <b>Ärzte in München</b> arbeiten, die schon viele Brustvergrößerungen durchgeführt haben, können Sie sich darauf verlassen, dass sich der Arzt die notwendige Zeit für Sie nimmt und Sie umfassend informiert. Natürlich stehen wir begleitend für Ihre Fragen zur Verfügung. Wenn Sie also noch Fragen haben, zögern Sie nicht uns anzurufen. Wir sind kostenfrei für Sie erreichbar unter der <b><span class="ls-nb">0800/2626770</span>.</b></p>
+<p>Das Beratungsgespräch verpflichtet Sie selbstverständlich nicht zu einer Brust-Operation. Wenn Sie sich für eine <a href="brustvergroesserung.html">Brust-OP</a> entscheiden, schließen Sie den Vertrag dann direkt in der Klinik ab. Normalerweise führt der Arzt die Operation durch, mit dem Sie auch das Beratungsgespräch haben. Sie sollten in diesem Gespräch alle Fragen, die Sie zu der <b>Brustvergrößerung </b>haben, stellen und sich in aller Ruhe informieren und aufklären lassen. Da wir nur für <b>Ärzte in München</b> arbeiten, die schon viele Brustvergrößerungen durchgeführt haben, können Sie sich darauf verlassen, dass sich der Arzt die notwendige Zeit für Sie nimmt und Sie umfassend informiert. Natürlich stehen wir begleitend für Ihre Fragen zur Verfügung. Wenn Sie also noch Fragen haben, zögern Sie nicht uns anzurufen. Wir sind kostenfrei für Sie erreichbar unter der <b><span class="ls-nb">0800/2626770</span>.</b></p>
 <p>In unserem Aktionsangebot für 2.999,-€ sind die <b>teuren Implantate von Mentor</b> erhalten. Diese Implantate gibt es in <b>diversen Gelvarianten</b>. Mehr dazu im nachfolgenden Video.</p>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-muenchen" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-muenchen" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div>
 <h3>Transparente Preise und hohe Qualität. Dennoch absolut günstig.</h3>
 <p>Und das alles für nur <b>2.999,- €</b>! Wie das geht? Hier erfahren Sie, <a href="preisversprechen.html"><b>wie dieser Preis entstehen kann</b></a>. Hier finden Sie <a href="https://www.deutscher-aerzte-service.de/haufig-gestellte-fragen/" target="_blank" rel="noopener">häufig gestellte Fragen</a>. In <a href="https://www.deutscher-aerzte-service.de/wp-content/uploads/2022/12/Broschuere-DAeS-2023-WEB.pdf" target="_blank" rel="noopener">unserer Broschüre</a> finden Sie alle wichtigen Daten und Fakten auf einen Blick. Sie haben noch Fragen? Wir beraten Sie gerne kostenlos unter der Nummer <span class="ls-nb">0800/2626770</span>.</p>
 <h3>Seriös und erfahren: Wir informieren umfassend</h3>
@@ -691,9 +699,7 @@ main{counter-reset:abschnitt}
 <p>Den vollständigen Artikel der Süddeutschen Zeitung finden Sie hier: <a href="https://pressemitteilungen.sueddeutsche.de/deutscher-arzte-service-6099562" target="_blank" rel="noopener">Zum Artikel</a></p></div></div>
 <div class="ls-raster ohne-kopf">
 <div class="ls-seite"></div>
-<div class="ls-text"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p>
+<div class="ls-text"><div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-muenchen" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-muenchen" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div>
 <p>Sie kommen aus der Schweiz? Besonders aus der Ostschweiz ist München gut erreichbar. Alles zu Preisen, Ablauf und Nachsorge finden Sie auf unserer Seite <a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-schweizer-patientinnen" target="_blank" rel="noopener">Brustvergrößerung für Patientinnen aus der Schweiz</a>.</p></div>
 </div>
 </div></div>
@@ -796,6 +802,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

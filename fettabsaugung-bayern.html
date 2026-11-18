@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -622,20 +632,20 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<div class="ls-raster">
-<div class="ls-seite"><p class="ls-lead">Auch schlanke Menschen sind vor Problemzonen nicht gefeit! Gerade besonders hartnäckige Fettpolster stören dabei das Gesamtbild eines definierten Körpers. Lassen die sich selbst durch sportliche Betätigung und eine gesunde Ernährung nicht zum Schmelzen bringen, ist eine Fettabsaugung in Bayern eine gute Möglichkeit, Ihre absolute Wohlfühlfigur zu erreichen.</p></div>
-<div class="ls-text"><p><a href="index.html#kontakt"></a></p></div>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><p>Auch schlanke Menschen sind vor Problemzonen nicht gefeit! Gerade besonders hartnäckige Fettpolster stören dabei das Gesamtbild eines definierten Körpers. Lassen die sich selbst durch sportliche Betätigung und eine gesunde Ernährung nicht zum Schmelzen bringen, ist eine Fettabsaugung in Bayern eine gute Möglichkeit, Ihre absolute Wohlfühlfigur zu erreichen.</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="schoenheitsoperationen-mit-dem-deutschen-aerzte-service">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="besonderheiten"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Schönheitsoperationen mit dem Deutschen Ärzte Service</h2></div>
 <div class="ls-text"><p>Ein vermindertes Selbstbewusstsein schadet nicht nur Ihrer allgemeinen Ausstrahlung. Es kann sich auch auf viele Bereiche Ihres Lebens auswirken! Vor allem im Berufsleben und in der Partnerschaft stecken Menschen, die sich in ihrem Körper unwohl fühlen, öfter zurück. Lassen Sie sich von Ihren Problemzonen nicht länger einschränken. Mit einer Fettabsaugung in Bayern gehen Sie den ersten Schritt in ein selbstbewusstes Leben. In den Fachzentren <a href="https://www.deutscher-aerzte-service.de/fettabsaugung-bayreuth" target="_blank" rel="noopener">Bayreuth</a>, <a href="fettabsaugung-ingolstadt.html">Ingolstadt</a> und <a href="fettabsaugung-muenchen.html">München</a> stellen wir Ihnen kompetente und bestens ausgebildete Plastische Chirurgen zur Seite. Ein Beratungsgespräch ist außerdem in <a href="https://www.deutscher-aerzte-service.de/fettabsaugung-nuernberg" target="_blank" rel="noopener">Nürnberg</a> möglich.</p>
 <h3>Inhaltsverzeichnis</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#besonderheiten">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#vorteile">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#mehr">3. Fettabsaugung in Bayern: Voraussetzungen, Kosten und Ablauf</a></span></li></ul>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#schoenheitsoperationen-mit-dem-deutschen-aerzte-service">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#ihre-vorteile-mit-dem-daes">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#fettabsaugung-in-bayern-voraussetzungen-kosten-und-ablauf">3. Fettabsaugung in Bayern: Voraussetzungen, Kosten und Ablauf</a></span></li></ul>
 <p>Da die Krankenkassen Schönheitsoperationen äußerst selten zahlen – nämlich nur, wenn sie wirklich medizinisch indiziert sind – achtet der Deutsche Ärzte Service auf ein exzellentes Preis-Leistungs-Verhältnis. Viele Jahre lang galten die ästhetischen Eingriffe als absoluter Luxus, den sich lediglich Wohlhabende gönnten. Interessierte, die sich die Kosten nicht leisten konnten oder wollten, nahmen billigere Behandlungen im Ausland in Anspruch. Doch der dort herrschende Standard sorgte oft für hohe Risiken. Um das zu verhindern, gründete sich 2004 der Deutsche Ärzte Service – kurz DÄS. Seitdem bieten wir Ihnen hochwertige Schönheitsoperationen wie Brustvergrößerungen und Fettabsaugungen zu fairen Preisen.</p></div>
 </div>
 </div></div>
@@ -654,7 +664,7 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="ihre-vorteile-mit-dem-daes">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="vorteile"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Ihre Vorteile mit dem DÄS</h2></div>
 <div class="ls-text"><p>Wir haben es uns zur Aufgabe gemacht qualitativ hochwertige Schönheitschirurgie in Deutschland bezahlbar zu machen. Über 100.000 Personen haben wir bisher beraten.</p>
@@ -665,14 +675,13 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-hervor" id="fettabsaugung-in-bayern-voraussetzungen-kosten-und-ablauf">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="mehr"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Fettabsaugung in Bayern: Voraussetzungen, Kosten und Ablauf</h2></div>
 <div class="ls-text"><p>Eine Fettabsaugung ist in Bayern nach der Brustvergrößerung der beliebteste Eingriff. Vor Allem wird Fett am Gesäß, am Unterbauch und an den Oberschenkeln abgesaugt. Das sind die häufigsten Stellen, an denen die hartnäckigen Polster auch bei ansonsten definierten Körpern sitzen. Doch eine Liposuktion ist keine bequeme Version der Diät! Sie dient nicht dazu, schnell an Gewicht zu verlieren. Stattdessen befreit sie Sie von den Fettzellen, die auch unter täglicher sportlicher Betätigung und einer gesunden Ernährung immer noch auftragen. Schließlich verschwinden die Zellen bei einer Abnahme nicht einfach: Sie leeren sich. Nehmen wir danach wieder mehr Kalorien zu uns, als wir an Energie verbrauchen, füllen sich die Depots erneut. Bei einer Liposuktion saugt der Facharzt genau die überflüssigen Speicher ab.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/17349-nrw-fettabsaugung-stadtansicht.jpg" alt="Fettabsaugung in NRW: Stadtansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/17349-nrw-fettabsaugung-stadtansicht.jpg" alt="Fettabsaugung in NRW: Stadtansicht" loading="lazy" decoding="async"></figure>
 <h3>Voraussetzungen</h3>
-<p>Welche Bedingungen für eine erfolgreiche Fettabsaugung in Bayern erfüllt sein müssen, legt Ihnen Ihr behandelnder Arzt in einem ausführlichen Beratungsgespräch dar. Wichtig ist, dass Ihre Haut möglichst elastisch ist. Ist das nicht der Fall, lohnt es sich meist, eine Fettabsaugung mit gleichzeitiger Straffung zu kombinieren.</p>
-<p><a href="index.html#kontakt"></a></p></div>
+<p>Welche Bedingungen für eine erfolgreiche Fettabsaugung in Bayern erfüllt sein müssen, legt Ihnen Ihr behandelnder Arzt in einem ausführlichen Beratungsgespräch dar. Wichtig ist, dass Ihre Haut möglichst elastisch ist. Ist das nicht der Fall, lohnt es sich meist, eine Fettabsaugung mit gleichzeitiger Straffung zu kombinieren.</p></div>
 </div>
 </div></div>
 </section>
@@ -682,7 +691,7 @@ main{counter-reset:abschnitt}
 <div class="ls-raster">
 <div class="ls-seite"><h2>Das passiert bei einer Liposuktion</h2></div>
 <div class="ls-text"><p>Das Vorgehen bei einer Fettabsaugung ist schnell erklärt: Der Plastische Chirurg setzt ein paar winzig kleine Einschnitte und führt darüber eine dünne Kanüle ein. Durch sanfte Bewegungen werden die Fettzellen gelöst und gleichzeitig abgesaugt. Der Eingriff ist Routine pur und es werden keine sichtbaren Narben zurückbleiben.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
 <h3>Wichtige Details in Kürze</h3>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Dauer und Preis des Eingriffs</b><br> Eine Fettabsaugung wird an vielen unterschiedlichen Körperzonen durchgeführt. Dadurch können wir schlecht pauschalisieren, wie lange die Operation dauert und welche Kosten auf Sie zukommen. Rechnen Sie mit circa zwei bis vier Stunden pro Anwendung. Eine Liposuktion an 2 Zonen erhalten Sie bei uns ab 1.899,– Euro. Bei Ihrem unverbindlichen Beratungsgespräch teilen Sie Ihrem Facharzt mit, welche Problemzone in Angriff genommen werden soll. Er gibt Ihnen dann eine genaue Einschätzung über Zeitraum und Preis des Eingriffs.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Narkose</b><br> Vor der Fettabsaugung in Bayern entscheiden Sie sich, ob Sie den Eingriff in Vollnarkose, Dämmerschlaf oder in örtlicher Betäubung vornehmen lassen.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Klinikaufenthalt</b><br> Ob Sie nach der OP und der gründlichen Nachsorge nach Hause gehen oder noch eine Nacht in unserem Partnerklinikum verbleiben möchten, ist ganz allein Ihnen überlassen. Zum DÄS-Sonderpreis von 299 Euro pro Nacht lassen wir Ihnen alle Annehmlichkeiten der modernen Station zukommen.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Nachbehandlung<br> </b>Vier bis sechs Wochen nach der Liposuktion tragen Sie an der behandelten Körperzone eine Kompressionsbandage. Davon abgesehen sind keine weiteren postoperativen Anwendungen vonnöten.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Einschränkungen nach der OP</b><br> Die Fettabsaugung in Bayern ist ein Routineeingriff, der Ihnen keine großen Beeinträchtigungen bringt. Schonen Sie sich lediglich einige Tage nach der Schönheitsoperation und verzichten Sie in den ersten vier Wochen auf Sport.</span></li></ul>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Jetzt informieren</a></div></div>
@@ -778,6 +787,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

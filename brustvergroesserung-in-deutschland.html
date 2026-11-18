@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -624,8 +634,8 @@ main{counter-reset:abschnitt}
   <div class="wrap"><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><p class="ls-lead">Weltweit ist fast jede dritte Frau unzufrieden mit ihrer Oberweite. Manchen ist sie zu groß, den meisten jedoch zu klein. Darunter leidet vor allem das Selbstbewusstsein und damit das psychische Wohlbefinden. Die meisten Frauen zögern, da eine Operation in Deutschland fast unbezahlbar ist. Frustration macht sich breit. Das muss nicht so bleiben: Denn beim Deutschen Ärzte Service kosten die Eingriffe schon lange kein Vermögen mehr. Erfahren Sie mehr über die Möglichkeit einer <b><a href="brustvergroesserung.html">Brustvergrößerung</a></b> zum <b>Aktionspreis in Ihrer Nähe.</b></p></div>
-<div class="ls-text"><div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="https://www.deutscher-aerzte-service.deanmeldung-beratungsgesprach/">Beratungsgespräch vereinbaren</a></div>
-<figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2021/04/karte-2.png" alt="Brustvergrößerung beim Deutschen Ärzteservice" loading="lazy" decoding="async"></figure>
+<div class="ls-text"><div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<figure class="ls-bild ls-bild-frei"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2021/04/karte-2.png" alt="Brustvergrößerung beim Deutschen Ärzteservice" loading="lazy" decoding="async"></figure>
 <p><b>Berlin</b></p>
 <p><a href="brustvergroesserung-berlin.html">Berlin</a></p>
 <p><b>Hamburg</b></p>
@@ -667,7 +677,7 @@ main{counter-reset:abschnitt}
 <div class="ls-raster">
 <div class="ls-seite"><h2>Schönheitsoperationen vom Deutschen Ärzte Service</h2></div>
 <div class="ls-text"><p>Viele Jahre lang gehörten Brustvergrößerungen in Deutschland zum absoluten Luxus. Zahlreiche Frauen mit dem Wunsch nach einem schönen Busen konnten sich den Eingriff im Bundesgebiet nicht leisten und nahmen deshalb riskante OPs im Ausland auf sich. Unerfahrene Ärzte und einfaches Material sorgten dort oft für Unzufriedenheit und bleibende Schäden. Der Deutsche Ärzte Service gründete sich, um den gefährlichen Medizintourismus einzudämmen. Was als zeitlich begrenztes Projekt begann, löste eine immense Begeisterung aus, sodass daraus ein dauerhafter Anbieter für Brustvergrößerungen in Deutschland wurde. Im Laufe der Zeit wurden weitere Themen der Schönheitschirurgie angeboten und das Netz aus Partnerkliniken ausgebaut.</p>
-<p>Das Besondere: Eine <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-OP</a> erhalten Sie beim DÄS zum Festpreis! Der Sonder-OP-Preis beträgt 2.999,– Euro. Sie wissen genau, was auf Sie zukommt. Alle Services von den Vorgesprächen, über die Operation, bis hin zum Nachgespräch und einer abschließenden Untersuchung sind dabei inkludiert. Lediglich der freiwillige stationäre Aufenthalt nach der Operation wird Ihnen mit 299,– Euro pro Nacht berechnet.</p>
+<p>Das Besondere: Eine <a href="brustvergroesserung.html">Brust-OP</a> erhalten Sie beim DÄS zum Festpreis! Der Sonder-OP-Preis beträgt 2.999,– Euro. Sie wissen genau, was auf Sie zukommt. Alle Services von den Vorgesprächen, über die Operation, bis hin zum Nachgespräch und einer abschließenden Untersuchung sind dabei inkludiert. Lediglich der freiwillige stationäre Aufenthalt nach der Operation wird Ihnen mit 299,– Euro pro Nacht berechnet.</p>
 <p>Wir haben es uns zur Aufgabe gemacht qualitativ hochwertige Schönheitschirurgie in Deutschland bezahlbar zu machen. Mehr als 50.000 Personen haben bisher von unseren Leistungen profitiert.</p>
 <p>Wir legen besonderen Wert auf die langjährige Erfahrung der plastischen Chirurgen und die hohe Qualität der verwendeten Materialien.</p>
 <p>Wir haben einen Weg gefunden, Schönheitsoperationen für jeden bezahlbar zu machen, ohne dabei auf Qualität und Sicherheit verzichten zu müssen.</p></div>
@@ -692,12 +702,12 @@ main{counter-reset:abschnitt}
 <div class="ls-raster">
 <div class="ls-seite"><h2>Brustvergrößerung in Deutschland: Wie läuft der Eingriff ab?</h2></div>
 <div class="ls-text"><p>Die Vergrößerung des weiblichen Busens – auch Brustaugmentation genannt – gehört heutzutage zu den beliebtesten Schönheitsoperationen. Bei dem routinemäßigen Eingriff wird unter sterilen Bedingungen in jede Brust durch einen Hautschnitt ein Implantat eingesetzt. Vor der OP berät Sie Ihr Facharzt der Plastischen und Ästhetischen Chirurgie genau darüber, welche Größe und Lage der Silikonkissen zu Ihren anatomischen Voraussetzungen passt.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/15844-brustop-header.jpg" alt="Brustvergrößerung mit dem Deutschen Ärzte Service in ganz Deutschland" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/15844-brustop-header.jpg" alt="Brustvergrößerung mit dem Deutschen Ärzte Service in ganz Deutschland" loading="lazy" decoding="async"></figure>
 <h3>Für wen eignet sich eine Brustvergrößerung?</h3>
-<p>Ganz gleich, ob Ihnen Ihre Brüste zu klein oder zu unterschiedlich entwickelt sind: Eine <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brustoperation</a> beim DÄS schafft Abhilfe! Normalerweise ist eine Brustaugmentation bei jeder Frau möglich. Die körperliche und seelische Verfassung wird von unseren Fachärzten jedoch stets berücksichtig.</p>
+<p>Ganz gleich, ob Ihnen Ihre Brüste zu klein oder zu unterschiedlich entwickelt sind: Eine <a href="brustvergroesserung.html">Brustoperation</a> beim DÄS schafft Abhilfe! Normalerweise ist eine Brustaugmentation bei jeder Frau möglich. Die körperliche und seelische Verfassung wird von unseren Fachärzten jedoch stets berücksichtig.</p>
 <p>Wichtig ist, dass das körperliche Wachstum der potenziellen Kundin abgeschlossen ist. Deshalb ist es unerlässlich, dass Sie bei der Terminvereinbarung mindestens die Volljährigkeit erreicht haben. Eine Operation ist auch während Schwangerschaft und Stillzeit ausgeschlossen.</p>
-<figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2024/03/brustvergroesserung-deutschland-bh.jpg" alt="Brustoperationen an vielen Standorten in Deutschland mit Deutschen Ärzteservice" loading="lazy" decoding="async"></figure>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/14593-brustvergroesserung_570.jpg" alt="Deutscher Ärzteservice-Schönheitsoperationen in Deutschland" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2024/03/brustvergroesserung-deutschland-bh.jpg" alt="Brustoperationen an vielen Standorten in Deutschland mit Deutschen Ärzteservice" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/14593-brustvergroesserung_570.jpg" alt="Deutscher Ärzteservice-Schönheitsoperationen in Deutschland" loading="lazy" decoding="async"></figure>
 <h3>Der Ablauf der Brustoperation in Deutschland</h3>
 <p>Erfahren Sie Schritt für Schritt, was Sie bei einer Brustvergrößerung in Deutschland erwartet!</p>
 <p><b>1.</b> Vereinbaren Sie über den DÄS einen <b>ersten Beratungstermin in einer Partnerklinik</b>. Mit uns können Sie eine Brust-OP in ganz Deutschland vornehmen lassen.</p>
@@ -705,7 +715,7 @@ main{counter-reset:abschnitt}
 <p><b>3.</b> Sie sind <b>umfangreich aufgeklärt</b> und möchten sich den Traum nach einer günstigen Brustvergrößerung in Deutschland erfüllen? <a href="index.html#kontakt">Vereinbaren Sie einen OP-Termin!</a></p>
 <p><b>4.</b> Die letzte <b>Voruntersuchung findet einen Tag vor dem Eingriff</b> statt. Dabei wird auch Ihr allgemeiner Gesundheitszustand überprüft. Ebenso ein <b>persönliches Gespräch</b> mit dem Anästhesisten wird von den meisten Kundinnen in Anspruch genommen.</p>
 <p><b>5.</b> Die Operation wird <b>unter Vollnarkose</b> durchgeführt. Der Eingriff dauert circa eine Stunde. Die Implantate können entweder direkt in der Falte unter der Brust, über die Achselhöhle oder durch die Brustwarze eingesetzt werden.</p>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="https://www.deutscher-aerzte-service.deanmeldung-beratungsgesprach/">Beratungsgespräch vereinbaren</a></div></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
 </div>
 </div></div>
 </section>
@@ -714,8 +724,7 @@ main{counter-reset:abschnitt}
   <div class="wrap"><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Nach der Operation</h2></div>
-<div class="ls-text"><p>Die ersten Tage nach der OP tragen Sie einen festen Verband, der die Implantate fixiert und für eine verbesserte Wundheilung sorgt. Empfehlenswert ist, dass Sie sich die ersten Tage körperlich schonen. Nach drei bis fünf Tagen wird der Verband entfernt und durch einen speziellen medizinischen BH ersetzt, den Sie für anderthalb Monate tragen sollen. Nach sieben bis zehn Tagen werden die Fäden gezogen. Sportliche Betätigung sollten Sie erst nach zwei Monaten wieder aufnehmen.</p>
-<div class="ls-tabelle"><table><tbody><tr><td></td><td></td><td></td></tr></tbody></table></div></div>
+<div class="ls-text"><p>Die ersten Tage nach der OP tragen Sie einen festen Verband, der die Implantate fixiert und für eine verbesserte Wundheilung sorgt. Empfehlenswert ist, dass Sie sich die ersten Tage körperlich schonen. Nach drei bis fünf Tagen wird der Verband entfernt und durch einen speziellen medizinischen BH ersetzt, den Sie für anderthalb Monate tragen sollen. Nach sieben bis zehn Tagen werden die Fäden gezogen. Sportliche Betätigung sollten Sie erst nach zwei Monaten wieder aufnehmen.</p></div>
 </div>
 </div></div>
 </section>
@@ -808,6 +817,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

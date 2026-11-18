@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -668,9 +678,7 @@ main{counter-reset:abschnitt}
 <div class="ls-text"><p>Entdecken Sie die Vielfalt der Möglichkeiten für Ihre persönliche Brustvergrößerung. Bei unseren Fachärzten stehen Ihnen verschiedene Markenimplantate zur Verfügung, um Ihre <b>individuellen Vorstellungen</b> zu verwirklichen.</p>
 <p>Für jede Frau gibt es die <b>passende Form</b>, <b>Größe</b> und das geeignete Silikongel für Brustimplantate. In einem persönlichen Beratungsgespräch können Sie sich ausführlich über die <b>verschiedenen Optionen</b> informieren. Sie haben die Wahl zwischen <b>runden oder anatomischen Implantaten</b>, wobei runde Implantate durch ihre Projektion und anatomische Implantate durch ihre Form des Durchmessers unterschieden werden. Die Füllung des Implantats ist entscheidend für ein natürliches Aussehen und Gefühl nach der Operation. <b>Verschiedene Gele</b> stehen zur Auswahl, von elastisch und weich bis hin zu festeren Gelen für mehr Volumen im oberen Brustbereich. Sie können die Implantate anfassen und mit Probeimplantaten testen, um dasjenige zu finden, das am besten zu Ihnen passt.</p>
 <p>Die Weiterentwicklung der Implantate bezüglich ihrer Qualität und Haltbarkeit hat in den vergangenen Jahren drastische Fortschritte gemacht. Heute stehen uns sehr hochqualitative Implantate bei der Brustvergrößerung zur Verfügung. Die verwendeten Implantate sind mit einer <b>lebenslangen Produktgarantie</b> bezüglich ihrer Haltbarkeit versehen. Die heutigen Brustimplantate verfügen über eine stabile Silikonhülle und sind mit Silikongel gefüllt und haben häufig eine texturierte/rauhe Oberfläche. Wir verwenden ausschließlich Implantate der neuesten Generation mit einer sogenannten Kohäsivfüllung (gelartige Konsistenz). Diese Implantate sind vor einem Auslaufen geschützt. Hierdurch wird weiterhin im Hinblick auf unser ästhetisches Konzept eine möglichst natürliche Form und ein <b>natürliches Tastgefühl</b> erzielt. Gemäß unserem hohen Qualitätsanspruch verwenden wir daher ausschließlich diese hochwertigen und bewährten Implantate der führenden Hersteller. Sowohl in runder als auch in anatomischer Form, so dass wir Ihnen neben einer technisch perfekten Brustoperation ein hochwertiges Implantat anbieten können.</p>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-mannheim" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-mannheim" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div>
 <p>Wir setzen auf Silikongel-Implantate von <b>höchster Qualität</b>, die sich seit über 40 Jahren bewährt haben und als sehr gut verträglich und <b>langlebig</b> erwiesen haben. Die modernste Generation dieser Implantate, insbesondere von renommierten Herstellern wie<a href="https://breastimplantsbymentor.net/de-DE/augmentation" target="_blank" rel="noopener"> <b>Mentor</b></a> und<b> Motiva</b>, wird in unseren Angeboten empfohlen. Diese Implantate sind nicht nur äußerst sicher, sondern bieten auch <b>eine lebenslange Garantie</b> ohne zusätzliche Kosten. Durch ihre stabile Silikonhülle und die hochwertige Füllung mit Silikongel gewährleisten sie ein <b>natürliches Aussehen und Gefühl</b>.</p>
 <p>In einem persönlichen Beratungsgespräch mit dem Facharzt können Sie alle Ihre Fragen klären.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
@@ -683,9 +691,7 @@ main{counter-reset:abschnitt}
 <div class="ls-raster">
 <div class="ls-seite"><h2>Brustvergrößerung mit Eigenfett oder zusätzliche Bruststraffung</h2></div>
 <div class="ls-text"><p>Im Raum Mannheim bieten wir Ihnen neben der Möglichkeit einer Brustvergrößerung mit <b>Implantaten</b> auch die Option einer <a href="brustvergroesserung-mit-eigenfett.html">Brustvergrößerung mit <b>Eigenfett</b></a> an. Sollte eine<a href="brustvergroesserung-mit-bruststraffung.html"> zusätzliche Bruststraffung</a> gewünscht sein, so lässt sich dieser Eingriff sehr gut mit einer Brustvergrößerung kombinieren. In einem individuellen Beratungsgespräch erhalten Sie ausführliche Informationen zu beiden Verfahren. Verlassen Sie sich auf unsere langjährige Erfahrung und fühlen Sie sich in den besten Händen.</p>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p></div>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-mannheim" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Inhalt entsperren</a><a class="btn btn-ghost" href="https://www.deutscher-aerzte-service.de/brustvergroesserung-mannheim" target="_blank" rel="noopener" title="Video auf der bisherigen Webseite ansehen (öffnet einen neuen Tab)">Erforderlichen Service akzeptieren und Inhalte entsperren</a></div></div></div></div>
 </div>
 </div></div>
 </section>
@@ -708,557 +714,452 @@ main{counter-reset:abschnitt}
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Qualifikation des Arztes:</b> Es ist wichtig, den Unterschied zwischen einem Facharzt für Plastische und Ästhetische Chirurgie und einem Schönheitschirurgen zu kennen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Implantat-Qualität:</b> Insbesondere bei Brustvergrößerungen ist es wichtig, über die Qualität und Materialunterschiede bei den Silikongel-Implantaten informiert zu sein.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Preistransparenz:</b> Kunden sollten klare Preise und transparente Kostenstrukturen erwarten können.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Qualität der Einrichtung:</b> Kunden sollten über die Qualitätsstandards der Klinik- oder Praxiskonzepte und die Anforderungen an die OP-Säle informiert sein.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Persönlicher Ansprechpartner:</b> Kunden sollten einen persönlichen Ansprechpartner für medizinische und organisatorische Fragen haben.</span></li></ul>
 <p>Ein <b>Facharzt für Plastische und Ästhetische Chirurgie</b> ist ein entscheidendes Qualitätskriterium. Titel wie Schönheitschirurg oder Ästhetischer Chirurg sind nicht geschützt und können von Ärzten aus verschiedenen Fachrichtungen verwendet werden. Bei uns können Sie sicher sein, dass <b>alle Ärzte den Facharzttitel für</b> Plastische und Ästhetische Chirurgie haben, was eine <b>intensive Ausbildung </b>und <b>Erfahrung </b>auf diesem Gebiet garantiert.</p>
 <p>Auch bei der Qualität der Silikongel-Implantate gehen wir keine Kompromisse ein. Wir verwenden ausschließlich <b>Premium-Implantate</b> von renommierten Herstellern wie Mentor oder Motiva, die eine lebenslange Produktaustauschgarantie bieten.</p>
-<p>Im Preis von 2.999,-€ sind die hochwertigen Implantate bereits enthalten. Unser Ziel seit der Gründung im Jahr 2004 war es, Patienten eine preiswerte Alternative in Deutschland zu bieten, ohne Abstriche bei der Qualität zu machen.</p>
-<div class="ls-spalten" style="--n:1"><div class="ls-spalte"></div></div>
-<div class="ls-spalten" style="--n:1"><div class="ls-spalte"><h3>Brustvergrößerung mit Straffung – Dank meiner Cousine zum DÄS gefunden!</h3>
+<p>Im Preis von 2.999,-€ sind die hochwertigen Implantate bereits enthalten. Unser Ziel seit der Gründung im Jahr 2004 war es, Patienten eine preiswerte Alternative in Deutschland zu bieten, ohne Abstriche bei der Qualität zu machen.</p></div>
+</div>
+<div class="ls-bewertungen"><article class="ls-bewertung"><h3>Brustvergrößerung mit Straffung – Dank meiner Cousine zum DÄS gefunden!</h3>
 <p>Meine Cousine hat mir vom Deutschen Ärzte Service erzählt und mir davon berichtet, dass man dort tolle Angebote für Schönheitsoperationen findet. So bin ich auf das Angebot zur Brustvergrößerung mit Straffung für nur 4.499 € in Frankfurt aufmerksam geworden. Besonders überzeugt hat mich der erfahrene Arzt mit über 30 Jahren Berufserfahrung. Die Beratung war sehr ausführlich, herzlich und vertrauensvoll. Auch das gesamte Team war unglaublich freundlich und hat sich toll um mich gekümmert. Ich habe mich vom ersten Gespräch an gut aufgehoben gefühlt. Vielen Dank für die tolle Betreuung!</p>
 <p>Letizia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>6 November 2026</p>
-<h3>Brustverkleinerung mit 56 – Ein neues Lebensgefühl</h3>
+<p>6 November 2026</p></article><article class="ls-bewertung"><h3>Brustverkleinerung mit 56 – Ein neues Lebensgefühl</h3>
 <p>Ich habe wirklich lange über eine Brustverkleinerung nachgedacht, gerade auch aufgrund meines Alters. Immer wieder habe ich die Entscheidung hinausgeschoben. Irgendwann habe ich mir gesagt: Jetzt bin ich auch einmal an der Reihe und darf etwas für mich selbst tun! Beim DÄS habe ich mich von Anfang an wunderbar aufgehoben gefühlt. Die Beratung war herzlich, der Service hervorragend und ich wurde jederzeit ernst genommen, auch nach meinen ständigen Fragen, wurde ich immer freundlich aufgeklärt. Ich bereue es keinen Tag und habe dank DÄS viel Geld gespart und bin einfach nur dankbar diese Möglichkeit in Deutschland gehabt zu haben.</p>
 <p>Siglinde</p>
 <p>Rated 5 out of 5 stars</p>
-<p>4 November 2026</p>
-<h3>10 Sterne!</h3>
+<p>4 November 2026</p></article><article class="ls-bewertung"><h3>10 Sterne!</h3>
 <p>Als Mann war es mir wichtig, dass das Ergebnis natürlich aussieht und nicht künstlich wirkt. Die Beratung war sehr angenehm und professionell in meiner Nähe. Besonders der freundliche Service und die unkomplizierte Organisation haben mich überzeugt. Ich bekam nach der Anmeldung am nächsten Tag einen Beratungstermin gesendet. Meine Oberlidkorrektur war im September und bereits nach einer Woche war alles abgeheilt. Ich sehe wieder frischer und wacher aus. Vielen Dank an das gesamte Team und den tollen Arzt aus Mainz!</p>
 <p>Holger</p>
 <p>Rated 5 out of 5 stars</p>
-<p>2 November 2026</p>
-<h3>Tolles Ergebnis zum fairen Preis</h3>
+<p>2 November 2026</p></article><article class="ls-bewertung"><h3>Tolles Ergebnis zum fairen Preis</h3>
 <p>Ich bin rundum begeistert! Für nur 2.999 Euro habe ich beim DÄS ein tolles Angebot für meine Brustvergrößerung gefunden. Von der ersten Beratung bis zur Nachbetreuung habe ich mich bestens aufgehoben gefühlt. Das Team war immer freundlich, hilfsbereit und professionell. Ich bin sehr glücklich mit meiner Entscheidung! Qualität muss tatsächlich nicht teuer sein 🙂</p>
 <p>Sümeya</p>
 <p>Rated 5 out of 5 stars</p>
-<p>30 Oktober 2026</p>
-<h3>Unterlidkorrektur mit 34 – warum eigentlich nicht?</h3>
+<p>30 Oktober 2026</p></article><article class="ls-bewertung"><h3>Unterlidkorrektur mit 34 – warum eigentlich nicht?</h3>
 <p>Mit gerade einmal 34 Jahren haben mich meine ausgeprägten Tränensäcke und die müde wirkende Augenpartie zunehmend gestört. Anfangs war ich unsicher, ob ich für eine Unterlidkorrektur nicht noch zu jung bin. Durch den Deutschen Ärzte Service habe ich eine tolle Beratung erhalten und mich umfassend informieren können. Der Service war freundlich, unkompliziert und transparent. Besonders schön fand ich, dass meine persönliche Situation ernst genommen wurde.</p>
 <p>Emma</p>
 <p>Rated 5 out of 5 stars</p>
-<p>29 Oktober 2026</p>
-<h3>Nasenkorrektur wegen angeborener Fehlstellung</h3>
+<p>29 Oktober 2026</p></article><article class="ls-bewertung"><h3>Nasenkorrektur wegen angeborener Fehlstellung</h3>
 <p>Ich hatte schon seit meiner Kindheit eine angeborene Fehlstellung meiner Nase, die mich immer gestört hat. Lange habe ich über eine Korrektur nachgedacht. Über den Deutschen Ärzte Service habe ich mich endlich getraut, den ersten Schritt zu machen. Die Betreuung war wirklich toll, alle Fragen wurden ausführlich beantwortet und die Beratung war sehr angenehm. Besonders das Preis-Leistungs-Verhältnis hat mich überzeugt, der Arzt ist spezialisiert auf die Nasenkorrektur und gab mir sofort viel vertrauen. Bin jetzt 2 Monate nach der OP schon so happy 🙂</p>
 <p>Rachel</p>
 <p>Rated 5 out of 5 stars</p>
-<p>27 Oktober 2026</p>
-<h3>Endlich wieder wohlfühlen nach der Schwangerschaft, dank DÄS</h3>
+<p>27 Oktober 2026</p></article><article class="ls-bewertung"><h3>Endlich wieder wohlfühlen nach der Schwangerschaft, dank DÄS</h3>
 <p>Nach meinen Schwangerschaften habe ich mich trotz Sport und gesunder Ernährung mit meinem Bauch nicht mehr richtig wohlgefühlt. Deshalb habe ich mich für eine Fettabsaugung interessiert. Beim Deutschen Ärzte Service habe ich mich von Anfang an gut aufgehoben gefühlt. Ich bekam sehr viele Fragen schon vor der Beratung beantwortet. Die Beratung war freundlich, transparent und sehr professionell, die Praxis traumhaft gelegen in Hamburg. Besonders toll fand ich, dass auf meine Wünsche eingegangen wurde und ich mich nicht unter Druck gesetzt gefühlt habe. Ich kenne viele Frauen welche das dreifache bezahlt haben und ihren Chirurgen nicht so oft wie ich gesehen haben. Bin jetzt total happy mit meinem Körper 🙂</p>
 <p>Natascha</p>
 <p>Rated 5 out of 5 stars</p>
-<p>25 Oktober 2026</p>
-<h3>Brustvergrößerung für nur 2.999 € – besser als erwartet!</h3>
+<p>25 Oktober 2026</p></article><article class="ls-bewertung"><h3>Brustvergrößerung für nur 2.999 € – besser als erwartet!</h3>
 <p>Eigentlich hatte ich geplant, meine Brustvergrößerung im Ausland durchführen zu lassen, da mir die Preise in Deutschland viel zu hoch erschienen. Durch den Deutschen Ärzte Service habe ich erfahren, dass es auch hier eine bezahlbare Möglichkeit gibt – für nur 2.999 €! Der gesamte Service war super, ich wurde freundlich beraten und hatte jederzeit einen Ansprechpartner. Ich bin begeistert, wie unkompliziert und preiswert alles sein kann. Absolut empfehlenswert!</p>
 <p>Jelena</p>
 <p>Rated 5 out of 5 stars</p>
-<p>23 Oktober 2026</p>
-<h3>Spezialist gefunden, fairer Preis, rundum zufrieden</h3>
+<p>23 Oktober 2026</p></article><article class="ls-bewertung"><h3>Spezialist gefunden, fairer Preis, rundum zufrieden</h3>
 <p>In Hamburg einen passenden Arzt für eine Oberlidkorrektur zu finden, war online gar nicht so einfach. Es gibt viele Angebote, aber oft weiß man nicht, an wen man sich wirklich wenden soll. Über den Deutschen Ärzte Service bin ich schließlich fündig geworden: ein Spezialist für den Eingriff und das Ganze zu einem wirklich fairen Preis. Der Kontakt war unkompliziert und hat mir einiges an Recherche erspart. Ich hätte nicht gedacht, dass es so einfach sein kann, den passenden Ansprechpartner zu finden und einen Service zu finden der von der ersten Minute für einen da ist. Die Mitarbeiter sind super erreichbar und ich konnte jederzeit meine Fragen stellen. 100 Sterne!</p>
 <p>Angi</p>
 <p>Rated 5 out of 5 stars</p>
-<p>16 Oktober 2026</p>
-<h3>Endlich wieder eine schöne Silhouette – Bauchdeckenstraffung</h3>
+<p>16 Oktober 2026</p></article><article class="ls-bewertung"><h3>Endlich wieder eine schöne Silhouette – Bauchdeckenstraffung</h3>
 <p>Nach einer größeren Gewichtsabnahme blieb überschüssige Haut am Bauch zurück, die mich schon lange gestört hatte. Ich habe mich deshalb für eine Bauchdeckenstraffung interessiert und über den Deutschen Ärzte Service Unterstützung bei der Suche nach einem geeigneten Arzt erhalten. Die Begleitung bei den ersten Schritten hat mir viel Sicherheit gegeben und bei der Beratung wurde ich ausführlich aufgeklärt, sogar eine zweite Beratung vor der OP war selbstverständlich. Ich freue mich, diesen Schritt für mich gegangen zu sein ohne ein Vermögen ausgegeben zu haben.</p>
 <p>Mara</p>
 <p>Rated 5 out of 5 stars</p>
-<p>14 Oktober 2026</p>
-<h3>Frischer aussehen, ich selbst bleiben</h3>
+<p>14 Oktober 2026</p></article><article class="ls-bewertung"><h3>Frischer aussehen, ich selbst bleiben</h3>
 <p>Ich wollte meinem Gesicht ein frischeres Aussehen verleihen, ohne meine natürlichen Gesichtszüge zu verlieren. Ich hatte erst Bedenken, aber der Deutsche Ärzte Service hat mir bei der Orientierung und Arztsuche sehr geholfen. Besonders angenehm fand ich die unkomplizierte Terminvergabe und die Möglichkeit, mich in Ruhe mit meinen Wünschen auseinanderzusetzen. Eine tolle Unterstützung auf meinem Weg, von allen Parteien und der Arzt ist wirklich ein Gott in weiß 🙂</p>
 <p>Charlotte</p>
 <p>Rated 5 out of 5 stars</p>
-<p>10 Oktober 2026</p>
-<h3>Oberlidkorrektur – familiäre Veranlagung</h3>
+<p>10 Oktober 2026</p></article><article class="ls-bewertung"><h3>Oberlidkorrektur – familiäre Veranlagung</h3>
 <p>Schon seit Jahren (ich bin 34) hatte ich aufgrund meiner familiären Veranlagung mit schweren Oberlidern zu tun. Irgendwann habe ich mich dazu entschlossen, mich über eine Oberlidkorrektur zu informieren. Von einer Kollegin wurde mir der Deutsche Ärzte Service empfohlen. Mit Unterstützung des Deutschen Ärzte Service konnte ich mich intensiver mit dem Eingriff beschäftigen. Die Damen am Telefon sind sehr freundlich und konnte alle Fragen beantworten und ich konnte jederzeit anrufen. Ich musste nur 6 Tage auf mein Beratungstermin warten und der Arzt war einfach total nett und verständnisvoll. Nach der Beratung habe ich gleich den Termin für den Eingriff vereinbart und jetzt ist es zwei Wochen her und ich könnte weinen vor Glück. Vielen Dank an alle!</p>
 <p>Oxana</p>
 <p>Rated 5 out of 5 stars</p>
-<p>9 Oktober 2026</p>
-<h3>Fettabsaugung nach der Schwangerschaft – wieder wohler fühlen 🙂</h3>
+<p>9 Oktober 2026</p></article><article class="ls-bewertung"><h3>Fettabsaugung nach der Schwangerschaft – wieder wohler fühlen 🙂</h3>
 <p>Nach meinen Schwangerschaften wollten trotz Sport und gesunder Ernährung einige hartnäckige Fettpolster einfach nicht verschwinden. Deshalb habe ich mich für eine Fettabsaugung entschieden. Der DÄS hat mich umfassend beraten und einen Facharzt empfohlen, welcher in dieser Kategorie spezialisiert ist. Ich habe mich mit meinem Anliegen als Frau und Mutter ernst genommen gefühlt und spürte sofort ein vertrauen, dass alles gut wird. Ich bin nun 2 Monate nach meiner OP Mega glücklich und bereue meine Entscheidung keinen Tag.</p>
 <p>Olivia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>6 Oktober 2026</p>
-<h3>Brustvergrößerung mit Mentor Implantaten – endlich zufrieden!</h3>
+<p>6 Oktober 2026</p></article><article class="ls-bewertung"><h3>Brustvergrößerung mit Mentor Implantaten – endlich zufrieden!</h3>
 <p>Ich habe mich für eine Brustvergrößerung mit Mentor Implantaten entschieden und bin mit meiner Entscheidung sehr glücklich. Über den Deutschen Ärzte Service habe ich mich gut aufgehoben gefühlt. Ich hatte vorher schon viel positives gelesen und war mir ab dem ersten Kontakt sehr sicher. Besonders der Festpreis von 2.999 Euro gab mir von Anfang an Sicherheit und Transparenz, da ich noch studiere und mich nicht verschulden wollte. Die Organisation verlief unkompliziert und ich konnte meinen Wunsch endlich in die Tat umsetzen. Ich würde den Deutschen Ärzte Service immer weiterempfehlen!</p>
 <p>Lara</p>
 <p>Rated 5 out of 5 stars</p>
-<p>4 Oktober 2026</p>
-<h3>Frisch&Jünger im Gesicht dank DÄS</h3>
+<p>4 Oktober 2026</p></article><article class="ls-bewertung"><h3>Frisch&Jünger im Gesicht dank DÄS</h3>
 <p>Ich habe mich lange nicht an eine Oberlidkorrektur herangetraut, weil ich Angst vor einem unnatürlichen Ergebnis hatte. Diese Sorge war zum Glück unbegründet. Von der Beratung bis zur Nachsorge habe ich mich sehr gut aufgehoben gefühlt beim DÄS. Sie gaben mir ab dem ersten Kontakt das Gefühl mich zu verstehen und mir den passenden Facharzt zu empfehlen mit Expertise. Nach der Heilungszeit war ich wirklich überrascht, wie frisch mein Blick wirkt. Genau das wollte ich – nicht verändert aussehen, sondern einfach wieder etwas wacher. Meine Freundinnen lassen es nun auch beim DÄS machen. Ich kann es jedem nur empfehlen 🙂</p>
 <p>Maren</p>
 <p>Rated 5 out of 5 stars</p>
-<p>1 Oktober 2026</p>
-<h3>Nach der Abnahme endlich angekommen</h3>
+<p>1 Oktober 2026</p></article><article class="ls-bewertung"><h3>Nach der Abnahme endlich angekommen</h3>
 <p>Nach meiner starken Gewichtsabnahme hatte sich meine Brust leider sehr verändert. Eine Bruststraffung war deshalb schon länger mein Wunsch und ich wollte mich für die Abnahme belohnen. Die Beratung beim Facharzt hat mir viel Sicherheit gegeben und meine Fragen wurden ehrlich und ausführlich beantwortet ohne das ich zu etwas gedrängt wurde. Heute bin ich sehr zufrieden mit meiner neuen Silhouette und fühle mich in meiner Kleidung wieder viel wohler. Vielen Dank an das gesamte Team für die angenehme Betreuung!</p>
 <p>Svenja</p>
 <p>Rated 5 out of 5 stars</p>
-<p>29 September 2026</p>
-<h3>Endlich wieder Happy 🙂</h3>
+<p>29 September 2026</p></article><article class="ls-bewertung"><h3>Endlich wieder Happy 🙂</h3>
 <p>Nach mehreren Jahren habe ich mich für einen Implantatwechsel entschieden und bin sehr froh, dass ich den Schritt über den Deutschen Ärzte Service gemacht habe. Besonders die Beratung zu den Motiva Implantaten hat mir geholfen, die für mich passende Entscheidung zu treffen. Ich habe mich während der gesamten Behandlung sehr gut aufgehoben gefühlt. Und auch beim Preis-Leistungs-Verhältnis war ich positiv überrascht, da ich mir vorher Angebote eingeholt hatte welche doppelt so teuer waren. Das Ergebnis ist perfekt und ich bin dankbar das ich die Möglichkeit in Hamburg hatte über den lieben DÄS.</p>
 <p>Tugba</p>
 <p>Rated 5 out of 5 stars</p>
-<p>27 September 2026</p>
-<h3>Sehr zufrieden mit der Betreuung vom DÄS</h3>
+<p>27 September 2026</p></article><article class="ls-bewertung"><h3>Sehr zufrieden mit der Betreuung vom DÄS</h3>
 <p>Vor der Nasenkorrektur hatte ich einige Fragen und auch Respekt vor dem Eingriff. Der Gedanke war seit Jahren in meinem Kopf, aber ich traute mich nie, bis mir eine Freundin den DÄS empfohlen hat. Die Beratung hat mir geholfen, den Ablauf besser einzuschätzen und meine Entscheidung zu treffen. Der Facharzt war total professionell und hat mich ehrlich beraten. Ich hatte sofort vertrauen in ihn. Jetzt bin ich 4 Monate nach der OP mega happy und plane schon die nächste OP an der Brust :-)22</p>
 <p>Franzi</p>
 <p>Rated 5 out of 5 stars</p>
-<p>25 September 2026</p>
-<h3>Gar nicht so einfach, den richtigen Arzt zu finden</h3>
+<p>25 September 2026</p></article><article class="ls-bewertung"><h3>Gar nicht so einfach, den richtigen Arzt zu finden</h3>
 <p>Ich fand es zunächst gar nicht so einfach, im Internet einen passenden Arzt für eine Ober- und Unterlidkorrektur zu finden. Es gibt viele Angebote und man weiß als Laie nicht sofort, worauf man achten sollte. Nach meiner Recherche bin ich auf den Deutschen Ärzte Service aufmerksam geworden und habe mich zunächst beraten lassen. Schon beim ersten Telefonat merkte ich wie routiniert und transparent dieser Service ist. Den Beratungstermin bekam ich 3 Tage später und war bei einem Professor welche ausschließlich Gesichtsops durchführt. Eine 1a Adresse! Ich bin vor 3 Wochen operiert worden und mein Blick ist 20 Jahre jünger gefühlt. Ich musste mich nicht verschulden und habe einen Hammer Preis bezahlt! Danke das es Euch gibt liebes DÄS-Team!</p>
 <p>Cassandra</p>
 <p>Rated 5 out of 5 stars</p>
-<p>24 September 2026</p>
-<h3>Das Ergebnis entspricht genau meinen Vorstellungen</h3>
+<p>24 September 2026</p></article><article class="ls-bewertung"><h3>Das Ergebnis entspricht genau meinen Vorstellungen</h3>
 <p>Ich habe mir vor der Brustvergrößerung viel Zeit für meine Entscheidung genommen. Die Beratung hat mir geholfen, meine Fragen zu Implantatgröße, Ablauf und Kosten zu klären. Die Behandlung mit Motiva Implantaten hat mich schließlich überzeugt. Der Preis von 2.999,- Euro ist der beste in Deutschland und ich bereue es nicht schon früher getan zu haben. 10 Sterne!!!</p>
 <p>Solea</p>
 <p>Rated 5 out of 5 stars</p>
-<p>19 September 2026</p>
-<h3>Rundum zufrieden</h3>
+<p>19 September 2026</p></article><article class="ls-bewertung"><h3>Rundum zufrieden</h3>
 <p>Ich war zuerst etwas unsicher, ob ich eine Oberarmstraffung wirklich machen lassen soll. Die Beratung und der ganze Ablauf über den DÄS haben mir aber viel Sicherheit gegeben. Dazu kam ein Preis, der für mich wirklich gut gepasst hat, da ich alleinerziehend bin. Auch nach der OP war der Kontakt sehr angenehm. Insgesamt bin ich einfach froh, dass ich es gemacht habe und es so etwas in Deutschland gibt.</p>
 <p>Kirsten</p>
 <p>Rated 5 out of 5 stars</p>
-<p>18 September 2026</p>
-<h3>Sehr gute Betreuung vor und nach der OP</h3>
+<p>18 September 2026</p></article><article class="ls-bewertung"><h3>Sehr gute Betreuung vor und nach der OP</h3>
 <p>Nach einer starken Gewichtsabnahme war die überschüssige Haut für mich eine große Belastung. Beim Deutschen Ärzte Service habe ich einen Spezialisten für Bauchdeckenstraffungen gefunden und mich dort von Anfang an gut aufgehoben gefühlt. Die Beratung war sehr ausführlich, es gab sogar ein zweites Gespräch. Auch nach dem Eingriff wurde ich nicht einfach allein gelassen – der DÄS hat sich nochmals bei mir gemeldet und nach meinem Befinden gefragt. Mit dem Ergebnis bin ich wirklich sehr zufrieden.</p>
 <p>Zoe</p>
 <p>Rated 5 out of 5 stars</p>
-<p>14 September 2026</p>
-<h3>Super zufrieden mit dem Ergebnis</h3>
+<p>14 September 2026</p></article><article class="ls-bewertung"><h3>Super zufrieden mit dem Ergebnis</h3>
 <p>Nach meinem privaten Angebot von rund 8.000 € in Hamburg war ich ehrlich gesagt überrascht, dass eine Brustvergrößerung über den Deutschen Ärzte Service für 2.999 € möglich war. Von der Beratung bis zur Nachsorge habe ich mich gut aufgehoben gefühlt. Das Ergebnis ist genau so geworden, wie ich es mir vorgestellt habe – ich bin sehr glücklich das es diesen Service gibt!</p>
 <p>Magda</p>
 <p>Rated 5 out of 5 stars</p>
-<p>12 September 2026</p>
-<h3>Endlich wieder wohl in meiner Haut</h3>
+<p>12 September 2026</p></article><article class="ls-bewertung"><h3>Endlich wieder wohl in meiner Haut</h3>
 <p>Nach 35 kg Gewichtsabnahme und zwei Geburten hatte sich mein Bauch leider stark verändert. Trotz Sport konnte ich die überschüssige Haut nicht mehr loswerden. Die Entscheidung für eine Bauchdeckenstraffung ist mir deshalb nicht leichtgefallen, aber durch die persönliche Beratung und die kompetente Betreuung des Deutschen Ärzte Service habe ich mich von Anfang an gut aufgehoben gefühlt. Der Preis ist der Wahnsinn, ich hätte mir niemals solch eine OP in Hamburg leisten können. Die gesamte Organisation war unkompliziert und auch nach der Operation war das Team für mich da. Heute fühle ich mich wieder viel wohler in meinem Körper und bin sehr froh, diesen Schritt gegangen zu sein und musste nicht dafür ins Ausland fliegen. Danke!</p>
 <p>Romy</p>
 <p>Rated 5 out of 5 stars</p>
-<p>11 September 2026</p>
-<h3>Tolles Ergebnis und eine Betreuung, die überzeugt</h3>
+<p>11 September 2026</p></article><article class="ls-bewertung"><h3>Tolles Ergebnis und eine Betreuung, die überzeugt</h3>
 <p>Ich habe mich für eine Fettabsaugung am Kinn in München entschieden und bin mit meiner Erfahrung beim Deutschen Ärzte Service sehr zufrieden. Der Preis war im Vergleich zu anderen Angeboten wirklich toll und die gesamte Organisation lief unkompliziert und professionell. Besonders positiv fand ich die regelmäßige Nachsorge. Man wird auch nach dem Eingriff nicht allein gelassen, sondern bekommt eine wirklich gute und persönliche Betreuung. Das hat mir ein sehr gutes und sicheres Gefühl gegeben.</p>
 <p>Saida</p>
 <p>Rated 5 out of 5 stars</p>
-<p>10 September 2026</p>
-<h3>Top Preis und ein rundum sicheres Gefühl</h3>
+<p>10 September 2026</p></article><article class="ls-bewertung"><h3>Top Preis und ein rundum sicheres Gefühl</h3>
 <p>Eine Brustvergrößerung für nur 2.999 € – für mich ein wirklich überzeugendes Preis-Leistungs-Verhältnis, gerade bei der Verwendung hochwertiger Implantate. Besonders wichtig war mir aber das sichere Gefühl bei der Behandlung. Beim Deutschen Ärzte Service weiß man, dass seit über 20 Jahren ausschließlich mit erfahrenen Spezialisten zusammengearbeitet wird. Das freundliche Team, die persönliche Betreuung haben mir zusätzlich viel Vertrauen gegeben. Ich gebe euch 10 Sterne 🙂</p>
 <p>Judika</p>
 <p>Rated 5 out of 5 stars</p>
-<p>7 September 2026</p>
-<h3>Persönlich, freundlich und immer erreichbar</h3>
+<p>7 September 2026</p></article><article class="ls-bewertung"><h3>Persönlich, freundlich und immer erreichbar</h3>
 <p>Ich bin vom persönlichen Service des Deutschen Ärzte Service wirklich begeistert. Das gesamte Team ist unglaublich freundlich, hilfsbereit und nimmt sich Zeit für die individuellen Anliegen. Besonders schätze ich, dass jederzeit jemand erreichbar ist und man nicht einfach mit einer Standardantwort abgespeist wird. Ein rundum zuverlässiger und angenehmer Kontakt! Meine OP ist im Oktober und ich kann es kaum erwarten.</p>
 <p>Julia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>5 September 2026</p>
-<h3>Perfektion muss nicht teuer sein</h3>
+<p>5 September 2026</p></article><article class="ls-bewertung"><h3>Perfektion muss nicht teuer sein</h3>
 <p>Meine Oberlider störten mich schon seit Jahren, aber nach zwei Beratungen war ich bezüglich des Preises</p>
 <p>sehr abgeschreckt. Ich hätte fast 3000€ für die Oberlidkorrektur bezahlen sollen. Dann empfahl mir eine<br> Arbeitskollegin den DÄS und ich war sehr skeptisch, bis ich bei der Beratung war. Dort wurde ich professionell</p>
 <p>beraten und aufgeklärt. Die ganze Praxis war sehr Service orientiert und die Kosten sind nicht Ansatzweise so hoch.</p>
 <p>Ich hatte die Korrektur im Juni und bereue das ich es nicht schon früher gemacht habe. 10 Punkte!</p>
 <p>Marco</p>
 <p>Rated 5 out of 5 stars</p>
-<p>25 August 2026</p>
-<h3>Immer wieder DÄS</h3>
+<p>25 August 2026</p></article><article class="ls-bewertung"><h3>Immer wieder DÄS</h3>
 <p>Ich hatte meine Brustverkleinerung im März über den DÄS und bin einfach nur Happy. Man hat</p>
 <p>immer einen persönlichen Ansprechpartner und wird sehr nett betreut. Ich habe nicht mal 4000€ bezahlt und bin einfach erleichtert</p>
 <p>das ich mich nicht verschulden musste. Vielen Dank das es Euch gibt!</p>
 <p>Jolanda</p>
 <p>Rated 5 out of 5 stars</p>
-<p>23 August 2026</p>
-<h3>Von Anfang an in guten Händen</h3>
+<p>23 August 2026</p></article><article class="ls-bewertung"><h3>Von Anfang an in guten Händen</h3>
 <p>Für mich war eine ausführliche und ehrliche Beratung besonders wichtig. Mir wurde ein toller Facharzt empfohlen und dieser ist ab der ersten Minute voll und ganz auf mich eingegangen. Alle Fragen rund um die Brustverkleinerung, die Kosten und die Nachsorge wurden verständlich besprochen. Ich hatte dadurch von Anfang an ein gutes Gefühl und wusste, was auf mich zukommt. Die persönliche Betreuung hat für mich einen großen Unterschied gemacht. Der DÄS hat mich nach der OP sogar kontakiert um sich nach mir zu erkundigen. Hier wird Service und Fürsorge sehr groß geschrieben und das gab mir die ganze Zeit über ein tolles Gefühl. Meine Cousine ist die nächste 😀</p>
 <p>Michelle</p>
 <p>Rated 5 out of 5 stars</p>
-<p>20 August 2026</p>
-<h3>Zurück zu meinem Körpergefühl ohne ins Minus zu gehen 🙂</h3>
+<p>20 August 2026</p></article><article class="ls-bewertung"><h3>Zurück zu meinem Körpergefühl ohne ins Minus zu gehen 🙂</h3>
 <p>Nach meiner Schwangerschaft sind trotz Sport einige hartnäckige Fettpolster geblieben. Ich habe mich deshalb ausführlich über eine Fettabsaugung informiert. Die Beratung hat mir geholfen, realistische Vorstellungen von der Behandlung und dem möglichen Ergebnis zu entwickeln. Für mich war die Behandlung ein persönlicher Schritt, um mich in meinem Körper wieder wohler zu fühlen. Ich bin Berufseinsteigerin und hätte mir niemals diesen Eingriff leisten können. Beim Deutschen Ärzte Service wurde ich fair aufgeklärt und sparte mehr als 50%!</p>
 <p>Lauren</p>
 <p>Rated 5 out of 5 stars</p>
-<p>18 August 2026</p>
-<h3>Endlich wieder rundum wohlfühlen!</h3>
+<p>18 August 2026</p></article><article class="ls-bewertung"><h3>Endlich wieder rundum wohlfühlen!</h3>
 <p>Ich habe mich nach längerer Überlegung für eine Brustvergrößerung entschieden. Besonders angesprochen hat mich die Möglichkeit, die Behandlung über den DÄS zu realisieren, da die Ergebnisse auf Instagram total schön sind. Der Preis von 2.999 € war für mich auch sehr interessant. Auch bei den Implantaten wurde ich ausführlich beraten und habe mich für Mentor-Implantate entschieden. Von der Beratung bis zur Nachsorge habe ich mich gut aufgehoben gefühlt, die Praxis ist sehr schick und die Angestellten super freundlich. Danke 🙂</p>
 <p>Belinda</p>
 <p>Rated 5 out of 5 stars</p>
-<p>16 August 2026</p>
-<h3>Ich wollte mich wieder wohlfühlen – nicht perfekt sein</h3>
+<p>16 August 2026</p></article><article class="ls-bewertung"><h3>Ich wollte mich wieder wohlfühlen – nicht perfekt sein</h3>
 <p>Ich habe lange versucht, bestimmte Problemzonen durch Sport und Ernährung zu verändern. Irgendwann habe ich gemerkt, dass ich trotz aller Bemühungen nicht zufrieden war. Die Beratung beim Deutschen Ärzte Service hat mir geholfen, meine Möglichkeiten durch eine Fettabsaugung realistisch einzuschätzen. Besonders angenehm fand ich die persönliche und unkomplizierte Betreuung. Für mich war es letztendlich nicht nur eine äußerliche Veränderung, sondern vor allem ein neues Gefühl von Selbstvertrauen. Man lebt nur einmal und sollte unter seiner Optik nicht leiden müssen. Danke DÄS!</p>
 <p>Leo</p>
 <p>Rated 5 out of 5 stars</p>
-<p>11 August 2026</p>
-<h3>Endlich wieder wohl in meiner Haut</h3>
+<p>11 August 2026</p></article><article class="ls-bewertung"><h3>Endlich wieder wohl in meiner Haut</h3>
 <p>Ich habe mich für eine Brustvergrößerung mit Straffung entschieden und mich beim Deutschen Ärzte Service von der Beratung bis zur Organisation sehr gut begleitet gefühlt. Besonders wichtig war mir eine persönliche und transparente Betreuung, auch nach der OP wurde ich kontaktiert vom Team. Das Ergebnis hat meine Erwartungen erfüllt und ich fühle mich heute deutlich wohler mit meinem Körper. Ich habe mich für Mentor Implantate entschieden und bin einfach nur Happy 🙂</p>
 <p>Philipa</p>
 <p>Rated 5 out of 5 stars</p>
-<p>8 August 2026</p>
-<h3>Die perfekte Ergänzung zu meinem Training</h3>
+<p>8 August 2026</p></article><article class="ls-bewertung"><h3>Die perfekte Ergänzung zu meinem Training</h3>
 <p>Obwohl ich vier- bis fünfmal pro Woche trainiere, haben mich die Fettpolster an meinem Bauch immer gestört. Egal wie konsequent ich war – sie wollten einfach nicht verschwinden. Über den Deutschen Ärzte Service kam ich schnell an einen Spezialisten für Fettabsaugungen und Bodycontouring.<br> Die Terminvergabe war unkompliziert, die Beratung ausführlich und die gesamte Organisation sehr professionell. Das Ergebnis hat meine Erwartungen sogar übertroffen. Endlich sieht man die Konturen, für die ich so lange trainiert habe. Ich würde den DÄS und das Team immer jederzeit weiterempfehlen, es war alles super und verdient 10 Sterne 🙂</p>
 <p>Ben</p>
 <p>Rated 5 out of 5 stars</p>
-<p>7 August 2026</p>
-<h3>Schnell zum Beratungsgespräch und dabei noch gespart!</h3>
+<p>7 August 2026</p></article><article class="ls-bewertung"><h3>Schnell zum Beratungsgespräch und dabei noch gespart!</h3>
 <p>Für meine Brustvergrößerung mit Straffung nach der Gewichtsabnahme war es mir wichtig, schnell einen Beratungstermin zu bekommen, ich konnte mich einfach im Spiegel nicht mehr ertragen. Über den Deutschen Ärzte Service ging das viel schneller als erwartet – innerhalb kurzer Zeit hatte ich bereits einen Termin bei einem erfahrenen Facharzt.<br> Besonders gefreut hat mich außerdem die Kostenersparnis. Ich konnte mir die OP von meinem ersparten Leisten ohne Kredit etc. So konnte ich meinen Wunsch-Eingriff bei einem Spezialisten durchführen lassen und dabei sogar Geld sparen. Mit dem gesamten Ablauf und dem Ergebnis bin ich mehr als zufrieden und würde den Deutschen Ärzte Service jederzeit weiterempfehlen. Ihr helft vielen Menschen! Danke.</p>
 <p>Jacqueline</p>
 <p>Rated 5 out of 5 stars</p>
-<p>5 August 2026</p>
-<h3>Endlich die richtige Entscheidung getroffen</h3>
+<p>5 August 2026</p></article><article class="ls-bewertung"><h3>Endlich die richtige Entscheidung getroffen</h3>
 <p>Vor meiner Brustvergrößerung war ich völlig überfordert. Es gibt so viele Ärzte und Kliniken, dass ich gar nicht wusste, wem ich vertrauen kann. Über den Deutschen Ärzte Service habe ich dann einen Facharzt gefunden, dessen Schwerpunkt genau auf Brustvergrößerungen liegt. Das hat mir sofort Sicherheit gegeben. Ich habe nur 2.999 Euro bezahlt, einfach Wahnsinn!!!<br> Heute sind zwei Monate seit meiner OP vergangen und ich könnte nicht glücklicher sein. Das Ergebnis ist wunderschön und genauso, wie ich es mir vorgestellt habe. Auch die Betreuung war vom ersten Gespräch bis zur Nachsorge einfach klasse. Der DÄS war immer für mich da. Ich bin unglaublich froh, diesen Weg über den Deutschen Ärzte Service gegangen zu sein und kann ihn nur weiterempfehlen.</p>
 <p>Mia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>3 August 2026</p>
-<h3>Korrektur einer misslungenen Fettabsaugung</h3>
+<p>3 August 2026</p></article><article class="ls-bewertung"><h3>Korrektur einer misslungenen Fettabsaugung</h3>
 <p>Nach einer enttäuschenden Fettabsaugung bei einer anderen Klinik hatte ich ehrlich gesagt kaum noch Hoffnung. Der Deutsche Ärzte Service hat mir einen Spezialisten empfohlen, der sich viel Zeit genommen hat. Das Ergebnis ist endlich harmonisch und ich ärgere mich, dass ich nicht gleich dort angefragt habe. Ich werde es jedem weiterempfehlen! Hier wird Qualität groß geschrieben.</p>
 <p>Rabea</p>
 <p>Rated 5 out of 5 stars</p>
-<p>30 Juli 2026</p>
-<h3>So stellt man sich guten Service vor</h3>
+<p>30 Juli 2026</p></article><article class="ls-bewertung"><h3>So stellt man sich guten Service vor</h3>
 <p>Ich hatte einige Fragen und war anfangs ziemlich unsicher. Das Team vom Deutschen Ärzte Service war immer freundlich, schnell erreichbar und hat sich wirklich Zeit genommen. Keine Warteschleifen, keine Hektik – einfach kompetente Beratung ohne Zeitdruck. Kann ich ohne Einschränkung weiterempfehlen.</p>
 <p>Leon</p>
 <p>Rated 5 out of 5 stars</p>
-<p>27 Juli 2026</p>
-<h3>Unendlich Dankbar!</h3>
+<p>27 Juli 2026</p></article><article class="ls-bewertung"><h3>Unendlich Dankbar!</h3>
 <p>Nach meiner Gewichtsabnahme hat mich meine Brust sehr belastet. Über den Deutschen Ärzte Service habe ich einen erfahrenen Operateur gefunden und die Bruststraffung sogar für unter 4.000 € machen lassen. Ich hatte es schon aufgegeben, als ich über Google die Preise sah teilweise über 10.000€! Ich musste nicht ins Ausland und wurde in einer tollen Klinik operiert. Das Ergebnis ist wunderschön geworden und die Betreuung war von Anfang an super. Herzlichen Dank ans DÄS 🙂</p>
 <p>Vanessa</p>
 <p>Rated 5 out of 5 stars</p>
-<p>25 Juli 2026</p>
-<h3>Endlich die Wunschfigur ohne verschulden</h3>
+<p>25 Juli 2026</p></article><article class="ls-bewertung"><h3>Endlich die Wunschfigur ohne verschulden</h3>
 <p>Nach langer Überlegung habe ich mich für eine Brustvergrößerung mit hochwertigen Motiva Premium-Implantaten entschieden. Mir war besonders wichtig, von einem sehr erfahrenen Spezialisten in meiner Nähe operiert zu werden, da man die Qualifikation eines Operateurs heutzutage als Laie nur schwer einschätzen kann. Die vielen Bilder vom DÄS auf Instagram der zufriedenen Kundinnen haben mich überzeugt. Das Ergebnis ist wunderschön und wirkt absolut natürlich. Die Beratung war ehrlich und ich habe mich jederzeit bestens aufgehoben gefühlt. Ich kann es jeder Frau empfehlen!</p>
 <p>Albulena</p>
 <p>Rated 5 out of 5 stars</p>
-<p>24 Juli 2026</p>
-<h3>Endlich schmerzfrei- Dank DÄS 🙂</h3>
+<p>24 Juli 2026</p></article><article class="ls-bewertung"><h3>Endlich schmerzfrei- Dank DÄS 🙂</h3>
 <p>Meine Brustverkleinerung war die beste Entscheidung. Meine Rückenschmerzen sind deutlich besser und ich fühle mich im Alltag viel freier. Das Team war unglaublich freundlich und kompetent – auch nach meiner OP. Ich kann den Deutschen Ärzte Service nur weiterempfehlen.</p>
 <p>Rita</p>
 <p>Rated 5 out of 5 stars</p>
-<p>19 Juli 2026</p>
-<h3>Endlich eine schöne Brust</h3>
+<p>19 Juli 2026</p></article><article class="ls-bewertung"><h3>Endlich eine schöne Brust</h3>
 <p>Nach meiner starken Gewichtsabnahme durch den Magenbypass war ich unglaublich stolz auf das Erreichte. Allerdings hatte sich meine Brust stark verändert, sodass ich mich trotz des Gewichtsverlustes nicht wirklich wohlgefühlt habe. Die Bruststraffung beim Deutschen Ärzte Service hat mir ein neues Körpergefühl gegeben. Das Ergebnis wirkt natürlich und harmonisch, die Beratung war ehrlich und einfühlsam und ich habe mich während des gesamten Behandlungsverlaufs bestens betreut gefühlt. Besonders begeistert war ich davon, dass die Behandlung zu einem wirklich bezahlbaren Preis angeboten wurde – so konnte ich mir diesen lang gehegten Wunsch endlich erfüllen. Für mich war es der perfekte Abschluss meiner persönlichen Veränderung.</p>
 <p>Friederike</p>
 <p>Rated 5 out of 5 stars</p>
-<p>17 Juli 2026</p>
-<h3>Meine Problemzonen sind Geschichte! 🙂</h3>
+<p>17 Juli 2026</p></article><article class="ls-bewertung"><h3>Meine Problemzonen sind Geschichte! 🙂</h3>
 <p>Sport und gesunde Ernährung haben bei meinen Problemzonen einfach nicht den gewünschten Erfolg gebracht. Deshalb habe ich mich für eine Fettabsaugung beim Deutschen Ärzte Service entschieden. Das Team war sehr professionell und hat mich ausführlich beraten. Das Ergebnis entspricht meinen Erwartungen und ich fühle mich in meiner Kleidung wieder deutlich wohler. Besonders überzeugt haben mich die faire Preisgestaltung und die angenehme Betreuung. Es wurden mir keine falschen Hoffnungen gemacht und ich vertraute dem Facharzt ab der ersten Minute. Vielen Dank.</p>
 <p>Romina</p>
 <p>Rated 5 out of 5 stars</p>
-<p>15 Juli 2026</p>
-<h3>Implantatwechsel zum attraktiven Preis</h3>
+<p>15 Juli 2026</p></article><article class="ls-bewertung"><h3>Implantatwechsel zum attraktiven Preis</h3>
 <p>Nach vielen Jahren wollte ich meine Brustimplantate austauschen lassen und habe nach einer bezahlbaren, seriösen Lösung gesucht. Beim Deutschen Ärzte Service wurde ich ausführlich beraten und fühlte mich von Anfang an in guten Händen. Der Implantatwechsel verlief unkompliziert und ich bin mit dem Ergebnis sehr zufrieden. Besonders angenehm war die transparente Preisgestaltung.</p>
 <p>Marta</p>
 <p>Rated 5 out of 5 stars</p>
-<p>13 Juli 2026</p>
-<h3>Brustvergrößerung für nur 2.999 € – Natürlich schön</h3>
+<p>13 Juli 2026</p></article><article class="ls-bewertung"><h3>Brustvergrößerung für nur 2.999 € – Natürlich schön</h3>
 <p>Ich habe mich lange mit dem Thema Brustvergrößerung beschäftigt und bin sehr froh, dass ich mich für den Deutschen Ärzte Service entschieden habe. Das Ergebnis wirkt natürlich und passt perfekt zu meiner Figur. Von der Beratung bis zur Nachsorge habe ich mich jederzeit gut aufgehoben gefühlt. Besonders überzeugt hat mich das hervorragende Preis-Leistungs-Verhältnis von nur 2.999 €. Absolute Empfehlung!</p>
 <p>Anne</p>
 <p>Rated 5 out of 5 stars</p>
-<p>12 Juli 2026</p>
-<h3>Unterlidkorrektur beim Spezialisten in Hamburg</h3>
+<p>12 Juli 2026</p></article><article class="ls-bewertung"><h3>Unterlidkorrektur beim Spezialisten in Hamburg</h3>
 <p>Ein frischer Blick kann viel ausmachen und das obwohl ich erst 42 bin. Deshalb habe ich mich über eine Unterlidkorrektur informiert. Mir war wichtig, einen erfahrenen Spezialisten zu finden, der sich Zeit für die Beratung nimmt und realistische Erwartungen vermittelt. Der Kontakt mit dem DÄS war easy und unkompliziert. Mein Beratungstermin bekam ich schon am nächsten Tag. Ich fühlte mich sofort gut aufgehoben und das Ergebnis ist besser als ich erwartet habe. Vielen Dank 🙂</p>
 <p>Alisha</p>
 <p>Rated 5 out of 5 stars</p>
-<p>7 Juli 2026</p>
-<h3>Fettabsaugung trotz Sport und gesunder Ernährung</h3>
+<p>7 Juli 2026</p></article><article class="ls-bewertung"><h3>Fettabsaugung trotz Sport und gesunder Ernährung</h3>
 <p>Ich habe lange auf meine Ernährung geachtet und regelmäßig Sport gemacht, aber an meinem Bauch wollten die Fettpolster einfach nicht verschwinden. Deshalb habe ich mich über die Möglichkeiten einer Fettabsaugung informiert. Besonders überzeugt hat mich das Preis-Leistungs-Verhältnis über den Deutschen Ärzte Service. Nach der Beratung hatte ich ein gutes Gefühl und konnte eine fundierte Entscheidung treffen. Jetzt bin ich 3 Monate nach der OP super zufrieden und bereue nicht einen Tag diesen Schritt gegangen zu sein.</p>
 <p>Robert</p>
 <p>Rated 5 out of 5 stars</p>
-<p>5 Juli 2026</p>
-<h3>Mehr Ausstrahlung ohne künstlichen Effekt</h3>
+<p>5 Juli 2026</p></article><article class="ls-bewertung"><h3>Mehr Ausstrahlung ohne künstlichen Effekt</h3>
 <p>Nach langer Überlegung habe ich mich für ein kleines Facelift über den DÄS entschieden und bereue diesen Schritt keine Sekunde. Besonders gefallen hat mir die ehrliche Beratung und die professionelle Betreuung. Der Facharzt war spezialisiert und dies habe ich sofort gemerkt. Das Ergebnis wirkt sehr natürlich – ich sehe einfach frischer und vitaler aus. Mehrere Bekannte haben mich darauf angesprochen, dass ich so erholt wirke, ohne den Eingriff zu bemerken. Ein schöneres Kompliment hätte ich mir nicht wünschen können. Danke an das Team vom Deutschen Ärzte Service und die tolle Praxis 🙂</p>
 <p>Ricarda</p>
 <p>Rated 5 out of 5 stars</p>
-<p>3 Juli 2026</p>
-<h3>Endlich wieder wohl in meiner Haut</h3>
+<p>3 Juli 2026</p></article><article class="ls-bewertung"><h3>Endlich wieder wohl in meiner Haut</h3>
 <p>Ich habe mich für eine Fettabsaugung an der Hüfte in Stuttgart entschieden, weil mich die hartnäckigen Fettpolster schon lange gestört haben. Vom ersten Beratungsgespräch bis zur Nachsorge habe ich mich jederzeit bestens aufgehoben gefühlt. Das Team war sehr freundlich und hat sich viel Zeit für meine Fragen genommen, der DÄS war immer an meiner Seite sogar nach der OP. Mit dem Ergebnis bin ich wirklich glücklich – meine Silhouette wirkt deutlich harmonischer und Kleidung sitzt endlich so, wie ich es mir immer gewünscht habe. Ohne eine OP hätte ich niemals so ein Ergebnis erreicht. Diese Preise kann man sich leisten, vielen Dank!</p>
 <p>Tim</p>
 <p>Rated 5 out of 5 stars</p>
-<p>2 Juli 2026</p>
-<h3>Professionelle Betreuung zum fairen Festpreis</h3>
+<p>2 Juli 2026</p></article><article class="ls-bewertung"><h3>Professionelle Betreuung zum fairen Festpreis</h3>
 <p>Der Sonderpreis von 2.999 € hat mich zunächst neugierig gemacht. Nach dem Beratungsgespräch hatte ich jedoch vor allem wegen der kompetenten Betreuung und der ausführlichen Aufklärung ein gutes Gefühl. Der gesamte Ablauf war gut organisiert und das Team war jederzeit freundlich und hilfsbereit. Ich habe mich vom ersten Kontakt bis zur Nachsorge gut aufgehoben gefühlt. Wer Wert auf eine transparente Preisgestaltung und eine angenehme Betreuung legt, sollte sich das Angebot des DÄS zu Herzen nehmen!</p>
 <p>Gloria</p>
 <p>Rated 5 out of 5 stars</p>
-<p>28 Juni 2026</p>
-<h3>Brustvergrößerung in Düsseldorf- ein Traum wurde wahr!</h3>
+<p>28 Juni 2026</p></article><article class="ls-bewertung"><h3>Brustvergrößerung in Düsseldorf- ein Traum wurde wahr!</h3>
 <p>Nach langer Überlegung habe ich mich für eine Brustvergrößerung mit Motiva-Implantaten in Düsseldorf über den Deutschen Ärzte Service entschieden. Besonders die vielen tollen Ergebnisse auf Instagram haben mich in meiner Entscheidung bestärkt. Die Beratung war ausführlich, das Team sehr freundlich und die Erreichbarkeit ist einfach Top. Mein Ergebnis ist perfekt und ich bekomme nur noch Komplimente, ich freue mich schon auf den Sommer mit Bikinis 🙂</p>
 <p>Arbena</p>
 <p>Rated 5 out of 5 stars</p>
-<p>26 Juni 2026</p>
-<h3>Brustvergrößerung mit Straffung in Hamburg – einfach begeistert</h3>
+<p>26 Juni 2026</p></article><article class="ls-bewertung"><h3>Brustvergrößerung mit Straffung in Hamburg – einfach begeistert</h3>
 <p>Ich habe mich in Hamburg für eine Brustvergrößerung mit Straffung über den Deutschen Ärzte Service entschieden und könnte nicht zufriedener sein. Nach 3 Kindern, war das Volumen meiner Brust verschwunden und die Haut erschlafft. Bereits beim Beratungsgespräch wurde auf meine Wünsche eingegangen und ich fühlte mich bestens aufgehoben. Ich hatte mich vorher bei mehreren Anbietern in Hamburg informiert und Angebote erhalten, die teilweise über 10.000 € lagen. Umso glücklicher war ich, dass der DÄS eine qualitativ hochwertige Behandlung zu deutlich humaneren Preisen angeboten hat. Die OP verlief ohne Probleme und das Ergebnis ist wunderschön, natürlich und genau so, wie ich es mir vorgestellt habe. Das gesamte Team war freundlich, professionell und jederzeit erreichbar. Vielen Dank für die hervorragende Betreuung!</p>
 <p>Sandra</p>
 <p>Rated 5 out of 5 stars</p>
-<p>24 Juni 2026</p>
-<h3>Auch ohne Krankenkasse zur Brustverkleinerung, yippie 🙂</h3>
+<p>24 Juni 2026</p></article><article class="ls-bewertung"><h3>Auch ohne Krankenkasse zur Brustverkleinerung, yippie 🙂</h3>
 <p>Leider wurde mein Antrag auf Kostenübernahme für eine Brustverkleinerung von der Krankenkasse trotz meiner Beschwerden abgelehnt. Nach dem verlorenen Kampf mit der Krankenkasse habe ich mich dazu entschieden, den Eingriff selbst durchführen zu lassen – und das war die beste Entscheidung. Der Deutsche Ärzte Service hat mich von der ersten Beratung bis zur Nachsorge hervorragend begleitet. Das gesamte Team war freundlich, kompetent und sehr einfühlsam. Das Ergebnis ist wunderschön geworden und vor allem haben sich meine Rücken- und Nackenschmerzen deutlich verbessert. Ich bin mit dem gesamten Ablauf und meiner Entscheidung mehr als zufrieden und kann den Deutschen Ärzte Service uneingeschränkt weiterempfehlen.</p>
 <p>Chrissy</p>
 <p>Rated 5 out of 5 stars</p>
-<p>21 Juni 2026</p>
-<h3>Perfekte Nasenkorrektur</h3>
+<p>21 Juni 2026</p></article><article class="ls-bewertung"><h3>Perfekte Nasenkorrektur</h3>
 <p>Meine Nasenkorrektur ist genauso geworden, wie ich sie mir gewünscht habe. Schon als junges Mädchen, empfang ich meine Nase als zu groß, aber in München sind solche Eingriffe unbezahlbar. Auf Empfehlung einer Arbeitskollegin kam ich auf den DÄS. Der Arzt hat sich viel Zeit genommen und alle Fragen beantwortet, er gab mir sofort ein gutes Gefühl und ging auf mich ein. Das Ergebnis ist harmonisch und natürlich. Ich bin sehr glücklich und kann den Deutschen Ärzte Service uneingeschränkt empfehlen. Vielen Dank das es euch gibt.</p>
 <p>Miriam</p>
 <p>Rated 5 out of 5 stars</p>
-<p>17 Juni 2026</p>
-<h3>Oberlidkorrektur mit tollem Ergebnis 🙂</h3>
+<p>17 Juni 2026</p></article><article class="ls-bewertung"><h3>Oberlidkorrektur mit tollem Ergebnis 🙂</h3>
 <p>Meine Oberlidkorrektur beim Deutschen Ärzte Service war die beste Entscheidung. Die Behandlung in Stuttgart verlief unkompliziert und das Ergebnis wirkt sehr natürlich. Mein Blick ist wieder frisch und wach. Ich bin mit der Betreuung und dem gesamten Ablauf sehr zufrieden.</p>
 <p>Oliver</p>
 <p>Rated 5 out of 5 stars</p>
-<p>14 Juni 2026</p>
-<h3>Endlich wieder wohlfühlen nach der Bauchdeckenstraffung, Danke!</h3>
+<p>14 Juni 2026</p></article><article class="ls-bewertung"><h3>Endlich wieder wohlfühlen nach der Bauchdeckenstraffung, Danke!</h3>
 <p>Nach meiner Bauchdeckenstraffung bin ich überglücklich. Von der ersten Beratung bis zur Nachsorge verlief alles reibungslos. Das gesamte Team war kompetent, einfühlsam und immer erreichbar. Das Ergebnis hat meine Erwartungen übertroffen und ich fühle mich endlich wieder wohl in meinem Körper. Als alleinerziehende Mutter, hätte ich mir das nie so leisten können. Beim DÄS lag ich unter 4500€ und bin einfach mehr als dankbar.</p>
 <p>Selin</p>
 <p>Rated 5 out of 5 stars</p>
-<p>11 Juni 2026</p>
-<h3>Traumhafte Brustvergrößerung für nur 2.999 €!!!</h3>
+<p>11 Juni 2026</p></article><article class="ls-bewertung"><h3>Traumhafte Brustvergrößerung für nur 2.999 €!!!</h3>
 <p>Ich habe mich für eine Brustvergrößerung beim Deutschen Ärzte Service entschieden und bin absolut begeistert. Schon die Beratung war sehr professionell und freundlich. Das Ergebnis sieht natürlich aus und entspricht genau meinen Vorstellungen. Besonders überzeugt hat mich der attraktive Preis von nur 2.999 €. Ich habe mich während des gesamten Prozesses bestens aufgehoben gefühlt und kann den Deutschen Ärzte Service mit gutem Gewissen weiterempfehlen und meine Schwägerin hat auch schon in 3 Wochen ihren Termin 😉</p>
 <p>Kaya</p>
 <p>Rated 5 out of 5 stars</p>
-<p>6 Juni 2026</p>
-<h3>Große Empfehlung für alle, die Qualität und faire Preise suchen 😉</h3>
+<p>6 Juni 2026</p></article><article class="ls-bewertung"><h3>Große Empfehlung für alle, die Qualität und faire Preise suchen 😉</h3>
 <p>Ich hatte anfangs Sorge, dass ein günstigerer Preis auch weniger Qualität bedeutet, aber genau das Gegenteil war der Fall. Die Betreuung war erstklassig und die Bruststraffung ist perfekt gelungen. Man merkt sofort, dass hier erfahrene Spezialisten arbeiten. Vielen Dank für das tolle Ergebnis!</p>
 <p>Miri</p>
 <p>Rated 5 out of 5 stars</p>
-<p>29 Mai 2026</p>
-<h3>Viel günstiger als andere Angebote – und trotzdem perfekt!!!</h3>
+<p>29 Mai 2026</p></article><article class="ls-bewertung"><h3>Viel günstiger als andere Angebote – und trotzdem perfekt!!!</h3>
 <p>Vor meiner Behandlung habe ich viele Preise verglichen und war überrascht, wie viel man hier sparen kann. Trotz des fairen Preises hatte ich jederzeit das Gefühl, bei absoluten Spezialisten in Behandlung zu sein. Die Unterlidkorrektur ist wunderschön geworden und ich sehe endlich wieder frisch aus. Ich hätte mir als alleinerziehende Mutter sowas niemals gegönnt, aber der Deutsche Ärzte Service hat mir meinen Traum greifbar gemacht. Ich bedanke mich nochmals herzlich 🙂</p>
 <p>Monika</p>
 <p>Rated 5 out of 5 stars</p>
-<p>26 Mai 2026</p>
-<h3>Mehr Selbstbewusstsein dank DÄS</h3>
+<p>26 Mai 2026</p></article><article class="ls-bewertung"><h3>Mehr Selbstbewusstsein dank DÄS</h3>
 <p>Ich hatte lange überlegt und mich dann für die Brustvergrößerung beim DÄS entschieden. Die Atmosphäre war angenehm und ich habe mich jederzeit sicher gefühlt. Das Ergebnis sieht sehr natürlich aus und ich bin überglücklich. Für 2999€ wirklich top!</p>
 <p>Soraja</p>
 <p>Rated 5 out of 5 stars</p>
-<p>23 Mai 2026</p>
-<h3>Beste Entscheidung nach Schwangerschaft und Stillen</h3>
+<p>23 Mai 2026</p></article><article class="ls-bewertung"><h3>Beste Entscheidung nach Schwangerschaft und Stillen</h3>
 <p>Meine Brustvergrößerung war ein lang ersehnter Wunsch, vor allem nach Schwangerschaft und Stillzeit. Ich wollte mich endlich wieder feminin und wohl in meinem Körper fühlen. Beim DÄS habe ich sofort gemerkt, dass sie sich perfekt mit der Thematik auskennen und auch nur mit erfahrenen Fachärzten kooperieren.<br> Die Beratung war ehrlich und ausführlich und ich habe mich für Motiva Implantate entschieden. Das Ergebnis sieht unglaublich natürlich aus und fühlt sich auch so an. Für nur 2999€ habe ich eine Betreuung und Qualität erhalten, die meine Erwartungen komplett übertroffen haben.<br> Ich bin jeden Tag glücklich über meine Entscheidung und kann das DÄS nur weiterempfehlen!</p>
 <p>Aneta</p>
 <p>Rated 5 out of 5 stars</p>
-<p>21 Mai 2026</p>
-<h3>Kompetenter Spezialist & wunderschönes Ergebnis</h3>
+<p>21 Mai 2026</p></article><article class="ls-bewertung"><h3>Kompetenter Spezialist & wunderschönes Ergebnis</h3>
 <p>Ich habe lange nach einem Spezialisten für Nasenkorrekturen gesucht und wusste beim DÄS sofort, dass dort nur Experten arbeiten. Schon beim ersten Beratungsgespräch habe ich mich bestens aufgehoben gefühlt. Es wurde sich viel Zeit genommen und alles ehrlich sowie professionell erklärt.</p>
 <p>Das Ergebnis ist wunderschön und absolut natürlich geworden. Meine Nase passt jetzt perfekt zu meinem Gesicht und genau das war mein Wunsch. Besonders die Erfahrung und Präzision des Spezialisten haben mich beeindruckt. Vielen Dank an das gesamte Team 🙂</p>
 <p>Nadia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>19 Mai 2026</p>
-<h3>Wunderschönes Ergebnis & tolles Preis-Leistungs-Verhältnis!</h3>
+<p>19 Mai 2026</p></article><article class="ls-bewertung"><h3>Wunderschönes Ergebnis & tolles Preis-Leistungs-Verhältnis!</h3>
 <p>Ich habe mich für eine Bauchdeckenstraffung und Brustvergrößerung entschieden und bin absolut begeistert vom Ergebnis. Besonders überzeugt hat mich der attraktive Sonderpreis vom DÄS, der die Entscheidung deutlich erleichtert hat. Trotz des Angebots wurde an nichts gespart – die Betreuung war erstklassig, professionell und sehr herzlich.</p>
 <p>Das Ergebnis sieht unglaublich natürlich aus und ich fühle mich endlich wieder wohl in meinem Körper. Vielen Dank an das gesamte Team für die tolle Unterstützung und die hervorragende Arbeit!</p>
 <p>Uta</p>
 <p>Rated 5 out of 5 stars</p>
-<p>16 Mai 2026</p>
-<h3>Tolles Ergebnis und enorme Ersparnis!</h3>
+<p>16 Mai 2026</p></article><article class="ls-bewertung"><h3>Tolles Ergebnis und enorme Ersparnis!</h3>
 <p>Nach meiner 50-kg-Abnahme hatte ich leider sehr viel überschüssige Haut am Bauch. Trotz des großen Erfolgs habe ich mich dadurch nie richtig wohlgefühlt. Die Bauchdeckenstraffung beim Deutschen Ärzte Service war deshalb die beste Entscheidung für mich. Das Ergebnis ist wunderschön geworden und ich fühle mich endlich wieder selbstbewusst. Der Facharzt ist in diesem Bereich sehr erfahren und ich hatte sofort ein gutes Gefühl. Besonders dankbar bin ich für den günstigen Preis, denn normalerweise hätte ich mir die OP niemals ohne einen Kredit leisten können. Durch die enorme Ersparnis von fast 50 % wurde mein Traum endlich möglich!</p>
 <p>Robert</p>
 <p>Rated 5 out of 5 stars</p>
-<p>15 Mai 2026</p>
-<h3>Frischer Blick dank Oberlidkorrektur und DÄS</h3>
+<p>15 Mai 2026</p></article><article class="ls-bewertung"><h3>Frischer Blick dank Oberlidkorrektur und DÄS</h3>
 <p>Meine hängenden Oberlider haben mich in den letzten Jahren immer mehr belastet. Deshalb habe ich mich für eine Oberlidkorrektur beim Deutschen Ärzte Service entschieden – und bereue es keine Sekunde. Das Team war sehr kompetent und hat mich toll betreut. Die Behandlung verlief unkompliziert und das Ergebnis ist genau so geworden, wie ich es mir gewünscht habe: natürlich, frisch und deutlich jünger wirkend. Ich fühle mich endlich wieder wohl beim Blick in den Spiegel!</p>
 <p>Viola</p>
 <p>Rated 5 out of 5 stars</p>
-<p>13 Mai 2026</p>
-<h3>Beste Entscheidung nach dem Abnehmen</h3>
+<p>13 Mai 2026</p></article><article class="ls-bewertung"><h3>Beste Entscheidung nach dem Abnehmen</h3>
 <p>Durch meine Gewichtsabnahme haben meine Brüste stark an Form verloren und hingen leider sehr. Die Brustvergrößerung mit Straffung beim Deutschen Ärzte Service hat mir mein Selbstbewusstsein zurückgegeben. Für nur 4.499 € ein tolles Ergebnis und eine sehr professionelle Betreuung. Ich habe den Service schon meiner Cousine empfohlen, bin einfach begeistert 🙂</p>
 <p>Lara</p>
 <p>Rated 5 out of 5 stars</p>
-<p>10 Mai 2026</p>
-<h3>100 Sterne für diesen Service 🙂</h3>
+<p>10 Mai 2026</p></article><article class="ls-bewertung"><h3>100 Sterne für diesen Service 🙂</h3>
 <p>Vom ersten Gespräch bis zur OP lief alles perfekt. Das Team vom Deutschen Ärzte Service war sehr kompetent und freundlich. Tolles Ergebnis und das zu einem wirklich fairen Preis für nur 2.999,-€!</p>
 <p>Tamara</p>
 <p>Rated 5 out of 5 stars</p>
-<p>10 Mai 2026</p>
-<h3>Brustvergrößerung in Frankfurt – wunderschönes Ergebnis zum Top-Preis</h3>
+<p>10 Mai 2026</p></article><article class="ls-bewertung"><h3>Brustvergrößerung in Frankfurt – wunderschönes Ergebnis zum Top-Preis</h3>
 <p>Ich habe mich für eine Brustvergrößerung mit Motiva Implantaten in Frankfurt entschieden und bin mit dem Ergebnis mehr als zufrieden. Besonders begeistert hat mich der Preis von nur 2999€, denn dadurch wurde mein Wunsch endlich bezahlbar. Schon beim Beratungsgespräch habe ich mich sehr wohl und professionell betreut gefühlt. Auf alle meine Fragen wurde ehrlich und ausführlich eingegangen. Das Ergebnis sieht wunderschön natürlich aus und passt perfekt zu meiner Figur. Ich fühle mich endlich wieder selbstbewusst und rundum wohl in meinem Körper. Vielen Dank an alle 🙂</p>
 <p>Aurora</p>
 <p>Rated 5 out of 5 stars</p>
-<p>8 Mai 2026</p>
-<h3>Endlich die hartnäckigen Problemzonen los!</h3>
+<p>8 Mai 2026</p></article><article class="ls-bewertung"><h3>Endlich die hartnäckigen Problemzonen los!</h3>
 <p>Trotz Sport und gesunder Ernährung sind nach meinen zwei Schwangerschaften einige Problemzonen geblieben, die mich sehr belastet haben. Deshalb habe ich mich für eine Fettabsaugung entschieden. Die Behandlung verlief professionell und ich wurde ehrlich und freundlich beraten. Schon nach kurzer Zeit konnte ich deutliche Veränderungen sehen. Meine Silhouette wirkt viel harmonischer und ich passe endlich wieder in Kleidung, in der ich mich früher unwohl gefühlt habe. Ich bin wirklich glücklich mit dem Ergebnis.</p>
 <p>Salma</p>
 <p>Rated 5 out of 5 stars</p>
-<p>5 Mai 2026</p>
-<h3>Oberlidkorrektur – frischer und wacher Blick</h3>
+<p>5 Mai 2026</p></article><article class="ls-bewertung"><h3>Oberlidkorrektur – frischer und wacher Blick</h3>
 <p>Die Oberlidkorrektur war eine der besten Entscheidungen für mich. Durch Stress, wenig Schlaf wirkten meine Augen immer müde und erschöpft. Nach dem Eingriff sehe ich endlich wieder frisch und wach aus, ohne dass es unnatürlich wirkt. Besonders positiv fand ich die einfühlsame Betreuung und die ruhige Atmosphäre während der gesamten Behandlung. Das Ergebnis ist genau so geworden, wie ich es mir gewünscht habe.</p>
 <p>Galina</p>
 <p>Rated 5 out of 5 stars</p>
-<p>1 Mai 2026</p>
-<h3>Ich kann den Deutscher Ärzte Service zu 100% weiterempfehlen!</h3>
+<p>1 Mai 2026</p></article><article class="ls-bewertung"><h3>Ich kann den Deutscher Ärzte Service zu 100% weiterempfehlen!</h3>
 <p>Ich habe vor 20 Jahren über den Deutschen Ärzteservice meine Brustvergrößerung organisieren lassen und war sehr zufrieden. Nun musste ich mich einem Implantatwechsel unterziehen und habe dies wieder über den Deutschen Ärzteservice gemacht. Auch diesmal war ich mit dem Service sehr zufrieden.</p>
 <p>Claudia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>6 März 2026</p>
-<h3>Ich bin rundum begeistert und mehr als zufrieden.</h3>
+<p>6 März 2026</p></article><article class="ls-bewertung"><h3>Ich bin rundum begeistert und mehr als zufrieden.</h3>
 <p>Vom ersten Kontakt an lief alles super schnell und reibungslos. Ich hatte jederzeit einen sehr zügigen, freundlichen Kontakt und all meine Fragen wurden ausführlich und verständlich beantwortet. Besonders toll fand ich auch, dass alle Unterlagen digital gehandhabt wurden – das war sehr unkompliziert und modern.</p>
 <p>Ich hatte eine Brustoperation (von 200cc auf ca. 400 cc) und bin mit dem Ergebnis sehr zufrieden. Ich habe mich sowohl beim Arzt als auch in der Partnerklinik jederzeit gut aufgehoben, ernst genommen und professionell betreut gefühlt.</p>
 <p>Ein großes Dankeschön an das gesamte Team für den hervorragenden Service – ich kann es uneingeschränkt weiterempfehlen!</p>
 <p>Merle</p>
 <p>Rated 5 out of 5 stars</p>
-<p>6 März 2026</p>
-<h3>Ich habe mich endlich getraut – und es war genau richtig 🙂</h3>
+<p>6 März 2026</p></article><article class="ls-bewertung"><h3>Ich habe mich endlich getraut – und es war genau richtig 🙂</h3>
 <p>Lange habe ich mich geschämt, über dieses Thema zu sprechen – selbst mit meiner Frauenärztin. Die Entscheidung zur Schamlippenkorrektur war ein sehr persönlicher Schritt. Beim Deutschen Ärzte Service habe ich mich zum ersten Mal wirklich ernst genommen gefühlt. Kein Urteil, keine Peinlichkeit – nur echte, einfühlsame Beratung. Das Ergebnis hat mein Körpergefühl positiv verändert. Ich bin unglaublich erleichtert und glücklich, vielen Dank liebes DÄS und an das tolle Praxisteam 🙂</p>
 <p>Jasmin</p>
 <p>Rated 5 out of 5 stars</p>
-<p>12 September 2025</p>
-<h3>Ich hätte nie gedacht, dass ich mich so schön fühlen kann!</h3>
+<p>12 September 2025</p></article><article class="ls-bewertung"><h3>Ich hätte nie gedacht, dass ich mich so schön fühlen kann!</h3>
 <p>Diese Entscheidung hat mein Leben verändert. Nach Jahren voller Zweifel, Unsicherheit und dem ständigen Verstecken meines Körpers habe ich endlich den Schritt gewagt. Dass die OP „nur“ 2.999 Euro gekostet hat, war für mich ein Geschenk – aber das Ergebnis ist unbezahlbar. Ich schaue jetzt in den Spiegel und erkenne mich endlich wieder. Danke an das Team vom Deutschen Ärzte Service für die einfühlsame Begleitung!</p>
 <p>Inga</p>
 <p>Rated 5 out of 5 stars</p>
-<p>9 September 2025</p>
-<h3>Mein Traum wurde endlich bezahlbar</h3>
+<p>9 September 2025</p></article><article class="ls-bewertung"><h3>Mein Traum wurde endlich bezahlbar</h3>
 <p>Lange habe ich über eine Brustvergrößerung nachgedacht, aber die Preise waren mir oft zu hoch, teilweise bei über 8.000,- Euro!!! Als ich vom Deutschen Ärzte Service und dem Angebot für 2.999 Euro hörte, habe ich den Schritt gewagt – und es war die beste Entscheidung! Endlich habe ich die Figur, die ich mir immer gewünscht habe, ohne mich finanziell zu übernehmen. Ich war bei einem sehr erfahrenen Arzt in einer wunderschönen Praxis und alle waren total nett. Der DÄS kontaktierte mich auch nach der OP, wie es mir geht. Einfach einzigartig, vielen Dank!</p>
 <p>Patricia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>8 September 2025</p>
-<h3>Vertrauen von Anfang an 🙂</h3>
+<p>8 September 2025</p></article><article class="ls-bewertung"><h3>Vertrauen von Anfang an 🙂</h3>
 <p>Ich hatte lange gezögert, mich operieren zu lassen, aber der Deutsche Ärzte Service hat mir die nötige Sicherheit gegeben. Die Beratung war einfühlsam und ehrlich und mein Facharzt einfach top. Die Bruststraffung mit Vergrößerung war die beste Entscheidung für mich nach dem Abnehmen. Habe mir die 4.499,- Euro selbst angespart. Ich bin so glücklich mit dem Ergebnis und würde den Service jederzeit weiterempfehlen.</p>
 <p>Soraja</p>
 <p>Rated 5 out of 5 stars</p>
-<p>6 September 2025</p>
-<h3>Gute Beratung, tolles Ergebnis!</h3>
+<p>6 September 2025</p></article><article class="ls-bewertung"><h3>Gute Beratung, tolles Ergebnis!</h3>
 <p>Ich habe lange mit meinen Reiterhosen gekämpft – Sport und Ernährung haben einfach nicht ausgereicht. Einen Kredit wollte ich nicht nehmen. Über den Deutschen Ärzte Service wurde mir ein spezialisierter Facharzt empfohlen, welcher mich ehrlich beraten und ein tolles Ergebnis erzielt hat. Die Silhouette ist jetzt viel harmonischer und ich fühle mich endlich wohl und trage auch mal Röcke nach langer Zeit. Der DÄS war vom ersten Tag hochprofessionell und ich hatte schon nach 6 Tagen meinen Beratungstermin. Einfach TOP!</p>
 <p>Josephine</p>
 <p>Rated 5 out of 5 stars</p>
-<p>5 September 2025</p>
-<h3>Wieder ich selbst – nur frischer 🙂</h3>
+<p>5 September 2025</p></article><article class="ls-bewertung"><h3>Wieder ich selbst – nur frischer 🙂</h3>
 <p>Mit 62 fühlte ich mich innerlich jünger, als ich im Spiegel gesehen habe. Über den Deutschen Ärzte Service habe ich einen erfahrenen Facharzt gefunden, der genau wusste, worauf es mir ankommt. Keine Überkorrekturen, sondern eine dezente Straffung mit viel Fingerspitzengefühl. Die Kosten hätte ich mir niemals für so ein Facelift leisten können und wollte schon ins Ausland bis ich auf den DÄS gekommen bin und einfach nur dankbar bin diese Möglichkeit in Deutschland zu haben. Danke an die netten Mädels 🙂</p>
 <p>Claudia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>2 September 2025</p>
-<h3>Erwartungen übertroffen</h3>
+<p>2 September 2025</p></article><article class="ls-bewertung"><h3>Erwartungen übertroffen</h3>
 <p>Ich wollte keine unnatürlich großen Brüste, sondern eine jugendliche, straffe Form – genau das habe ich bekommen! Die Betreuung vom DÄS war hervorragend und das Ergebnis übertrifft meine Erwartungen. Auch mit 57 fühle ich mich jetzt wie mit 30 und bin sehr glücklich diesen Schritt gegangen zu sein. Ich kann den Service jeder Frau empfehlen 🙂</p>
 <p>Bianca</p>
 <p>Rated 5 out of 5 stars</p>
-<p>31 August 2025</p>
-<h3>Sehr zufrieden – klare Weiterempfehlung!</h3>
+<p>31 August 2025</p></article><article class="ls-bewertung"><h3>Sehr zufrieden – klare Weiterempfehlung!</h3>
 <p>Man denkt bei dem Preis vielleicht erstmal an Kompromisse – aber es war alles erstklassig. Moderne Klinik, erfahrenes Team und ein wunderschönes, natürliches Ergebnis. Absolute Empfehlung!</p>
 <p>Lara</p>
 <p>Rated 5 out of 5 stars</p>
-<p>29 August 2025</p>
-<h3>Endlich schmerzfrei – dank Brustverkleinerung</h3>
+<p>29 August 2025</p></article><article class="ls-bewertung"><h3>Endlich schmerzfrei – dank Brustverkleinerung</h3>
 <p>Nach Jahren mit Rückenschmerzen und Haltungsschäden habe ich mich zur Brustverkleinerung entschlossen über den DÄS – und es war die beste Entscheidung meines Lebens. Der Eingriff verlief problemlos, die Betreuung war großartig und ich fühle mich endlich frei, beweglich und schmerzfrei. Der Preis ist der Hammer und ich hatte einen tollen Arzt mit viel Erfahrung in diesem Bereich. Hätte ich viel früher machen sollen!</p>
 <p>Lola</p>
 <p>Rated 5 out of 5 stars</p>
-<p>28 August 2025</p>
-<h3>Preiswert, professionell & wunderschönes Ergebnis 💕</h3>
+<p>28 August 2025</p></article><article class="ls-bewertung"><h3>Preiswert, professionell & wunderschönes Ergebnis 💕</h3>
 <p>Ich habe mich bewusst für Mentor-Implantate entschieden und bin total begeistert. Die Größe und Form passen perfekt zu mir. Für nur 2.999 € habe ich ein Ergebnis bekommen, das sonst deutlich teurer wäre. Klare Weiterempfehlung!</p>
 <p>Laila</p>
 <p>Rated 5 out of 5 stars</p>
-<p>27 August 2025</p>
-<h3>Bauchdeckenstraffung – neues Lebensgefühl nach 3 Schwangerschaften 🙂</h3>
+<p>27 August 2025</p></article><article class="ls-bewertung"><h3>Bauchdeckenstraffung – neues Lebensgefühl nach 3 Schwangerschaften 🙂</h3>
 <p>Nach drei Kindern und einer großen Gewichtsabnahme war mein Bauch stark erschlafft – Sport allein hat nicht mehr geholfen. 😞<br>Die Bauchdeckenstraffung beim Deutschen Ärzte Service war die beste Entscheidung ohne das ich mich verschulden musste! 💪✨<br>Die Beratung war ehrlich, die Betreuung sehr herzlich, und das Ergebnis übertrifft meine Erwartungen. Der Bauch ist endlich wieder flach und straff – ich fühle mich wie neu geboren!<br>Danke an das ganze Team!</p>
 <p>Julia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>25 August 2025</p>
-<h3>Brustvergrößerung mit Straffung – tolles Ergebnis!</h3>
+<p>25 August 2025</p></article><article class="ls-bewertung"><h3>Brustvergrößerung mit Straffung – tolles Ergebnis!</h3>
 <p>Die OP lief reibungslos, das Ergebnis ist wunderschön und natürlich. 💖 Der Preis von 4.499 € war komplett inkl. Beratung, OP & Nachsorge – echt fair!Würde es jederzeit wieder tun! 🙌</p>
 <p>Franca</p>
 <p>Rated 5 out of 5 stars</p>
-<p>23 August 2025</p>
-<h3>Preis-Leistung unschlagbar – ich würde es wieder tun</h3>
+<p>23 August 2025</p></article><article class="ls-bewertung"><h3>Preis-Leistung unschlagbar – ich würde es wieder tun</h3>
 <p>Nach zwei Schwangerschaften war meine Brust einfach nicht mehr wie früher. Die Brustvergrößerung für 2.999 € war für mich die Chance, mir selbst etwas zurückzugeben. Die OP verlief unkompliziert, die Betreuung war großartig – und das Beste: Ich habe mich für Motiva-Implantate entschieden, weil sie sich besonders weich und natürlich anfühlen. Ich bin super glücklich mit dem Ergebnis!10 Sterne an den DÄS 🙂</p>
 <p>Ludmilla</p>
 <p>Rated 5 out of 5 stars</p>
-<p>22 August 2025</p>
-<h3>Krankenkasse hat abgelehnt – ich habe es trotzdem gemacht. Beste Entscheidung!</h3>
+<p>22 August 2025</p></article><article class="ls-bewertung"><h3>Krankenkasse hat abgelehnt – ich habe es trotzdem gemacht. Beste Entscheidung!</h3>
 <p>Meine Brustverkleinerung war medizinisch absolut notwendig: Rückenschmerzen, Verspannungen, Hautreizungen – alles war da. Trotzdem wurde mein Antrag von der Krankenkasse abgelehnt. Ich war enttäuscht, aber ich wollte mich nicht länger quälen. Über den DÄS habe ich einen kompetenten Arzt gefunden, der mich ernst genommen hat. Der Eingriff verlief super, die Schmerzen sind weg, und ich fühle mich endlich wieder frei. Ich hätte es auch ohne Kostenübernahme jederzeit wieder getan!</p>
 <p>Lilly</p>
 <p>Rated 5 out of 5 stars</p>
-<p>20 August 2025</p>
-<h3>Endlich wieder ein flacher Bauch – und das mit 50!</h3>
+<p>20 August 2025</p></article><article class="ls-bewertung"><h3>Endlich wieder ein flacher Bauch – und das mit 50!</h3>
 <p>Nach meinem starken Gewichtsverlust blieb leider eine Menge überschüssige Haut am Bauch zurück. Trotz Sport und gesunder Ernährung hat sich daran nichts geändert. Über den DÄS habe ich einen erfahrenen Chirurgen gefunden, der mir ehrlich und professionell zur Seite stand. Die Bauchdeckenstraffung war die beste Entscheidung: Das Ergebnis ist top – flacher Bauch, straffes Hautbild, keine Schmerzen mehr durch Hautfalten. Ich fühle mich wie ein neuer Mensch und musste nicht mal einen Kredit aufnehmen.</p>
 <p>Steffen</p>
 <p>Rated 5 out of 5 stars</p>
-<p>19 August 2025</p>
-<h3>Tolle Figur, neues Selbstbewusstsein 😉</h3>
+<p>19 August 2025</p></article><article class="ls-bewertung"><h3>Tolle Figur, neues Selbstbewusstsein 😉</h3>
 <p>Was mich besonders überzeugt hat: die Transparenz beim DÄS. Kein Schönreden, keine versteckten Kosten – einfach ehrliche Beratung. Die Fettabsaugung an den Oberschenkeln war mein persönlicher Wendepunkt. Ich bereue keinen einzigen Tag! Ich kann wieder Röcke tragen, ohne mich unwohl zu fühlen. Danke an das tolle Team!</p>
 <p>Saliha</p>
 <p>Rated 5 out of 5 stars</p>
-<p>16 August 2025</p>
-<h3>Meine Augen strahlen wieder – danke DÄS!</h3>
+<p>16 August 2025</p></article><article class="ls-bewertung"><h3>Meine Augen strahlen wieder – danke DÄS!</h3>
 <p>Ich hätte nie gedacht, wie viel Ausstrahlung man durch eine Oberlidkorrektur zurückgewinnt. Der Blick ist wieder offen, das ganze Gesicht wirkt frischer. Die OP war unkompliziert, die Narben praktisch unsichtbar. Besonders beeindruckt hat mich, wie gut organisiert alles über den DÄS lief – absolut empfehlenswert!</p>
 <p>Tanja</p>
 <p>Rated 5 out of 5 stars</p>
-<p>15 August 2025</p>
-<h3>Perfektes Ergebnis, ganz ohne versteckte Kosten 🙂</h3>
+<p>15 August 2025</p></article><article class="ls-bewertung"><h3>Perfektes Ergebnis, ganz ohne versteckte Kosten 🙂</h3>
 <p>Was mich besonders überzeugt hat: die Transparenz. Der Preis von 2.999 € war genau wie angegeben – keine versteckten Kosten, keine bösen Überraschungen. Die OP verlief reibungslos und das Ergebnis ist wunderschön. Ich bin sehr dankbar und kann den DÄS nur weiterempfehlen!</p>
 <p>Madleen</p>
 <p>Rated 5 out of 5 stars</p>
-<p>13 August 2025</p>
-<h3>Mein Traum ist wahr geworden</h3>
+<p>13 August 2025</p></article><article class="ls-bewertung"><h3>Mein Traum ist wahr geworden</h3>
 <p>Ich habe lange über eine Brustvergrößerung nachgedacht, aber die hohen Preise haben mich immer abgeschreckt. Durch den DÄS habe ich mich endlich getraut – für 2.999 € habe ich eine professionelle Behandlung und wunderschönes Ergebnis bekommen. Die Ärzte waren super einfühlsam und das Ergebnis sieht absolut natürlich aus. Ich bin einfach nur glücklich!</p>
 <p>Ayleen</p>
 <p>Rated 5 out of 5 stars</p>
-<p>10 August 2025</p>
-<h3>Top Ergebnis ohne überteuerte Preise</h3>
+<p>10 August 2025</p></article><article class="ls-bewertung"><h3>Top Ergebnis ohne überteuerte Preise</h3>
 <p>Ich hatte schon länger über eine Oberlidkorrektur nachgedacht, aber viele Angebote waren einfach zu teuer. Durch den DÄS habe ich einen erfahrenen Arzt gefunden, bei dem alles gestimmt hat: das Beratungsgespräch, die OP, die Nachsorge – und der Preis von 899,- €. Alles lief sehr professionell und reibungslos. Das Ergebnis ist dezent und natürlich, genau wie ich es mir gewünscht habe. Ich würde es sofort wieder machen!</p>
 <p>Andrea</p>
 <p>Rated 5 out of 5 stars</p>
-<p>8 August 2025</p>
-<h3>Endlich schmerzfrei dank DÄS!</h3>
+<p>8 August 2025</p></article><article class="ls-bewertung"><h3>Endlich schmerzfrei dank DÄS!</h3>
 <p>Nach langer Suche nach einer Lipödem-Behandlung, die ich mir leisten kann, bin ich auf den DÄS gestoßen. Die Beratung war ehrlich, freundlich und transparent. Ich war bei einem erfahrenen Spezialisten, der mein Lipödem ernst genommen und mich hervorragend operiert hat. Die Kosten waren fair kalkuliert und für mich endlich machbar. Ich bin so dankbar, dass ich diesen Weg gegangen bin – mein Körper und mein Alltag haben sich komplett verändert.</p>
 <p>Chrissy</p>
 <p>Rated 5 out of 5 stars</p>
-<p>6 August 2025</p>
-<h3>Vertrauensvoll und professionell von Anfang an🌟</h3>
+<p>6 August 2025</p></article><article class="ls-bewertung"><h3>Vertrauensvoll und professionell von Anfang an🌟</h3>
 <p>Ich war am Anfang sehr unsicher, aber der Deutsche Ärzte Service hat mir genau die Sicherheit gegeben, die ich gebraucht habe. Keine leeren Versprechungen, sondern ehrliche Beratung und medizinische Kompetenz. Ich war bei einem Facharzt, der sich viel Zeit genommen hat. Auch nach der OP war immer jemand erreichbar. Ich bin mega happy mit dem Ergebnis – es sieht toll aus, fühlt sich super an und hat mir ein ganz neues Körpergefühl gegeben. Absolute Empfehlung!</p>
 <p>Daria</p>
-<p>4 August 2025</p>
-<h3>Besser hätte es nicht laufen können 🙂</h3>
+<p>4 August 2025</p></article><article class="ls-bewertung"><h3>Besser hätte es nicht laufen können 🙂</h3>
 <p>Ich hatte lange überlegt, ob ich den Schritt wagen soll. Dank des Deutschen Ärzte Service habe ich mich endlich getraut – und keinen Moment bereut! Von der Organisation über die Beratung bis zur Nachsorge war alles perfekt. Ich fühlte mich jederzeit gut aufgehoben und hatte das Gefühl, ernst genommen zu werden. Mein Ergebnis ist genau so, wie ich es mir gewünscht habe – größer, aber natürlich. Eine klare Empfehlung für alle, die sich eine sichere und professionelle Begleitung bei ihrer Entscheidung wünschen.</p>
 <p>Sofia</p>
 <p>Rated 5 out of 5 stars</p>
-<p>2 August 2025</p>
-<h3>Brustvergrößerung zum Festpreis – und das Ergebnis spricht für sich!</h3>
+<p>2 August 2025</p></article><article class="ls-bewertung"><h3>Brustvergrößerung zum Festpreis – und das Ergebnis spricht für sich!</h3>
 <p>Ich habe mich intensiv informiert und viele Angebote verglichen – beim DÄS bekam ich nicht nur einen sehr guten Preis (2.999 Euro!), sondern auch eine fachlich kompetente Behandlung. Die OP verlief problemlos, die Betreuung war top, und mein neues Körpergefühl ist unbezahlbar.</p>
 <p>Lina</p>
 <p>Rated 5 out of 5 stars</p>
-<p>1 August 2025</p>
-<h3>Frischer Blick – ich sehe endlich wieder wach aus 🙂</h3>
+<p>1 August 2025</p></article><article class="ls-bewertung"><h3>Frischer Blick – ich sehe endlich wieder wach aus 🙂</h3>
 <p>Ich habe mich lange unwohl gefühlt mit meinen Schlupflidern – ständig sah ich müde aus, obwohl ich mich fit fühlte. Über den DÄS fand ich schnell einen erfahrenen Facharzt. Die Oberlidstraffung verlief absolut reibungslos, kaum Schmerzen und sehr schnelle Heilung. Heute sehe ich jünger, frischer und wacher aus – ein echter Gewinn für mein Selbstbewusstsein und ich bekomme sehr oft Komplimente. Bin sehr happy!</p>
-<p>31 Juli 2025</p>
-<h3>Rundum zufrieden – vom ersten Gespräch bis zur Nachkontrolle 🙂</h3>
+<p>31 Juli 2025</p></article><article class="ls-bewertung"><h3>Rundum zufrieden – vom ersten Gespräch bis zur Nachkontrolle 🙂</h3>
 <p>Was mich überzeugt hat, war die ehrliche Beratung. Es wurde mir nichts versprochen, was nicht machbar ist – und genau das hat Vertrauen geschaffen. Die Fettabsaugung an meinen Reiterhosen verlief super, die Schmerzen waren minimal und ich war schnell wieder auf den Beinen. Das Ergebnis ist einfach toll – harmonisch und natürlich. Der Preis war außerdem deutlich günstiger als bei vielen anderen Anbietern!Kann ich nur empfehlen.</p>
-<p>30 Juli 2025</p>
-<h3>Top organisiert und ein tolles OP-Ergebnis!</h3>
+<p>30 Juli 2025</p></article><article class="ls-bewertung"><h3>Top organisiert und ein tolles OP-Ergebnis!</h3>
 <p>Ich war zunächst skeptisch, aber die vielen positiven Bewertungen haben mich überzeugt – und ich wurde nicht enttäuscht. Der Deutsche Ärzte Service hat alles organisiert, ich musste mich um fast nichts kümmern. Die Bruststraffung beim Facharzt verlief super, ich fühlte mich bestens aufgehoben. Klare Empfehlung!</p>
 <p>Melina</p>
 <p>Rated 5 out of 5 stars</p>
-<p>28 Juli 2025</p>
-<h3>Rundum betreut, einfach toll 🙂</h3>
+<p>28 Juli 2025</p></article><article class="ls-bewertung"><h3>Rundum betreut, einfach toll 🙂</h3>
 <p>Ich habe lange nach einer seriösen Möglichkeit für eine Bauchdeckenstraffung gesucht – der DÄS hat mir genau das geboten: geprüfte Fachärzte, faire Preise und eine individuelle Betreuung. Die Klinik war modern und das Personal sehr einfühlsam. Ein großes Dankeschön an das ganze Team!</p>
 <p>Sina</p>
 <p>Rated 5 out of 5 stars</p>
-<p>27 Juli 2025</p>
-<h3>Ganz toller Arzt!</h3>
+<p>27 Juli 2025</p></article><article class="ls-bewertung"><h3>Ganz toller Arzt!</h3>
 <p>Die Beratung des Arztes war wirklich fachkundig und ich habe mich sehr aufgehoben gefühlt.</p>
 <p>Larissa</p>
 <p>Rated 5 out of 5 stars</p>
-<p>25 Juli 2025</p>
-<h3>Beste Entscheidung meines Lebens 🙂</h3>
+<p>25 Juli 2025</p></article><article class="ls-bewertung"><h3>Beste Entscheidung meines Lebens 🙂</h3>
 <p>Ich hatte viele Fragen vor der OP, aber das Team vom Deutschen Ärzte Service war immer erreichbar. Die Betreuung war menschlich und professionell.</p>
 <p>Ich habe diesen Service schon meiner Schwägerin empfohlen und diese ist auch sehr happy.</p>
 <p>Cindy</p>
 <p>Rated 5 out of 5 stars</p>
-<p>25 Juli 2025</p>
-<h3>Endlich mein Traumbusen!</h3>
+<p>25 Juli 2025</p></article><article class="ls-bewertung"><h3>Endlich mein Traumbusen!</h3>
 <p>Ich bin einfach super glücklich, dass es die Möglichkeit in Deutschland gibt sich für nur 2.999€ die Brüste</p>
 <p>vergrößern zu lassen. Wurde vom ersten Telefonat schon toll beraten. Vielen Dank!</p>
 <p>Luisa</p>
 <p>Rated 5 out of 5 stars</p>
-<p>25 Juli 2025</p>
-<h3>Kundenservice ist TOP!</h3>
+<p>25 Juli 2025</p></article><article class="ls-bewertung"><h3>Kundenservice ist TOP!</h3>
 <p>Ich bin sehr zufrieden mit meiner Brustvergrößerung. Ich hatte einen sehr erfahrenen Chirurgen und ein tolles Team.<br> Habe mich sehr gut betreut gefühlt auch vom DÄS, bei jeder Frage konnte man anrufen und die Damen haben einen<br> sehr nett beraten und aufgeklärt.</p>
 <p>Ajsa</p>
 <p>Rated 5 out of 5 stars</p>
-<p>23 Juli 2025</p>
-<h3>Alles wunderbar! 🙂 Vielen DANK!</h3>
+<p>23 Juli 2025</p></article><article class="ls-bewertung"><h3>Alles wunderbar! 🙂 Vielen DANK!</h3>
 <p>Ich bin von diesem Service in ganz Deutschland super begeistert! Hier wird Qualität ganz groß geschrieben.<br> Schneller Beratungstermin und OP-Termin. Nachsorge ist auch jede Woche, einfach toll!</p>
 <p>Kristin</p>
 <p>Rated 5 out of 5 stars</p>
-<p>23 Juli 2025</p>
-<h3>Vielen Dank für die kompetente Betreuung.</h3>
+<p>23 Juli 2025</p></article><article class="ls-bewertung"><h3>Vielen Dank für die kompetente Betreuung.</h3>
 <p>Ich habe eine Brustvergrößerung machen lassen. Und kann nur sagen, dass ich sehr zufrieden bin mit dem Ergebnis und auch mit der Nachsorge. Die Betreuung vom DÄS ist Top. Es wurde sich gleich nach meinem Befinden und meiner Zufriedenheit erkundigt. Ich kann es nur empfehlen eine OP über den DÄS zu machen.</p>
 <p>Maike</p>
 <p>Rated 5 out of 5 stars</p>
-<p>23 Juli 2025</p>
-<h3>Qualität muss nicht teuer sein</h3>
+<p>23 Juli 2025</p></article><article class="ls-bewertung"><h3>Qualität muss nicht teuer sein</h3>
 <p>Ich war skeptisch wegen der Kosten – aber alles war transparent, fair und absolut hochwertig. Keine versteckten Gebühren und tolles Ergebnis!</p>
 <p>Der Arzt rief mich sogar am Wochenende an, um sich nach mir zu erkundigen. Der DÄS ist immer erreichbar und der Service einfach perfekt.</p>
 <p>Vielen Dank an alle!</p>
 <p>Samantha</p>
 <p>Rated 5 out of 5 stars</p>
-<p>23 Juli 2025</p></div></div>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<p>23 Juli 2025</p></article></div>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
 <p>Individualität und Qualität: Erfahrene Fachärzte, beste Implantate und moderne Kliniken sind für uns eine Grundvoraussetzung. Über 100.000 Beratungsgespräche und Tausende von Operationen sind der Beweis. Unser <b>Qualitätsversprechen</b> gilt auch für Ihre Region Mannheim.<br>Testen Sie uns und <a href="index.html#kontakt"><b>buchen Sie jetzt Ihr Beratungsgespräch</b></a>!</p></div>
 </div>
 </div></div>
@@ -1272,7 +1173,7 @@ main{counter-reset:abschnitt}
 <div class="ls-tabelle"><table><tbody><tr><td>Medizinische Voruntersuchung</td></tr><tr><td>Eingehende Beratung und Aufklärung über die Brustvergrößerung</td></tr><tr><td>Vorbereitung, Organisation und Terminabstimmung der Schönheitsoperation</td></tr><tr><td><a href="https://www.deutscher-aerzte-service.de/information-zu-silikonimplantaten" target="_blank" rel="noopener">Silikon-Gel-Implantate</a> verschiedener Hersteller. Große Implantatauswahl – auf Wunsch auch mit RFID Chip erhältlich.</td></tr><tr><td>Anästhesie</td></tr><tr><td>Implantation inklusive aller medizinisch notwendigen Nebenleistungen</td></tr><tr><td>Nachsorge</td></tr><tr><td>Aufpreis anatomische Implantatform 330,- €</td></tr></tbody></table></div>
 <p>Der Deutsche Ärzte Service bietet Ihnen eine <b>erstklassige Leistung </b>zu einem <a href="brustvergroesserung-kosten.html">Preis</a>, der bis zu 50% unter dem üblichen Marktpreis liegt. Sie erhalten die gleiche Qualität wie bei einem erfahrenen Facharzt in einer <b>renommierten Klinik,</b> jedoch zu einem deutlich günstigeren Preis.</p>
 <p>Kontaktieren Sie uns noch heute, um mehr über unsere Angebote für Schönheitsoperationen in Mannheim zu erfahren und Ihren ästhetischen Zielen einen Schritt näher zu kommen.</p>
-<p>– <a href="https://www.deutscher-aerzte-service.de/information-zu-silikonimplantaten" target="_blank" rel="noopener">Informationen zu Implantate aus Silikon</a><br>– Detaillierte Informationen zur <a href="https://www.deutscher-aerzte-service.de/schonheitsoperationen/brustvergroserung/" target="_blank" rel="noopener">Brustvergrößerung</a><br>– <a href="https://www.deutscher-aerzte-service.de/wp-content/uploads/2022/12/Broschuere-DAeS-2023-WEB.pdf" target="_blank" rel="noopener">Unsere Gesamtbroschüre</a><br>– <a href="preisversprechen.html">Details über unsere Preise</a></p>
+<p>– <a href="https://www.deutscher-aerzte-service.de/information-zu-silikonimplantaten" target="_blank" rel="noopener">Informationen zu Implantate aus Silikon</a><br>– Detaillierte Informationen zur <a href="brustvergroesserung.html">Brustvergrößerung</a><br>– <a href="https://www.deutscher-aerzte-service.de/wp-content/uploads/2022/12/Broschuere-DAeS-2023-WEB.pdf" target="_blank" rel="noopener">Unsere Gesamtbroschüre</a><br>– <a href="preisversprechen.html">Details über unsere Preise</a></p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
 <h3>💖 Brustvergrößerung in 5 einfachen Punkten erklärt</h3>
 <ol class="ls-liste"><li><span><b>Was ist das Ziel?</b><br>Eine Brustvergrößerung schafft mehr Volumen, eine schönere Form oder gleicht Asymmetrien aus – für ein harmonisches, selbstbewusstes Körpergefühl.</span></li><li><span><b>Wie funktioniert’s?</b><br>Es werden entweder <b>hochwertige Silikonimplantate</b> eingesetzt oder <b>Eigenfett</b> aus dem Körper verwendet – je nach Wunsch, Körperbau und Zielvorstellung.</span></li><li><span><b>Wie läuft der Eingriff ab?</b><br>Die OP dauert ca. 1–2 Stunden, wird unter Vollnarkose durchgeführt und erfolgt meist ambulant oder mit kurzer Klinikübernachtung.</span></li><li><span><b>Wie sieht die Heilung aus?</b><br>Schonung ist wichtig: Für ca. 2–3 Wochen kein Sport, ein spezieller BH wird getragen. Die meisten Frauen sind nach wenigen Tagen wieder gesellschaftsfähig.</span></li><li><span><b>Wann sehe ich das Ergebnis?</b><br>Erste Ergebnisse sind sofort sichtbar – das finale, wunderschöne Ergebnis zeigt sich nach ca. 2–3 Monaten, wenn Schwellungen abgeklungen sind.</span></li></ol>
@@ -1378,6 +1279,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

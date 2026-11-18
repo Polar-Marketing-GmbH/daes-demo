@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -626,7 +636,7 @@ main{counter-reset:abschnitt}
 <div class="ls-seite"><h2>Brustvergrößerung Bochum in sehr hoher Qualität und dennoch zu günstigen Konditionen</h2></div>
 <div class="ls-text"><p>Neu: mit Eigenfettkontur + 1.000,-€</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
-<p>Der Deutsche Ärzte Service steht seit über 2 Jahrzehnten für günstige Preise bei Schönheits-OPs und <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener"><b>Brustvergrößerungen</b> </a>– und das auf einem <b>hohen medizinischem Niveau</b>. Neu für Bochumer Kundinnen ist die Brustvergrößerung <b>mit Eigenfett und Implantat</b>. Diese Methode eignet sich vor allem für schlanke Frauen, die sich eine größere Brust wünschen, aber vermeiden möchten, dass der Implantatrand tastbar ist. Mit einer Umrandung von Eigenfett kann eine schöne und natürliche Kontur erzielt werden. Diese <b>innovative Methode</b> Brustvergrößerung mit Eigenfett und Implantat wird Ihnen derzeit in Bochum für nur 3.999,-€ mit den <b>hochwertigsten</b> runden Silkongelimplantaten angeboten. Der kompetente Facharzt für Plastische und Ästhetische Chirurgie mit über 25 jähriger Erfahrung erläutert Ihnen gerne die Vorzüge dieser Methode im persönlichen Gespräch. Eine reine <b>Brustvergrößerung mit Eigenfett</b> ohne Implantat ist narbenfrei und kann auf Wunsch auch durchgeführt werden, scheidet aber für die meisten Kunden aufgrund der erzielbaren Körbchengröße aus – mit Eigenfett ist maximal eine Körbchengröße mehr zu erreichen. Der Facharzt für Plastische und Ästhetische Chirurgie war Jahrzehnte in Bochum niedergelassen und betrieb in dieser Zeit auch eine Privatklinik in <b>Bochum</b>. Heute kann er auf eine Erfahrung von mehreren Tausend Brustvergrößerungen zurückblicken. Jetzt widmet er sich ausschließlich noch wenigen, anspruchsvollen Privatkunden mit ästhetischen Wünschen. Die Beratungen können auf Wunsch in <b>Bochum oder in Düsseldorf</b> vorgenommen werden. Für die Durchführung der Operation empfiehlt er eine hochmoderne und entsprechend sichere Privatklinik im Herzen von Düsseldorf. Auch diese Partnerklinik vom Deutschen Ärzte Service vertritt die Philosophie: <b>Für unsere Kunden nur das Beste.</b></p>
+<p>Der Deutsche Ärzte Service steht seit über 2 Jahrzehnten für günstige Preise bei Schönheits-OPs und <a href="brustvergroesserung.html"><b>Brustvergrößerungen</b> </a>– und das auf einem <b>hohen medizinischem Niveau</b>. Neu für Bochumer Kundinnen ist die Brustvergrößerung <b>mit Eigenfett und Implantat</b>. Diese Methode eignet sich vor allem für schlanke Frauen, die sich eine größere Brust wünschen, aber vermeiden möchten, dass der Implantatrand tastbar ist. Mit einer Umrandung von Eigenfett kann eine schöne und natürliche Kontur erzielt werden. Diese <b>innovative Methode</b> Brustvergrößerung mit Eigenfett und Implantat wird Ihnen derzeit in Bochum für nur 3.999,-€ mit den <b>hochwertigsten</b> runden Silkongelimplantaten angeboten. Der kompetente Facharzt für Plastische und Ästhetische Chirurgie mit über 25 jähriger Erfahrung erläutert Ihnen gerne die Vorzüge dieser Methode im persönlichen Gespräch. Eine reine <b>Brustvergrößerung mit Eigenfett</b> ohne Implantat ist narbenfrei und kann auf Wunsch auch durchgeführt werden, scheidet aber für die meisten Kunden aufgrund der erzielbaren Körbchengröße aus – mit Eigenfett ist maximal eine Körbchengröße mehr zu erreichen. Der Facharzt für Plastische und Ästhetische Chirurgie war Jahrzehnte in Bochum niedergelassen und betrieb in dieser Zeit auch eine Privatklinik in <b>Bochum</b>. Heute kann er auf eine Erfahrung von mehreren Tausend Brustvergrößerungen zurückblicken. Jetzt widmet er sich ausschließlich noch wenigen, anspruchsvollen Privatkunden mit ästhetischen Wünschen. Die Beratungen können auf Wunsch in <b>Bochum oder in Düsseldorf</b> vorgenommen werden. Für die Durchführung der Operation empfiehlt er eine hochmoderne und entsprechend sichere Privatklinik im Herzen von Düsseldorf. Auch diese Partnerklinik vom Deutschen Ärzte Service vertritt die Philosophie: <b>Für unsere Kunden nur das Beste.</b></p>
 <p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p>
 <p><a href="index.html#kontakt">Beratungsgespräch vereinbaren</a></p>
 <p>Für detaillierte Informationen finden Sie hier unseren Haupartikel:</p>
@@ -663,7 +673,7 @@ main{counter-reset:abschnitt}
   <div class="wrap"><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Wie können wir so günstige Brustvergrößerungen anbieten?</h2></div>
-<div class="ls-text"><p>Wie aber ist das möglich? Ganz einfach: Zum einen sorgen wir bei unseren Partnerkliniken für eine bessere Auslastung, was die Kosten für eine <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-Operation</a> verringert. Zum anderen kaufen wir Silikon-Implantate zentral ein, und genießen dadurch <b>größere Mengenrabatte</b>. Und schließlich verfügen wir über eine zentrale Verwaltung, ein gemeinsames Marketing und nutzen die Vorteile des Word-Wide-Webs. Die Summe dieser Möglichkeiten ermöglicht enorme Einsparungen bei Brust-OPs, und diese geben wir an Sie, unsere Kunden und Interessenten, weiter.</p>
+<div class="ls-text"><p>Wie aber ist das möglich? Ganz einfach: Zum einen sorgen wir bei unseren Partnerkliniken für eine bessere Auslastung, was die Kosten für eine <a href="brustvergroesserung.html">Brust-Operation</a> verringert. Zum anderen kaufen wir Silikon-Implantate zentral ein, und genießen dadurch <b>größere Mengenrabatte</b>. Und schließlich verfügen wir über eine zentrale Verwaltung, ein gemeinsames Marketing und nutzen die Vorteile des Word-Wide-Webs. Die Summe dieser Möglichkeiten ermöglicht enorme Einsparungen bei Brust-OPs, und diese geben wir an Sie, unsere Kunden und Interessenten, weiter.</p>
 <p>Mit unserer Hilfe können Sie sich <a href="https://www.waz.de/wirtschaft/Presseportal/article406816575/schoenheitsoperationen-in-deutschland-auf-nummer-sicher-mit-dem-deutschen-aerzte-service.html" target="_blank" rel="noopener">den Weg ins Ausland(WAZ Artikel) </a>sparen und erhalten den hohen deutschen Sicherheitsstandard und die Markenqualität bei den verwendeten Materialien zu einem günstigen Preis.</p></div>
 </div>
 </div></div>
@@ -780,6 +790,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

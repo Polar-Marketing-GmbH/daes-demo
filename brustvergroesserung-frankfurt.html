@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -636,14 +646,12 @@ main{counter-reset:abschnitt}
 <div class="ls-text"><div class="ls-tabelle"><table><tbody><tr><td><b>Kosten</b></td><td>2.999 € All-Inclusive-Festpreis</td></tr><tr><td><b>OP-Dauer</b></td><td>1-2 Stunden</td></tr><tr><td><b>Narkose</b></td><td>Vollnarkose</td></tr><tr><td><b>Klinikaufenthalt</b></td><td>eine Übernachtung oder ambulant</td></tr><tr><td><b>Fadenzug</b></td><td>selbstauflösend oder 7-10 Tage nach Eingriff</td></tr></tbody></table></div>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
 <p>Bevor Sie sich für einen Eingriff in Frankfurt entscheiden, sollte ein ausführliches Beratungsgespräch direkt mit Ihrem<b> Plastischen Chirurg</b> stattfinden. Hier können Sie die individuellen Wünsche und Vorstellungen ihrer Brustvergrößerung besprechen. Sprechen Sie alles offen an; nur so weiß Ihr Plastischer Chirurg, <b>welche Technik für Sie passend ist</b> und welche Vorteile hier entstehen.</p>
-<p>Eine <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brustvergrößerung</a> soll Ihnen als Frau vor allem eines bringen: Zufriedenheit mit Ihrem Aussehen und ein gutes Körpergefühl. Erreichen kann das die ästhetisch-plastische Brustchirurgie mit modernen Silikongel-Implantaten. Nicht umsonst sind sie in zahlreichen Formen und Größen erhältlich. Patientinnen haben von ihrer neuen Brust schließlich recht unterschiedliche Vorstellungen, die es gilt im persönlichen Beratungsgespräch zur Brustvergrößerung zu klären.</p>
+<p>Eine <a href="brustvergroesserung.html">Brustvergrößerung</a> soll Ihnen als Frau vor allem eines bringen: Zufriedenheit mit Ihrem Aussehen und ein gutes Körpergefühl. Erreichen kann das die ästhetisch-plastische Brustchirurgie mit modernen Silikongel-Implantaten. Nicht umsonst sind sie in zahlreichen Formen und Größen erhältlich. Patientinnen haben von ihrer neuen Brust schließlich recht unterschiedliche Vorstellungen, die es gilt im persönlichen Beratungsgespräch zur Brustvergrößerung zu klären.</p>
 <p>In <a href="https://www.deutscher-aerzte-service.de/wp-content/uploads/2022/12/Broschuere-DAeS-2023-WEB.pdf" target="_blank" rel="noopener">unserer Broschüre</a> finden Sie alle wichtigen Daten und Fakten auf einen Blick zusammengefasst zum Download.</p>
 <p>Jüngere Frauen wünschen sich vor allem ein sexy Dekolleté und bei Frauen nach der Schwangerschaft steht in erster Linie die natürliche Brustvergrößerung im Vordergrund. Die unterschiedlichen Brustop-Wünsche können in Frankfurt mit Hilfe von unterschiedlichen Brustimplantaten und unterschiedlichen Techniken erfüllt werden.</p>
 <h3>Minimal-Scar-Technik in Frankfurt</h3>
 <p><i>Neue OP-Methoden dürfen beim DÄS nicht fehlen:</i> So auch die <b>neue Minimal-Scar-Technik.</b> Diese Operationsmethode ist äußerst minimal-invasiv und es sind nur <b>chirurgische Schnitte von 2,5 bis 3,5cm</b> notwendig. Voraussetzung sind besonders elastische Implantate, wie beispielsweise die Motiva Ergonomix. Diese innovative OP erfordert neben den Premiumimplantaten einen höheren Materialaufwand wie einmal zu verwendende Keller-Funnel und Lichthaken. Sollten Sie diese Option in Frankfurt wünschen, geben Sie uns im Vorfeld Bescheid, damit wir Ihnen <b>den passenden Spezialisten aussuchen.</b> Auch werden Ihnen nur Selbstkosten von 299,-€ berechnet.</p>
-<p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p></div>
+<div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><button class="btn btn-ghost" type="button" data-video="fCAkXZ8cZ9Q" data-titel="Video">Inhalt entsperren</button><button class="btn btn-ghost" type="button" data-video="fCAkXZ8cZ9Q" data-titel="Video">Erforderlichen Service akzeptieren und Inhalte entsperren</button></div></div></div></div>
 </div>
 </div></div>
 </section>
@@ -674,7 +682,7 @@ main{counter-reset:abschnitt}
   <div class="wrap"><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Brustvergrößerung mit Eigenfett oder mit Implantat</h2></div>
-<div class="ls-text"><p>In Frankfurt bieten wir Ihnen neben der Brustvergrößerung mit Implantaten auch bei einigen Ärzten die <a href="brustvergroesserung-mit-eigenfett.html">Brustvergrößerung mit Eigenfett</a> an. In Ihrem Beratungsgespräch können Sie sich über beide Methoden ausführlich informieren. Mit unserer langjährigen Erfahrung sind Sie bei uns in den allerbesten Händen. Selbstverständlich sichern wir Ihnen auch bei diesem Angebot zur <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-OP</a> folgende Qualität zu:</p>
+<div class="ls-text"><p>In Frankfurt bieten wir Ihnen neben der Brustvergrößerung mit Implantaten auch bei einigen Ärzten die <a href="brustvergroesserung-mit-eigenfett.html">Brustvergrößerung mit Eigenfett</a> an. In Ihrem Beratungsgespräch können Sie sich über beide Methoden ausführlich informieren. Mit unserer langjährigen Erfahrung sind Sie bei uns in den allerbesten Händen. Selbstverständlich sichern wir Ihnen auch bei diesem Angebot zur <a href="brustvergroesserung.html">Brust-OP</a> folgende Qualität zu:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Brust-Operation nur bei Fachärzten für Plastische und Ästhetische Chirurgie – diese Fachärzte verfügen über eine mindestens 100-fache OP-Erfahrung bei Brustvergrößerungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Brust-Operation nur in Privatkliniken mit High-Tech-Ausstattung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Spitzenimplantate Weitere <a href="https://www.deutscher-aerzte-service.de/information-zu-silikonimplantaten" target="_blank" rel="noopener">Details zu den Implantaten</a> finden Sie hier.</span></li></ul>
 <p>Wir legen höchsten Wert auf die besten Implantate von Mentor oder Motiva. Selbstverständlich sind die Implantate auch mit lebenslanger Garantie ohne Mehrpreis erhältlich. Sie können sich natürlich gerne beim Beratungsgespräch explizit über die Möglichkeiten informieren.</p></div>
 </div>
@@ -719,9 +727,7 @@ main{counter-reset:abschnitt}
 <div class="ls-text"><p>Auf unserer Seite<b> <a href="https://www.deutscher-aerzte-service.de/kundenzufriedenheit-bewertungen" target="_blank" rel="noopener">Kundenbewertung</a> </b>oder auf <b><a href="https://www.instagram.com/deutscher_aerzte_service/" target="_blank" rel="noopener">Instagram</a> </b>finden Sie sicherlich nützliche Hinweise zu Videos und Bildern von echten Patientinnen. Zudem finden Sie nachfolgend einige Verlinkungen, um sich umfassend informieren zu können:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Häufig gestellte <a href="https://www.deutscher-aerzte-service.de/haufig-gestellte-fragen/" target="_blank" rel="noopener">Fragen zur Brustvergrößerung</a> haben wir hier zusammengestellt.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ein <a href="brustvergroesserung.html">Video zur Brustvergrößerung</a> mit allgemeinen Fakten finden Sie hier.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="brustvergroesserung.html">Wichtige Tipps</a>: Worauf müssen Sie achten, wenn Sie eine Brustvergrößerung durchführen lassen möchten?</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>In <a href="https://www.deutscher-aerzte-service.de/wp-content/uploads/2022/12/Broschuere-DAeS-2023-WEB.pdf" target="_blank" rel="noopener">unserer Broschüre</a> finden Sie alle wichtigen Informationen nochmals in einem Dokument zu Download.</span></li></ul></div>
 </div>
-<div class="ls-spalten" style="--n:2"><div class="ls-spalte"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p>
-<p>Mehr Informationen</p>
-<p><a href="#abschnitt">Inhalt entsperren</a> <a href="#abschnitt">Erforderlichen Service akzeptieren und Inhalte entsperren</a></p></div><div class="ls-spalte"><p>Unsere Kundin Rahma spricht über ihre Erfahrung zur Brustvergrößerung in <b>Frankfurt am Main</b>. Besonders hervorgehoben hat sie den <b>Aktionspreis für nur 2.999.-€</b>, sowie die Betreuung durch den DÄS.</p>
+<div class="ls-spalten" style="--n:2"><div class="ls-spalte"><div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><button class="btn btn-ghost" type="button" data-video="qlQ4-87v6t8" data-titel="Video">Inhalt entsperren</button><button class="btn btn-ghost" type="button" data-video="qlQ4-87v6t8" data-titel="Video">Erforderlichen Service akzeptieren und Inhalte entsperren</button></div></div></div></div><div class="ls-spalte"><p>Unsere Kundin Rahma spricht über ihre Erfahrung zur Brustvergrößerung in <b>Frankfurt am Main</b>. Besonders hervorgehoben hat sie den <b>Aktionspreis für nur 2.999.-€</b>, sowie die Betreuung durch den DÄS.</p>
 <p>Sie werden ausschließlich von <b>erfahrenen, zertifizierten Fachärzten</b> betreut. Unsere <b>klaren Festpreise</b> geben Ihnen volle Kostensicherheit – ohne versteckte Überraschungen.</p>
 <p>Dank <b>flexibler, zinsfreier Ratenzahlung</b> und einer <b>unverbindlichen Beratung</b> schaffen wir die besten Voraussetzungen für Ihre individuelle Veränderung.</p>
 <p>Mit rund <b>40 Standorten deutschlandweit</b> sind wir auch in Frankfurt gern persönlich für Sie da.</p></div></div>
@@ -734,7 +740,7 @@ main{counter-reset:abschnitt}
 <div class="ls-seite"><h2>Brustvergrößerung in Frankfurt mit hoher Qualität</h2></div>
 <div class="ls-text"><p>Der Deutsche Ärzte Service pflegt nicht nur einen engen Kontakt zu einer Vielzahl von plastischen Chirurgen in Deutschland, sondern auch zur Pharmaindustrie und den Implantatherstellern. Auf Grund dessen können auch <b>Rückschlüsse auf die Erfolgsquoten der Chirurgen</b> gezogen werden. Die gegenseitige Kontrolle der plastischen Chirurgen ist ein weiteres wichtiges Qualitätskriterium. Denn wer kennt die besonderen Stärken und Schwächen besser, als der Kollege?</p>
 <p>Da der <b>Deutsche Ärzte Service</b> nicht gezwungen ist, eine eigene Klinik oder einen bestimmten Arzt besonders zu vermarkten, können <b>Aussagen über Spezialgebiete einzelner Ärzte</b> vollkommen <b>vorurteilsfrei genannt</b> werden.</p>
-<p>Für <b>günstige Preise bei hohem medizinischen Standard </b>haben wir – der <b>Deutsche Ärzte Service</b> – uns immer schon eingesetzt. Der Blick ins Ausland lohnt sich nicht mehr bei unseren niedrigen Preisen. Selbstverständlich werden Sie bei einer <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-OP</a> in <b>Frankfurt</b> nur von einem Facharzt beraten und operiert, der eine entsprechende Zulassung in Deutschland hat. Die Nachsorge findet natürlich auch dort statt. Selbstverständlich entspricht der Behandlungsvertrag den deutschen Gesetzen. Obwohl der Preis besonders günstig ist: Natürlich entspricht die Rechnung den Vorschriften der Gebührenordnung für Ärzte (<a href="https://de.wikipedia.org/wiki/Geb%C3%BChrenordnung_f%C3%BCr_%C3%84rzte" target="_blank" rel="noopener">GOÄ</a>).</p>
+<p>Für <b>günstige Preise bei hohem medizinischen Standard </b>haben wir – der <b>Deutsche Ärzte Service</b> – uns immer schon eingesetzt. Der Blick ins Ausland lohnt sich nicht mehr bei unseren niedrigen Preisen. Selbstverständlich werden Sie bei einer <a href="brustvergroesserung.html">Brust-OP</a> in <b>Frankfurt</b> nur von einem Facharzt beraten und operiert, der eine entsprechende Zulassung in Deutschland hat. Die Nachsorge findet natürlich auch dort statt. Selbstverständlich entspricht der Behandlungsvertrag den deutschen Gesetzen. Obwohl der Preis besonders günstig ist: Natürlich entspricht die Rechnung den Vorschriften der Gebührenordnung für Ärzte (<a href="https://de.wikipedia.org/wiki/Geb%C3%BChrenordnung_f%C3%BCr_%C3%84rzte" target="_blank" rel="noopener">GOÄ</a>).</p>
 <p>Bitte informieren Sie sich selbst:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="preisversprechen.html">Details zu unserem Preis</a> haben wir hier zusammengefasst.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Der Deutsche Ärzte Service steht für hohe Qualität – dazu <a href="index.html#qualitaet">weitere Inf</a><a href="https://www.deutscher-aerzte-service.de/qualitatskontrolle/" target="_blank" rel="noopener">ormationen</a>.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Für Fragen erreichen Sie uns jederzeit unter der <b>kostenlosen Rufnummer <span class="ls-nb">0800/2626770</span>.</b></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>In unserem Blogpost finden Sie interessante Tipps zum Thema: <a href="https://www.deutscher-aerzte-service.de/wichtige-tipps-zur-nachsorge-nach-einer-schoenheits-op" target="_blank" rel="noopener"><b>Nachsorge nach einer Schönheits-OP</b></a>.<br></span></li></ul>
 <div class="ls-cta"><p><b>Persönliches Beratungsgespräch</b> mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
@@ -839,6 +845,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -631,26 +641,26 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-hervor" id="der-deutsche-aerzte-service-hochwertige-schoenheitsoperation">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="besonderheiten"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Der Deutsche Ärzte Service: hochwertige Schönheitsoperationen zu fairen Preisen</h2></div>
 <div class="ls-text"><p>Schönheitsoperationen dürfen keine Luxusangelegenheit sein, die sich nur gut Betuchte leisten können. Im Gegenteil! Die ästhetischen Eingriffe des Deutschen Ärzte Service – kurz DÄS – steigern die Lebensqualität unserer Kundinnen und Kunden und verhindern gleichzeitig, dass sie sich in unerfahrene Hände im Ausland begeben müssen. Qualität und günstige Preise dürfen sich nicht ausschließen. Lesen Sie mehr über unsere Initiative zur Stärkung des inländischen Marktes im <a href="https://unternehmen.focus.de/brustvergroesserung-ausland.html" target="_blank" rel="noopener"><b>Focus</b></a>.</p>
 <p>Bei uns erhalten Sie hochwertige Behandlungen von hervorragend ausgebildeten Fachärzten. Außerdem können Sie Ihre Brustvergrößerung in Bayern über eine attraktive <a href="index.html#rechner"><b>Finanzierung</b></a> bequem in kleinen Raten bezahlen.</p>
 <h3>Inhaltsverzeichnis</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#besonderheiten">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#vorteile">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#mehr">3. Brustvergrößerung in Bayern: Wissenswertes über die Schönheitsoperation</a></span></li></ul></div>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#der-deutsche-aerzte-service-hochwertige-schoenheitsoperation">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#ihre-vorteile-mit-dem-daes">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#brustvergroesserung-in-bayern-das-sollten-sie-wissen">3. Brustvergrößerung in Bayern: Wissenswertes über die Schönheitsoperation</a></span></li></ul></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens" id="ihre-vorteile-mit-dem-daes">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="vorteile"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Ihre Vorteile mit dem DÄS</h2></div>
-<div class="ls-text"><figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/13028-Vertrauen.png" alt="Vertrauen" loading="lazy" decoding="async"></figure>
+<div class="ls-text"><figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/13028-Vertrauen.png" alt="Vertrauen" loading="lazy" decoding="async"></figure>
 <p>Wir haben es uns zur Aufgabe gemacht qualitativ hochwertige Schönheitschirurgie in Deutschland bezahlbar zu machen. Mehr als 100.000 Personen haben bisher von unseren Leistungen profitiert.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/13034-Kompetenz.png" alt="Kompetente Ärzte für Ihre Brustvergrößerung in Hamburg" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/13034-Kompetenz.png" alt="Kompetente Ärzte für Ihre Brustvergrößerung in Hamburg" loading="lazy" decoding="async"></figure>
 <p>Wir legen besonderen Wert auf die langjährige Erfahrung der plastischen Chirurgen und die hohe Qualität der verwendeten Materialien.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/13036-Bezahlbar.png" alt="Brustvergrößerungen sollen bezahlbar sein mit dem Deutschen Ärzteservice" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/13036-Bezahlbar.png" alt="Brustvergrößerungen sollen bezahlbar sein mit dem Deutschen Ärzteservice" loading="lazy" decoding="async"></figure>
 <p>Wir haben einen Weg gefunden, Schönheitsoperationen für jeden bezahlbar zu machen, ohne dabei auf Qualität und Sicherheit verzichten zu müssen.</p></div>
 </div>
 </div></div>
@@ -669,7 +679,7 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt" id="brustvergroesserung-in-bayern-das-sollten-sie-wissen">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="mehr"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Brustvergrößerung in Bayern: Das sollten Sie wissen</h2></div>
 <div class="ls-text"><p>Wenn Sie mit Ihrer Oberweite unzufrieden sind und sich dadurch in Ihrem Körper nicht mehr wohlfühlen, kann das Ihr Selbstbild und Ihre Ausstrahlung beeinträchtigen. Eine Brustvergrößerung kann dabei helfen, sich wieder selbstsicherer zu fühlen. In der ästhetischen Chirurgie wird dieser Eingriff als Brustaugmentation bezeichnet – der Begriff steht für die Vergrößerung der Brust. Die häufigste Methode ist der Einsatz von <a href="https://www.deutscher-aerzte-service.de/information-zu-silikonimplantaten" target="_blank" rel="noopener"><b>hochwertigen Silikonimplantaten</b></a>. Alternativ kann auch Eigenfett zur Volumenzunahme genutzt werden.</p>
@@ -678,7 +688,6 @@ main{counter-reset:abschnitt}
 <p>Eine Brustvergrößerung in Bayern ist eine passende Option, wenn Sie Ihre Brust als zu klein empfinden oder wenn Unterschiede in der Form oder Größe zwischen den Brüsten bestehen. Viele Frauen entscheiden sich zudem für eine gleichzeitige <a href="bruststraffung.html"><b>Bruststraffung</b></a>, um das bestmögliche ästhetische Ergebnis zu erzielen.</p>
 <p>Wesentliche medizinische Voraussetzungen gibt es in der Regel nicht – wichtig ist jedoch, dass die Brustentwicklung abgeschlossen ist. Daher sollte die Behandlung erst ab dem vollendeten 18. Lebensjahr erfolgen. Während der Schwangerschaft und Stillzeit wird grundsätzlich nicht operiert.</p>
 <p>Im persönlichen Beratungsgespräch klärt der Facharzt mit Ihnen, welche Behandlungsmethode sich für Sie eignet. Dabei werden nicht nur Ihre Wünsche, sondern auch Ihre körperlichen Gegebenheiten berücksichtigt – egal ob es um Implantate, Materialien oder die OP-Technik geht.</p>
-<p><a href="index.html#kontakt"></a></p>
 <h3>Die Vorgehensweise während der Brustvergrößerung</h3>
 <p>Es gibt verschiedene Methoden, die Implantate in die Brust einzubringen. Am häufigsten wird das Implantat jedoch durch eine Falte unterhalb der Brust, über die Achselhöhle oder direkt durch die Brustwarze eingesetzt. Die Varianten bieten eine schnelle Heilung und durch die geschickte Platzierung keinerlei sichtbare Narben. Welche Vorgehensweise für Sie geeignet ist, entscheiden Arzt und Patient nach der genauen Untersuchung. Sie hängt vor allem von der Brustform und der Größe des gewünschten Implantats ab.</p>
 <figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2023/11/brustvergroesserung-leipzig.jpg" alt="Brustvergrößerung in NRW" width="650" height="336" loading="lazy" decoding="async"></figure>
@@ -785,6 +794,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){

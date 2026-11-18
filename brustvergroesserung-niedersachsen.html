@@ -475,8 +475,18 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 @media (max-width:560px){.ls-spalten,.ls-karten{grid-template-columns:minmax(0,1fr)}.ls-schritt{grid-template-columns:44px minmax(0,1fr);gap:.9rem}.ls-nr{width:44px;height:44px;font-size:1.1rem}.ls-schritte{--start:22px}.ls-schritte::before{left:21px}.ls-schritte::after{left:17px}}
 
 .ls-nb{white-space:nowrap}
+/* Kundenbewertungen: Kartenraster über die volle Breite, anfangs gekürzt (alle Texte bleiben im Dokument) */
+.ls-bewertungen{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:1rem;align-items:start}
+.ls-bewertung{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;align-content:start;min-width:0;border:1px solid var(--stahl-100);border-radius:18px;padding:1.1rem 1.2rem;background:var(--weiss);box-shadow:0 20px 40px -36px rgba(75,29,110,.45)}
+.ls-bewertung h3{font-size:1.05rem;line-height:1.3;margin:0}
+.ls-bewertung p{margin:0;font-size:.95rem;line-height:1.6}
+.ls-bewertungen.zu > .ls-bewertung:nth-child(n+7){display:none}
+.ls-bewertungen-knopf{justify-self:center;margin-top:-.4rem}
+/* Bilder ohne Maßangabe (Icons, Karten) in natürlicher Größe statt auf Spaltenbreite gezogen */
+:not(.ls-karte) > .ls-bild.ls-bild-frei{background:none;width:fit-content;max-width:100%}
+:not(.ls-karte) > .ls-bild.ls-bild-frei img{width:auto;max-width:100%;height:auto}
 /* Fachzentren-Menü: verlinkte Regionen und Überschrift */
-nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none}
+nav.main .mega-grp > span a,nav.main .mega-fach h4 a{color:inherit;text-decoration:none;font:inherit;letter-spacing:inherit;text-transform:inherit;white-space:normal;padding:0;border:0}
 nav.main .mega-grp > span a:hover,nav.main .mega-fach h4 a:hover{color:var(--violett)}
 /* ===== Moderner Auftritt der Leistungsseiten ===== */
 .ls-fortschritt{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--verlauf);transform-origin:0 50%;transform:scaleX(0);z-index:200;pointer-events:none}
@@ -507,7 +517,7 @@ main{counter-reset:abschnitt}
 .ls-raster{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
 .ls-seite{position:sticky;top:110px}
 .ls-seite h2{margin:0}
-.ls-text{display:grid;gap:1.05rem;min-width:0}
+.ls-text{display:grid;gap:1.05rem;min-width:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > *{max-width:none!important}
 .ls-text > .ls-spalten{margin-block:0;grid-template-columns:minmax(0,1fr)}
 .ls-text > .ls-spalten > .ls-spalte{gap:1.05rem}
@@ -622,26 +632,26 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<div class="ls-raster">
-<div class="ls-seite"><p class="ls-lead">Mit dem Angebot einer günstigen und exzellenten <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brustvergrößerung</a> startete der Dienst des Deutschen Ärzte Service. Nicht ohne Grund ist dieser Eingriff die unangefochtene Nummer Eins im DÄS-Angebot! Buchen Sie noch heute Ihr unverbindliches Beratungsgespräch und lassen Sie sich ausführlich zu Ihren Möglichkeiten einer Brustvergrößerung in Niedersachsen beraten.</p></div>
-<div class="ls-text"><p><a href="index.html#kontakt"></a></p></div>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><p>Mit dem Angebot einer günstigen und exzellenten <a href="brustvergroesserung.html">Brustvergrößerung</a> startete der Dienst des Deutschen Ärzte Service. Nicht ohne Grund ist dieser Eingriff die unangefochtene Nummer Eins im DÄS-Angebot! Buchen Sie noch heute Ihr unverbindliches Beratungsgespräch und lassen Sie sich ausführlich zu Ihren Möglichkeiten einer Brustvergrößerung in Niedersachsen beraten.</p></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-hervor" id="der-deutsche-aerzte-service-hochwertige-schoenheitsoperation">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="besonderheiten"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Der Deutsche Ärzte Service: hochwertige Schönheitsoperationen zu fairen Preisen</h2></div>
 <div class="ls-text"><p>Der Deutsche Ärzte Service – kurz DÄS – hat es sich im Jahre 2004 zur Aufgabe gemacht, hochwertige und trotzdem bezahlbare Schönheitsoperationen im Bundesgebiet anzubieten. Eine ausführliche Beratung, ausgezeichnetes Material und bestens ausgebildete Fachärzte mit viel Erfahrung machen den DÄS-Service aus. Bereits viele zufriedene Kundinnen und Kunden haben diesen perfekten Service zu schätzen gelernt. Besonders beliebt sind auch die attraktiven <a href="index.html#rechner">Finanzierungsmöglichkeiten</a>, die wir Ihnen bieten!</p>
 <h3>Inhaltsverzeichnis</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#besonderheiten">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#vorteile">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#mehr">3. Brustvergrößerung in Niedersachsen: Was Sie über die Schönheitsoperation wissen sollten</a></span></li></ul></div>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#der-deutsche-aerzte-service-hochwertige-schoenheitsoperation">1. Das Besondere am Deutschen Ärzte Service</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#ihre-vorteile-mit-dem-daes">2. Ihre Vorteile mit dem DÄS</a></span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><a href="#brustvergroesserung-in-niedersachsen-nuetzliche-informatione">3. Brustvergrößerung in Niedersachsen: Was Sie über die Schönheitsoperation wissen sollten</a></span></li></ul></div>
 </div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="ihre-vorteile-mit-dem-daes">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="vorteile"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Ihre Vorteile mit dem DÄS</h2></div>
 <div class="ls-text"><p>Wir haben es uns zur Aufgabe gemacht qualitativ hochwertige Schönheitschirurgie in Deutschland bezahlbar zu machen. Mehr als 50.000 Personen haben bisher von unseren Leistungen profitiert.</p>
@@ -664,19 +674,18 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt" id="brustvergroesserung-in-niedersachsen-nuetzliche-informatione">
-  <div class="wrap"><div class="ls-inhalt">
+  <div class="wrap"><span id="mehr"></span><div class="ls-inhalt">
 <div class="ls-raster">
 <div class="ls-seite"><h2>Brustvergrößerung in Niedersachsen: nützliche Informationen über die beliebte Schönheitsoperation</h2></div>
 <div class="ls-text"><p>Sie sind mit Ihren Brüsten unzufrieden? Das kann mehrere Gründe haben: Vielen Frauen ist ihr Busen zu klein, aber auch ein ungleichmäßig geformtes Dekolleté sorgt für Unwohlsein. In beiden Fällen verschafft eine Brustvergrößerung in Niedersachsen Abhilfe. Dafür steht Ihnen unsere Partnerklinik in Braunschweig zur Verfügung. Der Eingriff wird in Fachkreisen meist mit dem lateinischen Ausdruck der Augmentation umschrieben, der so viel wie <i>Vermehrung</i> bedeutet. Dafür kommen beim DÄS nur hochwertige Silikongelimplantate zum Einsatz. Die Fachärzte legen viel Wert darauf, die optimale Größe für die einzelne Kundin zu finden. So können wir gewährleisten, dass das Ergebnis harmonisch wird!</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/17349-nrw-fettabsaugung-stadtansicht.jpg" alt="Fettabsaugung in NRW: Stadtansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/17349-nrw-fettabsaugung-stadtansicht.jpg" alt="Fettabsaugung in NRW: Stadtansicht" loading="lazy" decoding="async"></figure>
 <h3>Voraussetzungen</h3>
-<p>Für eine <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-OP</a> müssen Sie keine bestimmten Bedingungen erfüllen. Es ist lediglich erforderlich, dass Ihr körperliches Wachstum bereits abgeschlossen ist, weshalb Sie zum Zeitpunkt des Eingriffs die Volljährigkeit erreicht haben sollten. Alle weiteren Faktoren bespricht Ihr Facharzt während der ausführlichen <a href="https://www.deutscher-aerzte-service.de/beratung" target="_blank" rel="noopener">Beratung</a> mit Ihnen. Auch ein geschwächtes Bindegewebe ist kein Hinderungsgrund. Ganz im Gegenteil! Viele unserer zufriedenen Kundinnen kombinierten die Brustaugmentation mit einer <a href="bruststraffung.html">Bruststraffung</a>.</p>
-<p><a href="index.html#kontakt"></a></p>
+<p>Für eine <a href="brustvergroesserung.html">Brust-OP</a> müssen Sie keine bestimmten Bedingungen erfüllen. Es ist lediglich erforderlich, dass Ihr körperliches Wachstum bereits abgeschlossen ist, weshalb Sie zum Zeitpunkt des Eingriffs die Volljährigkeit erreicht haben sollten. Alle weiteren Faktoren bespricht Ihr Facharzt während der ausführlichen <a href="https://www.deutscher-aerzte-service.de/beratung" target="_blank" rel="noopener">Beratung</a> mit Ihnen. Auch ein geschwächtes Bindegewebe ist kein Hinderungsgrund. Ganz im Gegenteil! Viele unserer zufriedenen Kundinnen kombinierten die Brustaugmentation mit einer <a href="bruststraffung.html">Bruststraffung</a>.</p>
 <h3>Der Ablauf während der Brustoperation</h3>
 <p>Es gibt unterschiedliche Vorgehensweisen, wie bei einer Brustvergrößerung das Implantat eingesetzt werden kann. Am häufigsten kommen die drei minimalinvasiven Methoden zur Verwendung. Dabei setzt der Plastische Chirurg das Implantat über einen kleinen Schnitt in der Falte unter der Brust, über die Achselhöhle oder direkt an der Brustwarze ein. Damit geht eine schnelle Heilung einher. Außerdem tragen Sie dadurch keine sichtbaren Narben davon. Welche Variante sich bei Ihrem Eingriff eignet, entscheidet Ihr Facharzt nach der genauen Untersuchung. Es hängt vor allem von der Form Ihres Busens und der Größe der Implantate ab.</p>
-<figure class="ls-bild"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
+<figure class="ls-bild ls-bild-frei"><img src="https://cdn.loewenstark.info/data/14607-Fettabsaugung_750.jpg" alt="Fettabsaugung in und um Köln: Körperansicht" loading="lazy" decoding="async"></figure>
 <h3>Wichtige Details</h3>
-<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Preis</b><br> Eine Brustvergrößerung in Niedersachsen erhalten Sie zum pauschalen DÄS-Sonderpreis! Im Komplettpaket kostet dies nur 2.999,– Euro. Damit bekommen Sie alle benötigten Leistungen: gründliche Vor- und Nachuntersuchungen, eine ausführliche Beratung, zu Ihnen passende Implantatauswahl und alles rund um die Operation – inklusive der gesamten Organisation, Vorbereitung und Anästhesie. Bei uns und unseren Partnerkliniken kommen nur die hochwertigsten Materialien und Implantate zum Einsatz. Davon sind wir so überzeugt, sodass Sie zusätzlich eine lebenslange Produktaustauschgarantie erhalten.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Narkose</b><br> Die Brustvergrößerung steht bei unseren Plastischen und Ästhetischen Chirurgen in Niedersachsen auf der Tagesordnung. Auch wenn eine örtliche Betäubung möglich wäre, raten wir Ihnen zur Vollnarkose.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Dauer des Eingriffs</b><br> Das Einsetzen der Implantate geht den erfahrenen Ärzten routiniert von der Hand. Deshalb nimmt es nur ein bis max. zwei Stunden in Anspruch.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Stationär oder ambulant?</b><br> Nach der Vollnarkose werden Sie noch einige Zeit etwas müde sein. Außerdem legt der Chirurg Ihnen eine Wunddrainage, die die behandelte Zone reinigt und damit die Wundheilung fördert. Wir empfehlen Ihnen deshalb, Ihren Aufenthalt in der Klinik noch um ein bis zwei Tage zu verlängern. Für nur 199,– Euro pro Nacht erhalten Sie zum DÄS-Sonderpreis alle möglichen Annehmlichkeiten und sind rund um die Uhr in guten Händen!</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Nachbehandlungen</b><br> Einige Tage nach der Brustvergrößerung in Niedersachsen tragen Sie einen festen Verband. Er dient vor allem dazu, die Implantate zu fixieren, bis die Narben gut abgeheilt sind. Spätestens nach dem Ziehen der Fäden wird er komplett entfernt. Ab dann begleitet Sie für ungefähr anderthalb Monate ein spezieller medizinischer BH, der für ausreichend Halt sorgt.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Kurzfristige Einschränkungen</b><br> Schonen Sie sich die ersten Tage nach der <a href="https://www.deutscher-aerzte-service.de/schoenheitsoperationen/brustvergroesserung-fb" target="_blank" rel="noopener">Brust-OP</a>. Spätestens nach der Verbandabnahme können Sie Ihrem Alltag wieder nachgehen. Sportliche Betätigung ist Ihnen nach zwei Monaten wieder uneingeschränkt möglich.</span></li></ul>
+<ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Preis</b><br> Eine Brustvergrößerung in Niedersachsen erhalten Sie zum pauschalen DÄS-Sonderpreis! Im Komplettpaket kostet dies nur 2.999,– Euro. Damit bekommen Sie alle benötigten Leistungen: gründliche Vor- und Nachuntersuchungen, eine ausführliche Beratung, zu Ihnen passende Implantatauswahl und alles rund um die Operation – inklusive der gesamten Organisation, Vorbereitung und Anästhesie. Bei uns und unseren Partnerkliniken kommen nur die hochwertigsten Materialien und Implantate zum Einsatz. Davon sind wir so überzeugt, sodass Sie zusätzlich eine lebenslange Produktaustauschgarantie erhalten.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Narkose</b><br> Die Brustvergrößerung steht bei unseren Plastischen und Ästhetischen Chirurgen in Niedersachsen auf der Tagesordnung. Auch wenn eine örtliche Betäubung möglich wäre, raten wir Ihnen zur Vollnarkose.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Dauer des Eingriffs</b><br> Das Einsetzen der Implantate geht den erfahrenen Ärzten routiniert von der Hand. Deshalb nimmt es nur ein bis max. zwei Stunden in Anspruch.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Stationär oder ambulant?</b><br> Nach der Vollnarkose werden Sie noch einige Zeit etwas müde sein. Außerdem legt der Chirurg Ihnen eine Wunddrainage, die die behandelte Zone reinigt und damit die Wundheilung fördert. Wir empfehlen Ihnen deshalb, Ihren Aufenthalt in der Klinik noch um ein bis zwei Tage zu verlängern. Für nur 199,– Euro pro Nacht erhalten Sie zum DÄS-Sonderpreis alle möglichen Annehmlichkeiten und sind rund um die Uhr in guten Händen!</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Nachbehandlungen</b><br> Einige Tage nach der Brustvergrößerung in Niedersachsen tragen Sie einen festen Verband. Er dient vor allem dazu, die Implantate zu fixieren, bis die Narben gut abgeheilt sind. Spätestens nach dem Ziehen der Fäden wird er komplett entfernt. Ab dann begleitet Sie für ungefähr anderthalb Monate ein spezieller medizinischer BH, der für ausreichend Halt sorgt.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Kurzfristige Einschränkungen</b><br> Schonen Sie sich die ersten Tage nach der <a href="brustvergroesserung.html">Brust-OP</a>. Spätestens nach der Verbandabnahme können Sie Ihrem Alltag wieder nachgehen. Sportliche Betätigung ist Ihnen nach zwei Monaten wieder uneingeschränkt möglich.</span></li></ul>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Jetzt informieren</a></div></div>
 </div>
 </div></div>
@@ -770,6 +779,21 @@ main{counter-reset:abschnitt}
     });
   }
   takt();window.addEventListener('resize',takt);window.addEventListener('load',takt);
+  // Bewertungen: anfangs sechs Karten, der Rest per Knopf
+  document.querySelectorAll('.ls-bewertungen').forEach(function(box,i){
+    var n=box.querySelectorAll(':scope > .ls-bewertung').length;if(n<=6)return;
+    if(!box.id)box.id='ls-bewertungen-'+(i+1);
+    box.classList.add('zu');
+    var k=document.createElement('button');k.type='button';k.className='btn btn-ghost ls-bewertungen-knopf';
+    k.setAttribute('aria-controls',box.id);k.setAttribute('aria-expanded','false');
+    k.textContent='Weitere Bewertungen anzeigen ('+(n-6)+')';
+    box.insertAdjacentElement('afterend',k);
+    k.addEventListener('click',function(){
+      var zu=box.classList.toggle('zu');k.setAttribute('aria-expanded',zu?'false':'true');
+      k.textContent=zu?'Weitere Bewertungen anzeigen ('+(n-6)+')':'Weniger Bewertungen anzeigen';
+      if(zu)box.scrollIntoView({block:'start'});
+    });
+  });
   // YouTube erst nach Klick laden
   document.querySelectorAll('[data-video]').forEach(function(b){
     b.addEventListener('click',function(){
