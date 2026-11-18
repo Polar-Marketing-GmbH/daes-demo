@@ -571,9 +571,15 @@ h2{letter-spacing:-.03em;line-height:1.06}
 .faq details[open]{border-color:rgba(129,38,133,.35);box-shadow:0 18px 36px -30px rgba(75,29,110,.55)}
 .ins-kachel{border-radius:16px}
 .ins-laden{border-radius:16px}
+/* Häufige Fragen: Überschrift links, Fragen rechts, wie die übrigen Abschnitte */
+#faq .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,6vw,6rem);align-items:start}
+#faq .sec-head{margin:0;max-width:none;position:sticky;top:110px}
+#faq .faq{max-width:none}
+#faq .faq .a{max-width:none}
+@media (max-width:900px){#faq .wrap{grid-template-columns:minmax(0,1fr);gap:1.6rem}#faq .sec-head{position:static}}
 /* Gründerin */
 .g-raster{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(2rem,6vw,5.5rem);align-items:center}
-.g-photo{aspect-ratio:4/5;width:100%;max-width:440px;border-radius:24px;background:var(--stahl-100);box-shadow:0 40px 80px -48px rgba(1,1,1,.45)}
+.g-photo{aspect-ratio:4/5;width:100%;max-width:440px;border-radius:24px;background:linear-gradient(120deg,var(--violett-tint) 0%,#F1D6E8 55%,#EFCADD 100%);box-shadow:0 40px 80px -48px rgba(1,1,1,.45)}
 .g-text{display:grid;gap:1.1rem;min-width:0}
 .g-text h2{font-size:clamp(1.7rem,3vw,2.5rem)}
 .g-text p{color:var(--stahl-800);line-height:1.7;max-width:62ch}
@@ -741,7 +747,7 @@ h2{letter-spacing:-.03em;line-height:1.06}
 
 <section id="gruenderin" aria-labelledby="h-gruenderin">
   <div class="wrap g-raster">
-    <figure class="photo g-photo" style="--pos:50% 8%"><img src="bilder/isabella-schneier.jpg" data-fallback="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/02/Isabella-1-819x1024.png" alt="Isabella Schneier, Gründerin und Geschäftsführerin des Deutschen Ärzte Service" width="819" height="1024" loading="lazy" decoding="async"></figure>
+    <figure class="photo g-photo" style="--pos:50% 8%"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_014833_4e502e33-ef79-4872-ae92-f4b84154f732.png" alt="Isabella Schneier, Gründerin und Geschäftsführerin des Deutschen Ärzte Service" width="819" height="1024" loading="lazy" decoding="async"></figure>
     <div class="g-text">
       <span class="label">Die Gründerin</span>
       <h2 id="h-gruenderin">Ästhetische Medizin beginnt mit einer Frage: Wem kann ich vertrauen?</h2>
