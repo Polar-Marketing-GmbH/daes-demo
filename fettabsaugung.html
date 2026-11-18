@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,6 +602,7 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Körperchirurgie</span>
       <h1>Fettabsaugung ab 1.899,- €</h1>
+      <p class="ls-hero-text">Fettabsaugung (Liposuktion) ab 1.899 € für 2 Zonen beim Facharzt für Plastische Chirurgie – inkl. Voruntersuchung, OP und Nachsorge.</p>
       <nav class="ls-sprung" aria-label="Auf dieser Seite"><a href="#gruende-fuer-eine-fettabsaugung">Gründe</a><a href="#welche-koerperregionen-koennen-behandelt-werden">Körperzonen</a><a href="#so-laeuft-ihre-behandlung-ab">Ablauf</a><a href="#haeufige-fragen">FAQ</a></nav>
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
@@ -603,26 +612,28 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="fuer-definierte-koerperkonturen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Für definierte Körperkonturen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Für definierte Körperkonturen</h2></div>
 <div class="ls-text"><p>Wer über eine Fettabsaugung nachdenkt, findet schnell unzählige Angebote. Unterschiedliche Methoden, große Preisunterschiede und viele Versprechen machen die Entscheidung oft schwierig. Die wichtigste Frage lautet deshalb nicht nur: Ist eine Fettabsaugung das Richtige für mich? Sondern vor allem: Welchem Arzt kann ich vertrauen?</p>
 <p>Genau deshalb wenden sich jedes Jahr zahlreiche Patientinnen an den Deutschen Ärzte Service. Seit über 20 Jahren helfen wir ihnen dabei, den passenden Spezialisten für ihren Eingriff zu finden.</p>
 <p>Trotz gesunder Ernährung, regelmäßiger Bewegung und Diäten bleiben hartnäckige Fettpolster an bestimmten Körperstellen häufig bestehen.</p>
 <p>Mit einer Fettabsaugung (Liposuktion) können erfahrene Fachärzte für Plastische und Ästhetische Chirurgie diese Fettdepots gezielt entfernen und Ihre Körperkonturen dauerhaft harmonisieren. Die Behandlung dient nicht der Gewichtsabnahme, sondern modelliert einzelne Körperregionen und sorgt für natürlich wirkende Proportionen.</p>
 <p>Beim Deutschen Ärzte Service ist eine Fettabsaugung (2 Zonen) ab 1.899 € an rund 40 Standorten in Deutschland möglich. Die Operationen werden von erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie durchgeführt. Wir begleiten Sie von der persönlichen Beratung über die Organisation Ihrer Operation bis zur Nachsorge.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="gruende-fuer-eine-fettabsaugung">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Gründe für eine Fettabsaugung</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Gründe für eine Fettabsaugung</h2></div>
 <div class="ls-text"><p>Jeder Körper ist einzigartig. Ebenso unterschiedlich sind die Gründe, weshalb sich Menschen für eine Fettabsaugung entscheiden. Häufig bleiben einzelne Fettpolster trotz gesunder Ernährung und regelmäßiger Bewegung dauerhaft bestehen und lassen sich auch durch Sport kaum reduzieren.</p>
 <p>Besonders häufig werden Fettdepots an Bauch, Hüften, Taille, Oberschenkeln oder den sogenannten Reiterhosen behandelt. Auch kleinere Fettansammlungen an Oberarmen, Rücken oder unter dem Kinn können beim Blick in den Spiegel als störend wirken.</p>
 <p>Eine Fettabsaugung eignet sich insbesondere dazu, den Körper zu formen. Sie ersetzt keine Diät und dient nicht dazu Gewicht zu verlieren. Welche Behandlungsmöglichkeiten in Ihrem persönlichen Fall sinnvoll sind und welches Ergebnis realistisch erreicht werden kann, bespricht Ihr behandelnder Facharzt ausführlich mit Ihnen.</p>
 <p>Genauso individuell wie Ihre Ausgangssituation sollte auch die Wahl des behandelnden Facharztes sein. Deshalb achten wir darauf, dass Sie nicht irgendeinen Arzt kennenlernen, sondern einen Spezialisten, der regelmäßig Fettabsaugungen durchführt.</p></div>
+</div>
 </div></div>
 </section>
 
@@ -640,11 +651,13 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Ihre Vorteile beim Deutschen Ärzte Service</h2>
-<p><b>Viele Menschen vergleichen zuerst Preise. Wir vergleichen zuerst Qualität.</b></p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Ihre Vorteile beim Deutschen Ärzte Service</h2></div>
+<div class="ls-text"><p><b>Viele Menschen vergleichen zuerst Preise. Wir vergleichen zuerst Qualität.</b></p>
 <p>Eine Fettabsaugung erfordert Erfahrung, Präzision und eine sorgfältige Planung. Deshalb wählen wir aus unserem bundesweiten Netzwerk gezielt einen erfahrenen Facharzt für Plastische und Ästhetische Chirurgie aus, der auf Fettabsaugungen spezialisiert ist und gemeinsam mit Ihnen ein individuelles Behandlungskonzept entwickelt.</p>
 <p>Nicht jeder Facharzt ist auf jeden Eingriff gleichermaßen spezialisiert. Ein Brustchirurg ist nicht automatisch der beste Arzt für Fettabsaugungen. Deshalb ist es so wichtig, dass der Facharzt über die erforderliche Erfahrung an Liposuktionen verfügt.</p>
-<p>Seit über 20 Jahren sind wir für unsere Patientinnen und Patienten ein unabhängiger Qualitätsfilter. Das bedeutet: Wir empfehlen nicht irgendeinen Arzt, sondern suchen gezielt den Spezialisten, der am besten zu Ihrem Eingriff passt. Unsere Partnerärzte arbeiten normalerweise im Hochpreissegment. Über den Deutschen Ärzte Service stellen sie freie OP-Kapazitäten zur Verfügung. Für unsere Patientinnen bedeutet das: Sie profitieren von derselben ärztlichen Erfahrung, zahlen aber nicht den regulären Marktpreis.</p>
+<p>Seit über 20 Jahren sind wir für unsere Patientinnen und Patienten ein unabhängiger Qualitätsfilter. Das bedeutet: Wir empfehlen nicht irgendeinen Arzt, sondern suchen gezielt den Spezialisten, der am besten zu Ihrem Eingriff passt. Unsere Partnerärzte arbeiten normalerweise im Hochpreissegment. Über den Deutschen Ärzte Service stellen sie freie OP-Kapazitäten zur Verfügung. Für unsere Patientinnen bedeutet das: Sie profitieren von derselben ärztlichen Erfahrung, zahlen aber nicht den regulären Marktpreis.</p></div>
+</div>
 <div class="ls-split bild-rechts"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Fettabsaugung.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h3>Ihre Vorteile auf einen Blick</h3>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Netzwerk aus renommierten Fachärzten für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ausgewählte Fachkliniken in Deutschland</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Berücksichtigung Ihres Wohnorts und Ihrer individuellen Wünsche</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Transparente Komplettpreise ohne versteckte Zusatzkosten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliche Betreuung vor, während und nach der Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Mehr als 20 Jahre Erfahrung im Bereich ästhetischer Behandlungen</span></li></ul>
 <p class="ls-knopf"><a class="btn btn-ghost" href="index.html#qualitaet">Unsere Qualitätsmerkmale</a></p></div></div>
@@ -652,40 +665,44 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="welche-koerperregionen-koennen-behandelt-werden">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Welche Körperregionen können behandelt werden?</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Welche Körperregionen können behandelt werden?</h2></div>
 <div class="ls-text"><p>Eine Fettabsaugung eignet sich zur gezielten Entfernung hartnäckiger Fettdepots an verschiedenen Körperzonen. Ziel ist es, die natürlichen Proportionen des Körpers zu harmonisieren und einzelne Bereiche dauerhaft zu modellieren.</p>
 <p>Zu den häufig behandelten Zonen gehören:</p>
 <ul class="ls-liste zwei"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bauch</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Hüfte und Taille</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Oberschenkel innen und außen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Knie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Oberarme</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Rücken</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Doppelkinn</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Brust beim Mann</span></li></ul>
 <p>Welche Körperregionen behandelt werden können und welche Ergebnisse realistisch erreichbar sind, hängt von Ihrer individuellen Ausgangssituation ab. Ihr behandelnder Facharzt untersucht die betroffenen Bereiche ausführlich und bespricht gemeinsam mit Ihnen die geeignete Behandlungsmethode.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="diese-leistungen-sind-bei-uns-im-preis-enthalten">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2></div>
 <div class="ls-text"><p>Bei einer Fettabsaugung (Liposuktion) gehören neben der Operation auch die medizinische Vorbereitung und die anschließende Nachsorge zu einer umfassenden Behandlung. Deshalb beinhaltet das Leistungspaket des Deutschen Ärzte Service die wesentlichen medizinischen und organisatorischen Leistungen:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinische Voruntersuchung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliches Beratungsgespräch mit einem Facharzt für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Individuelle Behandlungs- und Operationsplanung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Organisation und Terminabstimmung Ihrer Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Lokalanästhesie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Fettabsaugung einschließlich der medizinisch notwendigen Nebenleistungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ärztliche Kontrolluntersuchungen und medizinische Nachsorge</span></li></ul>
 <p>Die Lokalanästhesie ist bereits im Paketpreis enthalten. Andere Betäubungsverfahren können nach vorheriger Absprache mit Ihrem Facharzt gegen Aufpreis vereinbart werden.</p>
 <p>Im persönlichen Beratungsgespräch werden die Behandlung und die genauen Kosten individuell mit Ihnen besprochen.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-hervor" id="kosten-einer-fettabsaugung">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Kosten einer Fettabsaugung</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Kosten einer Fettabsaugung</h2></div>
 <div class="ls-text"><p>Eine Fettabsaugung von zwei Zonen erhalten Sie beim Deutschen Ärzte Service bereits ab 1.899 €.<br>Der endgültige Preis richtet sich nach den zu behandelnden Zonen, dem Umfang des Eingriffs sowie der gewählten Anästhesie. Bereits im persönlichen Beratungsgespräch teil Ihnen ihr Arzt die individuellen Kosten mit.</p>
 <p>Dank unseres besonderen Konzepts profitieren unsere Patientinnen und Patienten häufig von Preisvorteilen zwischen 30 und 50 Prozent gegenüber dem regulären Behandlungspreis – ohne Kompromisse bei Qualität, Sicherheit oder ärztlicher Erfahrung.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="so-laeuft-ihre-behandlung-ab">
   <div class="wrap"><div class="ls-inhalt">
-<h2>So läuft Ihre Behandlung ab</h2>
-<div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
+<div class="ls-raster">
+<div class="ls-seite"><h2>So läuft Ihre Behandlung ab</h2></div>
+<div class="ls-text"><div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
 <p>Der erste Schritt ist ein ausführliches Beratungsgespräch mit einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie. Dabei werden Ihre Wünsche, die zu behandelnden Körperregionen sowie Ihre medizinischen Voraussetzungen besprochen.<br>Außerdem erhalten Sie eine realistische Einschätzung der möglichen Ergebnisse sowie umfassende Informationen zum Eingriff, zum Heilungsverlauf und zu möglichen Risiken.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">2</span><div class="ls-schritt-text"><h3>Vorbereitung</h3>
 <p>Vor der Operation erfolgen die notwendigen Voruntersuchungen. Ihr Facharzt erklärt Ihnen ausführlich, wie Sie sich optimal auf den Eingriff vorbereiten können und worauf Sie in den Tagen davor achten sollten.<br>Falls eine Vollnarkose vorgesehen ist, findet zusätzlich ein Gespräch mit dem Anästhesisten statt.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">3</span><div class="ls-schritt-text"><h3>Operation</h3>
 <p>Je nach Umfang der Behandlung dauert eine Fettabsaugung in der Regel zwischen 30 Minuten und drei Stunden. Über kleine, möglichst unauffällige Hautschnitte werden feine Kanülen eingeführt, mit denen die zuvor gelösten Fettzellen schonend entfernt werden.<br>Welche Operationsmethode angewendet wird, richtet sich nach der behandelten Körperregion, der Hautbeschaffenheit und Ihren individuellen Voraussetzungen. Ziel ist stets ein möglichst gleichmäßiges und natürlich wirkendes Ergebnis.</p>
@@ -694,33 +711,36 @@ main{counter-reset:abschnitt}
 <p>Für ein optimales Behandlungsergebnis sollte die verordnete Kompressionskleidung konsequent getragen werden. Sie unterstützt den Heilungsverlauf und hilft dabei, dass sich das Gewebe gleichmäßig an die neue Körperkontur anpasst.</p>
 <p>Viele Patientinnen und Patienten können – abhängig vom Umfang des Eingriffs und ihrer beruflichen Tätigkeit – bereits nach wenigen Tagen wieder ihren Alltag aufnehmen. Auf intensive sportliche Aktivitäten sollte jedoch für einige Wochen verzichtet werden.</p>
 <p>Eine erste Veränderung der Körperkonturen ist häufig bereits nach wenigen Wochen sichtbar. Das endgültige Ergebnis entwickelt sich mit dem Abschluss der Heilung und kann nach etwa drei bis sechs Monaten beurteilt werden.</p></div></div></div>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="sicherheit-und-risiken">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Sicherheit und Risiken</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Sicherheit und Risiken</h2></div>
 <div class="ls-text"><p>Vertrauen beginnt für uns lange vor der Operation. Deshalb wählen wir unsere Partnerärzte sorgfältig aus und arbeiten ausschließlich mit erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie zusammen, denn Ihre Sicherheit hat für uns höchste Priorität.</p>
 <p>Vor jeder Fettabsaugung steht eine ausführliche Untersuchung sowie ein persönliches Beratungsgespräch. Dabei informiert Sie Ihr behandelnder Facharzt umfassend über den Eingriff, den zu erwartenden Heilungsverlauf und mögliche Risiken. Gemeinsam wird geprüft, ob eine Fettabsaugung für Ihre individuelle Situation geeignet ist und welche Ergebnisse realistisch erreicht werden können.</p>
 <p>Wie jeder operative Eingriff ist auch eine Fettabsaugung mit allgemeinen Operationsrisiken verbunden. Zu den möglichen Begleiterscheinungen zählen unter anderem Schwellungen, Blutergüsse, vorübergehende Gefühlsstörungen oder Wundheilungsstörungen. In seltenen Fällen können Nachblutungen, Infektionen oder Korrektureingriffe erforderlich werden.</p>
 <p>Eine sorgfältige Operationsplanung, moderne Behandlungsmethoden und die konsequente Einhaltung der ärztlichen Empfehlungen vor und nach der Operation tragen dazu bei, das Risiko möglicher Komplikationen zu reduzieren.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="die-wichtigsten-fakten-zur-fettabsaugung">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Die wichtigsten Fakten zur Fettabsaugung</h2>
+<div class="ls-kopfzeile"><h2>Die wichtigsten Fakten zur Fettabsaugung</h2></div>
 <dl class="ls-fakten"><div><dt>Kosten</dt><dd>ab 1.899 Euro für 2 Körperzonen</dd></div><div><dt>OP Dauer</dt><dd>ca. 30 Minuten – 3 Stunden</dd></div><div><dt>Narkose</dt><dd>Lokalanästhesie, auf Wunsch Dämmerschlaf oder Vollnarkose</dd></div><div><dt>Klinikaufenthalt</dt><dd>ambulant oder eine Übernachtung</dd></div><div><dt>Kompressionskleidung</dt><dd>in der Regel 4–6 Wochen</dd></div><div><dt>Nachsorge</dt><dd>Kontrolluntersuchungen nach ärztlicher Empfehlung</dd></div></dl>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufige Fragen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Für wen eignet sich eine Fettabsaugung?</summary><div class="a"><p>Eine Fettabsaugung eignet sich für Menschen, die trotz gesunder Ernährung und regelmäßiger Bewegung unter hartnäckigen Fettpolstern leiden. Besonders gute Voraussetzungen bestehen bei einem stabilen Körpergewicht und einer guten Hautelastizität. Da eine Liposuktion der Körperformung dient, ersetzt sie keine Diät oder Behandlung von Übergewicht.</p></div></details><details><summary>Welche Körperregionen können behandelt werden?</summary><div class="a"><p>Am häufigsten werden Bauch, Hüften, Taille, Reiterhosen und Oberschenkel behandelt. Darüber hinaus können – je nach individueller Ausgangssituation – auch Oberarme, Rücken, Knie oder das Doppelkinn behandelt werden. Welche Regionen geeignet sind, entscheidet Ihr Facharzt nach einer gründlichen Untersuchung.</p></div></details><details><summary>Welche Methode wird angewendet?</summary><div class="a"><p>Heute kommen überwiegend moderne, gewebeschonende Verfahren auf Basis des bewährten Tumeszenz-Prinzips zum Einsatz. Welche Technik für Sie geeignet ist, richtet sich unter anderem nach der Körperregion, der Hautbeschaffenheit und dem Umfang des Eingriffs. Ihr behandelnder Facharzt erläutert Ihnen die empfohlene Methode ausführlich im Beratungsgespräch.</p></div></details><details><summary>Bleibt das Ergebnis dauerhaft?</summary><div class="a"><p>Die bei einer Fettabsaugung entfernten Fettzellen bilden sich grundsätzlich nicht neu. Das Ergebnis kann daher dauerhaft erhalten bleiben. Voraussetzung ist ein möglichst stabiles Körpergewicht, da die verbleibenden Fettzellen bei einer deutlichen Gewichtszunahme an Volumen zunehmen können.</p></div></details><details><summary>Wann sehe ich das endgültige Ergebnis?</summary><div class="a"><p>Unmittelbar nach der Operation sind Schwellungen normal und können das Ergebnis zunächst verdecken. Erste Veränderungen sind häufig bereits nach einigen Wochen sichtbar. Das endgültige Ergebnis entwickelt sich im Verlauf der Heilung und lässt sich meist nach drei bis sechs Monaten beurteilen.</p></div></details><details><summary>Ist eine Fettabsaugung schmerzhaft?</summary><div class="a"><p>Während der Operation verspüren Sie dank der Anästhesie keine Schmerzen. Nach dem Eingriff können Muskelkatergefühl, Spannungsgefühle oder leichte Schmerzen auftreten. Diese Beschwerden lassen sich in der Regel gut mit geeigneten Schmerzmitteln behandeln und klingen innerhalb weniger Tage bis Wochen wieder ab.</p></div></details><details><summary>Wann kann ich wieder arbeiten und Sport treiben?</summary><div class="a"><p>Je nach Umfang der Behandlung können viele Patientinnen und Patienten bereits nach wenigen Tagen wieder ihrer beruflichen Tätigkeit nachgehen. Auf intensive sportliche Aktivitäten sollte jedoch etwa vier bis sechs Wochen verzichtet werden. Ihr behandelnder Facharzt informiert Sie individuell darüber, ab wann körperliche Belastungen wieder möglich sind.</p></div></details><details><summary>Muss ich Kompressionskleidung tragen?</summary><div class="a"><p>Ja. Nach einer Fettabsaugung wird in der Regel spezielle Kompressionskleidung getragen. Sie unterstützt die Heilung, reduziert Schwellungen und hilft dem Gewebe dabei, sich gleichmäßig an die neuen Körperkonturen anzupassen. Die empfohlene Tragedauer beträgt meist vier bis sechs Wochen.</p></div></details><details><summary>Warum ist eine Fettabsaugung beim Deutschen Ärzte Service günstiger?</summary><div class="a"><p>Unsere Partnerärzte arbeiten normalerweise im Hochpreissegment. Über den Deutschen Ärzte Service stellen sie freie Operationskapazitäten zur Verfügung. Dadurch profitieren Sie von derselben medizinischen Qualität zu deutlich günstigeren Konditionen – ohne Kompromisse bei Erfahrung, Sicherheit oder Betreuung.</p></div></details><details><summary>Welche Risiken können auftreten?</summary><div class="a"><p>Wie jeder operative Eingriff ist auch eine Fettabsaugung mit allgemeinen Operationsrisiken verbunden. Dazu gehören unter anderem Schwellungen, Blutergüsse, Infektionen, Wundheilungsstörungen oder vorübergehende Gefühlsstörungen. Das individuelle Risiko hängt unter anderem vom Gesundheitszustand und den persönlichen Voraussetzungen ab.<br>Durch eine sorgfältige Planung, die Behandlung durch erfahrene Fachärzte sowie die konsequente Einhaltung aller ärztlichen Empfehlungen vor und nach der Operation lassen sich viele Risiken zusätzlich reduzieren.</p></div></details></div></div>
+</div>
 </div></div>
 </section>
 
@@ -829,7 +849,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -851,6 +871,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

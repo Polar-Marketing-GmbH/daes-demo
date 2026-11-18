@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,6 +602,7 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Brustchirurgie</span>
       <h1>Brustvergrößerung für 2.999 €</h1>
+      <p class="ls-hero-text">Brustvergrößerung mit Mentor- oder Motiva-Implantaten ab 2.999 €. Fachärztliche Beratung, 40 Standorte in Deutschland, persönliche Betreuung</p>
       <nav class="ls-sprung" aria-label="Auf dieser Seite"><a href="#gruende-fuer-eine-brustvergroesserung">Gründe</a><a href="#moeglichkeiten-bei-der-brustvergroesserung">Möglichkeiten</a><a href="#so-laeuft-ihre-behandlung-ab">Ablauf</a><a href="#haeufige-fragen">FAQ</a></nav>
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
@@ -604,20 +613,23 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<p><b>Brustvergrößerung auf einen Blick</b></p>
-<p>Bei einer Brustvergrößerung (Mammaaugmentation) setzt ein Facharzt für Plastische und Ästhetische Chirurgie ein Silikonimplantat ein, über oder unter dem Brustmuskel. Der Eingriff dauert etwa 1–2 Stunden in Vollnarkose und ist ambulant oder mit einer Übernachtung möglich. Beim Deutschen Ärzte Service kostet eine Brustvergrößerung 2.999 € mit runden und 3.329 € mit anatomischen Implantaten von Mentor oder Motiva, an rund 40 Standorten in Deutschland.</p>
+<div class="ls-raster">
+<div class="ls-seite"><p class="ls-lead"><b>Brustvergrößerung auf einen Blick</b></p></div>
+<div class="ls-text"><p>Bei einer Brustvergrößerung (Mammaaugmentation) setzt ein Facharzt für Plastische und Ästhetische Chirurgie ein Silikonimplantat ein, über oder unter dem Brustmuskel. Der Eingriff dauert etwa 1–2 Stunden in Vollnarkose und ist ambulant oder mit einer Übernachtung möglich. Beim Deutschen Ärzte Service kostet eine Brustvergrößerung 2.999 € mit runden und 3.329 € mit anatomischen Implantaten von Mentor oder Motiva, an rund 40 Standorten in Deutschland.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="mehr-volumen-und-eine-harmonische-brustform">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Mehr Volumen und eine harmonische Brustform</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Mehr Volumen und eine harmonische Brustform</h2></div>
 <div class="ls-text"><p>Manche Frauen haben von Natur aus eine kleine Brust, bei anderen sind die Brüste unterschiedlich groß oder haben nach Schwangerschaft, Stillzeit oder einer deutlichen Gewichtsabnahme an Volumen verloren. Wenn die eigene Brust nicht mehr zum Körpergefühl passt, wünschen sich viele Frauen mehr Fülle und eine harmonischere Form.</p>
 <p>Eine Brustvergrößerung gibt der Brust mehr Volumen und kann ihre Form gezielt verändern. Ziel ist ein stimmiges Ergebnis, das zu Ihren Proportionen und Ihren Vorstellungen passt. Wie groß Ihre Brust nach dem Eingriff werden kann und welche Form möglich ist, hängt von Ihrer Anatomie und Ihrem vorhandenen Brustgewebe ab.</p>
 <p>Beim Deutschen Ärzte Service kostet eine Brustvergrößerung mit runden Markenimplantaten von <b>Mentor oder Motiva 2.999 €</b>. An unseren 40 Standorten in ganz Deutschland werden Sie ausschließlich von <b>Fachärzten für Plastische und Ästhetische Chirurgie</b> beraten und behandelt. Gemeinsam mit Ihrem Arzt entscheiden Sie, welche Implantatform, welche Implantatgröße und welche Operationsmethode zu Ihnen passen. Wir begleiten Sie vom ersten Gespräch über die Operation bis zur Nachsorge.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
 <p>Jeden Monat informieren sich über 7.000 Nutzerinnen und Nutzer auf unserer Website zu Brust-OPs.<br>–<i>Quelle: Google Analytics, Durchschnitt August–Oktober 2026</i></p></div>
+</div>
 </div></div>
 </section>
 
@@ -634,22 +646,25 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="gruende-fuer-eine-brustvergroesserung">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Gründe für eine Brustvergrößerung</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Gründe für eine Brustvergrößerung</h2></div>
 <div class="ls-text"><p>Hinter dem Wunsch nach einer Brustvergrößerung steckt selten nur ein einziger Grund. Manche Frauen wünschen sich schon lange mehr Brustvolumen. Bei anderen verändert sich die Brust im Laufe des Lebens etwa nach Schwangerschaft und Stillzeit, nach einer Gewichtsabnahme oder durch den natürlichen Alterungsprozess. Oft geht es deshalb nicht einfach um eine größere Brust, sondern darum, sich mit den eigenen Proportionen wieder wohler zu fühlen.</p>
 <p>Häufige Gründe sind:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Der Wunsch nach mehr Brustvolumen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Von Natur aus kleine oder wenig ausgeprägte Brüste</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Volumenverlust nach Schwangerschaft und Stillzeit</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Veränderungen nach einer deutlichen Gewichtsabnahme</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Asymmetrie, d. h. unterschiedlich große oder unterschiedlich geformte Brüste</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Der Wunsch nach einem volleren Dekolleté</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Die Korrektur bestimmter angeborener Brustformen</span></li></ul>
 <p>Was sich mit einer Brustvergrößerung erreichen lässt, hängt unter anderem von Ihrer Brustform, dem vorhandenen Gewebe, der Beschaffenheit Ihrer Haut und Ihren Wünschen ab. Ihr Facharzt untersucht Ihre Brust gründlich und erstellt mit Ihnen einen Behandlungsplan, der genau auf Sie zugeschnitten ist.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Ihre Vorteile beim Deutschen Ärzte Service</h2>
-<p>Bei einer Brustvergrößerung kommt es nicht nur darauf an, einen <b><a href="https://www.deutscher-aerzte-service.de/fachaerzte" target="_blank" rel="noopener">Facharzt für Plastische und Ästhetische Chirurgie</a></b> zu finden. Entscheidend ist auch, wie viel Erfahrung der Arzt gerade mit Brustoperationen und der gewünschten Operationsmethode hat.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Ihre Vorteile beim Deutschen Ärzte Service</h2></div>
+<div class="ls-text"><p>Bei einer Brustvergrößerung kommt es nicht nur darauf an, einen <b><a href="https://www.deutscher-aerzte-service.de/fachaerzte" target="_blank" rel="noopener">Facharzt für Plastische und Ästhetische Chirurgie</a></b> zu finden. Entscheidend ist auch, wie viel Erfahrung der Arzt gerade mit Brustoperationen und der gewünschten Operationsmethode hat.</p>
 <p>Genau hier liegt ein wichtiger <b>Vorteil des Deutschen Ärzte Service</b>: Durch unsere langjährige Zusammenarbeit mit Fachärzten und Fachkliniken in ganz Deutschland kennen wir die jeweiligen Behandlungsschwerpunkte und Erfahrungen unserer Ärzte. So können wir gezielt einen Spezialisten auswählen, der regelmäßig Brustvergrößerungen durchführt und zu Ihrer individuellen Ausgangssituation und Ihren Wünschen passt.</p>
-<p>Seit 2004 – <b>also seit über 20 Jahren</b> – begleiten wir Menschen bei ästhetischen Behandlungen. Von Ihrer ersten Anfrage über die Auswahl eines geeigneten Facharztes und die Vereinbarung des Beratungstermins bis zur Operation und Nachsorge sind wir Ihr persönlicher Ansprechpartner.</p>
+<p>Seit 2004 – <b>also seit über 20 Jahren</b> – begleiten wir Menschen bei ästhetischen Behandlungen. Von Ihrer ersten Anfrage über die Auswahl eines geeigneten Facharztes und die Vereinbarung des Beratungstermins bis zur Operation und Nachsorge sind wir Ihr persönlicher Ansprechpartner.</p></div>
+</div>
 <div class="ls-split bild-rechts"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Brustvergroesserung-Symbolbild.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h3>Ihre Vorteile auf einen Blick</h3>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bundesweites Netzwerk erfahrener Fachärzte für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Gezielte Auswahl eines auf Brustoperationen spezialisierten Facharztes</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ausgewählte Fachkliniken in ganz Deutschland</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Zahlreiche Standorte – Behandlung möglichst in Ihrer Nähe</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Markenimplantate von Mentor und Motiva</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Implantatform und -größe individuell für Sie ausgewählt</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Transparenter Komplettpreis, alle enthaltenen Leistungen sind unten aufgelistet</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliche Betreuung vor, während und nach der Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Mehr als 20 Jahre Erfahrung mit ästhetischen Behandlungen</span></li></ul>
 <p class="ls-knopf"><a class="btn btn-ghost" href="index.html#qualitaet">Unsere Qualitätsmerkmale</a></p></div></div>
@@ -658,8 +673,9 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="moeglichkeiten-bei-der-brustvergroesserung">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Möglichkeiten bei der Brustvergrößerung</h2>
-<p>Bei einer Brustvergrößerung kommen verschiedene Operationstechniken sowie unterschiedliche Implantatformen, Implantatgrößen und Implantatprofile infrage. Welche Kombination geeignet ist, hängt von Ihrer Anatomie, Ihrem vorhandenen Brustgewebe und dem gewünschten Ergebnis ab.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Möglichkeiten bei der Brustvergrößerung</h2></div>
+<div class="ls-text"><p>Bei einer Brustvergrößerung kommen verschiedene Operationstechniken sowie unterschiedliche Implantatformen, Implantatgrößen und Implantatprofile infrage. Welche Kombination geeignet ist, hängt von Ihrer Anatomie, Ihrem vorhandenen Brustgewebe und dem gewünschten Ergebnis ab.</p>
 <p>Dieses Video gibt Ihnen einen ersten Einblick in die Möglichkeiten und den Ablauf einer Brustvergrößerung.</p>
 <div class="ls-video"><div class="ls-video-platz"><p>Sie sehen gerade einen Platzhalterinhalt von <b>YouTube</b>. Um auf den eigentlichen Inhalt zuzugreifen, klicken Sie auf die Schaltfläche unten. Bitte beachten Sie, dass dabei Daten an Drittanbieter weitergegeben werden.</p><div class="ls-video-knoepfe"><a class="ls-video-info" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Mehr Informationen</a><button class="btn btn-ghost" type="button" data-video="ayHHsJj8B_0" data-titel="Video-Animation zur Brustvergrößerung">Inhalt entsperren</button><button class="btn btn-ghost" type="button" data-video="ayHHsJj8B_0" data-titel="Video-Animation zur Brustvergrößerung">Erforderlichen Service akzeptieren und Inhalte entsperren</button></div></div></div>
 <h3>Individuelle Auswahl der Implantate</h3>
@@ -678,7 +694,8 @@ main{counter-reset:abschnitt}
 <p>Entscheidend sind unter anderem die Menge des vorhandenen Brustgewebes, die Beschaffenheit der Haut, die Form der Brust, das gewählte Implantat und das gewünschte Ergebnis. Bei Frauen mit wenig eigenem Brustgewebe kann beispielsweise eine stärkere Abdeckung des Implantats sinnvoll sein.</p>
 <p>Ihr Facharzt untersucht Ihre individuellen Voraussetzungen und bespricht mit Ihnen, welche Implantatlage in Ihrem Fall geeignet ist und welche Vor- und Nachteile die verschiedenen Möglichkeiten haben.</p>
 <h3>Welche Schnitttechniken gibt es bei der Brustvergrößerung?</h3>
-<p>Das Brustimplantat kann über verschiedene Zugänge eingesetzt werden. Welche Schnittführung infrage kommt, richtet sich nach Ihrer Anatomie, dem gewählten Implantat, der geplanten Implantatlage und Ihren individuellen Voraussetzungen.</p>
+<p>Das Brustimplantat kann über verschiedene Zugänge eingesetzt werden. Welche Schnittführung infrage kommt, richtet sich nach Ihrer Anatomie, dem gewählten Implantat, der geplanten Implantatlage und Ihren individuellen Voraussetzungen.</p></div>
+</div>
 <div class="ls-split"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/10/brustvergroesserung-zugang-brustumschlagsfalte.jpg" alt="Zugang über die Unterbrustfalte bei der Brustvergrößerung " width="741" height="593" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h4>Schnitt in der Unterbrustfalte</h4>
 <p>Bei der häufig gewählten inframammären Schnittführung erfolgt der Zugang über die natürliche Falte unterhalb der Brust.</p>
 <p>Die Narbe liegt später möglichst unauffällig in dieser Falte. Zugleich hat der Chirurg über diesen Zugang einen guten Überblick, wenn er die Implantattasche vorbereitet.</p></div></div>
@@ -692,21 +709,24 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="was-ist-im-preis-einer-brustvergroesserung-enthalten">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Was ist im Preis einer Brustvergrößerung enthalten?</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Was ist im Preis einer Brustvergrößerung enthalten?</h2></div>
 <div class="ls-text"><p>Bei einer Brustvergrößerung greifen verschiedene medizinische und organisatorische Leistungen ineinander. Der Deutsche Ärzte Service bündelt diese in einem Behandlungspaket, damit Sie die wichtigsten Bestandteile Ihres Eingriffs von Anfang an im Blick haben:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinische Voruntersuchung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ausführliches Beratungsgespräch mit einem Facharzt für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Aufklärung über geeignete Behandlungsmöglichkeiten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Planung der Operation entsprechend Ihren individuellen Voraussetzungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Koordination und Terminvereinbarung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Runde Silikongelimplantate von Mentor oder Motiva</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Anästhesie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Operative Brustvergrößerung inklusive der medizinisch erforderlichen Nebenleistungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinische Nachsorge nach der Operation</span></li></ul>
 <p>Die Brustvergrößerung ist zum Komplettpreis von 2.999 € möglich, anatomische Implantate kosten dabei einen Aufpreis von 330€. Im persönlichen Gespräch mit Ihrem Facharzt werden Ihre Wünsche, die geeignete Behandlung und mögliche individuelle Besonderheiten besprochen.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-hervor" id="kosten-fuer-ihre-brustvergroesserung">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Kosten für Ihre Brustvergrößerung</h2>
-<p>Eine Brustvergrößerung mit runden Markenimplantaten <b>von Mentor oder Motiva kostet beim Deutschen Ärzte Service 2.999 €</b>. Für anatomische Implantate fällt ein Aufpreis von 330 € an.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Kosten für Ihre Brustvergrößerung</h2></div>
+<div class="ls-text"><p>Eine Brustvergrößerung mit runden Markenimplantaten <b>von Mentor oder Motiva kostet beim Deutschen Ärzte Service 2.999 €</b>. Für anatomische Implantate fällt ein Aufpreis von 330 € an.</p>
 <p>Nicht im <a href="https://www.deutscher-aerzte-service.de/information-zu-silikonimplantaten/premium-komplettpaket" target="_blank" rel="noopener">Komplettpreis</a> enthalten sind die Anmeldegebühr für das Beratungsgespräch sowie gegebenenfalls erforderliche externe Voruntersuchungen und der Kompressions-BH.</p>
-<p>Ist zusätzlich eine Bruststraffung erforderlich, wird der Eingriff umfangreicher und es gelten andere Preise. Ob eine reine Brustvergrößerung ausreicht oder eine Kombination aus Brustvergrößerung und Bruststraffung sinnvoller ist, beurteilt Ihr Facharzt im persönlichen Beratungsgespräch.</p>
+<p>Ist zusätzlich eine Bruststraffung erforderlich, wird der Eingriff umfangreicher und es gelten andere Preise. Ob eine reine Brustvergrößerung ausreicht oder eine Kombination aus Brustvergrößerung und Bruststraffung sinnvoller ist, beurteilt Ihr Facharzt im persönlichen Beratungsgespräch.</p></div>
+</div>
 <div class="ls-spalten" style="--n:1"><div class="ls-spalte"><h3>Warum ist eine Brustvergrößerung beim Deutschen Ärzte Service günstiger?</h3>
 <p>Ein günstigerer Preis bedeutet nicht automatisch weniger Qualität. Der Deutsche Ärzte Service arbeitet s<b>eit über 20 Jahren mit Fachärzten für Plastische und Ästhetische Chirurgie</b> und Fachkliniken in Deutschland zusammen. Durch langfristige Kooperationen, gebündelte OP-Kontingente und effiziente organisatorische Abläufe können Behandlungen zu besonderen Konditionen angeboten werden.</p>
 <p>Gespart wird dabei nicht an der fachärztlichen Qualifikation oder an den Brustimplantaten: Die Operation wird von einem Facharzt für Plastische und Ästhetische Chirurgie durchgeführt, und bei Brustvergrößerungen verwenden wir <b>Markenimplantate von Mentor oder Motiva.</b></p>
@@ -717,8 +737,9 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="so-laeuft-ihre-behandlung-ab">
   <div class="wrap"><div class="ls-inhalt">
-<h2>So läuft Ihre Behandlung ab</h2>
-<div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
+<div class="ls-raster">
+<div class="ls-seite"><h2>So läuft Ihre Behandlung ab</h2></div>
+<div class="ls-text"><div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
 <p>Am Anfang steht ein <a href="https://www.deutscher-aerzte-service.de/beratungsgespraech-vor-der-schoenheitsoperation" target="_blank" rel="noopener">ausführliches Gespräch mit einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie</a>.Sie sprechen über Ihre Wünsche, Ihre Erwartungen und Ihre Ausgangssituation. Ihr Arzt untersucht Ihre Brust und beurteilt unter anderem Form, Gewebe und Hautqualität.</p>
 <p>Gemeinsam klären Sie, welche Implantatgröße und -form zu Ihnen passen, wo das Implantat liegen soll und welche Schnittführung sinnvoll ist. Auch Ihre Fragen zu Narben, Risiken, Heilungsverlauf und dem zu erwartenden Ergebnis werden ausführlich besprochen.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">2</span><div class="ls-schritt-text"><h3>Vorbereitung auf die Brustvergrößerung</h3>
 <p>Vor der Operation finden die notwendigen medizinischen Untersuchungen statt, und der Eingriff wird genau geplant. Ihr Facharzt erklärt Ihnen, wie Sie sich am besten auf die Brustvergrößerung vorbereiten und worauf Sie vorher achten sollten. Dazu kann gehören, bestimmte Medikamente nach Rücksprache anzupassen oder Faktoren zu meiden, die die Wundheilung beeinträchtigen können.</p>
@@ -727,35 +748,41 @@ main{counter-reset:abschnitt}
 <p>Vor dem Eingriff zeichnet der Chirurg die geplante Schnittführung und die Position des Implantats an. Anschließend bereitet er über den gewählten Zugang die Implantattasche vor und setzt das Implantat ein.Sitzt das Implantat richtig, werden die Schnitte sorgfältig verschlossen und die Brust nach ärztlicher Vorgabe versorgt.</p>
 <p>Je nach Klinik und persönlicher Situation erfolgt der Eingriff ambulant oder mit einer Übernachtung.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">4</span><div class="ls-schritt-text"><h3>Heilung nach der Brustvergrößerung</h3>
 <p>Schwellungen, ein Spannungsgefühl und leichte Beschwerden sind in der ersten Zeit nach der Operation normal. Die Brust fühlt sich anfangs oft noch fest an. Ihre endgültige Form entwickelt sich erst im Laufe der Heilung, meist innerhalb von etwa drei bis sechs Monaten.<br>Schonen Sie Ihren Oberkörper in den ersten Tagen so gut wie möglich. Ein spezieller medizinischer BH unterstützt die Heilung und wird in der Regel etwa 4–6 Wochen getragen.<br>Die meisten Patientinnen können nach einigen Tagen wieder leichten Alltagstätigkeiten nachgehen. Auf Sport, schwere körperliche Arbeit und stärkere Bewegungen des Oberkörpers sollten Sie zunächst für ca. 4-6 Wochen verzichten.<br>Ihr Facharzt begleitet Sie in der Nachsorge und sagt Ihnen, wann Sie wieder wie gewohnt aktiv sein können.<br></p></div></div></div>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="sicherheit-und-risiken">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Sicherheit und Risiken</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Sicherheit und Risiken</h2></div>
 <div class="ls-text"><p>Wie jede Operation ist auch eine Brustvergrößerung mit Risiken verbunden. Dazu zählen unter anderem Blutungen, Infektionen, Wundheilungsstörungen, Veränderungen der Sensibilität, Asymmetrien oder eine <a href="https://www.deutscher-aerzte-service.de/expertenwissen/double-bubble-nach-brust-op" target="_blank" rel="noopener">Verlagerung des Implantats</a>. Auch eine <a href="https://www.deutscher-aerzte-service.de/expertenwissen/kapselfibrose" target="_blank" rel="noopener">Kapselfibrose</a> oder eine Beschädigung des Implantats können auftreten und eine weitere Behandlung erforderlich machen.</p>
 <p>Umso wichtiger sind die Qualifikation und Erfahrung des behandelnden Arztes. Beim Deutschen Ärzte Service werden Brustvergrößerungen von <a href="https://www.deutscher-aerzte-service.de/fachaerzte" target="_blank" rel="noopener">Fachärzten für Plastische und Ästhetische Chirurgie</a> durchgeführt. Die Operationen finden in ausgewählten Kliniken und geeigneten OP-Einrichtungen statt. Mehr darüber, warum der Facharzttitel entscheidend ist, hat die Deutsche Gesellschaft für Ästhetisch-Plastische Chirurgie in diesem Artikel zusammengestellt: <a href="https://www.dgaepc.de/dgaepc-informiert/allgemeine-themen-dgaepc/facharzt/" target="_blank" rel="noopener">Facharzt für Plastische und Ästhetische Chirurgie – Warum die Qualifikation entscheidend ist</a></p>
 <p>Nach der Operation erhalten Sie einen Implantatpass mit Hersteller, Typ und Seriennummer Ihrer Implantate. Brustimplantate werden außerdem im Implantateregister Deutschland erfasst. Mehr Informationen zum Implantatregister finden Sie unter: <a href="https://www.bundesgesundheitsministerium.de/implantateregister-deutschland" target="_blank" rel="noopener">Implantateregister Deutschland</a></p>
 <p>Moderne Brustimplantate sind auf eine lange Verwendung ausgelegt. Ein routinemäßiger Austausch nach einer festen Zahl von Jahren ist nicht nötig. Dennoch kann im Laufe des Lebens eine weitere Operation notwendig werden, etwa wegen Veränderungen an der Brust oder am Implantat oder weil sich Ihre Wünsche ändern. Auch Schwangerschaften, Gewichtsschwankungen und das natürliche Älterwerden können die Form der Brust verändern.</p>
 <p>Vor Ihrer Brustvergrößerung klärt Ihr Facharzt Sie ausführlich über Ihre individuellen Risiken, die Eigenschaften der gewählten Implantate und die notwendige Nachsorge auf.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="die-wichtigsten-fakten-zur-brustvergroesserung">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Die wichtigsten Fakten zur Brustvergrößerung</h2>
+<div class="ls-kopfzeile"><h2>Die wichtigsten Fakten zur Brustvergrößerung</h2></div>
 <dl class="ls-fakten"><div><dt>Kosten</dt><dd>2.999€ für runde Implantate<br>3.329€ für anatomische Implantate</dd></div><div><dt>OP Dauer</dt><dd>ca. 1-2 Stunden</dd></div><div><dt>Narkose</dt><dd>Vollnarkose</dd></div><div><dt>Klinikaufenthalt</dt><dd>ambulant oder eine Übernachtung</dd></div><div><dt>Fadenzug</dt><dd>selbstauflösend oder nach 7–10 Tagen</dd></div><div><dt>Nachsorge</dt><dd>Kontrolluntersuchungen nach ärztlicher Empfehlung</dd></div></dl>
-<p>Weitere Informationen zur Brustvergrößerung bietet auch die Deutsche Gesellschaft für Ästhetisch-Plastische Chirurgie auf ihrer Seite zum Thema: <a href="https://www.dgaepc.de/aesthetisch-plastische-chirurgie/brust/brustvergroesserung/" target="_blank" rel="noopener">Brustvergrößerung / Mammaaugmentation</a></p>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><p>Weitere Informationen zur Brustvergrößerung bietet auch die Deutsche Gesellschaft für Ästhetisch-Plastische Chirurgie auf ihrer Seite zum Thema: <a href="https://www.dgaepc.de/aesthetisch-plastische-chirurgie/brust/brustvergroesserung/" target="_blank" rel="noopener">Brustvergrößerung / Mammaaugmentation</a></p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufige Fragen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Welche Implantatform ist die richtige für mich?</summary><div class="a"><p>Grundsätzlich gibt es runde und anatomische Implantate. Welche Form zu Ihnen passt, hängt unter anderem von Ihrer Brustform, Ihrem Brustgewebe, Ihrem Körperbau und Ihren Vorstellungen ab.<br>Diese Entscheidung treffen Sie deshalb am besten gemeinsam mit Ihrem Facharzt.</p></div></details><details><summary>Welche Narben entstehen bei einer Brustvergrößerung?</summary><div class="a"><p>Das hängt von der gewählten Technik ab. Der Schnitt kann in der Unterbrustfalte, am Rand des Brustwarzenhofs oder in der Achselhöhle liegen.<br>Wie sichtbar die Narbe später ist, hängt unter anderem von Ihrer Wundheilung und Ihrer Haut ab. Mit der Zeit verblassen Narben meist deutlich, ganz verschwinden sie jedoch nicht. Tipps zur Pflege finden Sie in unserem Ratgeber <a href="https://www.deutscher-aerzte-service.de/narbenpflege-nach-einer-schoenheitsoperation" target="_blank" rel="noopener">„Narbenpflege nach einer Schönheitsoperation“</a>.</p></div></details><details><summary>Wie lange halten Brustimplantate?</summary><div class="a"><p>Brustimplantate sind auf eine lange Verwendung ausgelegt und können bei vielen Patientinnen sehr lange, oft sogar lebenslang im Körper bleiben. Ein routinemäßiger Austausch nach zehn oder 15 Jahren ist nicht grundsätzlich erforderlich.<br>Im Laufe des Lebens können sich Implantat oder Brust jedoch so verändern, dass eine weitere Behandlung nötig wird. Regelmäßige ärztliche Kontrollen und eine individuelle Beurteilung sind deshalb sinnvoll.</p></div></details><details><summary>Kann ich eine Brustvergrößerung mit einer Bruststraffung kombinieren?</summary><div class="a"><p>Ja. Wünschen Sie sich mehr Volumen und ist Ihre Brust zugleich deutlich erschlafft, lassen sich Brustvergrößerung und Bruststraffung kombinieren.<br>Die Brust wird dabei angehoben und mit einem Implantat aufgefüllt. Ob diese Kombination für Sie sinnvoll ist, hängt von Ihrer Ausgangssituation ab.</p></div></details><details><summary>Kann ich nach einer Brustvergrößerung noch stillen?</summary><div class="a"><p>In der Regel ja. Die Operationsmethode kann das Stillen allerdings beeinflussen. Sprechen Sie einen Kinderwunsch deshalb schon im Beratungsgespräch an.</p></div></details><details><summary>Übernimmt die Krankenkasse die Kosten einer Brustvergrößerung?</summary><div class="a"><p>Eine Brustvergrößerung aus ästhetischen Gründen ist keine Leistung der gesetzlichen Krankenversicherung – die Kosten tragen Sie selbst. Gut zu wissen: Kommt es nach einem ästhetischen Eingriff zu Komplikationen, kann die gesetzliche Krankenkasse Sie an den Behandlungskosten beteiligen (§ 52 SGB V). Eine sogenannte Folgekostenversicherung kann dieses Risiko absichern.</p></div></details><details><summary>Wer führt die Brustvergrößerung durch?</summary><div class="a"><p>Brustvergrößerungen über den Deutschen Ärzte Service werden von Fachärzten für Plastische und Ästhetische Chirurgie durchgeführt. Durch unser bundesweites Ärztenetzwerk und unsere langjährige Zusammenarbeit kennen wir die unterschiedlichen Behandlungsschwerpunkte und Erfahrungen unserer Ärzte. Dadurch können wir gezielt einen Facharzt auswählen, der regelmäßig Brustoperationen durchführt und zu Ihrer individuellen Ausgangssituation passt.</p></div></details><details><summary>Wo kann ich eine Brustvergrößerung beim Deutschen Ärzte Service durchführen lassen?</summary><div class="a"><p>Der Deutsche Ärzte Service bietet Brustvergrößerungen an zahlreichen Standorten in Deutschland an, unter anderem in Frankfurt, München, Hamburg, Düsseldorf, Heidelberg, Berlin, Unna, Bayreuth, Magdeburg, Hannover, Stuttgart, Köln, Leipzig.<br>Welcher Standort für Ihre Brustvergrößerung infrage kommt, hängt unter anderem von Ihrem Wohnort, der gewünschten Behandlung und den verfügbaren Fachärzten und Beratungsterminen ab. Wir unterstützen Sie dabei, einen geeigneten Facharzt und Standort zu finden.</p></div></details></div></div>
+</div>
 </div></div>
 </section>
 
@@ -864,7 +891,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -886,6 +913,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

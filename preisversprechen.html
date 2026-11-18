@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,6 +602,7 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Preise und Finanzierung</span>
       <h1>Preisversprechen: Warum sind die Preise beim DÄS so niedrig?</h1>
+      <p class="ls-hero-text">Wie entstehen unsere Komplettpreise? Fachärzte, Markenimplantate und feste Preise – Beratungsgespräch 40 €, Tel. 0800 2626770. Deutscher Ärzte Service</p>
       
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
@@ -604,44 +613,49 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<p>Bei der <b>Gründung des DÄS im Jahre 2004</b> war es das Ziel finanziell schwächer gestellten Patienten eine preiswerte Alternative in Deutschland zu bieten, bei der lediglich Kosten gespart werden, aber der <b>hohe Qualitätsstandard gleich bleibt</b>. Der nicht risikolose Weg in das benachbarte Ausland sollte den Patienten erspart bleiben. <b>Hohe medizinische Standards</b> und deutsche Rechtssicherheit bei für j<b>edermann bezahlbare Schönheitsoperationen in Deutschland</b> war das Motto! Unterstützt haben den Deutschen Ärzte Service von Beginn an nicht nur führende Privatkliniken, sondern auch die beiden größten Hersteller von Brustimplantaten.</p>
-<p>Schnell wurde der Medizintourismus für Schönheitsoperationen überflüssig. Aber nicht nur Kunden, die über eine Schönheitsoperation im Ausland nachgedacht haben, sondern auch viele, die Wert auf gute Qualität zum fairen Preis legen, zählen heute zu den DÄS-Fans. Eine jährlich steigende Kundenanzahl beim DÄS vorallem durch Mundpropaganda war der Beweis für die Richtigkeit dieser äußerst fairen Kalkulation. Heute, nach über 2 Jahrzehnten Erfolgsgeschichte zählen zu den Kunden des DÄS vor allem Frauen und Männer mit Köpfchen.</p>
+<div class="ls-raster">
+<div class="ls-seite"><p class="ls-lead">Bei der <b>Gründung des DÄS im Jahre 2004</b> war es das Ziel finanziell schwächer gestellten Patienten eine preiswerte Alternative in Deutschland zu bieten, bei der lediglich Kosten gespart werden, aber der <b>hohe Qualitätsstandard gleich bleibt</b>. Der nicht risikolose Weg in das benachbarte Ausland sollte den Patienten erspart bleiben. <b>Hohe medizinische Standards</b> und deutsche Rechtssicherheit bei für j<b>edermann bezahlbare Schönheitsoperationen in Deutschland</b> war das Motto! Unterstützt haben den Deutschen Ärzte Service von Beginn an nicht nur führende Privatkliniken, sondern auch die beiden größten Hersteller von Brustimplantaten.</p></div>
+<div class="ls-text"><p>Schnell wurde der Medizintourismus für Schönheitsoperationen überflüssig. Aber nicht nur Kunden, die über eine Schönheitsoperation im Ausland nachgedacht haben, sondern auch viele, die Wert auf gute Qualität zum fairen Preis legen, zählen heute zu den DÄS-Fans. Eine jährlich steigende Kundenanzahl beim DÄS vorallem durch Mundpropaganda war der Beweis für die Richtigkeit dieser äußerst fairen Kalkulation. Heute, nach über 2 Jahrzehnten Erfolgsgeschichte zählen zu den Kunden des DÄS vor allem Frauen und Männer mit Köpfchen.</p>
 <p>Wieso sollte man für eine Schönheitsoperation mehr bezahlen, wenn es auch andere Möglichkeiten gibt? Am besten <b>zuerst beim Deutschen Ärzte Service nachfragen</b>, welche Ärzte / Kliniken Ihre Wunsch- Schönheitsoperation <b>zum Vorzugspreis in Ihrer Nähe</b> anbieten?</p>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-hervor" id="gute-preise-sind-kein-zufall">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Gute Preise sind kein Zufall</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Gute Preise sind kein Zufall</h2></div>
 <div class="ls-text"><p>Eine Brustvergrößerung mit Silikongel-Implantaten kostet heute bei einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie in Deutschland zwischen 5.800,- Euro und 8.500,-Euro. Entscheidend für die Preisgestaltung sind in erster Linie die Kosten für die verwendeten Implantate, der Klinikstandard in Bezug auf die Luftqualität des OP-Saales und die Aufwändigkeit des Operationsverfahrens. Natürlich gibt es auch noch Unterschiede zwischen den einzelnen Honoraren von Anästhesisten und Plastischen Chirurgen und standortbedingte Preisunterschiede. ABER NICHT BEI UNS: Wir bieten Ihnen die <b>Brustvergrößerung bundesweit zum Festpreis von 2.999,- Euro mit runden / 3.329,- Euro mit anatomischen Implantaten </b>an. Auch alle <b>anderen Schönheitsoperationen</b> sind über uns ca. <b>30 bis 50% günstiger als normal üblich.</b> Die Qualität bleibt gleich, denn renommierte Plastische Chirurgen und Kliniken stellen dem Deutschen Ärzte Service einen Teil ihrer freien Kapazitäten zur Verfügung.</p>
 <p>Die <b>günstigen Preise</b> konnten wir durch u.a. folgende wichtige Maßnahmen ermöglichen:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Die <b>teuersten Implantate</b> und alle weiteren für die Operationen benötigten Materialien können durch einen geschickten Mengeneinkauf wesentlich günstiger bereitgestellt werden. Durch die bundesweite Größe erzielen wir ganz andere Rabatte. Diese Preiseinsparungen geben wir an die Kunden weiter.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Durch unsere <b>bundesweite Tätigkeit</b> können wir bestimmte Aufgaben besser bündeln und organisieren. Die Vertriebskosten und Verwaltungskosten werden somit günstiger.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Durch die <b>wirtschaftliche Auslastung von Operationssälen</b> können andere Preise erzielt werden, als wenn nur eine Operation am Tag stattfindet. Wir lasten Klinken mit mehreren Plastischen Chirurgen aus. Somit ist es für alle Beteiligten eine Win-Win-Situation. Teilweise werden ganze Tage angemietet. Dadurch kann das große Kundenvolumen optimiert werden und die Qualität bleibt hoch</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Die <b>Abwicklung</b> erfolgt überwiegend online bzw. per Email <b>zentral über unsere Verwaltung</b> in Würzburg. Dies senkt die Personal, Porto- und sonstigen Verwaltungskosten.</span></li></ul>
 <p>Der Kunde erhält über den Deutschen Ärzte Service somit eine Leistung, die <b>normalerweise beim gleichen Arzt in der gleichen Klinik</b> <b>ca. 30-50% mehr kosten</b> würde. Diese Marktsituation können Sie mit der Tourismusbranche vergleichen: Es erinnert an die Buchung eines 5-Sterne Hotelzimmers, bei der es je nach Auslastung und Zeitpunkt unterschiedliche Preiskategorien gibt, aber es handelt sich immer um dasselbe Zimmer im 5-Sterne Hotel.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="schoenheitsoperation-zum-guenstigen-preis">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Schönheitsoperation zum günstigen Preis</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Schönheitsoperation zum günstigen Preis</h2></div>
 <div class="ls-text"><p>Der Deutsche Ärzte Service ist in Deutschland bei der <b>Thematik Brustvergrößerung führend</b>. Er ist in den großen <b>Metropolen Deutschlands mehrfach</b> vertreten, wie in <b><a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-berlin" target="_blank" rel="noopener">Berlin</a>,</b> <a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-hamburg" target="_blank" rel="noopener"><b>Hamburg</b></a>, <a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-duesseldorf-nrw" target="_blank" rel="noopener"><b>Düsseldorf</b></a>, <a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-koeln" target="_blank" rel="noopener"><b>Köln</b></a>, <b><a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-frankfurt" target="_blank" rel="noopener">Frankfurt</a>,</b><a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-muenchen" target="_blank" rel="noopener"><b>München</b></a>, <a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-stuttgart" target="_blank" rel="noopener"><b>Stuttgart</b></a> und natürlich auch in vielen <b><a href="https://www.deutscher-aerzte-service.de/gruendung-daes" target="_blank" rel="noopener">weiteren Städten</a></b>. In den <b>letzten 22 Jahren</b> konnten <b>zigtausende von Mammaaugmentationen</b> realisiert werden. Neben der Brustvergrößerung oder <a href="brustvergroesserung-mit-bruststraffung.html">Brustvergrößerung mit Straffung</a> bzw. <a href="https://www.deutscher-aerzte-service.de/expertenwissen" target="_blank" rel="noopener">sekundären Brustoperationen</a> organisiert der DÄS auch viele andere <a href="koerper-ops.html">Schönheitsoperationen am Körper</a> oder<a href="gesichtsoperationen.html">Beautyeingriffen im Gesicht</a> zum Vorzugspreis. <b>Permanent steigende Kundenanfragen</b> und die hohe <a href="https://www.deutscher-aerzte-service.de/kundenzufriedenheit-bewertungen" target="_blank" rel="noopener">Kundenzufriedenheit</a> beweisen heute die große <b>Bedeutung des Deutschen Ärzte Service</b>.</p>
 <p>Der DÄS arbeitet ausschließlich mit Privatkliniken, in denen Fachärzte für Plastische und Ästhetische Chirurgie mit langjähriger Erfahrung tätig sind. Die Privatkliniken haben die höchsten Sicherheitsstandards in Bezug auf die Reinluft-Qualität, z.B. Laminar-Air Flow. Alle angebotenen Eingriffe haben die Ärzte mindestens hundertfach durchgeführt. Die Verwendung hochwertigster Implantate und Materialien sind selbstverständlich. Alle Details finden Sie auch in <a href="https://www.deutscher-aerzte-service.de/pdf/DS_Beiblatt_BV_20-04-2016.pdf" target="_blank" rel="noopener">unserer Broschüre</a>.</p>
 <p>Durch die <b>optimale kaufmännische Abwicklung </b>und dem <b>zentralen Einkauf</b> werden die Kosten pro Operation deutlich gesenkt. Den angeschlossenen Kliniken werden entsprechende <b>Auslastungen der OP-Säle</b> garantiert. Dies ermöglicht den Kliniken eine viel günstigere Kalkulation. Auch diese wirtschaftlichen Vorteile werden an die Kunden weitergegeben. Somit erhalten Sie über den DÄS ein transparentes Komplettpaket und wissen im Vorfeld, welche Leistungen beinhaltet sind. Auf Wunsch kann natürlich auch die Übernachtung zum Sonderpreis von 299,- Euro mitgebucht werden.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="das-gesamtpaket">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Das Gesamtpaket</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Das Gesamtpaket</h2></div>
 <div class="ls-text"><p><b> Das Komplettangebot der Kliniken beinhaltet im Einzelnen folgende Leistungen: </b></p>
 <div class="ls-tabelle"><table><tbody><tr><td>Medizinische Voruntersuchung</td></tr><tr><td>Eingehende Beratung und Aufklärung über die jeweilige Wunsch-OP</td></tr><tr><td>Vorbereitung, Organisation und Terminabstimmung der Schönheitsoperation</td></tr><tr><td>Anästhesie</td></tr><tr><td>Operation inklusive aller medizinisch notwendigen Nebenleistungen (inkl. Implantate bei der Brustvergrößerung)</td></tr><tr><td>Nachsorge</td></tr></tbody></table></div>
 <p>Die <b>Sonderpreise für alle Operationen</b> außer der Brustvergrößerung<b> können im Vorfeld für Ihre jeweilige Stadt erfragt werden</b>. Auf der Homepage und im Anmeldeformular haben wir Ab-Preise für diese Eingriffe angegeben. D.h. zu dem <b>Ab-Preis sind die Operationen in vielen Städten möglich</b>, aber nicht in allen. Den exakten Preis für Ihre Wunschregion können Sie bei uns telefonisch unter 0800 / 26 26 770 erfragen.</p>
 <p>Die <b>Brustvergrößerung </b>hingegen wird selbstverständlich <b>zum Festpreis von 2.999,- Euro / 3.329,- Euro überall angeboten</b>.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
@@ -750,7 +764,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -772,6 +786,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

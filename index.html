@@ -1178,5 +1178,17 @@ h2{letter-spacing:-.03em;line-height:1.06}
   ziele.forEach(function(el){if(el.getBoundingClientRect().top<innerHeight*0.92)return;el.classList.add('auf');io.observe(el);});
 })();
 </script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
+})();
+</script>
 </body>
 </html>

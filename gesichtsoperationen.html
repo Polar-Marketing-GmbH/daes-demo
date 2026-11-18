@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,6 +602,7 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Gesichtschirurgie</span>
       <h1>Schönheitsoperation im Gesicht – Kosten und Möglichkeiten in Deutschland</h1>
+      <p class="ls-hero-text">Gesichts-OPs beim Facharzt: Oberlidkorrektur ab 899 €, Ohrenkorrektur ab 999 €, Nasenkorrektur und Facelift ab 3.499 €. Beratung 40 €.</p>
       
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
@@ -604,21 +613,25 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<p>Unser Gesicht sehen wir jeden Tag im Spiegel. Es zeigt unsere Gefühle, verändert sich mit der Zeit und prägt maßgeblich, wie wir uns selbst wahrnehmen. Vielleicht stören Sie sich schon lange an Ihren Schlupflidern, Tränensäcken, der Form Ihrer Nase oder abstehenden Ohren. Vielleicht haben sich Ihre Gesichtszüge im Laufe der Jahre verändert und Sie wünschen sich wieder ein frischeres Erscheinungsbild.</p>
-<p>Eine Gesichts-OP ist eine persönliche Entscheidung, die gut überlegt sein möchte. Dabei geht es nicht darum, einem bestimmten Schönheitsideal zu entsprechen. Entscheidend ist vielmehr, was Sie selbst als störend empfinden und welches Ergebnis zu Ihnen, Ihrem Gesicht und Ihren Vorstellungen passt.</p>
+<div class="ls-raster">
+<div class="ls-seite"><p class="ls-lead">Unser Gesicht sehen wir jeden Tag im Spiegel. Es zeigt unsere Gefühle, verändert sich mit der Zeit und prägt maßgeblich, wie wir uns selbst wahrnehmen. Vielleicht stören Sie sich schon lange an Ihren Schlupflidern, Tränensäcken, der Form Ihrer Nase oder abstehenden Ohren. Vielleicht haben sich Ihre Gesichtszüge im Laufe der Jahre verändert und Sie wünschen sich wieder ein frischeres Erscheinungsbild.</p></div>
+<div class="ls-text"><p>Eine Gesichts-OP ist eine persönliche Entscheidung, die gut überlegt sein möchte. Dabei geht es nicht darum, einem bestimmten Schönheitsideal zu entsprechen. Entscheidend ist vielmehr, was Sie selbst als störend empfinden und welches Ergebnis zu Ihnen, Ihrem Gesicht und Ihren Vorstellungen passt.</p>
 <p>Diese Entscheidung müssen Sie nicht vor dem Beratungsgespräch treffen. Im Gegenteil: eine <b>gute Beratung</b> hilft Ihnen dabei, Ihre Möglichkeiten kennenzulernen und eine fundierte Entscheidung zu treffen.</p>
 <p>Der Deutsche Ärzte Service (DÄS) begleitet Sie auf dem Weg zu Ihrer Gesichtsoperation – von der <b>Auswahl eines geeigneten Facharztes über die Organisation Ihres Beratungstermins bis hin zur Operation und Nachsorge.</b> Seit 2004 organisieren wir ästhetische Operationen bei <b>erfahrenen Fachärzten in ausgewählten Partnerkliniken in Deutschland</b>. Durch unser bundesweites Netzwerk ermöglichen wir attraktive Preise, ohne dass Sie auf eine persönliche Beratung und eine Behandlung in Deutschland verzichten müssen.</p>
 <p>Ihr erster Schritt ist ein persönliches und unverbindliches Beratungsgespräch für nur 40 €. Dabei lernen Sie den Facharzt kennen, der Sie später auch operieren würde, können Ihre Wünsche und Fragen offen ansprechen und sich anschließend in Ruhe entscheiden.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
-<p>Jeden Monat informieren sich rund 3.000 Nutzerinnen und Nutzer zu Gesichtsoperationen bei uns, davon über 2.000 allein zur Ober- und Unterlidkorrektur. <br>–<i>Quelle: Google Analytics, Durchschnitt August–Oktober 2026</i></p>
+<p>Jeden Monat informieren sich rund 3.000 Nutzerinnen und Nutzer zu Gesichtsoperationen bei uns, davon über 2.000 allein zur Ober- und Unterlidkorrektur. <br>–<i>Quelle: Google Analytics, Durchschnitt August–Oktober 2026</i></p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens" id="gesichtsoperationen-ihre-moeglichkeiten-auf-einen-blick">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Gesichtsoperationen: Ihre Möglichkeiten auf einen Blick</h2>
-<p>Ästhetische Gesichtschirurgie umfasst verschiedene Eingriffe, die unterschiedliche Bereiche des Gesichts betreffen. Eine Oberlidkorrektur kann beispielsweise Schlupflider behandeln, während bei einer Unterlidkorrektur unter anderem Tränensäcke oder Hautüberschüsse korrigiert werden können. Bei einer Nasenkorrektur stehen Form und Proportionen der Nase im Mittelpunkt. Eine Ohrenkorrektur kann abstehende Ohren anlegen, während ein Facelifting altersbedingte Veränderungen an Gesicht und Hals behandeln kann.</p>
-<p>Die folgenden Informationen geben Ihnen eine erste Orientierung zu den einzelnen Eingriffen.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Gesichtsoperationen: Ihre Möglichkeiten auf einen Blick</h2></div>
+<div class="ls-text"><p>Ästhetische Gesichtschirurgie umfasst verschiedene Eingriffe, die unterschiedliche Bereiche des Gesichts betreffen. Eine Oberlidkorrektur kann beispielsweise Schlupflider behandeln, während bei einer Unterlidkorrektur unter anderem Tränensäcke oder Hautüberschüsse korrigiert werden können. Bei einer Nasenkorrektur stehen Form und Proportionen der Nase im Mittelpunkt. Eine Ohrenkorrektur kann abstehende Ohren anlegen, während ein Facelifting altersbedingte Veränderungen an Gesicht und Hals behandeln kann.</p>
+<p>Die folgenden Informationen geben Ihnen eine erste Orientierung zu den einzelnen Eingriffen.</p></div>
+</div>
 <div class="ls-karten" style="--n:3"><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Oberlidkorrektur.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
 <h3><a class="ls-weiter" href="oberlidkorrektur.html">Oberlidkorrektur</a></h3></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Unterlidkorrektur.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
 <h3><a class="ls-weiter" href="unterlidkorrektur.html">Unterlidkorrektur</a></h3></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Ohrenkorrektur.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
@@ -664,7 +677,7 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="gesichtsoperationen-in-ganz-deutschland">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Gesichtsoperationen in ganz Deutschland</h2>
+<div class="ls-kopfzeile"><h2>Gesichtsoperationen in ganz Deutschland</h2></div>
 <div class="ls-split"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/08/Deutschlandkarte-Standorte-2.png" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><p>Damit eine hochwertige Gesichtsoperation für Sie nicht mit einer langen Anreise verbunden sein muss, arbeitet der Deutsche Ärzte Service bundesweit mit erfahrenen Fachärzten sowie rund 40 ausgewählten Kliniken und Praxiskliniken zusammen.</p>
 <p>Unser Netzwerk umfasst Standorte in verschiedenen Regionen Deutschlands – von Hamburg und Berlin über Nordrhein-Westfalen und Hessen bis nach Bayern und Baden-Württemberg. So können Beratung und Operation je nach Eingriff und Verfügbarkeit möglichst wohnortnah stattfinden.</p>
 <p>Auch nach der Operation sind kurze Wege wichtig. Für die Nachsorge stehen Ihnen Ihr behandelnder Facharzt sowie Ihre persönlichen Ansprechpartner beim Deutschen Ärzte Service zur Verfügung.</p></div></div>
@@ -673,9 +686,11 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="warum-eine-gesichts-op-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Warum eine Gesichts-OP beim Deutschen Ärzte Service?</h2>
-<p>Seit 2004 verfolgt der Deutsche Ärzte Service ein klares Ziel: hochwertige plastisch-ästhetische Eingriffe in Deutschland zu attraktiven Preisen anzubieten.</p>
-<p>Dafür verbinden wir die medizinische Erfahrung unseres bundesweiten Facharztnetzwerks mit einer effizienten Organisation und persönlicher Betreuung.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Warum eine Gesichts-OP beim Deutschen Ärzte Service?</h2></div>
+<div class="ls-text"><p>Seit 2004 verfolgt der Deutsche Ärzte Service ein klares Ziel: hochwertige plastisch-ästhetische Eingriffe in Deutschland zu attraktiven Preisen anzubieten.</p>
+<p>Dafür verbinden wir die medizinische Erfahrung unseres bundesweiten Facharztnetzwerks mit einer effizienten Organisation und persönlicher Betreuung.</p></div>
+</div>
 <div class="ls-karten" style="--n:3"><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Vertrauen.png" alt="" loading="lazy" decoding="async"></figure>
 <h3>Erfahrene Fachärzte und ausgewählte Kliniken</h3>
 <p>Gerade bei einer Gesichtsoperation zählen Erfahrung, Präzision und ein Gespür für natürliche Proportionen. Deshalb arbeiten wir ausschließlich mit erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie zusammen.<br>Wir achten bei der Auswahl darauf, dass der behandelnde Facharzt über entsprechende Erfahrung mit der jeweiligen Gesichtsoperation verfügt.<br>Ihre Gesichtsoperation findet in einer unserer ausgewählten Kliniken oder Praxiskliniken in Deutschland statt. So verbinden wir die Vorteile einer möglichst wohnortnahen Behandlung mit den Qualitätsanforderungen, die wir an unsere Fachärzte und Klinikpartner stellen.</p></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Kompetenz.png" alt="" loading="lazy" decoding="async"></figure>
@@ -687,20 +702,22 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="ihr-naechster-schritt-persoenliche-beratung-zur-gesichtsoper">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Ihr nächster Schritt: persönliche Beratung zur Gesichtsoperation</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Ihr nächster Schritt: persönliche Beratung zur Gesichtsoperation</h2></div>
 <div class="ls-text"><p>Sie möchten wissen, welche Gesichtsoperation für Ihre Wünsche infrage kommt? Für 40 € können Sie ein persönliches Beratungsgespräch mit einem erfahrenen Facharzt vereinbaren, Ihre Fragen stellen und Ihre individuellen Möglichkeiten besprechen.</p>
 <p>Danach entscheiden Sie in Ruhe und mit den Informationen, die Sie für Ihre Entscheidung brauchen.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen-zu-gesichtsoperationen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufige Fragen zu Gesichtsoperationen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen zu Gesichtsoperationen</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Was kostet eine Gesichtsoperation in Deutschland?</summary><div class="a"><p>Die Kosten einer Gesichtsoperation hängen von der Art und dem Umfang des Eingriffs ab. Beim Deutschen Ärzte Service kostet eine Oberlidkorrektur ab 899 €, eine Ohrenkorrektur ab 999 € und eine Unterlidkorrektur ab 1.399 €. Eine Nasenkorrektur oder ein Mini-Facelift ist jeweils ab 3.499 € möglich, ein klassisches Facelift ab 4.999 €.<br>Je nach Eingriff liegen die Kosten beim Deutschen Ärzte Service etwa 30 bis 50 Prozent unter dem regulären Preis der Behandlung beim jeweiligen Facharzt. Welche konkreten Kosten in Ihrem Fall entstehen, erfahren Sie im persönlichen Beratungsgespräch.</p></div></details><details><summary>Welche Gesichtsoperationen bietet der Deutsche Ärzte Service an?</summary><div class="a"><p>Über den Deutschen Ärzte Service sind verschiedene ästhetische Gesichtsoperationen möglich. Dazu gehören Oberlidkorrekturen, Unterlidkorrekturen, Nasenkorrekturen, Ohrenkorrekturen und Faceliftings. Die Eingriffe werden von erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie durchgeführt.</p></div></details><details><summary>Wo kann ich eine Gesichts-OP beim Deutschen Ärzte Service machen lassen?</summary><div class="a"><p>Der Deutsche Ärzte Service bietet Gesichtsoperationen an verschiedenen Standorten in Deutschland an. Je nach gewünschtem Eingriff sind Beratungen und Operationen unter anderem in diversen Kliniken in Berlin, Hamburg, München, Frankfurt, Düsseldorf, Köln, Stuttgart, Hannover, Leipzig, Mainz, Bonn, Dresden, Bayreuth, Magdeburg, Heilbronn, Unna möglich.<br><br>Insgesamt arbeitet der Deutsche Ärzte Service bundesweit mit rund 40 ausgewählten Kliniken und Praxiskliniken zusammen. Welche Standorte für Ihre gewünschte Gesichtsoperation zur Verfügung stehen, hängt vom jeweiligen Eingriff und der aktuellen Verfügbarkeit ab.</p></div></details><details><summary>Wie finde ich den richtigen Arzt für meine Gesichtsoperation?</summary><div class="a"><p>Wichtig sind die Qualifikation als Facharzt für Plastische und Ästhetische Chirurgie, Erfahrung mit dem gewünschten Eingriff und eine ausführliche persönliche Beratung. Der Deutsche Ärzte Service arbeitet ausschließlich mit erfahrenen Fachärzten dieser Fachrichtung zusammen und berücksichtigt bei der Auswahl auch die Erfahrung mit der jeweiligen Gesichtsoperation.</p></div></details><details><summary>Lohnt sich ein Beratungsgespräch, wenn ich noch unsicher bin?</summary><div class="a"><p>Ja. Das Beratungsgespräch kostet 40 € und verpflichtet Sie nicht zu einer Operation. Gerade wenn Sie noch Fragen haben oder verschiedene Möglichkeiten abwägen möchten, kann das persönliche Gespräch mit einem erfahrenen Facharzt helfen, Ihre Möglichkeiten und die realistisch erreichbaren Ergebnisse besser einzuschätzen. Danach können Sie in Ruhe entscheiden.</p></div></details><details><summary>Geht es bei einer Gesichtsoperation darum, einem Schönheitsideal zu folgen?</summary><div class="a"><p>Nein. Das Ziel einer ästhetischen Gesichtsoperation sollte nicht ein vermeintlich perfektes Gesicht sein. Lebensqualität statt Perfektion: Entscheidend ist ein Ergebnis, das zu Ihren individuellen Gesichtszügen und Ihren persönlichen Vorstellungen passt und mit dem Sie sich selbst wohler fühlen.<br>Welche Veränderungen medizinisch und ästhetisch sinnvoll und realistisch erreichbar sind, besprechen Sie gemeinsam mit Ihrem Facharzt.</p></div></details><details><summary>Zahlt die Krankenkasse eine Lidstraffung oder Nasenkorrektur?</summary><div class="a"><p>Nur, wenn der Eingriff medizinisch notwendig ist. Eine rein ästhetische Lidstraffung oder Nasenkorrektur zahlen die gesetzlichen Krankenkassen nicht. Ob der Eingriff medizinisch notwendig ist, prüft Ihre Krankenkasse vor der Operation, meist mit einem Gutachten des Medizinischen Dienstes.<br>Lidstraffung: Die Kasse kann die Kosten übernehmen, wenn das erschlaffte Oberlid so weit herabhängt, dass es Ihr Sehen einschränkt. Das muss ein Augenarzt nachweisen, in der Regel mit einer Gesichtsfeldmessung und Fotos. Schlupflider oder Tränensäcke, die nur optisch stören, gelten nicht als medizinischer Grund.<br><br>Nasenkorrektur: Bei behinderter Nasenatmung, etwa durch eine verkrümmte Nasenscheidewand, sind eine Begradigung der Nasenscheidewand (Septumplastik) und andere funktionelle Eingriffe Kassenleistungen. Das gilt auch für Korrekturen nach Unfällen oder bei angeborenen Fehlbildungen. Eine Veränderung der äußeren Nasenform aus ästhetischen Gründen, zum Beispiel an einem Höcker oder der Nasenspitze, müssen Sie selbst bezahlen. Das gilt auch dann, wenn sie zusammen mit einem funktionellen Eingriff erfolgt.<br><br>So gehen Sie vor: Lassen Sie sich zuerst beim Augenarzt oder HNO-Arzt untersuchen. Mit dem Befund stellen Sie vor der Operation einen Antrag bei Ihrer Krankenkasse. Nachträglich erstattet die Kasse in der Regel nichts. Bei einer privaten Krankenversicherung hängt die Kostenübernahme von Ihrem Tarif ab.<br><br>Beim Deutschen Ärzte Service sind Oberlidkorrektur (ab 899 €) und Nasenkorrektur (ab 3.499 €) Angebote für Selbstzahler zum Komplettpreis. Wenn Ihnen die Kasse die Kosten nicht erstattet, können Sie den Eingriff auch finanzieren. Im Beratungsgespräch klärt der Facharzt, welche Behandlung für Sie infrage kommt.</p></div></details><details><summary>Kann ich eine Gesichts-OP finanzieren oder in Raten zahlen?</summary><div class="a"><p>Ja. Beim Deutschen Ärzte Service können Sie Ihre Gesichtsoperation über unsere Finanzierungspartner smava oder medkred in monatlichen Raten bezahlen. Das gilt zum Beispiel für eine Oberlidkorrektur ab 899 €, eine Nasenkorrektur oder ein Mini-Facelift ab 3.499 € und ein klassisches Facelift ab 4.999 €.<br><br>So funktioniert es: Sie beantragen die Finanzierung online und bestätigen Ihre Identität per Video-Identifikation. Das dauert meist nur wenige Minuten. Die Kreditentscheidung erhalten Sie in der Regel zeitnah. Laufzeit und Monatsrate wählen Sie selbst. Über Zinssatz und Konditionen entscheidet der jeweilige Kreditpartner nach Prüfung Ihrer Angaben.<br>Unser Tipp: Klären Sie zuerst im ärztlichen Beratungsgespräch, welcher Eingriff für Sie infrage kommt und welcher Komplettpreis gilt. Beantragen Sie danach die Finanzierung und wählen Sie eine Monatsrate, die dauerhaft gut in Ihr Budget passt.<br><br>Alle Informationen und die Links zu den Finanzierungspartnern finden Sie auf unserer Seite <a href="index.html#rechner"><b>Finanzierung einer Schönheitsoperation</b></a><b>.</b></p></div></details><details><summary>Welche Gesichts-OP ist ambulant möglich?</summary><div class="a"><p>Die meisten Gesichtsoperationen beim Deutschen Ärzte Service sind ambulant möglich: Oberlidkorrektur, Unterlidkorrektur, Ohrenkorrektur und Mini-Facelift. Sie gehen am selben Tag wieder nach Hause. Eine Nasenkorrektur ist je nach Umfang ambulant oder mit einer Übernachtung möglich. Beim klassischen Deep-Plane-Facelift in Vollnarkose bleiben Sie eine Nacht in der Klinik.<br><br>Gut zu wissen: Nach einer ambulanten Operation dürfen Sie nicht selbst Auto fahren. Bitte organisieren Sie eine Begleitperson für den Heimweg. Wenn Sie sich sicherer fühlen, können Sie nach einer Gesichts-OP auch über Nacht in der Partnerklinik bleiben. Dafür gilt ein Sonderpreis von 299 €. Ob Ihr Eingriff ambulant möglich ist, entscheidet der Facharzt im Beratungsgespräch. Dabei berücksichtigt er Ihren Gesundheitszustand, den Umfang der Korrektur und die gewählte Narkose.</p></div></details></div></div>
+</div>
 </div></div>
 </section>
 
@@ -809,7 +826,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -831,6 +848,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

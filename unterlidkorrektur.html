@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,34 +602,37 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Gesichtschirurgie</span>
       <h1>Unterlidkorrektur ab 1.399,- €</h1>
+      <p class="ls-hero-text">Unterlidkorrektur ab 1.399 € beim Facharzt – bei Tränensäcken und erschlaffter Haut unter den Augen. Komplettpreis, Beratung 40 €.</p>
       <nav class="ls-sprung" aria-label="Auf dieser Seite"><a href="#wann-ist-eine-unterlidkorrektur-sinnvoll">Gründe</a><a href="#so-laeuft-ihre-behandlung-ab">Ablauf</a><a href="#haeufige-fragen">FAQ</a></nav>
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
-    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_012945_290fda84-a9fd-47a6-b45d-7b0f687ff6fe.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
+    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_013934_1e828038-973b-4bfe-a4ac-84c2ec80ce68.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
     </div>
   </div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="traenensaecke-entfernen-fuer-einen-frischen-erholten-blick">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Tränensäcke entfernen für einen frischen, erholten Blick</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Tränensäcke entfernen für einen frischen, erholten Blick</h2></div>
 <div class="ls-text"><p>Wenn Tränensäcke oder erschlaffte Unterlider dauerhaft sichtbar sind, kann das Gesicht müder wirken, als man sich tatsächlich fühlt. Die Ursachen können vielfältig sein: Neben dem natürlichen Alterungsprozess spielen auch genetische Veranlagung und die individuelle Beschaffenheit des Bindegewebes eine Rolle. Deshalb können ausgeprägte Tränensäcke bereits in jungen Jahren entstehen.</p>
 <p>Mit einer Unterlidkorrektur lassen sich überschüssige Fettpolster und erschlafftes Gewebe schonend behandeln. Die Augenpartie kann dadurch wieder frischer und erholter wirken ohne Ihren natürlichen Gesichtsausdruck zu verändern.</p>
 <p>Im Mittelpunkt stehen dabei Ihre persönliche Ausgangssituation und Ihre Wünsche. Wir unterstützen Sie dabei, die Behandlung zu finden, die wirklich zu Ihnen passt.</p>
 <p>Beim Deutschen Ärzte Service ist eine Unterlidkorrektur ab 1.399 € an rund 40 Standorten in Deutschland möglich. Die Operationen werden von erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie durchgeführt. Wir begleiten Sie von der persönlichen Beratung über die Organisation Ihrer Operation bis zur Nachsorge.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="wann-ist-eine-unterlidkorrektur-sinnvoll">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Wann ist eine Unterlidkorrektur sinnvoll?</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Wann ist eine Unterlidkorrektur sinnvoll?</h2></div>
 <div class="ls-text"><p>Ausgeprägte Tränensäcke können bereits früh sichtbar werden und sich im Laufe der Jahre verstärken. Entscheidend ist daher nicht allein das Alter, sondern wie ausgeprägt die Veränderungen am Unterlid sind und wie sehr Sie sich persönlich daran stören.</p>
 <p>Eine Unterlidkorrektur kann sinnvoll sein, wenn:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>ausgeprägte Tränensäcke dauerhaft bestehen,</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>die Unterlider erschlafft wirken,</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ihr Gesicht müde oder abgespannt wirkt, obwohl Sie sich selbst gar nicht so fühlen,</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Cremes oder kosmetische Behandlungen nicht die gewünschte Verbesserung bringen</span></li></ul>
 <p>Welche Behandlung in Ihrem Fall sinnvoll ist und welches Ergebnis realistisch erreicht werden kann, besprechen Sie ausführlich mit Ihrem behandelnden Facharzt.</p></div>
+</div>
 </div></div>
 </section>
 
@@ -639,9 +650,11 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Ihre Vorteile beim Deutschen Ärzte Service</h2>
-<p>Gerade Eingriffe im Augenbereich erfordern viel Erfahrung und höchste Präzision. Deshalb arbeiten wir ausschließlich mit ausgewählten Fachärzten für Plastische und Ästhetische Chirurgie zusammen, die auf Lidkorrekturen spezialisiert sind.</p>
-<p>Seit 2004 begleiten wir Menschen bei ihrer Entscheidung für eine Schönheitsoperation. Dabei wissen wir: Gerade ein Eingriff im Gesicht ist Vertrauenssache. Von der ersten Anfrage bis zur Nachsorge begleiten wir Sie persönlich und unterstützen Sie dabei, einen erfahrenen Facharzt zu finden, der zu Ihren Wünschen und Ihrer individuellen Situation passt.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Ihre Vorteile beim Deutschen Ärzte Service</h2></div>
+<div class="ls-text"><p>Gerade Eingriffe im Augenbereich erfordern viel Erfahrung und höchste Präzision. Deshalb arbeiten wir ausschließlich mit ausgewählten Fachärzten für Plastische und Ästhetische Chirurgie zusammen, die auf Lidkorrekturen spezialisiert sind.</p>
+<p>Seit 2004 begleiten wir Menschen bei ihrer Entscheidung für eine Schönheitsoperation. Dabei wissen wir: Gerade ein Eingriff im Gesicht ist Vertrauenssache. Von der ersten Anfrage bis zur Nachsorge begleiten wir Sie persönlich und unterstützen Sie dabei, einen erfahrenen Facharzt zu finden, der zu Ihren Wünschen und Ihrer individuellen Situation passt.</p></div>
+</div>
 <div class="ls-split bild-rechts"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Unterlidkorrektur.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h3>Ihre Vorteile auf einen Blick</h3>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Netzwerk aus renommierten Fachärzten für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ausgewählte Fachkliniken in Deutschland</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Berücksichtigung Ihres Wohnorts und Ihrer individuellen Wünsche</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliche Betreuung während des gesamten Behandlungsablaufs</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Transparente Komplettpreise ohne versteckte Zusatzkosten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Mehr als 20 Jahre Erfahrung im Bereich ästhetischer Behandlungen</span></li></ul>
 <p class="ls-knopf"><a class="btn btn-ghost" href="index.html#qualitaet">Unsere Qualitätsmerkmale</a></p></div></div>
@@ -649,72 +662,79 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="moeglichkeiten-bei-der-unterlidkorrektur">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Möglichkeiten bei der Unterlidkorrektur</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Möglichkeiten bei der Unterlidkorrektur</h2></div>
 <div class="ls-text"><h3>Tränensäcke entfernen</h3>
 <p>Ausgeprägte Tränensäcke entstehen häufig durch hervortretende Fettpolster unter den Augen. Bei einer Unterlidkorrektur können diese überschüssigen Fettdepots entfernt oder neu verteilt werden. Dadurch kann die Übergangszone zwischen Unterlid und Wange gleichmäßiger erscheinen und das Gesicht insgesamt frischer und weniger müde wirken.</p>
 <h3>Erschlaffte Haut straffen</h3>
 <p>Mit zunehmendem Alter verliert die Haut an Elastizität. Überschüssige Haut kann vorsichtig entfernt und das darunterliegende Gewebe gestrafft werden. Dadurch kann die Haut am Unterlid wieder glatter und die Kontur des Augenbereichs definierter erscheinen.</p>
 <h3>Kombination mit einer Oberlidstraffung</h3>
 <p>Wenn neben den Unterlidern auch die Oberlider erschlafft sind, kann eine kombinierte Ober- und Unterlidkorrektur sinnvoll sein. Beide Eingriffe können häufig in einer Operation durchgeführt werden und damit ideal aufeinander abgestimmt werden.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="diese-leistungen-sind-bei-uns-im-preis-enthalten">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2></div>
 <div class="ls-text"><p>Bei einer Unterlidkorrektur möchten Sie von Anfang an wissen, welche Leistungen im Preis enthalten sind und mit welchen Kosten Sie rechnen können. Deshalb erhalten Sie beim Deutschen Ärzte Service ein umfassendes Behandlungspaket. Dazu gehören das persönliche Beratungsgespräch mit einem Facharzt für Plastische und Ästhetische Chirurgie, die medizinische Voruntersuchung, die individuelle Operationsplanung sowie die Organisation und Terminabstimmung Ihrer Behandlung.</p>
 <p>Darüber hinaus umfasst das Paket die notwendige Anästhesie, die Unterlidkorrektur einschließlich aller medizinisch notwendigen Nebenleistungen sowie die Nachsorge.</p>
 <p>Bereits vor Ihrer Entscheidung erhalten Sie eine transparente Kostenübersicht. So wissen Sie genau, welche Leistungen enthalten sind und mit welchen Kosten Sie rechnen müssen.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-hervor" id="kosten-der-unterlidkorrektur">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Kosten der Unterlidkorrektur</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Kosten der Unterlidkorrektur</h2></div>
 <div class="ls-text"><p>Damit Sie Ihre Unterlidkorrektur gut planen können, ist es wichtig, bereits vorab zu wissen, welche medizinischen und organisatorischen Leistungen im Behandlungspaket enthalten sind. Der Deutsche Ärzte Service bietet Ihnen hierfür ein umfassendes Leistungspaket:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinische Voruntersuchung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliches Beratungsgespräch mit einem Facharzt für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Individuelle Operationsplanung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Organisation und Terminabstimmung Ihrer Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Anästhesie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Unterlidkorrektur einschließlich der medizinisch notwendigen Nebenleistungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinische Nachsorge nach dem Eingriff</span></li></ul>
 <p>Im persönlichen Beratungsgespräch werden alle wichtigen Behandlungsschritte und die enthaltenen Leistungen mit Ihnen besprochen. Außerdem erhalten Sie eine transparente Kostenübersicht, damit Sie Ihre Unterlidkorrektur finanziell gut planen können.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="so-laeuft-ihre-behandlung-ab">
   <div class="wrap"><div class="ls-inhalt">
-<h2>So läuft Ihre Behandlung ab</h2>
-<div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
+<div class="ls-raster">
+<div class="ls-seite"><h2>So läuft Ihre Behandlung ab</h2></div>
+<div class="ls-text"><div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
 <p>Im persönlichen Gespräch geht es zunächst darum, was Sie an Ihren Unterlidern stört und welche Veränderung Sie sich wünschen. Nach einer Untersuchung erklärt Ihnen der Arzt, welche Behandlungsmethode für Sie geeignet ist und welches Ergebnis realistisch erreicht werden kann.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">2</span><div class="ls-schritt-text"><h3>Vorbereitung</h3>
 <p>Vor dem Eingriff erfolgen die notwendigen Voruntersuchungen. Außerdem erhalten Sie alle wichtigen Informationen zur Vorbereitung sowie Hinweise für die Zeit nach der Operation.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">3</span><div class="ls-schritt-text"><h3>Operation</h3>
 <p>Die Unterlidkorrektur dauert in der Regel etwa eine Stunde und erfolgt meist ambulant unter örtlicher Betäubung. Je nach Behandlung und persönlicher Situation kann der Eingriff auch im Dämmerschlaf oder unter Vollnarkose durchgeführt werden.<br>Der Schnitt wird direkt unter dem Wimpernkranz gesetzt, sodass die spätere Narbe in der Regel kaum sichtbar ist. Überschüssiges Fettgewebe wird entfernt oder neu verteilt und erschlaffte Haut wird vorsichtig gestrafft.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">4</span><div class="ls-schritt-text"><h3>Heilungsphase</h3>
 <p>Nach der Operation sind Schwellungen und Blutergüsse in den ersten Tagen normal und klingen meist nach und nach ab.<br>Die Fäden werden in der Regel nach etwa vier Tagen entfernt. Während der Heilungsphase sollten Sie auf Make-up, Gesichtscremes sowie starke körperliche Belastungen verzichten. Ihr behandelnder Facharzt gibt Ihnen hierzu individuelle Hinweise und begleitet Sie während der Nachsorge.</p></div></div></div>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="sicherheit-und-risiken">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Sicherheit und Risiken</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Sicherheit und Risiken</h2></div>
 <div class="ls-text"><p>Ihre Sicherheit hat für uns höchste Priorität. Deshalb arbeiten wir ausschließlich mit erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie zusammen.</p>
 <p>Vor der Operation werden Sie ausführlich untersucht und über den Ablauf, die möglichen Ergebnisse und die damit verbundenen Risiken aufgeklärt.Wie jeder operative Eingriff ist auch eine Unterlidkorrektur mit allgemeinen Operationsrisiken verbunden. Hierzu zählen unter anderem Schwellungen, Blutergüsse, Wundheilungsstörungen oder vorübergehende Trockenheit der Augen. Ernsthafte Komplikationen sind selten, können jedoch nie vollständig ausgeschlossen werden.</p>
 <p>Durch sorgfältige Planung, moderne Operationstechniken und die Behandlung durch erfahrene Spezialisten lassen sich diese Risiken deutlich reduzieren.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="die-wichtigsten-fakten-zur-unterlidkorrektur">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Die wichtigsten Fakten zur Unterlidkorrektur</h2>
+<div class="ls-kopfzeile"><h2>Die wichtigsten Fakten zur Unterlidkorrektur</h2></div>
 <dl class="ls-fakten"><div><dt>Kosten</dt><dd>ab 1.399 Euro</dd></div><div><dt>OP Dauer</dt><dd>ca. 1 Stunde</dd></div><div><dt>Narkose</dt><dd>örtliche Betäubung, auf Wunsch Dämmerschlaf oder Vollnarkose</dd></div><div><dt>Klinikaufenthalt</dt><dd>ambulant</dd></div><div><dt>Fadenzug</dt><dd>nach ca. 4 Tagen</dd></div><div><dt>Nachsorge</dt><dd>Kontrolluntersuchungen nach ärztlicher Empfehlung</dd></div></dl>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufige Fragen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Wie lange hält das Ergebnis einer Unterlidkorrektur?</summary><div class="a"><p>In der Regel ist das Ergebnis viele Jahre sichtbar. Da sich der natürliche Alterungsprozess jedoch auch nach der Operation fortsetzt, kann sich das Erscheinungsbild im Laufe der Zeit weiter verändern.</p></div></details><details><summary>Ist die Unterlidkorrektur schmerzhaft?</summary><div class="a"><p>Während der Operation verspüren Sie durch die Betäubung in der Regel keine Schmerzen. Nach dem Eingriff können leichte Spannungsgefühle oder Schwellungen auftreten, die meist nach wenigen Tagen nachlassen.</p></div></details><details><summary>Bleiben sichtbare Narben zurück?</summary><div class="a"><p>Der Schnitt erfolgt direkt unter dem Wimpernkranz und verheilt bei den meisten Patientinnen sehr unauffällig.</p></div></details><details><summary>Kann ich Ober- und Unterlid gleichzeitig behandeln lassen?</summary><div class="a"><p>Ja. In vielen Fällen ist eine kombinierte Ober- und Unterlidstraffung möglich. Ob dies in Ihrem Fall sinnvoll ist, bespricht Ihr behandelnder Facharzt mit Ihnen im Beratungsgespräch.</p></div></details><details><summary>Wann bin ich wieder gesellschaftsfähig?</summary><div class="a"><p>Die meisten Patientinnen fühlen sich nach etwa ein bis zwei Wochen wieder wohl im Alltag. Leichte Schwellungen können individuell unterschiedlich lange sichtbar bleiben.</p></div></details><details><summary>Warum ist die Unterlidkorrektur beim Deutschen Ärzte Service günstiger?</summary><div class="a"><p>Durch unsere langjährige Zusammenarbeit mit ausgewählten Fachärzten und Kliniken sowie effiziente organisatorische Abläufe können wir attraktive Konditionen anbieten. Der günstigere Preis bedeutet dabei nicht, dass bei der ärztlichen Qualifikation oder medizinischen Versorgung Abstriche gemacht werden. Die Behandlung erfolgt durch einen Facharzt für Plastische und Ästhetische Chirurgie in Deutschland.</p></div></details></div></div>
+</div>
 </div></div>
 </section>
 
@@ -823,7 +843,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -845,6 +865,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

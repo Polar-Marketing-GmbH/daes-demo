@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,6 +602,7 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Ablauf</span>
       <h1>Der Weg zu Ihrer Wunschbehandlung</h1>
+      <p class="ls-hero-text">So läuft es ab: Beratungsgespräch beim Facharzt (40 €), Kostenplan, OP in der Partnerklinik und Nachsorge – wir organisieren alles für Sie.</p>
       
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
@@ -604,8 +613,9 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="der-ablauf-im-ueberblick">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Der Ablauf im Überblick</h2>
-<p>Der Weg zu Ihrer Wunschbehandlung soll für Sie so einfach und transparent wie möglich sein. Von der ersten Anfrage bis zur Terminvereinbarung begleiten wir Sie persönlich und sorgen für einen reibungslosen, transparenten und gut organisierten Ablauf. Wir koordinieren die einzelnen Schritte für Sie und stehen Ihnen bei Fragen jederzeit als Ansprechpartner zur Seite.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Der Ablauf im Überblick</h2></div>
+<div class="ls-text"><p>Der Weg zu Ihrer Wunschbehandlung soll für Sie so einfach und transparent wie möglich sein. Von der ersten Anfrage bis zur Terminvereinbarung begleiten wir Sie persönlich und sorgen für einen reibungslosen, transparenten und gut organisierten Ablauf. Wir koordinieren die einzelnen Schritte für Sie und stehen Ihnen bei Fragen jederzeit als Ansprechpartner zur Seite.</p>
 <div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Anmeldung</h3>
 <p>Der erste Schritt zu Ihrem persönlichen Beratungstermin ist ganz einfach: Füllen Sie das Anmeldeformular auf unserer Website aus und wählen Sie die Behandlung aus, für die Sie sich interessieren. Falls Sie Fragen haben oder sich für eine alternative Behandlung interessieren, können Sie Ihre Wünsche einfach im Freitextfeld angeben. <br></p>
 <p>Mit Ihrer Anmeldung buchen Sie ein persönliches medizinisches Beratungsgespräch bei einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie in Ihrer gewünschten Region. Dieses Gespräch bietet Ihnen die Möglichkeit, sich umfassend über den geplanten Eingriff, die medizinischen Möglichkeiten und den individuellen Behandlungsablauf beraten zu lassen.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">2</span><div class="ls-schritt-text"><h3>Buchungsbestätigung</h3>
@@ -616,7 +626,8 @@ main{counter-reset:abschnitt}
 <p>Wenn Sie sich für die Behandlung entscheiden und aus medizinischer Sicht keine Einwände bestehen, schließen Sie den Behandlungsvertrag direkt mit der behandelnden Klinik ab. Der Deutsche Ärzte Service wird dabei nicht Vertragspartner der Behandlung.</p>
 <p>Die Rechnung wird Ihnen anschließend über den Deutschen Ärzte Service zur Verfügung gestellt. Wir begleiten Sie auch nach der Terminvereinbarung weiterhin organisatorisch und stehen Ihnen bei Fragen jederzeit als Ansprechpartner zur Verfügung.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">6</span><div class="ls-schritt-text"><h3>Vorbereitung auf Ihre Behandlung</h3>
 <p>Nach Abschluss des Behandlungsvertrags erhalten Sie von der Klinik alle wichtigen Informationen zur Vorbereitung auf Ihren Eingriff. Selbstverständlich stehen auch wir Ihnen bis zu Ihrer Behandlung und darüber hinaus bei organisatorischen Fragen jederzeit als Ansprechpartner zur Verfügung.</p></div></div></div>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
@@ -725,7 +736,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -747,6 +758,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

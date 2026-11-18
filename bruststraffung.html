@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,33 +602,36 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Brustchirurgie</span>
       <h1>Bruststraffung ab 3.499,- €</h1>
+      <p class="ls-hero-text">Bruststraffung ab 3.499 € beim Facharzt: hebt und formt die Brust, z. B. nach Schwangerschaft oder Gewichtsabnahme. Beratung 40 €.</p>
       <nav class="ls-sprung" aria-label="Auf dieser Seite"><a href="#gruende-fuer-eine-bruststraffung">Gründe</a><a href="#moeglichkeiten-der-bruststraffung">Möglichkeiten</a><a href="#so-laeuft-ihre-behandlung-ab">Ablauf</a><a href="#haeufige-fragen">FAQ</a></nav>
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
-    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_012944_2b2dc8dc-6ff2-4042-bcba-9402f1b801d5.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
+    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_013802_c70bea3b-c205-4090-a874-3ef341d9beca.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
     </div>
   </div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="fuer-eine-neue-form-facharztbehandlung-zahlreiche-standorte-">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Für eine neue Form – Facharztbehandlung- zahlreiche Standorte deutschlandweit</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Für eine neue Form – Facharztbehandlung- zahlreiche Standorte deutschlandweit</h2></div>
 <div class="ls-text"><p>Schwangerschaft, Stillzeit, eine stärkere Gewichtsabnahme oder der natürliche Alterungsprozess können dazu führen, dass die Brust an Festigkeit verliert und erschlafft. Viele Frauen empfinden ihre Brust nach solchen Veränderungen nicht mehr als harmonisch oder fühlen sich in ihrer Kleidung weniger wohl als früher.</p>
 <p>Eine Bruststraffung kann die Brust neu formen und anheben. Ziel ist dabei eine natürlich wirkende Veränderung und eine jugendlichere Brustform, die zu Ihren Körperproportionen und Ihren persönlichen Vorstellungen passt. Wünschen Sie sich zusätzlich mehr Fülle, kann eine Bruststraffung mit einer Brustvergrößerung kombiniert werden. Ist eine kleinere Brust gewünscht, lässt sich der Eingriff auch mit einer Brustverkleinerung verbinden.</p>
 <p>Beim Deutschen Ärzte Service werden Sie von Fachärzten für Plastische und Ästhetische Chirurgie beraten und behandelt. <b>Bruststraffungen bieten wir an zahlreichen Standorten in ganz Deutschland an</b>, sodass Sie die Möglichkeit haben, einen passenden Facharzt möglichst in Ihrer Nähe zu finden. Gemeinsam klären Sie, welche Methode zu Ihrer Ausgangssituation und Ihren Wünschen passt. Wir begleiten Sie dabei von der ersten Beratung über die Behandlung bis zur Nachsorge.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="gruende-fuer-eine-bruststraffung">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Gründe für eine Bruststraffung</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Gründe für eine Bruststraffung</h2></div>
 <div class="ls-text"><p>Viele Frauen entscheiden sich nicht aus einem einzigen Grund für eine Bruststraffung. Oft verändert sich die Brust über viele Jahre hinweg und entspricht irgendwann nicht mehr den eigenen Vorstellungen.</p>
 <p>Häufige Gründe für eine Bruststraffung sind:</p>
 <ul class="ls-liste zwei"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Erschlaffte Brust nach Schwangerschaft und Stillzeit</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Verlust der Brustfestigkeit nach einer starken Gewichtsabnahme</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Altersbedingte Veränderungen der Haut und des Bindegewebes</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Tief stehende Brustwarzen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Wunsch nach einer harmonischeren Brustform</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Unterschiedlich geformte oder unterschiedlich große Brüste</span></li></ul>
 <p>Eine Bruststraffung kann die Brust neu formen und ihr wieder mehr Festigkeit verleihen. Welche Behandlungsmethode für Sie geeignet ist, hängt von Ihrer individuellen Ausgangssituation und Ihren persönlichen Wünschen ab. Ihr behandelnder Facharzt berät Sie ausführlich und erstellt gemeinsam mit Ihnen einen individuellen Behandlungsplan.</p></div>
+</div>
 </div></div>
 </section>
 
@@ -638,10 +649,12 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Ihre Vorteile beim Deutschen Ärzte Service</h2>
-<p>Eine Bruststraffung ist ein anspruchsvoller chirurgischer Eingriff, bei dem Erfahrung, Präzision und ein ästhetisches Gespür entscheidend sind. Jede Brust ist anders und jede Patientin hat individuelle Wünsche. Deshalb arbeiten wir ausschließlich mit erfahrenen <b>Fachärzten für Plastische und Ästhetische Chirurgie</b> zusammen, die auf Brustoperationen spezialisiert sind.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Ihre Vorteile beim Deutschen Ärzte Service</h2></div>
+<div class="ls-text"><p>Eine Bruststraffung ist ein anspruchsvoller chirurgischer Eingriff, bei dem Erfahrung, Präzision und ein ästhetisches Gespür entscheidend sind. Jede Brust ist anders und jede Patientin hat individuelle Wünsche. Deshalb arbeiten wir ausschließlich mit erfahrenen <b>Fachärzten für Plastische und Ästhetische Chirurgie</b> zusammen, die auf Brustoperationen spezialisiert sind.</p>
 <p><b>Seit mehr als 20 Jahren</b> begleiten wir Menschen bei ästhetischen Behandlungen und unterstützen sie während des gesamten Prozesses. Von der ersten Anfrage über die Organisation Ihres Beratungstermins bis hin zur Nachsorge stehen wir Ihnen als persönlicher Ansprechpartner zur Seite.</p>
-<p>Gemeinsam finden wir einen erfahrenen Spezialisten und eine Fachklinik, die zu Ihrer individuellen Ausgangssituation und Ihren persönlichen Wünschen passt.</p>
+<p>Gemeinsam finden wir einen erfahrenen Spezialisten und eine Fachklinik, die zu Ihrer individuellen Ausgangssituation und Ihren persönlichen Wünschen passt.</p></div>
+</div>
 <div class="ls-split bild-rechts"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/09/bruststraffung.jpg" alt="" width="631" height="474" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h3>Ihre Vorteile auf einen Blick</h3>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Netzwerk aus erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ausgewählte Fachkliniken in Deutschland</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Individuelle Berücksichtigung Ihrer Wünsche und Ihres Wohnorts</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Transparente Komplettpreise ohne versteckte Zusatzkosten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliche Betreuung vor, während und nach Ihrer Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Mehr als 20 Jahre Erfahrung im Bereich ästhetischer Behandlungen</span></li></ul>
 <p class="ls-knopf"><a class="btn btn-ghost" href="index.html#qualitaet">Unsere Qualitätsmerkmale</a></p></div></div>
@@ -649,9 +662,9 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="moeglichkeiten-der-bruststraffung">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Möglichkeiten der Bruststraffung</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Möglichkeiten der Bruststraffung</h2></div>
 <div class="ls-text"><p>Jede Brust ist unterschiedlich. Deshalb wird die Operationsmethode individuell auf Ihre Anatomie, Ihre Wünsche und das gewünschte Behandlungsergebnis abgestimmt. Im persönlichen Beratungsgespräch erklärt Ihnen Ihr Facharzt, welche Möglichkeiten für Sie infrage kommen.</p>
 <h3>Nur Straffung</h3>
 <p>Viele Frauen wünschen sich vor allem eine festere und besser geformte Brust, ohne ihre Größe zu verändern. Bei einer klassischen Bruststraffung wird das vorhandene Brustgewebe neu modelliert und überschüssige Haut entfernt. So erhält die Brust wieder eine harmonische und straffere Form ganz ohne Implantate.</p>
@@ -659,13 +672,16 @@ main{counter-reset:abschnitt}
 <p>Ist neben der Straffung auch mehr Brustvolumen gewünscht, kann die <a href="brustvergroesserung-mit-bruststraffung.html">Bruststraffung häufig mit einer Brustvergrößerung kombiniert</a> werden. Dabei wird die Brust gleichzeitig angehoben und durch hochwertige Implantate zusätzlich modelliert. Das Ergebnis wirkt harmonisch und erspart in vielen Fällen einen zweiten Eingriff.</p>
 <h3>Bruststraffung mit Brustverkleinerung</h3>
 <p>Bei einer sehr großen und schweren Brust kann eine Bruststraffung mit einer <a href="brustverkleinerung.html">Brustverkleinerung</a> kombiniert werden. Dabei wird überschüssiges Brustgewebe entfernt, während die Brust gleichzeitig neu geformt und angehoben wird. Viele Patientinnen empfinden ihre Brust anschließend nicht nur als ästhetischer, sondern auch als angenehmer im Alltag.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="die-verschiedenen-operationstechniken">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Die verschiedenen Operationstechniken</h2>
-<p>Welche Operationstechnik bei einer Bruststraffung geeignet ist, richtet sich nach der individuellen Anatomie, dem Ausmaß der Hauterschlaffung, der Form und Größe der Brust sowie dem gewünschten Ergebnis. Je nach Ausgangssituation stehen unterschiedliche Schnittführungen zur Verfügung. Im persönlichen Beratungsgespräch wird sorgfältig geprüft, welche Technik für Ihre Brust die passenden Voraussetzungen bietet.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Die verschiedenen Operationstechniken</h2></div>
+<div class="ls-text"><p>Welche Operationstechnik bei einer Bruststraffung geeignet ist, richtet sich nach der individuellen Anatomie, dem Ausmaß der Hauterschlaffung, der Form und Größe der Brust sowie dem gewünschten Ergebnis. Je nach Ausgangssituation stehen unterschiedliche Schnittführungen zur Verfügung. Im persönlichen Beratungsgespräch wird sorgfältig geprüft, welche Technik für Ihre Brust die passenden Voraussetzungen bietet.</p></div>
+</div>
 <div class="ls-split"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/09/benelli-methode.jpg" alt="" width="704" height="563" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h4>O-Schnitt / Benelli-Methode</h4>
 <p>Bei einer leichten Absenkung der Brust kann eine periareoläre Bruststraffung nach Benelli eine geeignete Methode sein. Der Schnitt verläuft dabei kreisförmig um den Brustwarzenhof.</p>
 <p>Diese Schnittführung kommt mit einer vergleichsweise kurzen Narbenführung aus und kann bei geeigneten Voraussetzungen zu einem unauffälligen Narbenbild führen. Da das Brustgewebe und die Milchgänge weitgehend geschont werden können, bleibt die Stillfähigkeit meist erhalten.</p></div></div>
@@ -685,31 +701,34 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="diese-leistungen-sind-bei-uns-im-preis-enthalten">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2></div>
 <div class="ls-text"><p>Eine Bruststraffung umfasst verschiedene medizinische und organisatorische Leistungen, die vor, während und nach dem Eingriff wichtig sind. Beim Deutschen Ärzte Service erhalten Sie ein Behandlungspaket, das die wesentlichen Bestandteile Ihrer Bruststraffung bereits berücksichtigt:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinische Voruntersuchung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliches Beratungsgespräch mit einem Facharzt für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Aufklärung über die Behandlungsmöglichkeiten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Individuelle Operationsplanung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Organisation und Terminabstimmung Ihrer Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Anästhesie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bruststraffung einschließlich der medizinisch notwendigen Nebenleistungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Nachsorge und ärztliche Kontrolluntersuchungen</span></li></ul>
 <p>Im persönlichen Beratungsgespräch erfahren Sie, welche Leistungen in Ihrem Behandlungspaket enthalten sind und welche Kosten auf Sie zukommen. So können Sie Ihre Bruststraffung transparent und gut informiert planen.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-hervor" id="kosten-fuer-ihre-bruststraffung">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Kosten für Ihre Bruststraffung</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Kosten für Ihre Bruststraffung</h2></div>
 <div class="ls-text"><p>Eine Bruststraffung erhalten Sie beim Deutschen Ärzte Service <b>bereits ab 3.499 €</b>.</p>
 <p>Die genauen <a href="preisversprechen.html">Kosten</a> richten sich nach Ihrer persönlichen Ausgangssituation und dem Umfang der Behandlung. Entscheidend ist unter anderem, welche Straffungstechnik für ein schönes und medizinisch sinnvolles Ergebnis erforderlich ist und ob die Bruststraffung allein oder beispielsweise in Kombination mit einer Brustvergrößerung oder Brustverkleinerung durchgeführt wird.</p>
 <p>Eine kleinere Bruststraffung ist bereits ab 3.499 € möglich. Hier kann – abhängig von der individuellen Ausgangssituation – beispielsweise eine Straffung mit einer Schnittführung um den Brustwarzenhof infrage kommen.Bei einer umfangreicheren Bruststraffung kann eine andere Schnitttechnik erforderlich sein, beispielsweise eine L- oder T-Schnitt-Technik. Da sich dadurch auch Operationsdauer und Aufwand erhöhen, werden die Kosten entsprechend individuell angepasst.</p>
 <p>Durch unsere langjährige Zusammenarbeit mit ausgewählten Fachärzten und Kliniken sowie unsere effiziente Organisation können wir Ihnen attraktive Konditionen anbieten ohne bei der Qualität der ärztlichen Behandlung und der medizinischen Sicherheit Kompromisse einzugehen.</p>
 <p>Welche Methode für Sie geeignet ist und welche Kosten in Ihrem persönlichen Fall entstehen, erfahren Sie transparent im Beratungsgespräch mit Ihrem Facharzt.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="so-laeuft-ihre-behandlung-ab">
   <div class="wrap"><div class="ls-inhalt">
-<h2>So läuft Ihre Behandlung ab</h2>
-<div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
+<div class="ls-raster">
+<div class="ls-seite"><h2>So läuft Ihre Behandlung ab</h2></div>
+<div class="ls-text"><div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
 <p>Am Anfang Ihrer Behandlung steht ein ausführliches Gespräch mit einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie. Dabei besprechen Sie Ihre Wünsche, Ihre Erwartungen und Ihre individuelle Ausgangssituation. Ihr Arzt untersucht Ihre Brust, beurteilt die Hautqualität sowie die Brustform und erklärt Ihnen, welche Behandlungsmöglichkeiten für Sie infrage kommen.<br>Gemeinsam besprechen Sie die geplante Technik, die mögliche Schnittführung, das gewünschte Ergebnis und den Ablauf der Operation. Auch alle Fragen zu Risiken, Narben und der Heilungsphase werden ausführlich beantwortet.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">2</span><div class="ls-schritt-text"><h3>Vorbereitung</h3>
 <p>Vor der Operation erfolgen die notwendigen medizinischen Untersuchungen und die genaue Planung des Eingriffs.</p>
 <p>Ihr Facharzt informiert Sie darüber, wie Sie sich optimal auf die Bruststraffung vorbereiten können und welche Punkte vor der Operation beachtet werden sollten.Dazu gehört beispielsweise, bestimmte Medikamente nach ärztlicher Rücksprache anzupassen sowie auf Faktoren zu achten, die die Wundheilung beeinflussen können. Bei einer Vollnarkose findet zusätzlich ein Gespräch mit dem Anästhesisten statt.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">3</span><div class="ls-schritt-text"><h3>Operation</h3>
@@ -718,33 +737,36 @@ main{counter-reset:abschnitt}
 <p>Nach Abschluss der Operation werden die Schnitte sorgfältig verschlossen und die Brust mit einem speziellen Verband oder medizinischen BH stabilisiert.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">4</span><div class="ls-schritt-text"><h3>Heilungsphase</h3>
 <p>Nach der Bruststraffung sind Schwellungen, Spannungsgefühle und leichte Beschwerden zunächst normal. Ihr Körper benötigt Zeit, um vollständig zu heilen und die endgültige Brustform zu entwickeln.<br>In den ersten Tagen sollten Sie Ihren Oberkörper und Ihre Arme möglichst schonen. Ein spezieller Kompressions-BH unterstützt die Heilung und sollte in der Regel mehrere Wochen getragen werden.<br>Die meisten Patientinnen können nach einigen Tagen leichte Alltagstätigkeiten wieder aufnehmen. Sport, schwere körperliche Belastungen und stärkere Bewegungen des Oberkörpers sollten zunächst vermieden werden.<br></p>
 <p>Ihr behandelnder Facharzt begleitet Sie während der Nachsorge und informiert Sie individuell darüber, wann Sie wieder zu Ihren gewohnten Aktivitäten zurückkehren können.</p></div></div></div>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="sicherheit-und-risiken">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Sicherheit und Risiken</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Sicherheit und Risiken</h2></div>
 <div class="ls-text"><p>Ihre Sicherheit steht während der gesamten Behandlung an erster Stelle. Deshalb arbeiten wir ausschließlich mit erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie zusammen, die über umfangreiche Erfahrung mit Brustoperationen verfügen.</p>
 <p>Vor dem Eingriff untersucht Ihr Facharzt Ihre individuelle Ausgangssituation und bespricht mit Ihnen ausführlich Ihre Wünsche, die Möglichkeiten der Behandlung sowie zu erwartendes Ergebnis. Ebenso werden Sie umfassend über den Ablauf der Operation und mögliche Risiken aufgeklärt.</p>
 <p>Wie jeder operative Eingriff ist auch eine Bruststraffung mit allgemeinen Operationsrisiken verbunden. Dazu gehören unter anderem Schwellungen, Blutergüsse, Wundheilungsstörungen, Infektionen oder Veränderungen der Narbenbildung. Vorübergehende Gefühlsveränderungen im Bereich der Brust oder Brustwarze können ebenfalls auftreten. In den meisten Fällen normalisiert sich die Sensibilität während des Heilungsverlaufs wieder. Sehr selten können dauerhafte Veränderungen bestehen bleiben. Auch die Brustform kann sich durch natürliche Alterungsprozesse, Gewichtsschwankungen oder eine erneute Schwangerschaft im Laufe der Zeit verändern. Eine Bruststraffung kann die Brust nachhaltig formen und anheben, hält jedoch den natürlichen Alterungsprozess nicht vollständig auf.</p>
 <p>Durch eine sorgfältige Planung, moderne Operationstechniken und die Behandlung durch erfahrene Spezialisten lassen sich mögliche Risiken reduzieren.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="die-wichtigsten-fakten-zur-bruststraffung">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Die wichtigsten Fakten zur Bruststraffung</h2>
+<div class="ls-kopfzeile"><h2>Die wichtigsten Fakten zur Bruststraffung</h2></div>
 <dl class="ls-fakten"><div><dt>Kosten</dt><dd>ab 3.499€</dd></div><div><dt>OP Dauer</dt><dd>ca. 1,5-3,5 Stunden</dd></div><div><dt>Narkose</dt><dd>Vollnarkose</dd></div><div><dt>Klinikaufenthalt</dt><dd>ambulant oder eine Übernachtung</dd></div><div><dt>Fadenzug</dt><dd>selbstauflösend oder nach 7–10 Tagen</dd></div><div><dt>Nachsorge</dt><dd>Kontrolluntersuchungen nach ärztlicher Empfehlung</dd></div></dl>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufige Fragen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Was ist eine Bruststraffung genau?</summary><div class="a"><p>Eine Bruststraffung, medizinisch Mastopexie genannt, ist ein chirurgischer Eingriff zur Korrektur erschlaffter Brüste. Dabei wird überschüssige Haut entfernt und das vorhandene Brustgewebe neu geformt. Ziel ist es, die Brust anzuheben und wieder eine harmonische, natürliche Form herzustellen.</p></div></details><details><summary>Für wen ist eine Bruststraffung geeignet?</summary><div class="a"><p>Eine Bruststraffung eignet sich für Frauen, deren Brust durch Schwangerschaft, Stillzeit, Gewichtsveränderungen oder den natürlichen Alterungsprozess an Festigkeit verloren hat.<br>Voraussetzung ist in der Regel, dass das körperliche Wachstum abgeschlossen ist. Bei einer geplanten Schwangerschaft sollte die Behandlung individuell mit dem Facharzt besprochen werden, da eine erneute Schwangerschaft die Brustform wieder verändern kann.</p></div></details><details><summary>Kann eine Bruststraffung ohne Implantate durchgeführt werden?</summary><div class="a"><p>Ja. Viele Frauen entscheiden sich bewusst für eine Bruststraffung ohne Implantate. Dabei wird ausschließlich das vorhandene Brustgewebe genutzt, um die Brust neu zu formen und anzuheben.<br>Wenn zusätzlich mehr Volumen oder ein volleres Dekolleté gewünscht wird, kann eine Kombination mit Brustimplantaten sinnvoll sein.</p></div></details><details><summary>Kann ich eine Bruststraffung mit einer Brustvergrößerung kombinieren?</summary><div class="a"><p>Ja. Eine Bruststraffung kann häufig mit einer Brustvergrößerung kombiniert werden. Dabei wird die Brust gleichzeitig gestrafft und durch ein Implantat zusätzlich geformt und aufgefüllt.<br>Ob diese Kombination in Ihrem Fall sinnvoll ist, hängt von Ihrer Anatomie, Ihrem vorhandenen Brustvolumen und Ihren persönlichen Wünschen ab.</p></div></details><details><summary>Welche Narben entstehen bei einer Bruststraffung?</summary><div class="a"><p>Die Art und Länge der Narben hängt von der verwendeten Operationstechnik und dem Ausmaß der Brusterschlaffung ab.<br>Je nach Ausgangssituation können Narben um die Brustwarze, senkrecht von der Brustwarze zur Unterbrustfalte oder zusätzlich in der Unterbrustfalte entstehen. Moderne Techniken zielen darauf ab, die Narben möglichst unauffällig zu platzieren.</p></div></details><details><summary>Wie lange hält das Ergebnis einer Bruststraffung?</summary><div class="a"><p>Das Ergebnis einer Bruststraffung bleibt in der Regel viele Jahre erhalten. Wie lange die Brust ihre Form behält, hängt jedoch von verschiedenen persönlichen Faktoren ab, beispielsweise Hautqualität, Gewichtsschwankungen, Alter und Schwangerschaften.<br>Eine Bruststraffung kann die Brust nachhaltig verbessern, aber die natürliche Veränderung des Körpers nicht vollständig verhindern.</p></div></details><details><summary>Wann kann ich nach einer Bruststraffung wieder Sport machen?</summary><div class="a"><p>Die Heilungszeit ist individuell unterschiedlich. Leichte Alltagstätigkeiten sind häufig nach wenigen Tagen wieder möglich.<br>Auf Sport, schwere körperliche Arbeit und stärkere Belastungen des Oberkörpers sollte zunächst verzichtet werden. Ihr behandelnder Facharzt gibt Ihnen eine persönliche Empfehlung, wann Sie wieder vollständig aktiv sein können.</p></div></details><details><summary>Kann ich nach einer Bruststraffung noch stillen?</summary><div class="a"><p>Eine Bruststraffung beeinträchtigt die Stillfähigkeit in vielen Fällen nicht. Da jeder Eingriff individuell geplant wird, sollten Sie Ihren Kinderwunsch bereits im Beratungsgespräch mit Ihrem Facharzt besprechen.</p></div></details><details><summary>Warum ist eine Bruststraffung beim Deutschen Ärzte Service günstiger?</summary><div class="a"><p>Durch unsere langjährige Zusammenarbeit mit ausgewählten Fachkliniken und effiziente organisatorische Abläufe können wir attraktive Konditionen anbieten.<br>Dabei steht der Preis nicht für Abstriche bei Qualität oder Sicherheit. Entscheidend sind erfahrene Fachärzte, moderne Behandlungsmethoden und eine persönliche Betreuung während des gesamten Behandlungsablaufs.</p></div></details></div></div>
+</div>
 </div></div>
 </section>
 
@@ -853,7 +875,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -875,6 +897,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

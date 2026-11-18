@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,6 +602,7 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Brustchirurgie</span>
       <h1>Brustvergrößerung mit Bruststraffung ab 4.499,-€</h1>
+      <p class="ls-hero-text">Brustvergrößerung mit Bruststraffung ab 4.499 € beim Facharzt – mehr Volumen und neue Form in einer OP, z. B. nach Schwangerschaft. Beratung 40 €.</p>
       <nav class="ls-sprung" aria-label="Auf dieser Seite"><a href="#gruende-fuer-eine-brustvergroesserung-mit-bruststraffung">Gründe</a><a href="#was-kann-mit-einer-brustvergroesserung-mit-bruststraffung-er">Möglichkeiten</a><a href="#so-laeuft-ihre-behandlung-ab">Ablauf</a><a href="#haeufige-fragen">FAQ</a></nav>
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
@@ -603,9 +612,9 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="fuer-eine-volle-und-straffe-brust-in-nur-einer-op">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Für eine volle und straffe Brust in nur einer OP</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Für eine volle und straffe Brust in nur einer OP</h2></div>
 <div class="ls-text"><p>Mit BH sieht alles gut aus. Ohne BH zeigt der Spiegel ein anderes Bild: Die Brust wirkt leerer, sitzt tiefer und hat ihre frühere Form verloren. Viele Frauen kennen diesen Moment nach Schwangerschaft und Stillzeit, nach einer großen Gewichtsabnahme oder einfach, weil das Bindegewebe mit den Jahren nachgibt.</p>
 <p>Oft fehlt dann nicht nur Volumen, sondern auch Halt. Ein Implantat allein füllt die Brust auf, hebt sie aber nicht an. Eine Straffung allein bringt die Brust wieder in Form, gibt ihr aber keine Fülle zurück. Erst die Kombination aus beidem löst beide Themen in einem Eingriff.</p>
 <p>Bei einer Brustvergrößerung mit Bruststraffung – medizinisch Augmentationsmastopexie, auch Brustlift mit Implantat genannt – entfernt Ihr Facharzt für Plastische und Ästhetische Chirurgie überschüssige Haut, setzt die Brustwarze höher und fügt ein hochwertiges Silikonimplantat ein. Ziel ist eine Brust mit mehr Fülle im oberen Bereich, einer festeren Form und einem harmonischen Dekolleté. Ein gutes Ergebnis wirkt dabei nicht „gemacht“, sondern passt zu Ihrem Körper.</p>
@@ -613,18 +622,20 @@ main{counter-reset:abschnitt}
 <p>Seit 2004 unterstützt der Deutsche Ärzte Service Frauen dabei, einen auf Brustvergrößerung und Straffung spezialisierten Facharzt zu finden. Von der ersten Beratung bis zur Nachsorge begleiten wir Sie persönlich auf Ihrem Weg zur Wunschbehandlung.</p>
 <p>Beim Deutschen Ärzte Service ist eine Brustvergrößerung mit Bruststraffung ab 4.499 € an rund 40 Standorten in Deutschland möglich. Die Operationen werden von erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie durchgeführt. Möchten Sie mehr erfahren, melden Sie sich bei unserem kompetenten Beratungsteam.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="gruende-fuer-eine-brustvergroesserung-mit-bruststraffung">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Gründe für eine Brustvergrößerung mit Bruststraffung</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Gründe für eine Brustvergrößerung mit Bruststraffung</h2></div>
 <div class="ls-text"><p>Eine Brust verändert sich im Laufe des Lebens – und das ist völlig normal. Schwangerschaft, Stillzeit, größere Gewichtsschwankungen und die natürliche Alterung können dazu führen, dass die Haut an Elastizität verliert, das Brustgewebe an Volumen abnimmt und die Brust zunehmend absinkt.</p>
 <p>Viele Frauen wünschen sich deshalb nicht unbedingt eine größere Brust, sondern vor allem ihre frühere Form und Fülle zurück. Wenn sowohl Volumen fehlt als auch die Brust erschlafft ist, kann eine Brustvergrößerung mit gleichzeitiger Bruststraffung sinnvoll sein.</p>
 <p>Häufige Gründe für eine Brustvergrößerung mit Straffung sind:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Schwangerschaft und Stillzeit: Die Brust hat an Volumen und Festigkeit verloren.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Starke Gewichtsabnahme: Die Brust wirkt leer und die überschüssige Haut bildet sich nicht ausreichend zurück.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Veränderungen durch das Älterwerden: Haut und Bindegewebe verlieren an Elastizität und die Brust sinkt ab.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Wunsch nach einem volleren Dekolleté: Besonders im oberen Brustbereich fehlt Volumen.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Asymmetrische Brüste: Die Brüste unterscheiden sich in Größe, Form oder dem Grad der Erschlaffung.</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliches Wohlbefinden: Manche Frauen fühlen sich im Bikini, im Sport-Top oder ohne BH nicht mehr so wohl wie früher.</span></li></ul>
 <p>Ob eine Brustvergrößerung mit Straffung die richtige Behandlung ist oder eine Bruststraffung beziehungsweise Brustvergrößerung allein ausreicht, beurteilt Ihr Facharzt im persönlichen Beratungsgespräch. Dabei berücksichtigt er Ihre körperlichen Voraussetzungen, Ihre Wünsche und das medizinisch realistisch erreichbare Ergebnis.</p></div>
+</div>
 </div></div>
 </section>
 
@@ -642,11 +653,13 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Ihre Vorteile beim Deutschen Ärzte Service</h2>
-<p>Bei einer Brustvergrößerung mit Straffung muss Ihr Arzt zwei Dinge gleichzeitig im Blick behalten: wie viel Haut er entfernt und wie viel Volumen das Implantat hinzufügt. Beides muss exakt zusammenpassen, damit die Brust später harmonisch wirkt und das Gewebe das Implantat gut trägt. Deshalb ist es besonders wichtig, einen Facharzt zu wählen, der über umfassende Erfahrung mit Brustoperationen und insbesondere mit diesem Kombinationseingriff verfügt.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Ihre Vorteile beim Deutschen Ärzte Service</h2></div>
+<div class="ls-text"><p>Bei einer Brustvergrößerung mit Straffung muss Ihr Arzt zwei Dinge gleichzeitig im Blick behalten: wie viel Haut er entfernt und wie viel Volumen das Implantat hinzufügt. Beides muss exakt zusammenpassen, damit die Brust später harmonisch wirkt und das Gewebe das Implantat gut trägt. Deshalb ist es besonders wichtig, einen Facharzt zu wählen, der über umfassende Erfahrung mit Brustoperationen und insbesondere mit diesem Kombinationseingriff verfügt.</p>
 <p>Genau hier liegt eine unserer besonderen Stärken<b>.</b> Durch unsere langjährige Zusammenarbeit mit Fachärzten und Fachkliniken in ganz Deutschland kennen wir die Schwerpunkte unserer Partnerärzte. Wir wissen, welche Eingriffe sie regelmäßig durchführen und worauf sie spezialisiert sind. So können wir gezielt einen erfahrenen Facharzt auswählen, der zu Ihrer gewünschten Behandlung passt.</p>
 <p>Ein weiterer Vorteil ist unser Preis-Leistungs-Verhältnis. Unsere Partnerärzte stellen über den Deutschen Ärzte Service ausgewählte OP-Kapazitäten zu besonderen Konditionen zur Verfügung. Dadurch können wir Brustvergrößerungen mit Straffung zu attraktiven Komplettpreisen anbieten, ohne Abstriche bei der Facharztqualifikation oder den verwendeten Markenimplantaten zu machen.</p>
-<p>Dabei sind wir nicht nur für die Empfehlung des Facharztes zuständig. Wir begleiten Sie persönlich von der ersten Anfrage über die Organisation des Beratungstermins bis zur Operation und Nachsorge. So haben Sie während des gesamten Ablaufs einen festen Ansprechpartner.</p>
+<p>Dabei sind wir nicht nur für die Empfehlung des Facharztes zuständig. Wir begleiten Sie persönlich von der ersten Anfrage über die Organisation des Beratungstermins bis zur Operation und Nachsorge. So haben Sie während des gesamten Ablaufs einen festen Ansprechpartner.</p></div>
+</div>
 <div class="ls-split bild-rechts"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Brustvergroesserung-mit-Straffung-Symbolbild.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h3>Ihre Vorteile auf einen Blick</h3>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bundesweites Netzwerk erfahrener Fachärzte für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Gezielte Auswahl eines auf Brustoperationen spezialisierten Facharztes</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ausgewählte Fachkliniken an rund 40 Standorten – möglichst in Ihrer Nähe</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Markenimplantate von Mentor und Motiva mit lebenslanger Herstellergarantie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Transparenter Komplettpreis ohne versteckte Zusatzkosten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliche Betreuung vor, während und nach der Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Erfahrung mit ästhetischen Behandlungen seit 2004</span></li></ul>
 <p class="ls-knopf"><a class="btn btn-ghost" href="index.html#qualitaet">Unsere Qualitätsmerkmale</a></p></div></div>
@@ -654,48 +667,54 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="was-kann-mit-einer-brustvergroesserung-mit-bruststraffung-er">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Was kann mit einer Brustvergrößerung mit Bruststraffung erreicht werden?</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Was kann mit einer Brustvergrößerung mit Bruststraffung erreicht werden?</h2></div>
 <div class="ls-text"><p>Bei einer Brustvergrößerung mit Bruststraffung verbindet Ihr Facharzt zwei Eingriffe, in der Regel in einer einzigen Operation. Die Straffung entfernt überschüssige Haut, hebt die Brust an und bringt die Brustwarze wieder in eine höhere Position. Das Implantat gibt der Brust zusätzlich Volumen und sorgt vor allem im oberen Bereich für mehr Fülle.</p>
 <p>Unsere Partnerärzte setzen dabei hochwertige Silikongelimplantate der Hersteller Mentor und Motiva ein. Größe, Form und Lage des Implantats wählt Ihr Facharzt so, dass das gestraffte Gewebe es gut tragen kann und das Ergebnis zu Ihren Proportionen passt. Ziel ist eine natürlich wirkende Brust, die nicht „gemacht“ aussieht.</p>
 <p>Wie viel zusätzliche Fülle und Straffung tatsächlich erreicht werden kann, hängt unter anderem von Ihrer Hautbeschaffenheit, dem vorhandenen Brustgewebe und dem Grad der Erschlaffung ab.</p>
 <p>Wünschen Sie sich nur eine festere Form, reicht oft eine <a href="bruststraffung.html">Bruststraffung</a> allein. Sitzt die Brust an der richtigen Stelle und fehlt lediglich Volumen, kommt eine <a href="brustvergroesserung.html">Brustvergrößerung</a> infrage.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="welche-straffungstechniken-gibt-es">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Welche Straffungstechniken gibt es?</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Welche Straffungstechniken gibt es?</h2></div>
 <div class="ls-text"><p>Welche Technik Ihr Facharzt wählt, hängt vor allem davon ab, wie stark die Brust abgesunken ist und wie viel Haut entfernt werden muss. Danach richtet sich auch der Verlauf der Narben.</p>
 <p>Eine Übersicht über die verschiedenen Techniken zeigen wir auf unserer Seite zur <a href="bruststraffung.html">Bruststraffung</a>.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="wird-das-implantat-ueber-oder-unter-dem-muskel-eingesetzt">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Wird das Implantat über oder unter dem Muskel eingesetzt?</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Wird das Implantat über oder unter dem Muskel eingesetzt?</h2></div>
 <div class="ls-text"><p>Das Implantat kann über dem Brustmuskel oder teilweise darunter liegen. Welche Lage für Sie besser ist, hängt unter anderem davon ab, wie viel eigenes Brustgewebe das Implantat bedeckt. Die Vor- und Nachteile beider Varianten bespricht Ihr Facharzt mit Ihnen im Beratungsgespräch.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="diese-leistungen-sind-bei-uns-im-preis-enthalten">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2></div>
 <div class="ls-text"><p>Bei einer Brustvergrößerung mit Straffung werden zwei operative Verfahren miteinander kombiniert. Damit Sie Ihre Behandlung gut planen können, fasst der Deutsche Ärzte Service die wesentlichen medizinischen und organisatorischen Leistungen in einem Komplettpaket zusammen:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinische Voruntersuchung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Fachärztliches Beratungsgespräch mit ausführlicher Aufklärung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Individuelle Planung der Brustvergrößerung und Straffung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Organisation und Koordination Ihres Operationstermins</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Silikongelimplantate von Mentor oder Motiva</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Anästhesie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Brustvergrößerung mit Straffung einschließlich der medizinisch notwendigen Nebenleistungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ärztliche Nachsorge und Kontrolluntersuchungen</span></li></ul>
 <p>Für das persönliche Beratungsgespräch bei Ihrem Facharzt wird eine Gebühr von einmalig 40 € erhoben. Diese ist nicht im Paketpreis enthalten und wird separat berechnet.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-hervor" id="kosten-fuer-ihre-brustvergroesserung-mit-bruststraffung">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Kosten für Ihre Brustvergrößerung mit Bruststraffung</h2>
-<p>Eine Brustvergrößerung mit Bruststraffung erhalten Sie beim Deutschen Ärzte Service bereits ab 4.499 €. Der Komplettpreis umfasst die Operation durch einen erfahrenen Facharzt für Plastische und Ästhetische Chirurgie, hochwertige Markenimplantate von Mentor oder Motiva, die Narkose sowie die reguläre medizinische Nachsorge.</p>
-<p>Der endgültige Preis richtet sich nach Ihrem individuellen Befund und dem Umfang des Eingriffs. Ihren persönlichen Kostenplan erhalten Sie bereits im oder kurz nach dem Beratungsgespräch.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Kosten für Ihre Brustvergrößerung mit Bruststraffung</h2></div>
+<div class="ls-text"><p>Eine Brustvergrößerung mit Bruststraffung erhalten Sie beim Deutschen Ärzte Service bereits ab 4.499 €. Der Komplettpreis umfasst die Operation durch einen erfahrenen Facharzt für Plastische und Ästhetische Chirurgie, hochwertige Markenimplantate von Mentor oder Motiva, die Narkose sowie die reguläre medizinische Nachsorge.</p>
+<p>Der endgültige Preis richtet sich nach Ihrem individuellen Befund und dem Umfang des Eingriffs. Ihren persönlichen Kostenplan erhalten Sie bereits im oder kurz nach dem Beratungsgespräch.</p></div>
+</div>
 <div class="ls-spalten" style="--n:1"><div class="ls-spalte"><h3>Warum sind Brustvergrößerungen mit Straffung beim Deutschen Ärzte Service günstiger?</h3>
 <p>Unsere Partnerärzte sind erfahrene Fachärzte für Plastische und Ästhetische Chirurgie, die ihre Leistungen regulär häufig zu höheren Preisen anbieten. Über den Deutschen Ärzte Service stellen sie ausgewählte OP-Kapazitäten zu besonderen Konditionen zur Verfügung. Dadurch profitieren Sie von der Erfahrung und Qualifikation dieser Fachärzte, ohne deren regulären Behandlungspreis bezahlen zu müssen.<br>Unser Ziel ist es, hochwertige plastische Chirurgie für mehr Frauen bezahlbar zu machen, denn gute medizinische Qualität sollte nicht allein vom Einkommen abhängen.</p></div></div>
 <figure class="ls-bild ls-bild-breit"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/10/Bild-BV-mit-Straffung.jpg" alt="" width="1170" height="500" loading="lazy" decoding="async"></figure>
@@ -704,8 +723,9 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="so-laeuft-ihre-behandlung-ab">
   <div class="wrap"><div class="ls-inhalt">
-<h2>So läuft Ihre Behandlung ab</h2>
-<div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
+<div class="ls-raster">
+<div class="ls-seite"><h2>So läuft Ihre Behandlung ab</h2></div>
+<div class="ls-text"><div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
 <p>Am Anfang steht ein ausführliches Gespräch mit einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie. Sie sprechen über Ihre Wünsche, Ihre Erwartungen und Ihre Ausgangssituation. Ihr Arzt untersucht Ihre Brust und beurteilt, wie stark sie abgesunken ist und wie viel Gewebe vorhanden ist.</p>
 <p>Gemeinsam besprechen Sie die geeignete Straffungstechnik sowie die Größe, Form und Lage der Implantate. Auch der mögliche Narbenverlauf, die Risiken und der Heilungsprozess werden ausführlich erläutert. Dabei erklärt Ihnen Ihr Facharzt, welches Ergebnis realistisch ist und ob beide Eingriffe sinnvollerweise in einer Operation durchgeführt werden können.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">2</span><div class="ls-schritt-text"><h3>Vorbereitung</h3>
 <p>Vor der Operation finden die notwendigen Voruntersuchungen statt. Ihr Facharzt erklärt Ihnen ausführlich, wie Sie sich optimal auf den Eingriff vorbereiten und worauf Sie in den Tagen davor achten sollten.<br>Da die Operation meist in Vollnarkose stattfindet, führen Sie zusätzlich ein Gespräch mit dem Anästhesisten.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">3</span><div class="ls-schritt-text"><h3>Operation</h3>
@@ -715,33 +735,36 @@ main{counter-reset:abschnitt}
 <p>Schwellungen, ein Spannungsgefühl und leichte Schmerzen sind nach der Operation völlig normal und klingen in den folgenden Wochen ab. Ein medizinischer Kompressions-BH unterstützt die Heilung. Sie tragen ihn in der Regel etwa vier bis sechs Wochen.</p>
 <p>Leichte Alltagstätigkeiten sind meist nach einigen Tagen wieder möglich. Auf Sport und schweres Heben sollten Sie etwa vier bis sechs Wochen verzichten. Die Brust verändert sich während der Heilungsphase weiter. Nach etwa drei bis sechs Monaten lässt sich das Ergebnis meist gut beurteilen.</p>
 <p>Alle individuellen Hinweise zur Nachsorge und zu notwendigen Kontrolluntersuchungen erhalten Sie im persönlichen Beratungsgespräch.</p></div></div></div>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="sicherheit-und-risiken">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Sicherheit und Risiken</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Sicherheit und Risiken</h2></div>
 <div class="ls-text"><p>Bei einer Brustoperation sollte der Preis nie das einzige Kriterium sein. Ihre Sicherheit steht bei jeder Behandlung an erster Stelle. Deshalb arbeiten wir ausschließlich mit Fachärzten für Plastische und Ästhetische Chirurgie zusammen, die über Erfahrung mit dem jeweiligen Eingriff verfügen und in ausgewählten Kliniken und medizinisch geeigneten OP-Einrichtungen operieren.</p>
 <p>Vor jeder Brustvergrößerung mit Straffung stehen eine ausführliche Untersuchung sowie ein persönliches Beratungsgespräch. Dabei informiert Sie Ihr Facharzt umfassend über den Eingriff, den Heilungsverlauf, mögliche Komplikationen und die Grenzen der Behandlung.</p>
 <p>Wie jede Operation ist auch eine Brustvergrößerung mit Bruststraffung mit Risiken verbunden. Dazu gehören unter anderem Nachblutungen, Infektionen, Wundheilungsstörungen, Gefühlsstörungen an der Brustwarze, auffällige Narben oder Asymmetrien. Auch implantatbedingte Komplikationen wie eine Kapselfibrose oder eine Verlagerung beziehungsweise Beschädigung des Implantats können auftreten und eine weitere Behandlung erforderlich machen.</p>
 <p>Eine sorgfältige Operationsplanung, die Erfahrung des behandelnden Facharztes und die konsequente Einhaltung der ärztlichen Empfehlungen vor und nach der Operation können dazu beitragen, das Risiko möglicher Komplikationen zu verringern.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="die-wichtigsten-fakten-zur-brustvergroesserung-mit-straffung">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Die wichtigsten Fakten zur Brustvergrößerung mit Straffung</h2>
+<div class="ls-kopfzeile"><h2>Die wichtigsten Fakten zur Brustvergrößerung mit Straffung</h2></div>
 <dl class="ls-fakten"><div><dt>Kosten</dt><dd>ab 4.499 Euro</dd></div><div><dt>OP Dauer</dt><dd>ca. 1,5-3,5 Stunden</dd></div><div><dt>Narkose</dt><dd>Vollnarkose</dd></div><div><dt>Klinikaufenthalt</dt><dd>ambulant oder eine Übernachtung</dd></div><div><dt>Fadenzug</dt><dd>selbstauflösend oder nach 7–10 Tagen</dd></div><div><dt>Nachsorge</dt><dd>Kontrolluntersuchungen nach ärztlicher Empfehlung</dd></div></dl>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufige Fragen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Was kostet eine Brustvergrößerung mit Bruststraffung?</summary><div class="a"><p>Beim Deutschen Ärzte Service kostet der Eingriff ab 4.499 €. Der Komplettpreis umfasst Voruntersuchung, Aufklärung, Markenimplantate von Mentor oder Motiva, Narkose, Operation und Nachsorge. Ihren genauen Preis erfahren Sie nach der Untersuchung im Beratungsgespräch.</p></div></details><details><summary>Wo kann ich eine Brustvergrößerung mit Bruststraffung beim Deutschen Ärzte Service durchführen lassen?</summary><div class="a"><p>Der Deutsche Ärzte Service arbeitet bundesweit mit erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie und ausgewählten Fachkliniken zusammen. Dadurch können wir Ihnen an rund 40 Standorten in Deutschland eine Brustvergrößerung mit Straffung anbieten. Wir unterstützen Sie dabei, einen geeigneten Facharzt möglichst in Ihrer Nähe zu finden. Welche Standorte für Ihren gewünschten Eingriff infrage kommen, erfahren Sie bei Ihrer Anfrage.</p></div></details><details><summary>Wie finde ich einen erfahrenen Facharzt für eine Brustvergrößerung mit Straffung?</summary><div class="a"><p>Achten Sie darauf, dass Ihr Arzt die anerkannte Facharztqualifikation für Plastische und Ästhetische Chirurgie besitzt und regelmäßig Brustoperationen durchführt. Gerade die Kombination aus Brustvergrößerung und Straffung erfordert besondere operative Erfahrung. Der Deutsche Ärzte Service kennt die Behandlungsschwerpunkte seiner Partnerärzte und unterstützt Sie dabei, bundesweit einen Facharzt zu finden, der auf den gewünschten Eingriff spezialisiert ist.</p></div></details><details><summary>Woran erkenne ich, ob ich zusätzlich eine Straffung brauche?</summary><div class="a"><p>Wenn Ihre Brust deutlich abgesunken ist und die Brustwarze auf Höhe der Unterbrustfalte oder darunter liegt, kann eine zusätzliche Straffung sinnvoll sein. Ein Implantat allein gibt der Brust zwar mehr Volumen, kann eine deutlich erschlaffte Brust aber meist nicht ausreichend anheben. Ob eine Bruststraffung notwendig ist, beurteilt Ihr Facharzt bei der persönlichen Untersuchung.</p></div></details><details><summary>Lassen sich Vergrößerung und Straffung in einer Operation kombinieren?</summary><div class="a"><p>Ja, in den meisten Fällen führt der Facharzt beide Schritte in einer Operation durch. Sie benötigen dann nur eine Narkose und durchlaufen eine gemeinsame Heilungsphase. Bei einer sehr stark erschlafften Brust oder ungünstigen Gewebeverhältnissen kann es jedoch medizinisch sinnvoller sein, die Eingriffe in zwei Schritten durchzuführen.</p></div></details><details><summary>Wie sichtbar sind die Narben?</summary><div class="a"><p>Wo die Narben liegen, hängt von der gewählten Straffungstechnik ab. Ihr Facharzt plant die Schnitte so, dass die Narben möglichst unauffällig verlaufen. Anfangs sind sie häufig gerötet, im Laufe eines Jahres verblassen sie deutlich. Ganz verschwinden sie nicht, ein BH oder Bikini verdeckt sie aber in der Regel.</p></div></details><details><summary>Wann bin ich nach der Operation wieder fit?</summary><div class="a"><p>Leichte Alltagstätigkeiten sind meist nach einigen Tagen wieder möglich. Wann Sie wieder arbeiten können, hängt von Ihrem Beruf ab. Auf Sport und schweres Heben verzichten Sie etwa vier bis sechs Wochen.</p></div></details><details><summary>Kann ich nach der Brustvergrößerung mit Straffung noch stillen?</summary><div class="a"><p>In vielen Fällen ja, denn Brustwarze und Warzenhof bleiben mit dem Drüsengewebe verbunden. Eine Garantie dafür gibt es jedoch nicht. Sprechen Sie einen Kinderwunsch deshalb unbedingt im Beratungsgespräch an.</p></div></details><details><summary>Wie lange hält das Ergebnis?</summary><div class="a"><p>Die entfernte Haut bildet sich nicht nach, deshalb bleibt das Ergebnis viele Jahre bestehen. Alter, Schwerkraft und Gewichtsschwankungen wirken jedoch weiter auf Ihre Brust. Auch eine erneute Schwangerschaft kann die Brustform beeinflussen. Moderne Silikonimplantate müssen nicht grundsätzlich nach einer festgelegten Anzahl von Jahren ausgetauscht werden. Regelmäßige ärztliche Kontrollen bleiben dennoch wichtig, und ein späterer Implantatwechsel kann notwendig werden.</p></div></details><details><summary>Zahlt die Krankenkasse die Operation?</summary><div class="a"><p>In der Regel übernehmen gesetzliche Krankenkassen die Kosten nicht, da es sich um einen ästhetischen Eingriff handelt. Für mögliche Folgekosten empfehlen wir eine <a href="folgekostenversicherung.html">Folgekostenversicherung</a>. Auf Wunsch können Sie die Behandlung außerdem <a href="index.html#rechner">finanzieren</a>.</p></div></details></div></div>
+</div>
 </div></div>
 </section>
 
@@ -850,7 +873,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -872,6 +895,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

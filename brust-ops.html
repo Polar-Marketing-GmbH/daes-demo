@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,6 +602,7 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Brustchirurgie</span>
       <h1>Günstige Brustoperationen in Deutschland</h1>
+      <p class="ls-hero-text">Brustvergrößerung ab 2.999 €, Bruststraffung und Brustverkleinerung ab 3.499 € beim Facharzt. Seit 2004 spezialisiert, Beratung 40 €.</p>
       
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
@@ -604,19 +613,23 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="teil-1">
   <div class="wrap"><div class="ls-inhalt">
-<p>Die eigene Brust ist für viele Frauen ein sehr persönliches Thema. Vielleicht wünschen Sie sich schon lange etwas mehr Volumen, empfinden Ihre Brust als zu groß oder möchten die Veränderungen nach Schwangerschaft, Stillzeit oder Gewichtsverlust korrigieren. Vielleicht geht es Ihnen auch einfach darum, sich wieder wohler und selbstbewusster in Ihrem Körper zu fühlen.</p>
-<p>Eine Brust-OP ist eine persönliche Entscheidung, die gut überlegt sein möchte. Dabei geht es um Ihr persönliches Empfinden. Es geht darum, was zu Ihnen, Ihrem Körper und Ihrem Leben passt.Und diese Entscheidung müssen Sie nicht treffen, bevor Sie sich beraten lassen. Im Gegenteil: Eine gute Beratung ist dazu da, eine fundierte Entscheidung zu treffen: Für eine Operation oder auch dagegen.</p>
+<div class="ls-raster">
+<div class="ls-seite"><p class="ls-lead">Die eigene Brust ist für viele Frauen ein sehr persönliches Thema. Vielleicht wünschen Sie sich schon lange etwas mehr Volumen, empfinden Ihre Brust als zu groß oder möchten die Veränderungen nach Schwangerschaft, Stillzeit oder Gewichtsverlust korrigieren. Vielleicht geht es Ihnen auch einfach darum, sich wieder wohler und selbstbewusster in Ihrem Körper zu fühlen.</p></div>
+<div class="ls-text"><p>Eine Brust-OP ist eine persönliche Entscheidung, die gut überlegt sein möchte. Dabei geht es um Ihr persönliches Empfinden. Es geht darum, was zu Ihnen, Ihrem Körper und Ihrem Leben passt.Und diese Entscheidung müssen Sie nicht treffen, bevor Sie sich beraten lassen. Im Gegenteil: Eine gute Beratung ist dazu da, eine fundierte Entscheidung zu treffen: Für eine Operation oder auch dagegen.</p>
 <p>Der Deutsche Ärzte Service (DÄS) unterstützt Sie dabei, den richtigen Arzt für Ihre Brustoperation zu finden. Seit 2004 organisieren wir Brustoperationen bei <b>erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie</b> in qualifizierten Partnerkliniken in Deutschland. Durch unser Netzwerk ermöglichen wir Ihnen attraktive Preise ohne, dass Sie dafür auf eine <b>persönliche Beratung und eine Behandlung in Deutschland</b> verzichten müssen.</p>
 <p>Ihr erster Schritt ist ein <b>persönliches und unverbindliches Beratungsgespräch für nur 40 €</b>. Dabei lernen Sie den Facharzt kennen, der Sie später auch operieren würde, können Ihre Wünsche und Fragen offen ansprechen und sich anschließend in Ruhe entscheiden.</p>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens" id="brustoperationen-ihre-moeglichkeiten-auf-einen-blick">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Brustoperationen: Ihre Möglichkeiten auf einen Blick</h2>
-<p>Keine Brust ist wie die andere und genauso unterschiedlich sind die Wünsche, mit denen Frauen zu uns kommen. Manche wünschen sich mehr Volumen, andere möchten eine große oder schwere Brust verkleinern. Bei wieder anderen hat sich die Brust nach Schwangerschaft, Stillzeit oder einer Gewichtsveränderung verändert und soll wieder gestrafft oder neu geformt werden.</p>
-<p>Welche Brustoperation zu Ihnen passt, hängt deshalb immer von Ihrer persönlichen Ausgangssituation und Ihren Vorstellungen ab. Über den Deutschen Ärzte Service sind verschiedene Eingriffe der ästhetischen Brustchirurgie möglich, von der <b>Brustvergrößerung mit Implantaten, der Brustverkleinerung bis hin zum Implantatwechsel und zur Bruststraffung</b>. Hier finden Sie einen ersten Überblick. Welche Behandlung für Sie persönlich geeignet ist, besprechen Sie im Beratungsgespräch ausführlich mit einem erfahrenen Facharzt.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Brustoperationen: Ihre Möglichkeiten auf einen Blick</h2></div>
+<div class="ls-text"><p>Keine Brust ist wie die andere und genauso unterschiedlich sind die Wünsche, mit denen Frauen zu uns kommen. Manche wünschen sich mehr Volumen, andere möchten eine große oder schwere Brust verkleinern. Bei wieder anderen hat sich die Brust nach Schwangerschaft, Stillzeit oder einer Gewichtsveränderung verändert und soll wieder gestrafft oder neu geformt werden.</p>
+<p>Welche Brustoperation zu Ihnen passt, hängt deshalb immer von Ihrer persönlichen Ausgangssituation und Ihren Vorstellungen ab. Über den Deutschen Ärzte Service sind verschiedene Eingriffe der ästhetischen Brustchirurgie möglich, von der <b>Brustvergrößerung mit Implantaten, der Brustverkleinerung bis hin zum Implantatwechsel und zur Bruststraffung</b>. Hier finden Sie einen ersten Überblick. Welche Behandlung für Sie persönlich geeignet ist, besprechen Sie im Beratungsgespräch ausführlich mit einem erfahrenen Facharzt.</p></div>
+</div>
 <div class="ls-karten" style="--n:3"><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Brustvergroesserung-Symbolbild.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
 <h3><a class="ls-weiter" href="brustvergroesserung.html">Brustvergrößerung</a></h3></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Brustverkleinerung-Symbolbild.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
 <h3><a class="ls-weiter" href="brustverkleinerung.html">Brustverkleinerung</a></h3></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Implantatwechsel-Symbolbild.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure>
@@ -666,7 +679,7 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="brustoperationen-in-ganz-deutschland">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Brustoperationen in ganz Deutschland</h2>
+<div class="ls-kopfzeile"><h2>Brustoperationen in ganz Deutschland</h2></div>
 <div class="ls-split"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/08/Deutschlandkarte-Standorte-2.png" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><p>Damit eine hochwertige Brustoperation für Sie nicht mit einer langen Anreise verbunden sein muss, arbeiten wir mit erfahrenen <b>Fachärzten für Plastische und Ästhetische Chirurgie in ganz Deutschland</b> zusammen.</p>
 <p>Wir haben dabei Partnerkliniken von Hamburg und Berlin über Nordrhein-Westfalen und Hessen bis nach Bayern und Baden-Württemberg.</p>
 <p>Auch für Frauen aus der Schweiz ist eine Brust-OP bei uns in Deutschland möglich, zum Beispiel in Stuttgart, Reutlingen oder München. Mehr dazu auf unserer Seite <a href="https://www.deutscher-aerzte-service.de/brustvergroesserung-schweizer-patientinnen" target="_blank" rel="noopener">Brustvergrößerung für Patientinnen aus der Schweiz</a>.</p></div></div>
@@ -675,9 +688,11 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="gruende-fuer-eine-operation-ueber-den-deutschen-aerzte-servi">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Gründe für eine Operation über den Deutschen Ärzte Service</h2>
-<p>Brustoperationen gehören zur Geschichte des Deutschen Ärzte Service. 2004 haben wir mit dem Angebot von Brustvergrößerungen begonnen. Unser Ziel war damals wie heute, Frauen eine <b>hochwertige Brustoperation bei erfahrenen Fachärzten in Deutschland zu attraktiven Preisen</b> zu ermöglichen.</p>
-<p>Aus den ersten Brust-OPs ist über die Jahre ein bundesweites Netzwerk aus erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie und ausgewählten Kliniken entstanden.<br>Dabei hat sich an unserem Grundgedanken nichts geändert: <b>Qualität sollte bezahlbar sein</b>.<br>Heute profitieren Sie bei einer Brustoperation von unserer langjährigen Erfahrung, persönlichen Beratung und unserem Anspruch, Qualität und faire Preise miteinander zu verbinden.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Gründe für eine Operation über den Deutschen Ärzte Service</h2></div>
+<div class="ls-text"><p>Brustoperationen gehören zur Geschichte des Deutschen Ärzte Service. 2004 haben wir mit dem Angebot von Brustvergrößerungen begonnen. Unser Ziel war damals wie heute, Frauen eine <b>hochwertige Brustoperation bei erfahrenen Fachärzten in Deutschland zu attraktiven Preisen</b> zu ermöglichen.</p>
+<p>Aus den ersten Brust-OPs ist über die Jahre ein bundesweites Netzwerk aus erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie und ausgewählten Kliniken entstanden.<br>Dabei hat sich an unserem Grundgedanken nichts geändert: <b>Qualität sollte bezahlbar sein</b>.<br>Heute profitieren Sie bei einer Brustoperation von unserer langjährigen Erfahrung, persönlichen Beratung und unserem Anspruch, Qualität und faire Preise miteinander zu verbinden.</p></div>
+</div>
 <div class="ls-karten" style="--n:3"><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Vertrauen.png" alt="" loading="lazy" decoding="async"></figure>
 <h3>Erfahrene Fachärzte und ausgewählte Kliniken</h3>
 <p>Bei einer Brustoperation zählt Erfahrung. Deshalb arbeitet der DÄS ausschließlich mit Fachärzten für Plastische und Ästhetische Chirurgie zusammen, die über umfangreiche Erfahrung mit den angebotenen Eingriffen verfügen.<br>Die Operation findet in ausgewählten Kliniken in Deutschland statt. So profitieren Sie von etablierten medizinischen Strukturen, hohen Qualitäts- und Hygienestandards und einer Behandlung ohne weite Wege ins Ausland.</p></div><div class="ls-karte"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Kompetenz.png" alt="" loading="lazy" decoding="async"></figure>
@@ -689,20 +704,22 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="ihr-naechster-schritt-persoenliche-beratung-zur-brust-op">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Ihr nächster Schritt: persönliche Beratung zur Brust-OP</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Ihr nächster Schritt: persönliche Beratung zur Brust-OP</h2></div>
 <div class="ls-text"><p>Vielleicht wissen Sie bereits ziemlich genau, was Sie möchten. Vielleicht sind Sie aber auch noch unsicher, ob eine Brustoperation überhaupt das Richtige für Sie ist. Beides ist vollkommen in Ordnung.</p>
 <p>Für 40 € können Sie über den Deutschen Ärzte Service ein <b>persönliches Beratungsgespräch mit einem erfahrenen Facharzt </b>vereinbaren. Sie lernen den Arzt kennen, sprechen über Ihre Wünsche und erfahren, welche Möglichkeiten medizinisch und ästhetisch zu Ihrer Ausgangssituation passen. Danach entscheiden Sie. In Ruhe und mit den Informationen, die Sie dafür brauchen.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen-zu-brustoperationen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufige Fragen zu Brustoperationen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen zu Brustoperationen</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Für wen kommt eine Brustoperation infrage?</summary><div class="a"><p>Eine Brustoperation kann für erwachsene Frauen infrage kommen, die mit Größe oder Form ihrer Brust unzufrieden sind oder eine Veränderung nach Schwangerschaft, Stillzeit oder Gewichtsverlust wünschen.<br>Bei einer sehr großen Brust können auch körperliche Beschwerden ein Grund für eine Brustverkleinerung sein.<br>Ob eine Operation für Sie geeignet ist, kann nur im Rahmen einer individuellen ärztlichen Beratung und Untersuchung beurteilt werden.</p></div></details><details><summary>Wie finde ich den richtigen Arzt für meine Brustoperation?</summary><div class="a"><p>Wir unterstützen Sie dabei den richtigen Arzt für Ihre Wünsche zu finden. Dabei arbeiten ausschließlich mit Fachärzten für Plastische und Ästhetische Chirurgie zusammen, die über uns nur Eingriffe anbieten, die sie mindestens 100-mal durchgeführt haben.<br>Zusätzlich zur Qualifikation ist jedoch auch entscheidend, dass die Sympathie stimmt und Sie dem Arzt vertrauen können. Dafür lernen Sie im Beratungsgespräch den Arzt, der die Operation durchführen würde kennen und können alle Fragen stellen.</p></div></details><details><summary>Was kostet eine Brustoperation?</summary><div class="a"><p>Die Kosten hängen vom jeweiligen Eingriff ab.<br>Eine Brustvergrößerung mit runden Implantaten kostet beim Deutschen Ärzte Service 2.999 € Festpreis, mit anatomischen Implantaten 3.329 € Festpreis.<br><br>Bei anderen Brustoperationen werden Einstiegspreise angegeben, da die individuellen Voraussetzungen eine größere Rolle spielen. Durch die DÄS-Konditionen können die Preise je nach Eingriff etwa 30 bis 50 Prozent unter dem regulären Preis des jeweiligen Arztes liegen.</p></div></details><details><summary>Wie lange halten Brustimplantate?</summary><div class="a"><p>Moderne Brustimplantate halten meist ein Leben lang. Eine pauschale Aussage darüber, wann ein Implantat ausgetauscht werden muss, ist jedoch nicht möglich.<br>Die Brust und das umliegende Gewebe können sich im Laufe der Jahre verändern. Ein Implantatwechsel kann außerdem aufgrund von Beschwerden, medizinischen Gründen oder einem persönlichen Wunsch nach einer anderen Größe oder Form infrage kommen.</p></div></details><details><summary>Ist eine Brustvergrößerung auch mit Eigenfett möglich?</summary><div class="a"><p>Ja. Bei einer Brustvergrößerung mit Eigenfett wird körpereigenes Fett verwendet. Das Verfahren kommt jedoch nicht für jede Frau gleichermaßen infrage. Unter anderem müssen ausreichend Fettreserven vorhanden sein. Im Beratungsgespräch kann der Arzt beurteilen, ob eine Brustvergrößerung mit Eigenfett für Sie geeignet ist.</p></div></details><details><summary>Wie lange dauert die Heilung nach einer Brustoperation?</summary><div class="a"><p>Die Dauer der Heilungsphase hängt vom Eingriff und der individuellen körperlichen Situation ab. Ihr behandelnder Arzt informiert Sie darüber, wann Sie wieder arbeiten, Sport treiben und Ihren normalen Alltag aufnehmen können.</p></div></details><details><summary>Geht es bei einer Brustoperation wirklich um Perfektion?</summary><div class="a"><p>Vielleicht ein Stück weit. Aber vor allem geht es um Lebensqualität – und darum, sich im eigenen Körper wieder wohlzufühlen.<br>Eine Brustoperation ist keine Entscheidung, die jemand für Sie treffen sollte. Unser Anspruch ist es, Ihnen die Informationen, den erfahrenen Facharzt und die persönliche Beratung zu vermitteln, die Sie brauchen, um Ihre eigene Entscheidung treffen zu können.</p></div></details></div></div>
+</div>
 </div></div>
 </section>
 
@@ -811,7 +828,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -833,6 +850,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,34 +602,37 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Brustchirurgie</span>
       <h1>Brustvergrößerung mit Eigenfett ab 2.500,-€</h1>
+      <p class="ls-hero-text">Brustvergrößerung mit Eigenfett ab 2.500 €: moderates Volumen ohne Implantat, beim Facharzt. Ob sie für Sie geeignet ist, klärt die Beratung (40 €).</p>
       <nav class="ls-sprung" aria-label="Auf dieser Seite"><a href="#gruende-fuer-eine-brustvergroesserung-mit-eigenfett">Gründe</a><a href="#welche-ergebnisse-sind-mit-eigenfett-moeglich">Möglichkeiten</a><a href="#so-laeuft-ihre-behandlung-ab">Ablauf</a><a href="#haeufige-fragen">FAQ</a></nav>
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
-    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_012943_e692567c-82e6-477e-828a-34a3dc5c13ae.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
+    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_013803_eb4267c2-db3e-4feb-972f-9a2622112a04.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
     </div>
   </div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="mehr-fuelle-ohne-implantat">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Mehr Fülle ohne Implantat</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Mehr Fülle ohne Implantat</h2></div>
 <div class="ls-text"><p>Mehr Fülle, aber ohne Implantat – diesen Wunsch haben viele Frauen. Sie wünschen sich eine natürlich wirkende, etwas vollere Brust und möchten dabei bewusst auf Implantate verzichten.</p>
 <p>Genau hier setzt die Brustvergrößerung mit Eigenfett an. Ihr Facharzt für Plastische und Ästhetische Chirurgie entnimmt dabei Fettgewebe an einer Stelle, an der Sie es gut entbehren können, etwa an Bauch oder Hüfte. Anschließend bereitet er das Fett auf und bringt es behutsam in die Brust ein. Medizinisch heißt dieses Verfahren Lipofilling oder Eigenfetttransfer.</p>
 <p>Die Vergrößerung fällt dabei bewusst moderat aus, meist um etwa eine Körbchengröße. Dafür fühlt sich die Brust weich und natürlich an, und gleichzeitig kann durch die Fettabsaugung an der behandelten Stelle eine schönere Kontur erzielt werden.</p>
 <p>Beim Deutschen Ärzte Service werden Sie von Fachärzten für Plastische und Ästhetische Chirurgie beraten und behandelt. Brustvergrößerungen mit Eigenfett bieten wir an zahlreichen Standorten in ganz Deutschland an, so dass Sie die Möglichkeit haben, einen passenden Facharzt möglichst in Ihrer Nähe zu finden. Seit 2004 haben sich schon über 100.000 Kunden an uns gewandt um sich über Ihren Wunscheingriff beraten zu lassen.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: 0800 2626770</p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="gruende-fuer-eine-brustvergroesserung-mit-eigenfett">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Gründe für eine Brustvergrößerung mit Eigenfett</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Gründe für eine Brustvergrößerung mit Eigenfett</h2></div>
 <div class="ls-text"><p>Der Wunsch nach einer volleren Brust hat viele Gesichter. Manche Frauen haben von Natur aus eine kleine Brust, bei anderen hat die Brust nach Schwangerschaft, Stillzeit oder einer Gewichtsabnahme an Volumen verloren. Wer sich dabei eine Lösung ohne Fremdmaterial wünscht, interessiert sich häufig für die Brustvergrößerung mit Eigenfett.</p>
 <p>Viele Patientinnen entscheiden sich für diese Methode, weil sie:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>sich eine moderate, natürlich wirkende Vergrößerung wünschen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>bewusst auf Implantate verzichten möchten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Volumen nach Schwangerschaft und Stillzeit zurückgewinnen möchten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>leichte Größenunterschiede zwischen beiden Brüsten ausgleichen möchten</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>gleichzeitig ein Fettpolster an Bauch oder Hüfte reduzieren möchten</span></li></ul>
 <p>Eine wichtige Voraussetzung: Für den Eingriff muss ausreichend eigenes Fettgewebe vorhanden sein. Bei sehr schlanken Frauen kann die Methode deshalb an ihre Grenzen stoßen. Ob eine Brustvergrößerung mit Eigenfett für Sie geeignet ist und welches Ergebnis sich damit erreichen lässt, beurteilt Ihr Facharzt im persönlichen Beratungsgespräch.</p></div>
+</div>
 </div></div>
 </section>
 
@@ -639,9 +650,11 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="ihre-vorteile-beim-deutschen-aerzte-service">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Ihre Vorteile beim Deutschen Ärzte Service</h2>
-<p>Eine Brustvergrößerung mit Eigenfett erfordert Erfahrung. Entscheidend sind nicht nur die schonende Fettentnahme und sorgfältige Aufbereitung, sondern auch die richtige Technik beim Übertragen des Fettgewebes in die Brust. Deshalb ist es wichtig, einen Facharzt zu wählen, der diese Behandlung regelmäßig durchführt.</p>
-<p>Der Deutsche Ärzte Service arbeitet seit 2004 mit Fachärzten für Plastische und Ästhetische Chirurgie in ganz Deutschland zusammen. Durch unsere langjährige Zusammenarbeit kennen wir die Behandlungsschwerpunkte unserer Partnerärzte. Wir wissen, welche Fachärzte regelmäßig Eigenfettbehandlungen durchführen, und unterstützen Sie dabei, einen geeigneten Spezialisten zu finden. Der Deutsche Ärzte Service betreibt selbst keine Klinik. Die medizinische Beratung und Behandlung erfolgen durch unsere kooperierenden Fachärzte.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Ihre Vorteile beim Deutschen Ärzte Service</h2></div>
+<div class="ls-text"><p>Eine Brustvergrößerung mit Eigenfett erfordert Erfahrung. Entscheidend sind nicht nur die schonende Fettentnahme und sorgfältige Aufbereitung, sondern auch die richtige Technik beim Übertragen des Fettgewebes in die Brust. Deshalb ist es wichtig, einen Facharzt zu wählen, der diese Behandlung regelmäßig durchführt.</p>
+<p>Der Deutsche Ärzte Service arbeitet seit 2004 mit Fachärzten für Plastische und Ästhetische Chirurgie in ganz Deutschland zusammen. Durch unsere langjährige Zusammenarbeit kennen wir die Behandlungsschwerpunkte unserer Partnerärzte. Wir wissen, welche Fachärzte regelmäßig Eigenfettbehandlungen durchführen, und unterstützen Sie dabei, einen geeigneten Spezialisten zu finden. Der Deutsche Ärzte Service betreibt selbst keine Klinik. Die medizinische Beratung und Behandlung erfolgen durch unsere kooperierenden Fachärzte.</p></div>
+</div>
 <div class="ls-split bild-rechts"><figure class="ls-bild"><img src="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/07/Symbolbild-Brustvergroesserung-Eigenfett.jpg" alt="" width="400" height="300" loading="lazy" decoding="async"></figure><div class="ls-split-text"><h3>Ihre Vorteile auf einen Blick</h3>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bundesweites Netzwerk erfahrener Fachärzte für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Gezielte Auswahl eines Facharztes mit Erfahrung im Eigenfetttransfer</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ausgewählte Fachkliniken an ca. 40 Standorten – möglichst in Ihrer Nähe</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Transparente Preise und klar definierte Leistungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliche Betreuung vor, während und nach der Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Mehr als 20 Jahre Erfahrung in der Organisation ästhetischer Behandlungen</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Über 100.000 Personen haben uns bereits vertraut</span></li></ul>
 <p class="ls-knopf"><a class="btn btn-ghost" href="index.html#qualitaet">Unsere Qualitätsmerkmale</a></p></div></div>
@@ -649,40 +662,44 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="welche-ergebnisse-sind-mit-eigenfett-moeglich">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Welche Ergebnisse sind mit Eigenfett möglich?</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Welche Ergebnisse sind mit Eigenfett möglich?</h2></div>
 <div class="ls-text"><p>Mit einer Brustvergrößerung mit Eigenfett gewinnt Ihre Brust an Volumen und Rundung. Ihr Facharzt verteilt das Fett gezielt dort, wo Volumen fehlt, etwa im Dekolleté. Da Ihr eigenes Gewebe zum Einsatz kommt, fühlt sich die Brust weich und natürlich an.</p>
 <p>Wichtig für realistische Erwartungen: Nicht alle übertragenen Fettzellen wachsen dauerhaft an. Der Körper baut einen Teil des Fetts in den ersten Wochen und Monaten wieder ab. Wie viel Fett dauerhaft erhalten bleibt, lässt sich nicht exakt vorhersagen.</p>
 <p>Für ein deutlich sichtbares Ergebnis sind deshalb oft mehrere Behandlungen im Abstand von drei bis sechs Monaten notwendig.</p>
 <p>Wünschen Sie sich eine deutlichere Vergrößerung, ist eine <a href="brustvergroesserung.html">Brustvergrößerung mit Implantaten</a> oft die bessere Wahl. Ist die Brust zusätzlich abgesunken, kann eine <a href="bruststraffung.html">Bruststraffung</a> sinnvoll sein.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="diese-leistungen-sind-bei-uns-im-preis-enthalten">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Diese Leistungen sind bei uns im Preis enthalten</h2></div>
 <div class="ls-text"><p>Wer sich für eine Brustvergrößerung mit Eigenfett entscheidet, möchte von Anfang an Klarheit über den gesamten Behandlungsablauf und die enthaltenen Leistungen haben. Das Komplettpaket umfasst eine ausführliche ärztliche Beratung und Aufklärung, eine medizinische Voruntersuchung sowie eine individuelle Operationsplanung. Darüber hinaus sind die Organisation und Terminabstimmung, die Anästhesie sowie die Fettabsaugung an einer Körperzone und der Brustaufbau mit Eigenfett einschließlich aller medizinisch notwendigen Nebenleistungen im Preis inbegriffen. Auch die Nachsorge gehört zum Leistungspaket. Nicht im Paketpreis enthalten ist die Kompressionswäsche für die Entnahmestelle. Wünschen Sie eine Übernachtung in der Klinik oder ist sie medizinisch sinnvoll, kostet diese 299 €.</p>
 <p>Bereits vor Ihrer Behandlung erhalten Sie eine transparente Kostenübersicht.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-hervor" id="kosten-fuer-ihre-brustvergroesserung-mit-eigenfett">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Kosten für Ihre Brustvergrößerung mit Eigenfett</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Kosten für Ihre Brustvergrößerung mit Eigenfett</h2></div>
 <div class="ls-text"><p>Bei einer Brustvergrößerung mit Eigenfett sind verschiedene medizinische und organisatorische Leistungen erforderlich. Der Deutsche Ärzte Service bündelt diese in einem Behandlungspaket, das die wesentlichen Bestandteile Ihrer Behandlung umfasst:</p>
 <ul class="ls-liste"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinische Voruntersuchung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Persönliches Beratungsgespräch mit einem Facharzt für Plastische und Ästhetische Chirurgie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Individuelle Operationsplanung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Organisation und Terminabstimmung Ihrer Behandlung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Anästhesie</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Fettabsaugung an einer Körperzone zur Eigenfettgewinnung</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Aufbereitung und Einbringung des Eigenfetts</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Medizinisch notwendige Nebenleistungen rund um den Eingriff</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Nachsorge nach der Operation</span></li></ul>
 <p>Die Kompressionswäsche für die Entnahmestelle ist nicht im Paketpreis enthalten. Eine Übernachtung in der Klinik kann bei Bedarf oder aus medizinischen Gründen für 299 € hinzugebucht werden.</p>
 <p>Vor Ihrer Entscheidung erhalten Sie im Beratungsgespräch eine transparente Übersicht über die enthaltenen Leistungen und mögliche Zusatzkosten.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="so-laeuft-ihre-behandlung-ab">
   <div class="wrap"><div class="ls-inhalt">
-<h2>So läuft Ihre Behandlung ab</h2>
-<div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
+<div class="ls-raster">
+<div class="ls-seite"><h2>So läuft Ihre Behandlung ab</h2></div>
+<div class="ls-text"><div class="ls-schritte"><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">1</span><div class="ls-schritt-text"><h3>Persönliche Beratung</h3>
 <p>Am Anfang steht ein ausführliches Gespräch mit einem erfahrenen Facharzt für Plastische und Ästhetische Chirurgie. Ihr Arzt untersucht Ihre Brust und prüft, ob ausreichend Fettgewebe für die Entnahme vorhanden ist. Gemeinsam besprechen Sie, welches Ergebnis realistisch ist, welche Alternativen bestehen und ob möglicherweise mehrere Behandlungen notwendig werden.</p>
 <p>Sie erhalten außerdem Informationen zu den Kosten, zum Ablauf und zu den möglichen Risiken.</p></div></div><div class="ls-schritt"><span class="ls-nr" aria-hidden="true">2</span><div class="ls-schritt-text"><h3>Vorbereitung</h3>
 <p>Vor der Operation finden die notwendigen Voruntersuchungen statt. Ihr Facharzt erklärt Ihnen ausführlich, wie Sie sich optimal auf den Eingriff vorbereiten und worauf Sie in den Tagen davor achten sollten.</p>
@@ -692,33 +709,36 @@ main{counter-reset:abschnitt}
 <p>Schwellungen, Blutergüsse und ein Spannungsgefühl an Brust und Entnahmestelle sind in den ersten Tagen normal und klingen in den folgenden Wochen ab. An der Entnahmestelle unterstützt Kompressionskleidung die Heilung.</p>
 <p>Damit möglichst viele Fettzellen anwachsen, sollten Sie in den ersten Wochen jeden Druck auf die Brust vermeiden, etwa durch Schlafen auf dem Bauch oder einen zu engen BH. Leichte Alltagstätigkeiten sind meist nach wenigen Tagen wieder möglich, auf Sport sollten Sie für einige Wochen verzichten. Verzichten Sie außerdem einige Wochen vor und nach dem Eingriff auf das Rauchen: Nikotin verschlechtert die Durchblutung und damit das Anwachsen des Fetts.</p>
 <p>Das endgültige Ergebnis können Sie nach etwa drei bis sechs Monaten beurteilen, wenn sich das angewachsene Fett stabilisiert hat. Alle individuellen Hinweise zur Nachsorge erhalten Sie im persönlichen Beratungsgespräch.</p></div></div></div>
-<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: 0800 2626770</p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
+<div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: 0800 2626770</p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="sicherheit-und-risiken">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Sicherheit und Risiken</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Sicherheit und Risiken</h2></div>
 <div class="ls-text"><p>Bei einem Eingriff an der Brust sollte der Preis niemals das einzige Entscheidungskriterium sein. Ihre Sicherheit steht bei jeder Behandlung an erster Stelle. Deshalb arbeiten wir ausschließlich mit erfahrenen Fachärzten für Plastische und Ästhetische Chirurgie zusammen.</p>
 <p>Vor jeder Behandlung untersucht Sie Ihr Facharzt sorgfältig und klärt Sie ausführlich über den Eingriff und mögliche Risiken auf.</p>
 <p>Auch wenn bei einer Brustvergrößerung mit Eigenfett körpereigenes Gewebe verwendet wird, handelt es sich um einen operativen Eingriff, der mit Risiken verbunden ist. Dazu gehören unter anderem Schwellungen, Blutergüsse, Infektionen oder Unebenheiten an der Entnahmestelle. An der Brust können Asymmetrien, Verhärtungen, Ölzysten oder Fettgewebsnekrosen entstehen, wenn Teile des übertragenen Fettgewebes nicht ausreichend durchblutet werden. Auch Verkalkungen sind möglich, die bei späteren Brustuntersuchungen berücksichtigt werden müssen. Informieren Sie deshalb bei späteren Vorsorgeuntersuchungen Ihre Ärztin oder Ihren Arzt über den Eigenfetttransfer.</p>
 <p>Eine sorgfältige Operationsplanung und die konsequente Einhaltung der ärztlichen Empfehlungen senken viele Risiken zusätzlich.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt" id="die-wichtigsten-fakten-zur-brustvergroesserung-mit-eigenfett">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Die wichtigsten Fakten zur Brustvergrößerung mit Eigenfett</h2>
+<div class="ls-kopfzeile"><h2>Die wichtigsten Fakten zur Brustvergrößerung mit Eigenfett</h2></div>
 <dl class="ls-fakten"><div><dt>Kosten</dt><dd>ab 2.500 Euro pro Behandlung (Fettabsaugung einer Zone und Eigenfetttransfer)</dd></div><div><dt>OP Dauer</dt><dd>ca. 1-2 Stunden</dd></div><div><dt>Narkose</dt><dd>örtliche Betäubung, auf Wunsch Dämmerschlaf oder Vollnarkose</dd></div><div><dt>Klinikaufenthalt</dt><dd>ambulant oder eine Übernachtung</dd></div><div><dt>Fadenzug</dt><dd>entfällt</dd></div><div><dt>Nachsorge</dt><dd>Kontrolluntersuchungen nach ärztlicher Empfehlung</dd></div></dl>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufige-fragen">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufige Fragen</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufige Fragen</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Was kostet eine Brustvergrößerung mit Eigenfett?</summary><div class="a"><p>Beim Deutschen Ärzte Service kostet eine Brustvergrößerung mit Eigenfett ab 2.500 € pro Behandlung. Im Preis sind die Fettabsaugung an einer Körperzone, die Aufbereitung und Übertragung des Eigenfetts sowie die vereinbarten medizinischen Leistungen und die Nachsorge enthalten. Sind mehrere Behandlungen notwendig, entstehen zusätzliche Kosten.</p></div></details><details><summary>Warum sind die Preise beim Deutschen Ärzte Service günstiger?</summary><div class="a"><p>Unsere Partnerärzte stellen uns ausgewählte Behandlungstermine und freie Operationskapazitäten zur Verfügung. Dadurch können wir ästhetische Eingriffe zu besonders günstigen Konditionen anbieten.<br>Sie werden von einem qualifizierten Facharzt behandelt und profitieren von einem Preis, der unter dem regulären Preisniveau des jeweiligen Arztes liegen kann.</p></div></details><details><summary>Wie viel größer wird meine Brust durch Eigenfett?</summary><div class="a"><p>Mit Eigenfett lässt sich in der Regel eine moderate Vergrößerung erzielen. Häufig wird eine Zunahme um etwa eine Körbchengröße angestrebt. Das tatsächlich erreichbare Ergebnis hängt jedoch von Ihren körperlichen Voraussetzungen und davon ab, wie viel Fett dauerhaft anwächst.Wünschen Sie sich deutlich mehr Volumen, ist eine <a href="brustvergroesserung.html">Brustvergrößerung mit Implantaten</a> in der Regel besser geeignet.</p></div></details><details><summary>Wie viele Behandlungen sind nötig?</summary><div class="a"><p>Das lässt sich nicht pauschal beantworten. Bei manchen Frauen genügt eine Behandlung, bei anderen sind mehrere Eingriffe erforderlich. Zwischen den Behandlungen sollten in der Regel mehrere Monate liegen, damit sich das Ergebnis ausreichend stabilisieren kann.</p></div></details><details><summary>Bin ich für die Methode geeignet?</summary><div class="a"><p>Sie benötigen ausreichend eigenes Fettgewebe, das beispielsweise an Bauch, Hüfte oder Oberschenkeln entnommen werden kann. Bei sehr schlanken Frauen ist die Methode deshalb häufig nicht geeignet. Ob eine Behandlung möglich ist, beurteilt Ihr Facharzt anhand Ihrer körperlichen Voraussetzungen und des gewünschten Ergebnisses.</p></div></details><details><summary>Wie lange hält eine Brustvergrößerung mit Eigenfett?</summary><div class="a"><p>Das angewachsene Fett bleibt dauerhaft erhalten und verhält sich wie Ihr übriges Fettgewebe. Nehmen Sie später stark ab, kann deshalb auch Ihre Brust wieder an Volumen verlieren.</p></div></details><details><summary>Bleiben Narben zurück?</summary><div class="a"><p>Für die Fettabsaugung und den Fetttransfer genügen winzige Einstiche. Nach der Heilung sind sie in der Regel kaum sichtbar.</p></div></details><details><summary>Wann bin ich nach einer Brustvergrößerung mit Eigenfett wieder fit?</summary><div class="a"><p>Leichte Alltagstätigkeiten sind meist nach wenigen Tagen wieder möglich. Schwellungen und Blutergüsse klingen in den folgenden Wochen ab. Auf Sport und Druck auf die Brust sollten Sie für einige Wochen verzichten. Das endgültige Ergebnis zeigt sich nach etwa drei bis sechs Monaten.</p></div></details><details><summary>Kann ich mit Eigenfett auch eine erschlaffte Brust straffen?</summary><div class="a"><p>Eigenfett kann fehlendes Volumen ergänzen, eine deutlich abgesunkene Brust jedoch nicht zuverlässig anheben. Wenn die Brust stärker erschlafft ist, kann eine Bruststraffung erforderlich sein. Welche Behandlung geeignet ist, beurteilt Ihr Facharzt.</p></div></details><details><summary>Was ist besser: Eigenfett oder Brustimplantate?</summary><div class="a"><p>Das hängt von Ihrem gewünschten Ergebnis ab. Eigenfett eignet sich besonders für eine dezente Vergrößerung ohne Implantate. Wenn Sie sich deutlich mehr Volumen wünschen, bieten Implantate häufig besser planbare Möglichkeiten. Beim Deutschen Ärzte Service kostet eine Brustvergrößerung mit Mentor- oder Motiva-Implantaten 2.999 €.</p></div></details><details><summary>Kann es nach einer Eigenfettbehandlung zu Verkalkungen kommen?</summary><div class="a"><p>Ja. Durch den Abbau einzelner Fettzellen können Ölzysten oder Verkalkungen entstehen. Diese Veränderungen können bei späteren Ultraschall- oder Mammografieuntersuchungen sichtbar sein. Informieren Sie deshalb Ihre untersuchenden Ärzte über eine vorausgegangene Eigenfettbehandlung.</p></div></details><details><summary>Kann ich nach einer Brustvergrößerung mit Eigenfett weiterhin zur Mammografie gehen?</summary><div class="a"><p>Ja. Auch nach einer Brustvergrößerung mit Eigenfett sind die üblichen Brustvorsorgeuntersuchungen möglich. Da durch den Eigenfetttransfer Veränderungen wie Ölzysten oder Verkalkungen entstehen können, sollten Sie Ihre untersuchende Ärztin oder Ihren Arzt über die vorausgegangene Behandlung informieren.</p></div></details><details><summary>Wo kann ich eine Brustvergrößerung mit Eigenfett beim Deutschen Ärzte Service durchführen lassen?</summary><div class="a"><p>Der Deutsche Ärzte Service arbeitet bundesweit mit Fachärzten für Plastische und Ästhetische Chirurgie zusammen. Da nicht jeder unserer Partnerärzte Eigenfettbehandlungen durchführt, wählen wir gezielt einen Facharzt aus, der Erfahrung mit dieser Methode hat. Wir informieren Sie gerne darüber, an welchen Standorten eine Behandlung möglich ist. Insgesamt ist der Deutsche Ärzte Service an mehr als 40 Standorten in Deutschland vertreten.</p></div></details><details><summary>Zahlt die Krankenkasse die Behandlung?</summary><div class="a"><p>Bei einem ästhetischen Eingriff in der Regel nicht. Auf Wunsch können Sie die Behandlung <a href="index.html#rechner">finanzieren</a>.</p></div></details></div></div>
+</div>
 </div></div>
 </section>
 
@@ -827,7 +847,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -849,6 +869,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>

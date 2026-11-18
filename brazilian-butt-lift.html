@@ -480,6 +480,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-hero-raster{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(1.6rem,5vw,4.8rem);align-items:center}
 .ls-kopf{max-width:none;gap:1.4rem}
 .ls-kopf h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.02;letter-spacing:-.035em}
+.ls-hero-text{font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.6;color:var(--stahl-600);max-width:54ch;margin:0}
 .ls-sprung{gap:.5rem}
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
@@ -505,6 +506,13 @@ main{counter-reset:abschnitt}
 .ls-seite h2{margin:0}
 .ls-text{display:grid;gap:1.05rem;min-width:0}
 .ls-text > *{max-width:none!important}
+.ls-inhalt{gap:clamp(1.6rem,3.2vw,2.8rem)}
+.ls-seite:empty{display:block}
+.ls-seite h3,.ls-seite h4{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.ls-seite .ls-lead{font-size:clamp(1.12rem,1.55vw,1.36rem);line-height:1.5;color:var(--schwarz);font-weight:500;letter-spacing:-.01em}
+.ls-kopfzeile h2{margin:0;max-width:820px}
+.ls-inhalt > .ls-gruppe,.ls-inhalt > .ls-schritte{max-width:none}
+@media (max-width:900px){.ls-seite:empty{display:none}}
 @media (max-width:900px){.ls-raster{grid-template-columns:minmax(0,1fr);gap:1rem}.ls-seite{position:static}}
 
 /* Listen */
@@ -594,10 +602,11 @@ main{counter-reset:abschnitt}
     <div class="ls-kopf">
       <span class="label">Körperchirurgie</span>
       <h1>Brazilian Butt Lift ab 3.999 ,-€</h1>
+      <p class="ls-hero-text">Brazilian Butt Lift (BBL) ab 3.999 € beim Facharzt – Po-Modellierung mit Eigenfett oder Implantat. Komplettpreis inkl. Nachsorge, Beratung 40 €.</p>
       
       <div class="hero-actions"><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a><a class="btn btn-ghost" href="tel:08002626770">0800 2626770</a></div>
     </div>
-    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_012945_c59d56db-5040-46ae-8286-aa6915f21515.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
+    <figure class="ls-held"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261118_013935_da05103f-8ac3-4137-a241-7adc12848702.png" alt="" width="896" height="1120" fetchpriority="high"></figure>
     </div>
   </div>
 </section>
@@ -609,10 +618,11 @@ main{counter-reset:abschnitt}
 </section>
 
 <section class="ls-abschnitt vor-lebens ls-zwei" id="brazilian-butt-lift-ihr-traum-von-einem-wohlgeformten-po">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Brazilian Butt Lift – Ihr Traum von einem wohlgeformten Po</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Brazilian Butt Lift – Ihr Traum von einem wohlgeformten Po</h2></div>
 <div class="ls-text"><p>Der Po ist <b>Schönheitsideal und Symbol für Weiblichkeit</b>. Doch nur wenige Frauen sind mit ihrem Gesäß wirklich zufrieden. So ist er manchen zu klein und flach, andere wünschen ihn sich etwas fester. Die Hollywoodstars machen es vor und helfen der Natur nach. Auch Menschen mit geringerem Einkommen wünschen sich auch einen gut definierten Po. Mit dem <b>Brazilian Butt Lift</b> können wir Ihren Traum vom Wunsch Po erfüllen!</p></div>
+</div>
 </div></div>
 </section>
 
@@ -630,50 +640,59 @@ main{counter-reset:abschnitt}
 
 <section class="ls-abschnitt" id="brazilian-butt-lift-wie-funktioniert-die-behandlung">
   <div class="wrap"><div class="ls-inhalt">
-<h2>Brazilian Butt Lift: Wie funktioniert die Behandlung?</h2>
-<p>Sie sind schon länger mit der Form und Größe Ihres Gesäßes unzufrieden und trotz sportlicher Betätigung, gezieltem Gesäß-Training und gesunder Ernährung lässt ein zufriedenstellendes Ergebnis auf sich warten? Vereinbaren Sie einen <b>ersten Beratungstermin</b> über den Deutschen Ärzte Service! Beim DÄS wartet auf Sie ein kompetenter und einfühlsamer Facharzt für Plastische und Ästhetische Chirurgie, der sehr viel Erfahrung mit dem Brazilian Butt Lift hat. Gemeinsam besprechen Sie alle Möglichkeiten zu den <b>schonenden Methoden</b> des Brazilian Butt Lifts, schauen sich <b>Bilder</b> an, die beeindrucken und finden die richtige Technik. Wahlweise kann das Ergebnis mit Eigenfett modelliert werden, bei sehr schlanken Frauen kann man auf speziell für den Po angefertigte Implantate zurückgreifen. Bei einer Eigenfettbehandlung haben Sie einen Synergieeffekt: Aus ungeliebten Fettpölsterchen an anderen Stellen (wie z.B. den Oberschenkeln oder am Bauch) wird ein runder, voller Po gezaubert.</p>
+<div class="ls-raster">
+<div class="ls-seite"><h2>Brazilian Butt Lift: Wie funktioniert die Behandlung?</h2></div>
+<div class="ls-text"><p>Sie sind schon länger mit der Form und Größe Ihres Gesäßes unzufrieden und trotz sportlicher Betätigung, gezieltem Gesäß-Training und gesunder Ernährung lässt ein zufriedenstellendes Ergebnis auf sich warten? Vereinbaren Sie einen <b>ersten Beratungstermin</b> über den Deutschen Ärzte Service! Beim DÄS wartet auf Sie ein kompetenter und einfühlsamer Facharzt für Plastische und Ästhetische Chirurgie, der sehr viel Erfahrung mit dem Brazilian Butt Lift hat. Gemeinsam besprechen Sie alle Möglichkeiten zu den <b>schonenden Methoden</b> des Brazilian Butt Lifts, schauen sich <b>Bilder</b> an, die beeindrucken und finden die richtige Technik. Wahlweise kann das Ergebnis mit Eigenfett modelliert werden, bei sehr schlanken Frauen kann man auf speziell für den Po angefertigte Implantate zurückgreifen. Bei einer Eigenfettbehandlung haben Sie einen Synergieeffekt: Aus ungeliebten Fettpölsterchen an anderen Stellen (wie z.B. den Oberschenkeln oder am Bauch) wird ein runder, voller Po gezaubert.</p>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div>
-<h3>Wie läuft der Eingriff ab?</h3>
+<h3>Wie läuft der Eingriff ab?</h3></div>
+</div>
 <div class="ls-spalten" style="--n:1"><div class="ls-spalte"><p>Bei der Eigenfett-Variante der Po-Vergrößerung <b>kommen keine Implantate zum Einsatz</b>, sondern es findet eine <b>sanfte Fettumverteilung </b>statt. Ihr Facharzt für Plastische und Ästhetische Chirurgie bespricht mit Ihnen im Vorfeld ganz genau, <b>welche Körperpartien sich für die Fettzellenentnahme anbieten</b>. Dieses innovative Verfahren besteht aus zwei Schritten. Während der Operation entfernt der Spezialist die Fettpölsterchen zuerst mithilfe einer besonders feinen Kanüle. Geeignete Regionen sind die Hüfte, der Bauch oder die Oberschenkel. In einem zweiten Schritt wird das das so gewonnene Fettgewebe aufbereitet. Dann wird das gereinigte Material genutzt um <b>Ihren Po gezielt zu modellieren</b>. Auch dabei kommt eine hauchdünne Kanüle zum Einsatz, wodurch in der Regel <b>keinerlei Narben zurückbleiben</b>. Eine äußerst akkurate Vorgehensweise sorgt für eine schön geformten Po. Nur der erfahrene plastische Chirurg weiß, wo das Fett eingespritzt werden muss. Bei einer perfekten Behandlung wächst das Eigenfett sehr gut an und verbindet sich zu einer Einheit mit Ihrem körpereigenen Pogewebe. Vertrauen Sie auf die Spezialisten und Fachärzte, die sich auf diesen Eingriff fokussiert haben. Dieses Verfahren ist auch beim DÄS nicht an allen Standorten erhältlich – fragen Sie telefonisch unter 0800/ 26 26 770 kostenfrei an, in welchen Städten es aktuell möglich wäre.</p>
 <p>Bei einer Po-vergrößerung mit Implantaten ist der Eingriff aufwändiger. Es gibt verschiedene Formen und Größen von Silikongelimplantaten, so dass Ihre persönlich gewünschte Po-Form realisiert werden kann. Aufgrund der guten Eigenfettverträglichkeit ist eine Po-Vergrößerung mit Implantaten nur bei sehr schlanken Frauen, die nicht über die notwendigen Fettpölsterchen für das Eigenfett verfügen, die bessere Methode.</p>
 <p>Bei dieser Technik sind die richtige Aufklärung und das ausführliche Vorgespräch mit dem Arzt besonders wichtig, damit Ihr Wunsch auch perfekt umgesetzt werden kann. Die richtige Größe des Implantats ermittelt der Plastische Chirurg schon bei der Voruntersuchung.</p></div></div>
-<h3>Nach der Schönheitsoperation</h3>
-<p>Nach der Operation – die Sie <b>im komfortablen Dämmerschlaf, Lokalanästhesie oder auf Wunsche auch in Vollnarkose</b> verbringen – erholen Sie sich noch wenige Stunden in der Privatklinik und lassen sich verwöhnen. Danach haben Sie die Wahl, ob Sie direkt nach Hause möchten oder noch ein bis zwei Tage stationär bei uns bleiben möchten. Die nächsten <b>vier bis sechs Wochen</b> tragen Sie eine <b>spezielle Kompressionshose</b>. Sie fördert den Heilungsprozess und mindert die Schwellung. <b>Bis zu 14 Tage</b> nach dem Eingriff sollten Sie sich unbedingt schonen und <b>wenig Druck auf Ihr Gesäß</b> ausüben. Das gilt auch <b>beim Sitzen und Schlafen</b>. Sportliche Betätigung können Sie in der Regel nach vier bis sechs Wochen wieder aufnehmen. Sprechen Sie Ihre Vorhaben jedoch vor allem in der ersten Zeit ruhig mit Ihrem behandelnden Facharzt ab.<br></p>
+<div class="ls-raster ohne-kopf">
+<div class="ls-seite"></div>
+<div class="ls-text"><h3>Nach der Schönheitsoperation</h3>
+<p>Nach der Operation – die Sie <b>im komfortablen Dämmerschlaf, Lokalanästhesie oder auf Wunsche auch in Vollnarkose</b> verbringen – erholen Sie sich noch wenige Stunden in der Privatklinik und lassen sich verwöhnen. Danach haben Sie die Wahl, ob Sie direkt nach Hause möchten oder noch ein bis zwei Tage stationär bei uns bleiben möchten. Die nächsten <b>vier bis sechs Wochen</b> tragen Sie eine <b>spezielle Kompressionshose</b>. Sie fördert den Heilungsprozess und mindert die Schwellung. <b>Bis zu 14 Tage</b> nach dem Eingriff sollten Sie sich unbedingt schonen und <b>wenig Druck auf Ihr Gesäß</b> ausüben. Das gilt auch <b>beim Sitzen und Schlafen</b>. Sportliche Betätigung können Sie in der Regel nach vier bis sechs Wochen wieder aufnehmen. Sprechen Sie Ihre Vorhaben jedoch vor allem in der ersten Zeit ruhig mit Ihrem behandelnden Facharzt ab.<br></p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="das-gesamtpaket">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Das Gesamtpaket</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Das Gesamtpaket</h2></div>
 <div class="ls-text"><p><b> Das Komplettangebot der Kliniken beinhaltet im Einzelnen folgende Leistungen: </b></p>
 <div class="ls-tabelle"><table><tbody><tr><td>Eingehende Beratung und Aufklärung über die Po-Vergrößerung</td></tr><tr><td>Medizinische Voruntersuchung</td></tr><tr><td>Vorbereitung, Organisation und Terminabstimmung der Schönheitsoperation</td></tr><tr><td>Anästhesie</td></tr><tr><td>Fettabsaugung an den vorher festgelegten Stellen und Brazilian Butt Lift inklusive aller medizinisch notwendigen Nebenleistungen oder Po-vergrößerung mit Implantaten</td></tr><tr><td>Nachsorge</td></tr></tbody></table></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="brazilian-butt-lift-in-deutschland-ihre-vorteile-beim-deutsc">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Brazilian Butt Lift in Deutschland – Ihre Vorteile beim Deutschen Ärzte Service</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Brazilian Butt Lift in Deutschland – Ihre Vorteile beim Deutschen Ärzte Service</h2></div>
 <div class="ls-text"><p>Hinter dem Deutschen Ärzte Service stehen <b>renommierte Fachärzte</b> und erfahrene Experten der Schönheitschirurgie. Bei uns profitieren Sie von <b>kompetenten Ansprechpartnern</b>, die Ihnen <b>einfühlsam</b> zur Seite stehen und Ihnen den Wunsch einer Po-Vergrößerung zu <b>günstigen Preisen ermöglichen</b>. Unterstützt von <b>mehr als 2 Jahrzehnten Expertise,</b> arbeiten unsere Spezialisten und Fachkliniken für Ihr Wohlbefinden.</p></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei" id="alle-fakten-auf-einen-blick-fuer-ihr-brazilian-buttock-lifti">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Alle Fakten auf einen Blick für Ihr Brazilian Buttock Lifting</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Alle Fakten auf einen Blick für Ihr Brazilian Buttock Lifting</h2></div>
 <div class="ls-text"><div class="ls-tabelle"><table><tbody><tr><td><b>Kosten</b></td><td>ab 3.999 €</td></tr><tr><td><b>OP-Dauer</b></td><td>ca. 2-3 Stunden</td></tr><tr><td><b>Narkose</b></td><td>örtliche Betäubung/<wbr>Dämmerschlaf, auf Wunsch Vollnarkose</td></tr><tr><td><b>Klinikaufenthalt</b></td><td>entfällt</td></tr><tr><td><b>Fadenzug</b></td><td>4–6 Wochen Kompressionswäsche und körperliche Schonung, Belastung am Po vermeiden</td></tr></tbody></table></div>
 <div class="ls-cta"><p>Alle Infos in unserer Broschüre entdecken!</p><a class="btn btn-primary" href="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/03/Informationsbroschuere-fuer-Patienten-2026.pdf">Broschüre anschauen</a></div></div>
+</div>
 </div></div>
 </section>
 
 <section class="ls-abschnitt ls-zwei ls-faq-teil" id="haeufig-gestellte-fragen-zum-brazilian-butt-lift">
-  <div class="wrap"><div class="ls-inhalt ls-raster">
-<div class="ls-seite"><h2>Häufig gestellte Fragen zum Brazilian Butt Lift</h2>
-</div>
+  <div class="wrap"><div class="ls-inhalt">
+<div class="ls-raster">
+<div class="ls-seite"><h2>Häufig gestellte Fragen zum Brazilian Butt Lift</h2></div>
 <div class="ls-text"><div class="faq ls-faq"><details open><summary>Wie lange kann ich nach einer Po-Vergrößerung nicht sitzen?</summary><div class="a"><p>Nach dem Brazilian Butt Lift sollten Sie <b>bis zu zwei Wochen</b> darauf verzichten, direkt auf dem Po zu sitzen. Auch andere anstrengende Aktivitäten gilt es in dem Zeitraum zu meiden.</p></div></details><details><summary>Wie gefährlich ist ein Brazilian Butt Lift?</summary><div class="a"><p>Die Methode des Brazilian Buttock Liftings erfreut sich steigender Beliebtheit. Im Gegensatz zur Po-Vergrößerung mittels Implantate bedarf die <b>Modellierung mit Eigenfett keiner größeren Schnitte</b>, die Narben nach sich ziehen könnten. Dank unserer jahrelangen Erfahrung, <b>höchsten hygienischen sowie qualitativen Standards</b> und der Zusammenarbeit mit Spezialisten auf dem jeweiligen Gebiet <b>erzielen wir beste Ergebnisse</b>.</p></div></details><details><summary>Wie lange hält eine Po-Vergrößerung mit Eigenfett?</summary><div class="a"><p>In der Regel ist das Ergebnis dauerhaft und Sie haben wunderschöne weibliche Rundungen. Natürlich ist auch die Po-Region nicht vom allgemeinen Alterungsprozess ausgenommen. Sollte Ihr <b>Bindegewebe</b> mit der Zeit erschlaffen, wird die Gesäßpartie weniger straff aussehen, was aber nicht schlimm ist, denn sie passt optisch zum restlichen Körper. Sollten Sie sehr stark <b>abnehmen, wird auch Ihr Po an Volumen verlieren. </b>Um dem entgegenzuwirken, sollten Sie auf ein stabiles Gewicht achten.</p></div></details><details><summary>Wie viel kostet eine Po-Vergrößerung?</summary><div class="a"><p>Wie viel das <b>Brazilian Butt Lifting kostet</b>, ist für die Meisten eines der Hauptanliegen. Beim Deutschen Ärzte Service erhalten Sie den Eingriff bereits ab 3.999,- €. Sie sparen mehr als 40% zum Normalpreis. Wie der günstige Preis möglich ist, erfahren Sie <a href="preisversprechen.html">hier</a>.</p></div></details></div>
 <div class="ls-cta"><p>Persönliches Beratungsgespräch mit einem Arzt für nur € 40.- buchen – Hotline: <a href="tel:08002626770">0800 2626770</a></p><a class="btn btn-primary" href="index.html#kontakt">Beratungsgespräch vereinbaren</a></div></div>
+</div>
 </div></div>
 </section>
 
@@ -782,7 +801,7 @@ main{counter-reset:abschnitt}
   window.addEventListener('scroll',fort,{passive:true});window.addEventListener('resize',fort);fort();
   // Inhalte beim Scrollen weich einblenden
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > *,.ls-text > *,.ls-seite,.ls-held,.ls-insta .wrap > *');
+  var ziele=document.querySelectorAll('.ls-abschnitt .ls-inhalt > :not(.ls-raster),.ls-text > *,.ls-seite > *,.ls-held,.ls-insta .wrap > *');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('da');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
   ziele.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*0.92)return;el.classList.add('ls-auf');io.observe(el);});
 })();
@@ -804,6 +823,18 @@ main{counter-reset:abschnitt}
     var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
     if(ok)laden();
   })();
+})();
+</script>
+<!-- ProvenExpert-Siegel des Deutschen Ärzte Service (offizielles Widget wie auf der bisherigen Webseite) -->
+<script src="https://s.provenexpert.net/seals/proseal-v2.js" async></script>
+<script>
+(function(){
+  var fertig=false;
+  function siegel(){
+    if(fertig||!window.provenExpert||!window.provenExpert.proSeal)return;fertig=true;
+    window.provenExpert.proSeal({widgetId:"19fac9d4-4e0d-47eb-a2dc-3baa068a9935",language:"de-DE",usePageLanguage:false,bannerColor:"#097E92",textColor:"#FFFFFF",showReviews:true,hideDate:true,hideName:false,hideOnMobile:false,bottom:"30px",stickyToSide:"right",googleStars:true,zIndex:"8",displayReviewerLastName:false});
+  }
+  window.addEventListener('load',function(){siegel();setTimeout(siegel,1500);setTimeout(siegel,4000);});
 })();
 </script>
 </body>
