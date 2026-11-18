@@ -79,6 +79,36 @@ p{margin:0}
   .lebens-text{max-width:none;padding-block:0 1.2rem}
   .lebens-bild{position:static;display:block;height:min(330px,78vw);margin:0 auto}
 }
+/* Instagram: Beispielbeiträge und Folgen-Knopf */
+.insta{padding-block:clamp(2.6rem,5vw,4rem)}
+.ins-kopf{display:flex;align-items:center;gap:1rem 1.2rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.ins-avatar{width:64px;height:64px;border-radius:50%;padding:3px;background:linear-gradient(45deg,#F2A04B,#E1306C 45%,#812685);flex:none}
+.ins-avatar svg{display:block;width:100%;height:100%;border-radius:50%;border:3px solid var(--weiss)}
+.ins-text-kopf{display:grid;gap:.2rem;min-width:0;flex:1 1 280px}
+.ins-text-kopf a{font-weight:700;font-size:1.1rem;color:var(--schwarz);text-decoration:none}
+.ins-text-kopf a:hover{color:var(--violett)}
+.ins-text-kopf p{font-size:.92rem;color:var(--stahl-600);line-height:1.5}
+.ins-folgen{margin-left:auto}
+.ins-raster{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.5rem}
+.ins-kachel{position:relative;display:block;aspect-ratio:1/1;border-radius:10px;overflow:hidden;text-decoration:none;isolation:isolate}
+.ins-kachel .photo{position:absolute;inset:0;border-radius:0}
+.ins-kachel .photo img{transition:transform .4s ease}
+.ins-kachel:hover .photo img,.ins-kachel:hover > img{transform:scale(1.05)}
+.ins-reel{position:absolute;top:.55rem;right:.55rem;width:22px;height:22px;color:var(--weiss);stroke:currentColor;fill:none;stroke-width:1.7;filter:drop-shadow(0 1px 2px rgba(1,1,1,.45));z-index:2}
+.ins-hover{position:absolute;inset:0;display:grid;place-items:center;background:rgba(1,1,1,.32);color:var(--weiss);opacity:0;transition:opacity .2s ease;z-index:3}
+.ins-hover .ico{width:30px;height:30px}
+.ins-kachel:hover .ins-hover,.ins-kachel:focus-visible .ins-hover{opacity:1}
+.ins-text{display:flex;flex-direction:column;justify-content:space-between;padding:1rem .9rem}
+.ins-text.dunkel{background:var(--verlauf);color:var(--weiss)}
+.ins-text.hell{background:linear-gradient(160deg,var(--violett-tint),#EFCADD);color:var(--schwarz)}
+.ins-frage{font-size:clamp(.92rem,1.35vw,1.12rem);font-weight:700;line-height:1.25;padding-right:1.4rem}
+.ins-marke{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.ins-text.hell .ins-reel{color:var(--violett);filter:none}
+.ins-person{background:linear-gradient(160deg,var(--violett-tint),#EFCADD)}
+.ins-person > img{position:absolute;left:50%;bottom:0;height:96%;width:auto;max-width:none;transform-origin:50% 100%;translate:-50% 0;transition:transform .4s ease}
+.ins-hinweis{font-size:.8rem;color:var(--stahl-600);margin-top:.9rem}
+@media (max-width:900px){.ins-raster{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.ins-raster{grid-template-columns:repeat(2,minmax(0,1fr))}.ins-folgen{margin-left:0;width:100%}.ins-frage{font-size:1rem}}
 .grau{background:var(--stahl-50)}
 
 /* Topbar + Header */
@@ -888,6 +918,22 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
 </section>
 
 </main>
+
+<section class="insta" aria-labelledby="h-insta">
+  <div class="wrap">
+    <div class="ins-kopf">
+      <span class="ins-avatar" aria-hidden="true"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="23" fill="#010101"/><text x="23" y="28" text-anchor="middle" font-family="Instrument Sans, Arial, sans-serif" font-weight="700" font-size="14.5" fill="#fff">DÄS</text></svg></span>
+      <div class="ins-text-kopf">
+        <h2 id="h-insta" class="label" style="margin:0">Folgen Sie uns auf Instagram</h2>
+        <a href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener">@deutscher_aerzte_service</a>
+        <p>Schönheitsoperationen bei Plastischen Chirurgen deutschlandweit. Reels zu Ablauf, Heilung und Kosten, erklärt in 60 Sekunden.</p>
+      </div>
+      <a class="btn btn-primary ins-folgen" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Folgen auf Instagram</a>
+    </div>
+    <div class="ins-raster"><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Brustvergrößerung beim Deutschen Ärzte Service (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 30%"><img src="bilder/brust.png" data-fallback="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195428_ba6a97fd-4884-41d2-99f5-7bf4e40c8a45.png" alt="" loading="lazy" decoding="async"></figure><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-text dunkel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Wann braucht es eine Bruststraffung? (Beitrag auf Instagram)"><span class="ins-frage">Wann braucht es eine Bruststraffung?</span><span class="ins-marke">DÄS erklärt</span><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Kriterien bei der Voruntersuchung (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 40%"><img src="bilder/beratung.png" data-fallback="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195430_74be97c8-9609-4f32-acd0-0f8d960ff9ae.png" alt="" loading="lazy" decoding="async"></figure><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-person" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Sich im eigenen Körper wohlfühlen (Beitrag auf Instagram)"><img src="bilder/lebensfreude-1-frei.png" alt="" loading="lazy" decoding="async"><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-text hell" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Ist die Genesung nach einer Brust-OP schmerzhaft? (Beitrag auf Instagram)"><span class="ins-frage">Ist die Genesung nach einer Brust-OP schmerzhaft?</span><span class="ins-marke">DÄS erklärt</span><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Unsere Partnerkliniken (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 40%"><img src="bilder/op-team.png" data-fallback="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195427_c02f1331-9f56-4d22-a126-0220e6b75c24.png" alt="" loading="lazy" decoding="async"></figure><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a></div>
+    <p class="ins-hinweis">Beispielbeiträge. Die aktuellen Beiträge sehen Sie auf unserem Instagram-Kanal.</p>
+  </div>
+</section>
 
 <footer class="site">
   <div class="wrap">
