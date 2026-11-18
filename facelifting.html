@@ -484,7 +484,7 @@ ol.ls-liste li::before{counter-increment:ls;content:counter(ls);width:24px;heigh
 .ls-sprung a{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(129,38,133,.18);padding:.5rem 1rem}
 .ls-sprung a:hover{background:var(--weiss)}
 .ls-held{position:relative;margin:0;justify-self:end;width:100%;max-width:470px;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--violett-tint);box-shadow:0 46px 90px -46px rgba(75,29,110,.65),0 0 0 1px rgba(129,38,133,.08)}
-.ls-held img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.ls-held img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0}
 .ls-held::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,transparent 62%,rgba(75,29,110,.18));pointer-events:none}
 @media (max-width:860px){.ls-hero-raster{grid-template-columns:minmax(0,1fr)}.ls-held{justify-self:stretch;max-width:none;aspect-ratio:5/4;border-radius:22px}}
 @media (max-width:560px){.ls-held{aspect-ratio:1/1}}
@@ -512,11 +512,12 @@ main{counter-reset:abschnitt}
 .ls-liste.zwei{grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1.6rem}
 @media (max-width:560px){.ls-liste.zwei{grid-template-columns:minmax(0,1fr)}}
 .ls-liste li{padding-bottom:.55rem;border-bottom:1px solid var(--stahl-100)}
-.ls-liste li:last-child,.ls-liste.zwei li:nth-last-child(2):nth-child(odd){border-bottom:0}
+.ls-liste li:last-child{border-bottom:0}
+@media (min-width:561px){.ls-liste.zwei li:nth-last-child(2):nth-child(odd){border-bottom:0}}
 
 /* Kosten und Preise hervorgehoben */
 .ls-hervor{padding-block:clamp(1rem,3vw,2rem)}
-.ls-hervor > .wrap > .ls-inhalt{position:relative;overflow:hidden;border-radius:30px;padding:clamp(1.6rem,5vw,4rem);background:radial-gradient(60% 90% at 100% 0%,rgba(201,138,204,.45),transparent 60%),linear-gradient(135deg,#FBF5FB 0%,#F4EAF4 55%,#F1D6E8 100%);border:1px solid rgba(129,38,133,.12)}
+.ls-hervor > .wrap > .ls-inhalt{position:relative;overflow:clip;border-radius:30px;padding:clamp(1.6rem,5vw,4rem);background:radial-gradient(60% 90% at 100% 0%,rgba(201,138,204,.45),transparent 60%),linear-gradient(135deg,#FBF5FB 0%,#F4EAF4 55%,#F1D6E8 100%);border:1px solid rgba(129,38,133,.12)}
 .ls-hervor .ls-cta{background:var(--weiss)}
 
 /* Hinweis mit Knopf */
@@ -526,6 +527,7 @@ main{counter-reset:abschnitt}
 .ls-cta .btn-primary{background:var(--weiss);color:var(--violett-dunkel);box-shadow:none}
 .ls-cta .btn-primary:hover{background:#FBF2FB}
 .ls-hervor .ls-cta{background:var(--verlauf)}
+.ls-cta :focus-visible{outline-color:var(--weiss)}
 
 /* Bilder, Karten, Fakten */
 .ls-bild,.ls-banner{border-radius:22px}
@@ -556,6 +558,7 @@ main{counter-reset:abschnitt}
 .ls-auf{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .ls-auf.da{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.ls-auf{opacity:1;transform:none;transition:none}}
+@media print{.ls-auf{opacity:1!important;transform:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -628,7 +631,7 @@ main{counter-reset:abschnitt}
 <div class="ls-text"><p>Als erfahrener Experte ist der Deutsche Ärzte Service ein kompetenter und einfühlsamer Ansprechpartner für Behandlungen im sensiblen Gesichtsbereich. Mit mehr als 22 Jahren Erfahrung und langjähriger Expertise haben unsere Partner, die Fachkliniken und Fachärzte für Plastische und Ästhetische Chirurgie sich auf innovative Methoden zur filigranen Korrektur am Gesicht spezialisiert. Das Schöne: Mit einer kleinen Korrektur können wir Ihren strahlenden Blick wieder hervorzaubern.</p>
 <div class="ls-cta"><p>Alle Infos in unserer Broschüre entdecken!</p><a class="btn btn-primary" href="https://www.deutscher-aerzte-service.de/wp-content/uploads/2026/03/Informationsbroschuere-fuer-Patienten-2026.pdf">Broschüre anschauen</a></div>
 <h3 id="mini-facelifting-alle-fakten-auf-einen-blick">Mini-Facelifting: Alle Fakten auf einen Blick</h3>
-<div class="ls-tabelle"><table><tbody><tr><td><b>Kosten</b></td><td>ab 3.499 €</td></tr><tr><td><b>OP-Dauer</b></td><td>ca. 1-2 Stunden</td></tr><tr><td><b>Narkose</b></td><td>örtliche Betäubung, auf Wunsch Dämmerschlaf/Vollnarkose</td></tr><tr><td><b>Klinikaufenthalt</b></td><td>entfällt</td></tr><tr><td><b>Fadenzug</b></td><td>8-10 Tage nach OP</td></tr></tbody></table></div>
+<div class="ls-tabelle"><table><tbody><tr><td><b>Kosten</b></td><td>ab 3.499 €</td></tr><tr><td><b>OP-Dauer</b></td><td>ca. 1-2 Stunden</td></tr><tr><td><b>Narkose</b></td><td>örtliche Betäubung, auf Wunsch Dämmerschlaf/<wbr>Vollnarkose</td></tr><tr><td><b>Klinikaufenthalt</b></td><td>entfällt</td></tr><tr><td><b>Fadenzug</b></td><td>8-10 Tage nach OP</td></tr></tbody></table></div>
 <h3>Klassisches Facelifting: Alle Fakten auf einen Blick</h3>
 <div class="ls-tabelle"><table><tbody><tr><td><b>Kosten</b></td><td>ab 4.999 €</td></tr><tr><td><b>OP-Dauer</b></td><td>ca. 2-3 Stunden</td></tr><tr><td><b>Narkose</b></td><td>Vollnarkose</td></tr><tr><td><b>Klinikaufenthalt</b></td><td>eine Übernachtung</td></tr><tr><td><b>Fadenzug</b></td><td>7-10 Tage nach OP</td></tr></tbody></table></div></div>
 </div></div>

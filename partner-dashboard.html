@@ -591,8 +591,10 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   table.karten-tab tr{padding:.85rem 1rem;border-bottom:1px solid var(--stahl-200);display:grid;gap:.45rem}
   table.karten-tab tbody tr:last-child{border-bottom:0}
   table.karten-tab tbody tr:hover td{background:none}
-  table.karten-tab td{padding:0!important;border:0;min-width:0!important;display:grid;grid-template-columns:7.2rem minmax(0,1fr);gap:.15rem .6rem;align-items:baseline;text-align:left;row-gap:.1rem}
-  table.karten-tab td::before{grid-row:1/span 3;align-self:start;padding-top:.15rem;content:attr(data-label);font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--stahl-600)}
+  table.karten-tab td{padding:0!important;border:0;min-width:0!important;display:grid;grid-template-columns:8.4rem minmax(0,1fr);gap:.15rem .6rem;align-items:baseline;text-align:left;row-gap:.1rem}
+  table.karten-tab td::before{grid-row:1/span 3;align-self:start;padding-top:.15rem;content:attr(data-label);font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--stahl-600)}
+  table.karten-tab td[data-label] > *{grid-column:2}
+  table.karten-tab td .pill{white-space:normal;max-width:100%}
   table.karten-tab td:not([data-label])::before,table.karten-tab td:first-child::before{content:none}
   table.karten-tab td:first-child,table.karten-tab td:not([data-label]){display:block}
   table.karten-tab td:first-child .pname{font-size:1rem}
@@ -615,7 +617,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .side .wisch-pfeil{background:#2A2530;color:var(--weiss);box-shadow:0 4px 14px -4px rgba(0,0,0,.6)}
 @keyframes wischWink{0%,100%{transform:translateY(-50%)}50%{transform:translate(4px,-50%)}}
 @media (prefers-reduced-motion:reduce){.wisch-pfeil{animation:none}}
-@media (min-width:901px){.side .wisch-pfeil{display:none!important}.side .wisch{-webkit-mask-image:none;mask-image:none}}
+@media (min-width:901px){.side > .wisch-box{flex:1 1 0;min-height:0;display:flex;flex-direction:column}.side .wisch-pfeil{display:none!important}.side .wisch{-webkit-mask-image:none;mask-image:none}}
 @media (max-width:480px){.nav{gap:.15rem;padding-left:.5rem;padding-right:.5rem}.nav > a{flex:1 1 auto;justify-content:center;padding:.5rem .35rem;font-size:.82rem}.nav > a .ico{display:none}}
 </style>
 </head>
