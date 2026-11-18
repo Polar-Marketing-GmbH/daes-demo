@@ -89,6 +89,7 @@ p{margin:0}
 .ins-text-kopf a:hover{color:var(--violett)}
 .ins-text-kopf p{font-size:.92rem;color:var(--stahl-600);line-height:1.5}
 .ins-folgen{margin-left:auto}
+.ins-raster[hidden]{display:none}
 .ins-raster{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.5rem}
 .ins-kachel{position:relative;display:block;aspect-ratio:1/1;border-radius:10px;overflow:hidden;text-decoration:none;isolation:isolate}
 .ins-kachel .photo{position:absolute;inset:0;border-radius:0}
@@ -107,6 +108,15 @@ p{margin:0}
 .ins-person{background:linear-gradient(160deg,var(--violett-tint),#EFCADD)}
 .ins-person > img{position:absolute;left:50%;bottom:0;height:96%;width:auto;max-width:none;transform-origin:50% 100%;translate:-50% 0;transition:transform .4s ease}
 .ins-hinweis{font-size:.8rem;color:var(--stahl-600);margin-top:.9rem}
+.ins-laden{display:flex;align-items:center;justify-content:space-between;gap:.8rem 1.2rem;flex-wrap:wrap;margin-top:1rem;padding:.9rem 1.1rem;border:1px solid var(--stahl-200);border-radius:10px;background:var(--stahl-50)}
+.ins-laden p{font-size:.86rem;color:var(--stahl-600);max-width:64ch}
+.ins-laden p b{color:var(--schwarz)}
+.ins-laden .btn{flex:none}
+.ins-echt{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.2rem .1rem 1rem;scrollbar-width:thin}
+.ins-echt[hidden]{display:none}
+.ins-post{flex:0 0 min(340px,86vw);scroll-snap-align:start;min-width:0}
+.ins-post .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:100%!important;border:1px solid var(--stahl-200)!important;border-radius:10px!important;box-shadow:none!important}
+.ins-post > blockquote > a{display:grid;place-items:center;min-height:380px;font-size:.9rem;color:var(--violett)}
 @media (max-width:900px){.ins-raster{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){.ins-raster{grid-template-columns:repeat(2,minmax(0,1fr))}.ins-folgen{margin-left:0;width:100%}.ins-frage{font-size:1rem}}
 .grau{background:var(--stahl-50)}
@@ -931,7 +941,11 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
       <a class="btn btn-primary ins-folgen" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Folgen auf Instagram</a>
     </div>
     <div class="ins-raster"><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Brustvergrößerung beim Deutschen Ärzte Service (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 30%"><img src="bilder/brust.png" data-fallback="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195428_ba6a97fd-4884-41d2-99f5-7bf4e40c8a45.png" alt="" loading="lazy" decoding="async"></figure><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-text dunkel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Wann braucht es eine Bruststraffung? (Beitrag auf Instagram)"><span class="ins-frage">Wann braucht es eine Bruststraffung?</span><span class="ins-marke">DÄS erklärt</span><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Kriterien bei der Voruntersuchung (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 40%"><img src="bilder/beratung.png" data-fallback="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195430_74be97c8-9609-4f32-acd0-0f8d960ff9ae.png" alt="" loading="lazy" decoding="async"></figure><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-person" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Sich im eigenen Körper wohlfühlen (Beitrag auf Instagram)"><img src="bilder/lebensfreude-1-frei.png" alt="" loading="lazy" decoding="async"><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel ins-text hell" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Reel: Ist die Genesung nach einer Brust-OP schmerzhaft? (Beitrag auf Instagram)"><span class="ins-frage">Ist die Genesung nach einer Brust-OP schmerzhaft?</span><span class="ins-marke">DÄS erklärt</span><svg class="ins-reel" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l2.5 5.5M14.5 3l2.5 5.5"/><path d="M10 12v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a><a class="ins-kachel" href="https://www.instagram.com/deutscher_aerzte_service" target="_blank" rel="noopener" aria-label="Unsere Partnerkliniken (Beitrag auf Instagram)"><figure class="photo" style="--pos:50% 40%"><img src="bilder/op-team.png" data-fallback="https://d8j0ntlcm91z4.cloudfront.net/user_3GpXmITJqLZxbOP9dIR1LC8Kmrs/hf_20261117_195427_c02f1331-9f56-4d22-a126-0220e6b75c24.png" alt="" loading="lazy" decoding="async"></figure><span class="ins-hover" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span></a></div>
-    <p class="ins-hinweis">Beispielbeiträge. Die aktuellen Beiträge sehen Sie auf unserem Instagram-Kanal.</p>
+    <div class="ins-laden" id="ins-laden">
+      <p><b>Aktuelle Beiträge direkt von Instagram anzeigen.</b> Beim Laden werden Daten an Instagram (Meta Platforms) übertragen. Bis dahin sehen Sie Beispielbilder.</p>
+      <button class="btn btn-primary" type="button" id="ins-laden-btn">Beiträge von Instagram laden</button>
+    </div>
+    <div class="ins-echt" id="ins-echt" aria-label="Aktuelle Beiträge auf Instagram" hidden><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DfsAsc2DPVh/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/p/DfsAsc2DPVh/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfjzaU3Dyn4/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DfjzaU3Dyn4/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DffFzreiMnW/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/p/DffFzreiMnW/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfZxXaBieKt/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DfZxXaBieKt/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DfSC-ZqjfeP/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/p/DfSC-ZqjfeP/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div><div class="ins-post"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfAGjuCj7kN/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DfAGjuCj7kN/" target="_blank" rel="noopener">Beitrag auf Instagram ansehen</a></blockquote></div></div>
   </div>
 </section>
 
@@ -955,6 +969,22 @@ footer.site .legal{border-top:1px solid var(--stahl-800);margin-top:2.6rem;paddi
 
 <script>
 (function(){
+  // Instagram: echte Beiträge erst nach Klick laden (Datenschutz), Entscheidung im Browser merken
+  (function(){
+    var btn=document.getElementById('ins-laden-btn');if(!btn)return;
+    function laden(){
+      var raster=document.querySelector('.ins-raster'),echt=document.getElementById('ins-echt'),box=document.getElementById('ins-laden');
+      echt.hidden=false;raster.hidden=true;box.hidden=true;
+      if(window.instgrm&&window.instgrm.Embeds){window.instgrm.Embeds.process();return;}
+      var s=document.createElement('script');s.async=true;s.src='https://www.instagram.com/embed.js';
+      s.onerror=function(){echt.hidden=true;raster.hidden=false;box.hidden=false;btn.textContent='Erneut versuchen';};
+      document.body.appendChild(s);
+    }
+    btn.addEventListener('click',function(){try{localStorage.setItem('daes-insta','ja');}catch(e){}laden();});
+    var ok=false;try{ok=localStorage.getItem('daes-insta')==='ja';}catch(e){}
+    if(ok)laden();
+  })();
+
   // Fotos: erst lokale Datei aus bilder/, sonst Ersatzquelle, sonst ruhige Fläche
   document.querySelectorAll('.photo img').forEach(function(img){
     function fail(){
