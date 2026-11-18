@@ -408,8 +408,8 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .schul-status .mehr{margin-left:auto;font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
 .schul-status.rot{background:var(--red-b);color:var(--red-t);border-color:var(--red-r)}
 .schul-status.gruen{background:var(--green-b);color:var(--green-t);border-color:var(--green-r)}
-.nav .zahl.rot{background:#D5483D;color:var(--weiss)}
-.nav .zahl.gruen{background:#2F9A5C;color:var(--weiss)}
+.nav .zahl.rot{background:#C0392F;color:var(--weiss)}
+.nav .zahl.gruen{background:#1F7A45;color:var(--weiss)}
 .zert{display:flex;justify-content:space-between;align-items:center;gap:.8rem 1.2rem;flex-wrap:wrap;padding:1.1rem}
 .zert p{color:var(--stahl-600);font-size:.9rem;max-width:62ch}
 .zert p b{color:var(--schwarz)}
@@ -421,6 +421,8 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .frage input{width:16px;height:16px;margin:.2rem 0 0;accent-color:var(--violett);flex:none}
 .frage.falsch{border-color:var(--red-r);background:var(--red-b)}
 .frage.richtig{border-color:var(--green-r);background:var(--green-b)}
+.frage.falsch legend::after{content:" (falsch)";color:var(--red-t)}
+.frage.richtig legend::after{content:" (richtig)";color:var(--green-t)}
 .erfolg{font-size:.9rem;color:var(--green-t);background:var(--green-b);border-radius:8px;padding:.6rem .8rem}
 .zert-liste{border-top:1px solid var(--stahl-100)}
 .zert-zeile{display:flex;justify-content:space-between;align-items:center;gap:.6rem 1rem;flex-wrap:wrap;padding:.8rem 1.1rem;border-bottom:1px solid var(--stahl-100)}
@@ -449,9 +451,9 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 @media print{
   @page{size:A4 landscape;margin:8mm}
   body{background:#fff}
-  body > *{display:none!important}
-  body > #druck{display:block!important}
-  #druck .z-blatt{border:0}
+  body:has(#dlg-zert[open]) > *{display:none!important}
+  body:has(#dlg-zert[open]) > #druck{display:block!important}
+  #druck .z-blatt{border:0;aspect-ratio:auto;height:192mm}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 /* Profil */
@@ -1373,7 +1375,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     var teile=route.split('/'),v=teile[0];if(ANSICHTEN.indexOf(v)<0)v='dashboard';
     ANSICHTEN.forEach(function(a){byId('view-'+a).hidden=a!==v;});
     document.querySelectorAll('.side a[data-view]').forEach(function(a){if(a.getAttribute('data-view')===v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
-    byId('side-sub').hidden=v!=='patienten';
+    byId('side-sub').hidden=v!=='patienten';var nvBox=document.querySelector('.nav'),nvAkt=nvBox.querySelector(':scope > a[aria-current="page"]');if(nvAkt&&nvBox.scrollWidth>nvBox.clientWidth)nvBox.scrollLeft=Math.max(0,nvAkt.offsetLeft-(nvBox.clientWidth-nvAkt.offsetWidth)/2);
     if(v==='patienten'){patSub=Object.prototype.hasOwnProperty.call(SUBS,teile[1])?teile[1]:'';zeichneUnterliste();}
     window.scrollTo(0,0);
   }
@@ -1722,7 +1724,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
         :'<b>Fünf Fragen zu den Leitlinien.</b> Mit mindestens '+TEST_MIN+' richtigen Antworten gilt die Pflichtschulung als bestanden und das Zertifikat wird ausgestellt.'+(schulung.versuche?' Bisherige Versuche: '+schulung.versuche+'.':''))+'</p>'+
       '<div class="knoepfe">'+(ok?'':'<button class="btn btn-primary" type="button" id="schul-start">Abschlusstest starten</button>')+'</div></div>'+
       (ok?'<div class="zert-liste">'+[{k:'klinik',n:profil.name,z:'Zertifikat für die Klinik'}].concat(profil.arzt.map(function(a,i){return {k:'arzt:'+i,n:a.name,z:a.zwei||'Operierender Arzt'};})).map(function(x){
-        return '<div class="zert-zeile"><div><b>'+esc(x.n)+'</b><span>'+esc(x.z)+'</span></div><button class="btn btn-line btn-sm" type="button" data-zert="'+x.k+'" aria-label="Zertifikat für '+esc(x.n)+' ansehen und drucken"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V4h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="6"/></svg>Zertifikat drucken</button></div>';}).join('')+'</div>':'');
+        return '<div class="zert-zeile"><div><b>'+esc(x.n)+'</b><span>'+esc(x.z)+'</span></div><button class="btn btn-line btn-sm" type="button" data-zert="'+x.k+'" aria-label="Zertifikat drucken für '+esc(x.n)+'"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V4h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="6"/></svg>Zertifikat drucken</button></div>';}).join('')+'</div>':'');
   }
   function oeffneTest(){
     byId('test-fragen').innerHTML=FRAGEN.map(function(q,i){
@@ -1747,7 +1749,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       '<div class="z-fuss"><div><span>'+esc(profil.ort)+', '+datum(schulung.datum)+'</span><small>Ort, Datum</small></div><div><span>Deutscher Ärzte Service</span><small>Partnerbetreuung</small></div></div>'+
       '<p class="z-demo">Beispielzertifikat aus der Demo, alle Angaben sind erfunden.</p></div></div>';
   }
-  var dlgZ=byId('dlg-zert');
+  var dlgZ=byId('dlg-zert');byId('schul-status').addEventListener('click',function(ev){if(schulung.bestanden){ev.preventDefault();oeffneZertifikat('klinik');}});
   function oeffneZertifikat(key){
     if(!schulung.bestanden)return;
     var h=zertifikatHtml(key),arzt=key.indexOf('arzt:')===0;
@@ -1755,8 +1757,8 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     byId('zert-sub').textContent=(arzt?'Für den Arzt: ':'Für die Klinik: ')+(arzt?profil.arzt[+key.split(':')[1]].name:profil.name);
     dlgZ.showModal();
   }
-  byId('zert-druck').addEventListener('click',function(){window.print();});
-  byId('f-test').addEventListener('change',function(){byId('test-fehler').hidden=true;});
+  byId('zert-druck').addEventListener('click',function(){window.print();});dlgT.addEventListener('close',function(){var b=document.querySelector('#schul-test-karte button');if(b)b.focus();});
+  byId('f-test').addEventListener('change',function(ev){byId('test-fehler').hidden=true;var b=ev.target.closest('.frage');if(b)b.classList.remove('richtig','falsch');});
   byId('f-test').addEventListener('submit',function(ev){
     ev.preventDefault();
     var f=byId('test-fehler'),offen=-1,richtig=0,boxen=document.querySelectorAll('#test-fragen .frage');
@@ -1771,7 +1773,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       byId('test-senden').hidden=true;byId('test-zu').textContent='Schließen';byId('test-zu').focus();
       zeichneSchulung();toast('Pflichtschulung bestanden');
     }else{
-      f.textContent='Noch nicht bestanden: '+richtig+' von '+FRAGEN.length+' Fragen richtig, nötig sind '+TEST_MIN+'. Die rot markierten Antworten stimmen nicht. Sie können sie ändern und den Test erneut auswerten.';f.hidden=false;
+      f.textContent='Noch nicht bestanden: '+richtig+' von '+FRAGEN.length+' Fragen richtig, nötig sind '+TEST_MIN+'. Die mit „falsch“ markierten Antworten stimmen nicht. Sie können sie ändern und den Test erneut auswerten.';f.hidden=false;
       zeichneSchulung();
     }
   });
@@ -1810,7 +1812,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     if(!w.ort)return fehler('Bitte den Ort angeben.','pf-ort');
     if(!w.tel)return fehler('Bitte eine Telefonnummer angeben.','pf-tel');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(w.mail))return fehler('Bitte eine gültige E-Mail-Adresse angeben.','pf-mail');
-    PF_FELDER.forEach(function(k){profil[k]=w[k];});profilFelder();zeichneProfil();
+    PF_FELDER.forEach(function(k){profil[k]=w[k];});profilFelder();zeichneProfil();zeichneSchulung();
     var j=new Date();byId('pf-stand').textContent='Zuletzt gespeichert um '+zwei(j.getHours())+':'+zwei(j.getMinutes())+' Uhr';
     toast('Kontaktdaten gespeichert');
   });
@@ -1838,7 +1840,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     var x=art==='ap'?{name:name,zwei:zw,tel:byId('pfd-tel').value.trim(),mail:mail,haupt:byId('pfd-haupt').checked}:{name:name,zwei:zw,schwer:byId('pfd-schwer').value.trim()};
     if(x.haupt)profil.ap.forEach(function(a){a.haupt=false;});
     var neu=pfAkt.i<0,i=neu?profil[art].length:pfAkt.i;profil[art][i]=x;
-    pfAkt=null;dlgP.close();zeichneProfil();toast(PF[art].einer+(neu?' hinzugefügt: ':' gespeichert: ')+name);
+    pfAkt=null;dlgP.close();zeichneProfil();zeichneSchulung();toast(PF[art].einer+(neu?' hinzugefügt: ':' gespeichert: ')+name);
     var b=document.querySelector('[data-pf-edit="'+art+':'+i+'"]');if(b)b.focus();
   });
   byId('view-profil').addEventListener('click',function(ev){
@@ -1847,7 +1849,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     var w=ev.target.closest('[data-pf-weg]');
     if(w){var key=w.getAttribute('data-pf-weg'),k=key.split(':');
       if(pfWeg!==key||ev.detail>1){pfWeg=key;zeichneProfil();var nb=document.querySelector('[data-pf-weg="'+key+'"]');if(nb)nb.focus();return;}
-      var weg=profil[k[0]].splice(+k[1],1)[0];pfWeg='';zeichneProfil();toast(PF[k[0]].einer+' entfernt: '+weg.name);var nz=document.querySelector('[data-pf-neu="'+k[0]+'"]');if(nz)nz.focus();}
+      var weg=profil[k[0]].splice(+k[1],1)[0];pfWeg='';zeichneProfil();zeichneSchulung();toast(PF[k[0]].einer+' entfernt: '+weg.name);var nz=document.querySelector('[data-pf-neu="'+k[0]+'"]');if(nz)nz.focus();}
   });
   document.addEventListener('click',function(ev){if(pfWeg&&!ev.target.closest('[data-pf-weg]')){pfWeg='';zeichneProfil();}});
 
