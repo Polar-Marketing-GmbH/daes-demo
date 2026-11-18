@@ -395,7 +395,31 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .modul .re{text-align:right;font-size:.8rem;color:var(--stahl-600);white-space:nowrap}
 .modul .re b{font-size:.8rem;font-weight:600;color:var(--violett)}
 .news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-.news article{background:var(--weiss);border:1px solid var(--stahl-200);border-radius:var(--r);padding:1.15rem;display:grid;gap:.5rem;align-content:start}
+.news article{position:relative;background:var(--weiss);border:1px solid var(--stahl-200);border-radius:var(--r);padding:1.15rem;display:grid;gap:.5rem;grid-template-rows:auto auto 1fr auto;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.news article:hover{transform:translateY(-2px);border-color:var(--violett-hell);box-shadow:0 16px 30px -22px rgba(129,38,133,.55)}
+.news article[hidden]{display:none}
+.news .n-fuss{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.news .n-mehr{font:inherit;font-size:.84rem;font-weight:600;color:var(--violett);background:none;border:0;padding:0;cursor:pointer}
+.news .n-mehr::before{content:"";position:absolute;inset:0;border-radius:var(--r)}
+.news .n-mehr:focus-visible{outline:none}
+.news article:has(.n-mehr:focus-visible){outline:2px solid var(--violett);outline-offset:2px}
+.news article.top{background:var(--verlauf);border-color:transparent;color:var(--weiss)}
+.news article.top small{color:#F0D2F2}
+.news article.top h2{color:var(--weiss)}
+.news article.top p,.news article.top time{color:#F3E6F4}
+.news article.top .n-mehr{color:var(--weiss)}
+.news-filter{display:flex;gap:.4rem;flex-wrap:wrap}
+.news-filter button{font:inherit;font-size:.84rem;font-weight:600;border:1px solid var(--stahl-200);background:var(--weiss);color:var(--stahl-800);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
+.news-filter button.aktiv{background:var(--schwarz);border-color:var(--schwarz);color:var(--weiss)}
+.dl-liste{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.dl-zeile{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.9rem;align-items:center;border:1px solid var(--stahl-200);border-radius:12px;padding:.85rem 1rem}
+.dl-ico{width:2.6rem;height:2.6rem;border-radius:10px;display:grid;place-items:center;background:var(--violett-tint);color:var(--violett)}
+.dl-ico .ico{width:20px;height:20px}
+.dl-zeile b{display:block;font-size:.98rem}
+.dl-zeile span{display:block;font-size:.86rem;color:var(--stahl-600)}
+.dl-zeile small{display:block;font-size:.76rem;color:var(--stahl-600);margin-top:.2rem;font-variant-numeric:tabular-nums}
+@media (max-width:640px){.dl-zeile{grid-template-columns:auto minmax(0,1fr)}.dl-zeile .btn{grid-column:1/-1;justify-self:start}}
+#dlg-news{width:min(720px,calc(100vw - 24px))}
 .news small{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violett)}
 .news h2{font-size:1.05rem;line-height:1.3}
 .news p{font-size:.9rem;color:var(--stahl-600)}
@@ -407,7 +431,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 .schul-status b{font-weight:700}
 .schul-status .ico{width:18px;height:18px}
 .schul-status .mehr{margin-left:auto;font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
-.schul-status.rot{background:var(--red-b);color:var(--red-t);border-color:var(--red-r)}
+.schul-status.hinweis{background:var(--violett-tint);color:var(--violett-dunkel);border-color:#E3CDE4}
 .schul-status.gruen{background:var(--green-b);color:var(--green-t);border-color:var(--green-r)}
 .nav .zahl.rot{background:#C0392F;color:var(--weiss)}
 .nav .zahl.gruen{background:#1F7A45;color:var(--weiss)}
@@ -441,6 +465,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
 #dlg-lektion{width:min(720px,calc(100vw - 24px))}
 #f-lektion > *{min-width:0}
 .lek-kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+@media (max-width:420px){.lek-kopf{flex-wrap:wrap;gap:.4rem}.lek-kopf [data-zu]{order:-1;margin-left:auto}}
 .lek-kopf .klein{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--violett);margin-bottom:.3rem}
 .lek-kopf h2{font-size:1.3rem}
 .lek-punkte{display:flex;gap:.35rem}
@@ -584,7 +609,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       </div>
       <a href="#schadensprotokolle" data-view="schadensprotokolle"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M12 12v4M12 18.5h.01"/></svg><span class="lang">Schadensprotokolle</span><span class="kurz">Protokolle</span><span class="zahl" id="nav-zahl-sp"></span></a>
       <a href="#abrechnung" data-view="abrechnung"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg><span>Abrechnung</span><span class="zahl" id="nav-zahl-ab"></span></a>
-      <a href="#schulung" data-view="schulung"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.500 9L12 4.500 21.500 9 12 13.500z"/><path d="M6.500 11.200V16c1.500 1.400 3.400 2 5.500 2s4-.600 5.500-2v-4.800M21.500 9v5"/></svg><span>Schulung</span><span class="zahl rot" id="nav-schul">Pflicht</span></a>
+      <a href="#schulung" data-view="schulung"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.500 9L12 4.500 21.500 9 12 13.500z"/><path d="M6.500 11.200V16c1.500 1.400 3.400 2 5.500 2s4-.600 5.500-2v-4.800M21.500 9v5"/></svg><span>Schulung</span></a>
       <a href="#news" data-view="news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="15" rx="1.500"/><path d="M17 9h4v9a2 2 0 0 1-4 0M7 9h6M7 13h6M7 16.500h3.500"/></svg><span class="lang">News &amp; Ratgeber</span><span class="kurz">News</span></a>
       <a href="#profil" data-view="profil"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c1.200-3.600 3.800-5.500 7-5.500s5.800 1.900 7 5.500"/></svg><span>Profil</span></a>
     </nav>
@@ -598,7 +623,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   <main class="main">
     <div class="inner">
       <p class="demo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Demo mit Beispieldaten. Alle Patientinnen und Vorgänge sind erfunden, Änderungen werden nicht gespeichert.</span></p>
-      <a class="schul-status rot" id="schul-status" href="#schulung"></a>
+      <a class="schul-status hinweis" id="schul-status" href="#schulung"></a>
 
       <!-- Dashboard -->
       <section id="view-dashboard" aria-labelledby="h-dashboard">
@@ -735,6 +760,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
             <div class="card-head"><h2><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.500 9L12 4.500 21.500 9 12 13.500z"/><path d="M6.500 11.200V16c1.500 1.400 3.400 2 5.500 2s4-.600 5.500-2v-4.800"/></svg>Leitlinien des Deutschen Ärzte Service</h2><span id="schul-kopf"></span></div>
             <div id="kurs-liste"></div>
           </div>
+          <div class="card dl-karte"><div class="card-head"><h2 id="h-dl-schul"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Unterlagen zum Herunterladen</h2><span class="pill t-grau">Schulungsunterlagen</span></div><ul class="dl-liste" aria-labelledby="h-dl-schul"><li class="dl-zeile"><span class="dl-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><div><b>Ablauf und Organisation</b><span>Von der Werbekampagne bis zur Auszahlung: wer was übernimmt, Termine, Zahlung und Abrechnung.</span><small>PDF · 3 Seiten · 191 KB</small></div><a class="btn btn-line btn-sm" href="unterlagen/DAES_Ablauf_und_Organisation.pdf" download aria-label="Ablauf und Organisation herunterladen (PDF)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.500 10.500 12 15l4.500-4.500M5 19h14"/></svg>Herunterladen</a></li><li class="dl-zeile"><span class="dl-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><div><b>Argumente für das Kundengespräch</b><span>Warum Fachärzte im Netzwerk sind, fünf Argumente zu den Festpreisen und zwei Alltagsvergleiche.</span><small>PDF · 3 Seiten · 240 KB</small></div><a class="btn btn-line btn-sm" href="unterlagen/DAES_Argumente_Kundengespraech.pdf" download aria-label="Argumente für das Kundengespräch herunterladen (PDF)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.500 10.500 12 15l4.500-4.500M5 19h14"/></svg>Herunterladen</a></li></ul></div>
           <p class="bald"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Grundlage sind die Leitlinien des Deutschen Ärzte Service zum Ablauf mit Patientinnen und Patienten und zur Argumentation im Kundengespräch. Ihr Lernstand wird in diesem Browser gespeichert.</span></p>
           <div class="card" id="schul-test-karte"></div>
         </div>
@@ -748,8 +774,10 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
             <h1 id="h-news">Neues vom Deutschen Ärzte Service</h1>
             <p>Mitteilungen für Partner und Ratgeber, die Sie an Patientinnen und Patienten weitergeben können.</p>
           </div></div>
-          <p class="bald"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Dieser Bereich ist angedeutet. Die Beiträge sind Beispiele.</span></p>
+          <div class="news-filter" role="group" aria-label="Beiträge filtern"><button type="button" class="aktiv" aria-pressed="true" data-nf="">Alle</button><button type="button" aria-pressed="false" data-nf="News">News</button><button type="button" aria-pressed="false" data-nf="Ratgeber">Ratgeber</button><button type="button" aria-pressed="false" data-nf="Portal">Portal</button></div>
           <div class="news" id="news"></div>
+          <div class="card dl-karte"><div class="card-head"><h2 id="h-dl-news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Unterlagen zum Herunterladen</h2><span class="pill t-grau">Schulungsunterlagen</span></div><ul class="dl-liste" aria-labelledby="h-dl-news"><li class="dl-zeile"><span class="dl-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><div><b>Ablauf und Organisation</b><span>Von der Werbekampagne bis zur Auszahlung: wer was übernimmt, Termine, Zahlung und Abrechnung.</span><small>PDF · 3 Seiten · 191 KB</small></div><a class="btn btn-line btn-sm" href="unterlagen/DAES_Ablauf_und_Organisation.pdf" download aria-label="Ablauf und Organisation herunterladen (PDF)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.500 10.500 12 15l4.500-4.500M5 19h14"/></svg>Herunterladen</a></li><li class="dl-zeile"><span class="dl-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><div><b>Argumente für das Kundengespräch</b><span>Warum Fachärzte im Netzwerk sind, fünf Argumente zu den Festpreisen und zwei Alltagsvergleiche.</span><small>PDF · 3 Seiten · 240 KB</small></div><a class="btn btn-line btn-sm" href="unterlagen/DAES_Argumente_Kundengespraech.pdf" download aria-label="Argumente für das Kundengespräch herunterladen (PDF)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.500 10.500 12 15l4.500-4.500M5 19h14"/></svg>Herunterladen</a></li></ul></div>
+          <p class="bald"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Die Beiträge sind Beispiele für die Demo.</span></p>
         </div>
       </section>
 
@@ -842,6 +870,17 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       <ol class="verlauf" id="ak-verlauf"></ol>
     </div>
     <div class="dlg-foot"><button class="btn btn-line" type="button" id="ak-kontakt" data-vorwahl="kontakt">Kontakt eintragen</button><button class="btn btn-primary" type="button" id="ak-update">Update eintragen</button></div>
+  </div>
+</dialog>
+
+<!-- Dialog: News-Beitrag -->
+<dialog id="dlg-news" aria-labelledby="nw-titel">
+  <div class="dlg">
+    <div class="lek-kopf">
+      <div><p class="klein" id="nw-klein"></p><h2 id="nw-titel"></h2><p class="sub" id="nw-datum"></p></div>
+      <button class="btn btn-line btn-sm" type="button" data-zu>Schließen</button>
+    </div>
+    <div class="lek-inhalt" id="nw-inhalt"></div>
   </div>
 </dialog>
 
@@ -1749,11 +1788,29 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       return '<tr><td>'+nameZelle(p)+'</td><td>'+esc(p.eingriff)+'</td><td class="num">'+(p.op?datum(p.op):'<span class="muted">ohne Angabe</span>')+'</td><td><span class="pill '+(off?'t-amber':'t-green')+'">'+(off?'Noch abzurechnen':'Abgerechnet')+'</span></td><td class="akt">'+knoepfe(p)+'</td></tr>';
     }),'Noch keine durchgeführten Operationen','Sobald eine OP als durchgeführt eingetragen ist, erscheint sie hier.');
   }
-  byId('news').innerHTML=[
-    {k:'Portal',t:'Schadensprotokolle jetzt direkt in DÄS Connect',x:'OP-Bericht, Arztbrief, Fotos und Kostenvoranschlag laden Sie in sechs Schritten hoch. Wir sehen den Vorgang sofort.',d:tag(-2)},
-    {k:'Ratgeber',t:'Die häufigsten Fragen vor einer Brustvergrößerung',x:'Zum Weitergeben an Ihre Patientinnen: Implantate, Narkose, Heilungsverlauf und Kosten verständlich erklärt.',d:tag(-9)},
-    {k:'Ratgeber',t:'Ratenzahlung im Beratungsgespräch ansprechen',x:'Wann der richtige Moment ist und wie Sie die Finanzierung über unsere Partner erklären.',d:tag(-16)}
-  ].map(function(n){return '<article><small>'+esc(n.k)+'</small><h2>'+esc(n.t)+'</h2><p>'+esc(n.x)+'</p><time>'+datum(n.d)+'</time></article>';}).join('');
+  var NEWS=[
+    {k:'News',top:1,t:'Facelift ist zurück: Anfragen ziehen deutlich an',x:'Nach Jahren im Schatten von Fillern und Botox wünschen sich wieder mehr Patientinnen und Patienten ein operatives Facelift. Was dahintersteckt und was das für Ihre Kontingente bedeutet.',d:-1,b:'<p>Seit dem Frühjahr verzeichnen wir beim Deutschen Ärzte Service spürbar mehr Anfragen zum Facelifting, zur Halsstraffung und zu kombinierten Eingriffen mit Ober- oder Unterlidkorrektur. Der Trend ist auch international zu beobachten.</p><h3>Woher kommt die Nachfrage?</h3><ul><li>Viele Patientinnen haben über Jahre Filler und Botox genutzt und wünschen sich nun ein dauerhaftes Ergebnis statt regelmäßiger Auffrischungen.</li><li>Moderne Techniken wie das Deep-Plane-Facelift sprechen sich herum und gelten als natürlicher im Ergebnis.</li><li>Nach starker Gewichtsabnahme zeigt sich erschlaffte Haut auch im Gesicht und am Hals.</li><li>Die Altersgruppe ab 45 ist finanziell flexibler und plant den Eingriff bewusst.</li></ul><h3>Was das für Sie bedeutet</h3><p>Wir planen für das erste Halbjahr 2027 zusätzliche Facelift-Aktionen. Wenn Sie Gesichtsoperationen anbieten, melden Sie uns bitte Ihre möglichen OP-Tage, damit wir die Beratungstermine frühzeitig verteilen können.</p><div class="merke"><b>Für das Beratungsgespräch</b>Interessentinnen kommen oft mit konkreten Bildern aus sozialen Medien. Klären Sie früh, was mit Ihrer Technik realistisch ist und wie lange die Erholungsphase dauert.</div>'},
+    {k:'Ratgeber',t:'Abnehmspritze und danach: Straffung nach starkem Gewichtsverlust',x:'Ozempic, Wegovy und Mounjaro verändern die Nachfrage. Immer mehr Menschen kommen nach großer Gewichtsabnahme zur Straffung. Worauf Sie als Ärzte jetzt achten sollten.',d:-4,b:'<p>Mit den GLP-1-Präparaten, umgangssprachlich Abnehmspritzen, verlieren viele Menschen in kurzer Zeit sehr viel Gewicht. Zurück bleibt oft überschüssige Haut an Bauch, Oberarmen, Oberschenkeln, Brust und im Gesicht. Bei uns steigen deshalb die Anfragen zu Bauchdeckenstraffung, Bruststraffung und Oberarmstraffung.</p><h3>Was für Sie als Ärzte am wichtigsten ist</h3><ul><li><b>Stabiles Gewicht:</b> Eine Straffung ist erst sinnvoll, wenn das Gewicht über mehrere Monate stabil ist. Fragen Sie gezielt nach Verlauf und Zielgewicht.</li><li><b>Medikation offen ansprechen:</b> Klären Sie, ob das Präparat noch genommen wird, und stimmen Sie den Umgang damit vor der Narkose mit der Anästhesie ab.</li><li><b>Ernährungs- und Allgemeinzustand:</b> Nach schneller Abnahme sind Eiweiß- und Nährstoffversorgung nicht immer ausreichend. Das beeinflusst die Wundheilung.</li><li><b>Erwartungen und Narben:</b> Straffungen hinterlassen sichtbare Narben. Je klarer das im Gespräch ist, desto zufriedener sind die Patientinnen später.</li><li><b>Reihenfolge planen:</b> Bei mehreren Regionen hilft ein Stufenplan, welcher Eingriff zuerst kommt.</li></ul><div class="merke"><b>Unser Service</b>Wir weisen Interessentinnen schon im Vorgespräch darauf hin, dass ein stabiles Gewicht Voraussetzung ist. So kommen sie besser vorbereitet zu Ihnen.</div>'},
+    {k:'News',t:'Was jetzt für Sie als Partnerarzt am wichtigsten ist',x:'Fünf Punkte, die den Ablauf für Sie, Ihre Patientinnen und uns spürbar einfacher machen. Kurz, praktisch und sofort umsetzbar.',d:-6,b:'<p>Wir haben mit vielen Partnerkliniken gesprochen und gesammelt, was im Alltag den größten Unterschied macht.</p><ul><li><b>Beratungsergebnis am selben Tag eintragen:</b> Je schneller wir wissen, wie das Gespräch ausgegangen ist, desto schneller können wir nachfassen oder freie Termine neu vergeben.</li><li><b>OP-Termin direkt melden:</b> Nur dann können wir die Rechnung rechtzeitig verschicken und das Zahlungsziel von 8 Werktagen einhalten.</li><li><b>Kontaktstatus pflegen:</b> Ob behandelbar, nicht behandelbar oder noch am Überlegen: Ihre Einschätzung hilft uns, die Patientin richtig zu begleiten.</li><li><b>Unterlagen in die Patientenakte:</b> OP-Bericht, Arztbrief und Implantat-Seriennummern gehören in DÄS Connect, nicht in die E-Mail.</li><li><b>Pflichtschulung abschließen:</b> Ärzte und Personal, die DÄS-Patientinnen betreuen, absolvieren die Verkaufsschulung und erhalten ihr Partnerzertifikat.</li></ul>'},
+    {k:'Portal',t:'Schadensprotokolle jetzt direkt in DÄS Connect',x:'OP-Bericht, Arztbrief, Fotos und Kostenvoranschlag laden Sie in sechs Schritten hoch. Wir sehen den Vorgang sofort.',d:-9,b:'<p>Kommt es nach einer Operation zu einer Komplikation, melden Sie den Fall ab sofort direkt im Portal. Das Schadensprotokoll führt Sie in sechs Schritten durch alle nötigen Angaben.</p><ul><li>OP-Bericht und Arztbrief hochladen</li><li>Kurz beschreiben, was passiert ist</li><li>Fotos und Kostenvoranschlag oder Rechnung ergänzen</li><li>Alles prüfen und absenden</li></ul><p>Der Vorgang erscheint sofort bei uns. Rückfragen stellen wir Ihnen über die Nachrichten im Portal.</p>'},
+    {k:'News',t:'OP-Kontingente für Januar bis März 2027 jetzt melden',x:'Die Nachfrage für das neue Jahr ist hoch. Bitte nennen Sie uns bis Mitte Dezember Ihre freien Beratungs- und OP-Tage.',d:-11,b:'<p>Viele Interessentinnen planen ihren Eingriff zum Jahresbeginn. Damit wir die Beratungstermine rechtzeitig verteilen können, brauchen wir Ihre Kapazitäten für das erste Quartal 2027.</p><ul><li>Freie Zeitfenster für Beratungsgespräche</li><li>Geplante OP-Tage je Eingriff</li><li>Urlaubs- und Schließzeiten Ihrer Klinik</li></ul><p>Wie gewohnt erhalten Sie dienstags und freitags den aktuellen Stand der vergebenen Termine.</p>'},
+    {k:'Ratgeber',t:'Die häufigsten Fragen vor einer Brustvergrößerung',x:'Zum Weitergeben an Ihre Patientinnen: Implantate, Narkose, Heilungsverlauf und Kosten verständlich erklärt.',d:-14,b:'<p>Diese Fragen hören wir am häufigsten, bevor Patientinnen zum Beratungsgespräch kommen. Viele davon beantworten wir schon vorab, damit Sie sich auf den medizinischen Teil konzentrieren können.</p><ul><li>Welche Implantatform und -größe passt zu mir?</li><li>Wie lange dauern Operation und Narkose?</li><li>Wann kann ich wieder arbeiten und Sport machen?</li><li>Wie sieht die Nachsorge aus?</li><li>Was ist im Festpreis enthalten?</li></ul>'},
+    {k:'Ratgeber',t:'Ratenzahlung im Beratungsgespräch ansprechen',x:'Wann der richtige Moment ist und wie Sie die Finanzierung über unsere Partner erklären.',d:-18,b:'<p>Für viele Patientinnen ist die Finanzierung der entscheidende Punkt. Sprechen Sie das Thema offen an, sobald der Behandlungswunsch klar ist.</p><ul><li>Nennen Sie den Festpreis und die Möglichkeit der Ratenzahlung zusammen.</li><li>Verweisen Sie für Details an den Deutschen Ärzte Service. Wir begleiten die Anfrage.</li><li>Die Zahlung muss vor dem Eingriff vollständig eingegangen sein.</li></ul>'},
+    {k:'Ratgeber',t:'Nachsorge: Was Patientinnen in den ersten zwei Wochen wissen sollten',x:'Ein kompakter Leitfaden zum Weitergeben: Ruhe, Kompression, Kontrolltermine und wann man sich melden sollte.',d:-23,b:'<p>Eine gute Vorbereitung auf die ersten Tage nach der Operation senkt Unsicherheit und Rückfragen.</p><ul><li>Ruhe einplanen und Begleitung für die Heimfahrt organisieren</li><li>Kompressionswäsche oder Stütz-BH wie besprochen tragen</li><li>Kontrolltermine in der Klinik wahrnehmen</li><li>Bei Fieber, starker Schwellung oder Schmerzen sofort die Klinik anrufen</li></ul>'},
+    {k:'Portal',t:'Pflichtschulung und Partnerzertifikat in DÄS Connect',x:'Sechs kurze Lektionen, ein Abschlusstest und Ihr Zertifikat als exklusiver Partner, für die Klinik und jeden operierenden Arzt.',d:-27,b:'<p>Die Verkaufsschulung für Ärzte und Personal ist jetzt direkt im Portal. Sie bearbeiten die Lektionen in Ihrem Tempo und sehen jederzeit Ihren Fortschritt.</p><ul><li>Ablauf mit Patientinnen von der Anmeldung bis zur Auszahlung</li><li>Argumente für das Kundengespräch und die Festpreise</li><li>Abschlusstest mit fünf Fragen</li><li>Zertifikat zum Ausdrucken für die Klinik und jeden Arzt</li></ul><p>Die Schulungsunterlagen gibt es zusätzlich als PDF zum Herunterladen.</p>'}
+  ];
+  byId('news').innerHTML=NEWS.map(function(n,i){return '<article data-k="'+esc(n.k)+'"'+(n.top?' class="top"':'')+'><small>'+esc(n.k)+'</small><h2>'+esc(n.t)+'</h2><p>'+esc(n.x)+'</p><div class="n-fuss"><time>'+datum(tag(n.d))+'</time><button class="n-mehr" type="button" data-news="'+i+'" aria-label="Weiterlesen: '+esc(n.t)+'">Weiterlesen →</button></div></article>';}).join('');
+  var dlgN=byId('dlg-news');
+  byId('news').addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-news]');if(!b)return;var n=NEWS[+b.getAttribute('data-news')];
+    byId('nw-klein').textContent=n.k;byId('nw-titel').textContent=n.t;byId('nw-datum').textContent=datum(tag(n.d));byId('nw-inhalt').innerHTML=n.b;
+    dlgN.showModal();byId('nw-inhalt').scrollTop=0;
+  });
+  document.querySelector('.news-filter').addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-nf]');if(!b)return;var f=b.getAttribute('data-nf');
+    this.querySelectorAll('button').forEach(function(x){var an=x===b;x.classList.toggle('aktiv',an);x.setAttribute('aria-pressed',an?'true':'false');});
+    byId('news').querySelectorAll('article').forEach(function(a){a.hidden=!!f&&a.getAttribute('data-k')!==f;});
+  });
 
   // ---------- Pflichtschulung: Status, Abschlusstest, Zertifikat (Beispielfragen) ----------
   var schulung={bestanden:false,datum:null,richtig:0,versuche:0},dlgT=byId('dlg-test');
@@ -1805,11 +1862,14 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       {h:'Zwei Vergleiche aus dem Alltag',x:'<h3>Das Hotel</h3><p>In einem 5-Sterne-Hotel kostet dasselbe Zimmer je nach Saison, Auslastung und Buchungszeitpunkt unterschiedlich. Die Qualität des Zimmers bleibt gleich. Beim DÄS ermöglichen gebündelte OP-Tage und genau getaktete Abläufe eine optimale Auslastung: Top-Qualität zu einem kalkulierbaren Vorteilspreis.</p><h3>Die Flugreise</h3><p>Wer früh oder Last-Minute bucht, sich an feste Zeiten hält und auf unnötige Extras verzichtet, fliegt zum besten Preis, ohne Einbußen beim Komfort. Am Ende sitzen alle in derselben Lufthansa-Maschine. Genauso funktioniert das Prinzip des DÄS.</p><div class="merke"><b>Fazit</b>Medizin auf höchstem Niveau: effizient organisiert, transparent kalkuliert und auf die Patientin ausgerichtet. Nutzen Sie diese Argumente, um Vertrauen zu schaffen und den Mehrwert der DÄS-Aktion nachvollziehbar zu erklären.</div>'}
     ]}
   ];
+  try{localStorage.removeItem('daes-kurs');}catch(e){}
   var kurs={fertig:{},schritt:{}},lekAkt=null,lekI=0,dlgL=byId('dlg-lektion');
-  try{var ks=JSON.parse(localStorage.getItem('daes-kurs')||'null');if(ks&&ks.fertig)kurs=ks;}catch(e){}
-  function kursSpeichern(){try{localStorage.setItem('daes-kurs',JSON.stringify(kurs));}catch(e){}}
+  try{var ks=JSON.parse(localStorage.getItem('daes-kurs-2')||'null');if(ks&&ks.fertig)kurs=ks;}catch(e){}
+  if(typeof kurs.test==='number'){schulung.bestanden=true;schulung.datum=new Date(kurs.test);}
+  function kursSpeichern(){try{localStorage.setItem('daes-kurs-2',JSON.stringify(kurs));}catch(e){}}
   function kursZahl(){return KURS.filter(function(k){return kurs.fertig[k.id];}).length;}
   function kursProzent(){return Math.round(kursZahl()/KURS.length*100);}
+  var ICO_INFO='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>';
   var ICO_HAKEN='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg>';
   function zeichneKurs(){
     var n=kursZahl(),pz=kursProzent(),alle=n===KURS.length,st=byId('kurs-stand');
@@ -1822,7 +1882,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
       var stand=f?'Abgeschlossen':s?'Begonnen, Schritt '+(s+1)+' von '+k.schritte.length:'Offen';
       return '<div class="lek'+(f?' fertig':'')+'"><span class="lek-nr">'+(f?ICO_HAKEN+'<span class="sr-neu">erledigt</span>':(i+1))+'</span><div><b>'+esc(k.titel)+'</b><span class="lek-kurz">'+esc(k.kurz)+'</span>'+
         '<span class="lek-meta"><span>'+k.schritte.length+' Schritte · ca. '+k.min+' Min.</span><span class="lek-mini" aria-hidden="true"><i style="width:'+anteil+'%"></i></span><span>'+stand+'</span></span></div>'+
-        '<button class="btn '+(f?'btn-line':'btn-primary')+' btn-sm" type="button" data-kurs="'+k.id+'">'+(f?'Wiederholen':s?'Fortsetzen':'Starten')+'</button></div>';
+        '<button class="btn '+(f?'btn-line':'btn-primary')+' btn-sm" type="button" data-kurs="'+k.id+'" aria-label="'+(f?'Wiederholen':s?'Fortsetzen':'Starten')+': '+esc(k.titel)+'">'+(f?'Wiederholen':s?'Fortsetzen':'Starten')+'</button></div>';
     }).join('');
   }
   function lektionZeige(){
@@ -1850,7 +1910,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   function oeffneLektion(id){
     lekAkt=KURS.filter(function(k){return k.id===id;})[0];if(!lekAkt)return;
     lekI=kurs.fertig[id]?0:Math.min(kurs.schritt[id]||0,lekAkt.schritte.length-1);
-    lektionZeige();if(!dlgL.open)dlgL.showModal();
+    if(!dlgL.open)dlgL.showModal();lektionZeige();
   }
   byId('lek-zurueck').addEventListener('click',function(){if(lekI>0){lekI--;lektionZeige();}});
   byId('lek-weiter').addEventListener('click',function(){
@@ -1872,14 +1932,13 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
   dlgL.addEventListener('close',function(){var k=lekAkt;lekAkt=null;zeichneSchulung();var b=k&&document.querySelector('[data-kurs="'+k.id+'"]');if(b&&!dlgT.open)b.focus();});
 
   function zeichneSchulung(){
-    var ok=schulung.bestanden,st=byId('schul-status'),nv=byId('nav-schul');
+    var ok=schulung.bestanden,st=byId('schul-status');
     zeichneKurs();
-    st.className='schul-status '+(ok?'gruen':'rot');
+    st.className='schul-status '+(ok?'gruen':'hinweis');
     st.innerHTML=ok?ICO_OK+'<b>Pflichtschulung bestanden</b><span>Exklusiver Partner des Deutschen Ärzte Service, Zertifikat vom '+datum(schulung.datum)+'.</span><span class="mehr">Zertifikat ansehen</span>'
-      :ICO_WARN+'<b>Pflichtschulung offen, '+kursProzent()+' % erledigt</b><span>'+(kursZahl()===KURS.length?'Alle Lektionen abgeschlossen. Jetzt fehlt nur noch der Abschlusstest.':kursZahl()+' von '+KURS.length+' Lektionen der Verkaufsschulung abgeschlossen.')+'</span><span class="mehr">'+(kursZahl()?'Weiterlernen':'Zur Schulung')+'</span>';
-    nv.className='zahl '+(ok?'gruen':'rot');nv.textContent=ok?'Bestanden':(kursZahl()?kursProzent()+' %':'Pflicht');
-    byId('schul-kopf').innerHTML='<span class="pill '+(ok?'t-green':'t-red')+'">'+(ok?'Bestanden':'Pflicht, noch nicht abgeschlossen')+'</span>';
-    byId('schul-test-karte').innerHTML='<div class="card-head"><h2>'+(ok?ICO_OK:ICO_WARN)+'Abschlusstest und Zertifikat</h2><span class="pill '+(ok?'t-green':'t-red')+'">'+(ok?'Zertifikat erhalten':'Zertifikat fehlt')+'</span></div>'+
+      :ICO_INFO+'<b>Hinweis: Die Verkaufsschulung ist Pflicht</b><span>'+(kursZahl()===KURS.length?'Alle Lektionen abgeschlossen. Jetzt fehlt nur noch der Abschlusstest.':kursZahl()?kursZahl()+' von '+KURS.length+' Lektionen abgeschlossen. Bitte schließen Sie die Schulung mit dem Abschlusstest ab.':'Bitte absolvieren Sie die sechs Lektionen und den Abschlusstest, damit Ihr Partnerzertifikat ausgestellt wird.')+'</span><span class="mehr">'+(kursZahl()?'Weiterlernen':'Zur Schulung')+'</span>';
+    byId('schul-kopf').innerHTML='<span class="pill '+(ok?'t-green':'t-grau')+'">'+(ok?'Bestanden':'Pflichtschulung')+'</span>';
+    byId('schul-test-karte').innerHTML='<div class="card-head"><h2>'+(ok?ICO_OK:ICO_INFO)+'Abschlusstest und Zertifikat</h2><span class="pill '+(ok?'t-green':'t-grau')+'">'+(ok?'Zertifikat erhalten':'Noch offen')+'</span></div>'+
       '<div class="zert"><p>'+(ok?'<b>Bestanden am '+datum(schulung.datum)+'.</b> Sie sind exklusiver Partner des Deutschen Ärzte Service. Das Zertifikat können Sie für die Klinik und für jeden operierenden Arzt ausdrucken.'
         :'<b>Fünf Fragen zu den Leitlinien.</b> Mit mindestens '+TEST_MIN+' richtigen Antworten gilt die Pflichtschulung als bestanden und das Zertifikat wird ausgestellt.'+(kursZahl()<KURS.length?' Der Test wird freigeschaltet, sobald alle '+KURS.length+' Lektionen abgeschlossen sind. Noch offen: '+(KURS.length-kursZahl())+'.':'')+(schulung.versuche?' Bisherige Versuche: '+schulung.versuche+'.':''))+'</p>'+
       '<div class="knoepfe">'+(ok?'':'<button class="btn btn-primary" type="button" id="schul-start"'+(kursZahl()<KURS.length?' disabled aria-disabled="true"':'')+'>'+(kursZahl()<KURS.length?'Abschlusstest gesperrt':'Abschlusstest starten')+'</button>')+'</div></div>'+
@@ -1929,7 +1988,7 @@ dialog::backdrop{background:rgba(18,12,24,.55)}
     FRAGEN.forEach(function(q,i){var ok=antworten[i]===q.r;if(ok)richtig++;boxen[i].classList.toggle('richtig',ok);boxen[i].classList.toggle('falsch',!ok);});
     schulung.versuche++;
     if(richtig>=TEST_MIN){
-      schulung.bestanden=true;schulung.datum=new Date();schulung.richtig=richtig;
+      schulung.bestanden=true;schulung.datum=new Date();schulung.richtig=richtig;kurs.test=schulung.datum.getTime();kursSpeichern();
       document.querySelectorAll('#test-fragen input').forEach(function(i){i.disabled=true;});
       byId('test-erfolg').textContent='Bestanden: '+richtig+' von '+FRAGEN.length+' Fragen richtig. Das Zertifikat ist ausgestellt.';byId('test-erfolg').hidden=false;
       byId('test-senden').hidden=true;byId('test-zu').textContent='Schließen';byId('test-zu').focus();
